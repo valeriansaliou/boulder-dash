@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.helpers;
+package fr.enssat.BoulderDash.helpers;
 
 public class LevelLoadHelper {
     LevelLoadHelper() {

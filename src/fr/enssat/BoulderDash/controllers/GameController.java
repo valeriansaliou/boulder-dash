@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.controllers;
+package fr.enssat.BoulderDash.controllers;
 
 public class GameController {
     GameController() {

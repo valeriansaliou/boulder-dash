@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.models;
+package fr.enssat.BoulderDash.models;
 
 public class Model {
     Model() {
