@@ -1,6 +1,8 @@
 package fr.enssat.BoulderDash.models;
 
-public class RockfordModel extends ElementDisplayable implements PublisherBridge {
+import fr.enssat.BoulderDash.bridges.PublisherBridge;
+
+public class RockfordModel extends ElementDisplayableModel implements PublisherBridge {
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;
 	private static boolean canMove = true;
