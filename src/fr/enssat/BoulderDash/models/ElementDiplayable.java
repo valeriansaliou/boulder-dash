@@ -2,37 +2,27 @@ package fr.enssat.BoulderDash.models;
 
 public abstract class ElementDiplayable {
 	private boolean isDestructible;
-	private boolean isDisplayedOnScreen;
-	private boolean canMove;
+	private boolean isMoving;
 	
 	public ElementDiplayable(boolean isDestructible, boolean canMove) {
 		this.setDestructible(isDestructible);
-		this.canMove = canMove;
+		this.setMoving(canMove);
 	}
 
 	public boolean isDestructible() {
 		return isDestructible;
 	}
 
-	public void setDestructible(boolean isDestructible) {
+	private void setDestructible(boolean isDestructible) {
 		this.isDestructible = isDestructible;
 	}
 
-	public boolean isDisplayedOnScreen() {
-		return isDisplayedOnScreen;
+	public boolean isMoving() {
+		return isMoving;
 	}
 
-	public void setDisplayedOnScreen(boolean isDisplayedOnScreen) {
-		this.isDisplayedOnScreen = isDisplayedOnScreen;
+	private void setMoving(boolean isMoving) {
+		this.isMoving = isMoving;
 	}
 
-	public boolean isCanMove() {
-		return canMove;
-	}
-
-	public void setCanMove(boolean canMove) {
-		this.canMove = canMove;
-	}
-	
-	
 }
