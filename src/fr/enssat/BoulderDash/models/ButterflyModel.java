@@ -1,10 +1,15 @@
 package fr.enssat.BoulderDash.models;
 
 public class ButterflyModel extends MovableElementModel {
-    private static String pathToSprite = "insert/path/down/here";
-    private static int priority = 2;
+    private static String spriteName;
+    private static int priority;
+
+    static {
+        spriteName = "field_00";
+        priority = 2;
+    }
 
     public ButterflyModel(int x, int y) {
-        super(pathToSprite, priority, x, y);
+        super(spriteName, priority, x, y);
     }
 }

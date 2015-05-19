@@ -3,32 +3,24 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.bridges.PublisherBridge;
 
 public class MagicWallModel extends ElementDisplayableModel implements PublisherBridge {
+	private static String spriteName;
+	private static boolean isDestructible;
+	private static boolean canMove;
+	private static boolean impactExplosive;
+	private static boolean animate;
+	private static int priority;
 
-	private static String pathToSprite = "insert/path/down/here";
-	private static boolean isDestructible = false;
-	private static boolean canMove = false;
-	private static boolean impactExplosive = false;
-	private static boolean animate = false;
-	private static int priority = 10;
-	private Boolean state;
+	static {
+		spriteName = "field_00";
+		isDestructible = false;
+		canMove = false;
+		impactExplosive = false;
+		animate = false;
+		priority = 10;
+	}
 
-	public MagicWallModel(int x, int y, Boolean state) {
-		super(isDestructible, canMove, x, y, pathToSprite, priority,
+	public MagicWallModel(int x, int y) {
+		super(isDestructible, canMove, x, y, spriteName, priority,
 				impactExplosive, animate);
-		// magic wall can take two states :
-		// - normal, which means that it'll destroy the stone block passing -->
-		// FALSE
-		// - magic, which means that it'll change the stone block passing into
-		// diamonds --> TRUE
-		this.setState(state);
 	}
-
-	public Boolean getState() {
-		return state;
-	}
-
-	public void setState(Boolean state) {
-		this.state = state;
-	}
-
 }

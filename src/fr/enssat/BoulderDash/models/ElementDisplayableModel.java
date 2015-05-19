@@ -1,21 +1,27 @@
 package fr.enssat.BoulderDash.models;
 
 public abstract class ElementDisplayableModel {
+	private static spriteStoragePath;
+
 	private boolean isDestructible;
 	private boolean isMoving;
 	private boolean animate;
 	private boolean impactExplosive;
-	private String pathToSprite;
+	private String spriteName;
 	private int x;
 	private int y;
 	private int priority;
 
+	static {
+		spriteStoragePath = "./res/drawable/field";
+	}
+
 	public ElementDisplayableModel(boolean isDestructible, boolean isMoving, int x,
-			int y, String pathToSprite, int priority, boolean impactExplosive,
+			int y, String spriteName, int priority, boolean impactExplosive,
 			boolean animate) {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
-		this.pathToSprite = pathToSprite;
+		this.spriteName = spriteName;
 		this.x = x;
 		this.y = y;
 		this.animate = animate;
@@ -31,8 +37,16 @@ public abstract class ElementDisplayableModel {
 		return isMoving;
 	}
 
+	public String getSpriteName() {
+		return spriteName;
+	}
+
+	public static String getSpriteStoragePath() {
+		return this.spriteStoragePath;
+	}
+
 	public String getPathToSprite() {
-		return pathToSprite;
+		return this.getSpriteStoragePath + "/" + this.getSpriteName() + ".png";
 	}
 
 	public int getX() {
