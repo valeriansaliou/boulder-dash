@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class MagicWall extends ElementDisplayable {
+public class MagicWallModel extends ElementDisplayable {
 
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = false;
@@ -10,7 +10,7 @@ public class MagicWall extends ElementDisplayable {
 	private static int priority = 10;
 	private Boolean state;
 
-	public MagicWall(int x, int y, Boolean state) {
+	public MagicWallModel(int x, int y, Boolean state) {
 		super(isDestructible, canMove, x, y, pathToSprite, priority,
 				impactExplosive, animate);
 		// magic wall can take two states :

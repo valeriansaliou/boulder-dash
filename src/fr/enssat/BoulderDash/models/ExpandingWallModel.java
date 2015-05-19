@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class ExpandingWall extends ElementDisplayable {
+public class ExpandingWallModel extends ElementDisplayable {
 
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;
@@ -9,7 +9,7 @@ public class ExpandingWall extends ElementDisplayable {
 	private static boolean animate = true;
 	private static int priority = 10;
 
-	public ExpandingWall(int x, int y) {
+	public ExpandingWallModel(int x, int y) {
 		super(isDestructible, canMove, x, y, pathToSprite, priority,
 				impactExplosive, animate);
 	}

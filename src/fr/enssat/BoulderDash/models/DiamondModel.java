@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class Diamond extends ElementDisplayable {
+public class DiamondModel extends ElementDisplayable {
 
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;
@@ -9,7 +9,7 @@ public class Diamond extends ElementDisplayable {
 	private static boolean animate = true;
 	private static int priority = 1;
 
-	public Diamond(int x, int y) {
+	public DiamondModel(int x, int y) {
 		super(isDestructible, canMove, x, y, pathToSprite, priority,
 				impactExplosive, animate);
 	}

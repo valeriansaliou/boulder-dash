@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public abstract class ElementDisplayable {
+public abstract class ElementDisplayableModel {
 	private boolean isDestructible;
 	private boolean isMoving;
 	private boolean animate;
@@ -10,7 +10,7 @@ public abstract class ElementDisplayable {
 	private int y;
 	private int priority;
 
-	public ElementDisplayable(boolean isDestructible, boolean isMoving, int x,
+	public ElementDisplayableModel(boolean isDestructible, boolean isMoving, int x,
 			int y, String pathToSprite, int priority, boolean impactExplosive,
 			boolean animate) {
 		this.isMoving = isMoving;
