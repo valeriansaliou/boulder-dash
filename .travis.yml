@@ -1,0 +1,5 @@
+language: java
+script: "./tools/test.sh"
+jdk:
+  - oraclejdk8
+sudo: false
