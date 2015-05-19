@@ -3,15 +3,16 @@ package fr.enssat.BoulderDash.models;
 public abstract class ElementDisplayable {
 	private boolean isDestructible;
 	private boolean isMoving;
+	private boolean animate;
+	private boolean impactExplosive;
 	private String pathToSprite;
 	private int x;
 	private int y;
 	private int priority;
-	private boolean animate;
-	private boolean impactExplosive;
-	
-	public ElementDisplayable(boolean isDestructible, boolean isMoving, int x, int y, 
-			String pathToSprite, int priority, boolean impactExplosive, boolean animate) {
+
+	public ElementDisplayable(boolean isDestructible, boolean isMoving, int x,
+			int y, String pathToSprite, int priority, boolean impactExplosive,
+			boolean animate) {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
 		this.pathToSprite = pathToSprite;
@@ -29,8 +30,8 @@ public abstract class ElementDisplayable {
 	public boolean isMoving() {
 		return isMoving;
 	}
-	
-	public String getPathToSprite(){
+
+	public String getPathToSprite() {
 		return pathToSprite;
 	}
 
