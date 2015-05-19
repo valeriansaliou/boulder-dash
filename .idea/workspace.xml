@@ -24,41 +24,44 @@
     <splitter split-orientation="horizontal" split-proportion="0.4798611">
       <split-first>
         <leaf>
-          <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/controllers/GameController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ElementDisplayableModel.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/ElementDisplayableModel.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ExpandingWallModel.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/ExpandingWallModel.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="2" column="85" selection-start-line="2" selection-start-column="85" selection-end-line="2" selection-end-column="85" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="FireflyModel.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/FireflyModel.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
+                  <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#228#229#0" expanded="true" />
+                    <element signature="e#270#271#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ButterflyModel.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/ButterflyModel.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AmoebaModel.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/AmoebaModel.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.16107382">
+                  <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MovableElementModel.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/MovableElementModel.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -87,7 +90,7 @@
             <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/MagicWallModel.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
+                  <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -103,21 +106,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SteelWallModel.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SteelWallModel.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/SteelWallModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.20134228">
-                  <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PublisherBridge.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/bridges/PublisherBridge.java">
+          <file leaf-file-name="LevelLoadBridge.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/bridges/LevelLoadBridge.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -137,10 +140,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="BrickWallModel.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="BrickWallModel.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/BrickWallModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="0.040268455">
                   <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
                   <folding />
                 </state>
@@ -157,10 +160,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DirtModel.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="DirtModel.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/DirtModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.040268455">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="2" column="76" selection-start-line="2" selection-start-column="76" selection-end-line="2" selection-end-column="76" />
                   <folding />
                 </state>
@@ -195,11 +198,14 @@
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/DiamondModel.java" />
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/DirtModel.java" />
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/ExpandingWallModel.java" />
-        <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/FireflyModel.java" />
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/LevelModel.java" />
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/MagicWallModel.java" />
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/RockfordModel.java" />
         <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/SteelWallModel.java" />
+        <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/FireflyModel.java" />
+        <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/MovableElementModel.java" />
+        <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/ButterflyModel.java" />
+        <option value="$PROJECT_DIR$/src/fr/enssat/boulderdash/models/AmoebaModel.java" />
       </list>
     </option>
   </component>
@@ -647,14 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/bridges/LevelLoadBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/controllers/LevelEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -679,26 +677,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/BrickWallModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/DiamondModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/BoulderModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -715,14 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="85" selection-start-line="2" selection-start-column="85" selection-end-line="2" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/FireflyModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
           <folding />
         </state>
       </provider>
@@ -744,10 +718,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/bridges/LevelLoadBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/BoulderModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/MagicWallModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -760,18 +750,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/SteelWallModel.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/DirtModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20134228">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="76" selection-start-line="2" selection-start-column="76" selection-end-line="2" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/DirtModel.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/BrickWallModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.040268455">
-          <caret line="2" column="76" selection-start-line="2" selection-start-column="76" selection-end-line="2" selection-end-column="76" />
+          <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/SteelWallModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/MovableElementModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/FireflyModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/ButterflyModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/enssat/boulderdash/models/AmoebaModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16107382">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
