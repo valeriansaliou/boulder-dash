@@ -31,14 +31,4 @@ public class GameView extends JFrame {
         pane.add(gameArea);
         pane.add(infoArea);
     }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                GameView gameView = new GameView();
-                gameView.setVisible(true);
-            }
-        });
-    }
 }
