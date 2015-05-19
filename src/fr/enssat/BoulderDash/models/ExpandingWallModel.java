@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class ExpandingWallModel extends ElementDisplayable {
+public class ExpandingWallModel extends ElementDisplayable implements PublisherBridge {
 
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;

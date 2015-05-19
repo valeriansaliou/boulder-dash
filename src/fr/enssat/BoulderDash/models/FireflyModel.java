@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class FireflyModel extends ElementDisplayable {
+public class FireflyModel extends ElementDisplayable implements PublisherBridge {
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;
 	private static boolean canMove = true;
