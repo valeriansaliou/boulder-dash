@@ -1,6 +1,8 @@
 package fr.enssat.BoulderDash.models;
 
-public abstract class LevelModel implements LevelLoadInterface implements SubscriberBridge {
+import fr.enssat.BoulderDash.bridges.LevelLoadBridge;
+
+public abstract class LevelModel implements LevelLoadBridge implements SubscriberBridge {
 
     private String name = "";
     private int id = -1;

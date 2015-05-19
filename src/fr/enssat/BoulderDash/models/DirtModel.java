@@ -1,6 +1,8 @@
 package fr.enssat.BoulderDash.models;
 
-public class DirtModel extends ElementDisplayable implements PublisherBridge {
+import fr.enssat.BoulderDash.bridges.PublisherBridge;
+
+public class DirtModel extends ElementDisplayableModel implements PublisherBridge {
 
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;
