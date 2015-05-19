@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class SteelWall extends ElementDiplayable{
+public class SteelWall extends ElementDisplayable{
 	private static String pathToSprite = "insert/path/down/here";;
 	private static boolean isDestructible = false;
 	private static boolean canMove = false;

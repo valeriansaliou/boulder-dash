@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class Dirt extends ElementDiplayable{
+public class Dirt extends ElementDisplayable{
 	
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;

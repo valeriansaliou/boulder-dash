@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class Rockford extends ElementDiplayable {
+public class Rockford extends ElementDisplayable {
 	private static String pathToSprite = "insert/path/down/here";
 	private static boolean isDestructible = true;
 	private static boolean canMove = true;
