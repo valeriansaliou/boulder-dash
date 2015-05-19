@@ -5,9 +5,8 @@ public abstract class ElementDiplayable {
 	private boolean isDisplayedOnScreen;
 	private boolean canMove;
 	
-	public ElementDiplayable(boolean isDestructible, boolean isDisplayedOnScreen, boolean canMove) {
+	public ElementDiplayable(boolean isDestructible, boolean canMove) {
 		this.setDestructible(isDestructible);
-		this.isDisplayedOnScreen = isDisplayedOnScreen;
 		this.canMove = canMove;
 	}
 

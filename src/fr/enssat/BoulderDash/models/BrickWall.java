@@ -4,9 +4,11 @@ public class BrickWall extends ElementDiplayable{
 	private int x;
 	private int y;
 	private String pathToSprite;
+	private static boolean isDestructible = true;
+	private static boolean canMove = false;
 	
-	public BrickWall(int x, int y, boolean isDestructible, boolean isDisplayedOnScreen, boolean canMove){
-		super(isDestructible,isDisplayedOnScreen,canMove);
+	public BrickWall(int x, int y){
+		super(isDestructible,canMove);
 		this.x = x;
 		this.y = y;
 		setPathToSprite("insert/path/down/here");
