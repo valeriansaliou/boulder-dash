@@ -3,26 +3,54 @@ package fr.enssat.BoulderDash.models;
 public abstract class ElementDiplayable {
 	private boolean isDestructible;
 	private boolean isMoving;
+	private String pathToSprite;
+	private int x;
+	private int y;
+	private int priority;
 	
-	public ElementDiplayable(boolean isDestructible, boolean canMove) {
-		this.setDestructible(isDestructible);
-		this.setMoving(canMove);
+	public ElementDiplayable(boolean isDestructible, boolean isMoving, int x, int y, String pathToSprite, int priority) {
+		this.isMoving = isMoving;
+		this.isDestructible = isDestructible;
+		this.pathToSprite = pathToSprite;
+		this.x = x;
+		this.y = y;
+		this.setPriority(priority);
 	}
 
 	public boolean isDestructible() {
 		return isDestructible;
 	}
 
-	private void setDestructible(boolean isDestructible) {
-		this.isDestructible = isDestructible;
-	}
-
 	public boolean isMoving() {
 		return isMoving;
 	}
+	
+	public String getPathToSprite(){
+		return pathToSprite;
+	}
 
-	private void setMoving(boolean isMoving) {
-		this.isMoving = isMoving;
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 }
