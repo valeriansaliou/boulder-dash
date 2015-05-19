@@ -7,13 +7,18 @@ public abstract class ElementDisplayable {
 	private int x;
 	private int y;
 	private int priority;
+	private boolean animate;
+	private boolean impactExplosive;
 	
-	public ElementDisplayable(boolean isDestructible, boolean isMoving, int x, int y, String pathToSprite, int priority) {
+	public ElementDisplayable(boolean isDestructible, boolean isMoving, int x, int y, 
+			String pathToSprite, int priority, boolean impactExplosive, boolean animate) {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
 		this.pathToSprite = pathToSprite;
 		this.x = x;
 		this.y = y;
+		this.animate = animate;
+		this.impactExplosive = impactExplosive;
 		this.setPriority(priority);
 	}
 
@@ -51,6 +56,22 @@ public abstract class ElementDisplayable {
 
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	public boolean isAnimate() {
+		return animate;
+	}
+
+	public void setAnimate(boolean animate) {
+		this.animate = animate;
+	}
+
+	public boolean isImpactExplosive() {
+		return impactExplosive;
+	}
+
+	public void setImpactExplosive(boolean impactExplosive) {
+		this.impactExplosive = impactExplosive;
 	}
 
 }
