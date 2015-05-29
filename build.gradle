@@ -1,5 +1,0 @@
-apply plugin: 'fr.enssat.boulderdash'
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
