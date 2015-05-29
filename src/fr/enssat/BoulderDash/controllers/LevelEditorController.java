@@ -1,28 +1,35 @@
 package fr.enssat.BoulderDash.controllers;
 
+import java.awt.EventQueue;
+
+import fr.enssat.BoulderDash.views.GameView;
+import fr.enssat.BoulderDash.views.LevelEditorView;
+//gère l'éditeur de LVL
 public class LevelEditorController {
 
     LevelEditorView view = null;
 
-    public LevelEditorController() {
+    public  void LevelEditorController() {
         // Initialize view
-        this.setView(new GameView());
+        this.setView(new LevelEditorView());
     }
 
     public LevelEditorView getView() {
         return this.view;
     }
 
-    private void setView(LevelEditorView view) {
-        this.view = view;
+    private void setView(LevelEditorView gameView) {
+        this.view = gameView;
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
+    	final LevelEditorController _this = this;
+    	
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 // Set view visible
-                this.getView().setVisible(true);
+            	_this.getView().setVisible(true);
             }
         });
     }

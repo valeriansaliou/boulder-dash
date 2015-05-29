@@ -1,12 +1,18 @@
 package fr.enssat.BoulderDash.controllers;
 
+import java.awt.EventQueue;
+import java.awt.Window;
+
+import fr.enssat.BoulderDash.views.GameView;
+// créé la fenetre, gère le jeu en lui mm, démarre timer, ...
 public class GameController {
 
     GameView view = null;
 
-    public GameController() {
+    public void GameController() {
         // Initialize view
         this.setView(new GameView());
+        System.out.println("here");
     }
 
     public GameView getView() {
@@ -17,12 +23,14 @@ public class GameController {
         this.view = view;
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
+    	final GameController _this = this;
+    	
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 // Set view visible
-                this.getView().setVisible(true);
+            	_this.getView().setVisible(true);
             }
         });
     }
