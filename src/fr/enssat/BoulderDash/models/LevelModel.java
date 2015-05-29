@@ -7,7 +7,7 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //la vue connais le modele
 //le controlleur va modifier le model en fonction de l'utilisateur
 //le modele previens la vue qu'il y a eu des modifs
-public abstract class LevelModel implements LevelLoadInterface, SubscriberInterface {
+public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 
     private String name = "";
     private int id = -1;
