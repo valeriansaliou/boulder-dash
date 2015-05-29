@@ -20,6 +20,14 @@ public class GameView extends JFrame {
         this.createLayout();
     }
 
+    
+    //definir le plateau
+    //partir sur un affichage statique
+    //...et des différents objets
+    //controleur déplace le bonhomme
+    //animations
+    
+    
     private void createLayout() {
         Container pane = getContentPane();
         GridLayout gridLayout = new GridLayout(1, 2);
