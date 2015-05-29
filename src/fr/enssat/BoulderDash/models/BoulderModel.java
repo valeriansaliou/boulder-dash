@@ -1,8 +1,8 @@
 package fr.enssat.BoulderDash.models;
 
-import fr.enssat.BoulderDash.bridges.PublisherBridge;
+import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
-public class BoulderModel extends ElementDisplayableModel implements PublisherBridge {
+public class BoulderModel extends StaticBlockModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;

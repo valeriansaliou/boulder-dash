@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class ButterflyModel extends MovableElementModel {
+public class ButterflyModel extends MovableBlockModel {
     private static String spriteName;
     private static int priority;
 

@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public class AmoebaModel extends MovableElementModel {
+public class AmoebaModel extends MovableBlockModel {
     private static String spriteName;
     private static int priority;
 

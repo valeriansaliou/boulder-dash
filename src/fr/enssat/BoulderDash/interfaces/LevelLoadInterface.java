@@ -1,4 +1,4 @@
-package fr.enssat.BoulderDash.bridges;
+package fr.enssat.BoulderDash.interfaces;
 
 public interface LevelLoadInterface {
 

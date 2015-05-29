@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-public abstract class ElementDisplayableModel {
+public abstract class StaticBlockModel {
 	private static String spriteStoragePath;
 
 	private boolean isDestructible;
@@ -16,7 +16,7 @@ public abstract class ElementDisplayableModel {
 		spriteStoragePath = "./res/drawable/field";
 	}
 
-	public ElementDisplayableModel(boolean isDestructible, boolean isMoving, int x,
+	public StaticBlockModel(boolean isDestructible, boolean isMoving, int x,
 			int y, String spriteName, int priority, boolean impactExplosive,
 			boolean animate) {
 		this.isMoving = isMoving;
@@ -46,7 +46,7 @@ public abstract class ElementDisplayableModel {
 	}
 
 	public String getPathToSprite() {
-		return ElementDisplayableModel.getSpriteStoragePath() + "/" + this.getSpriteName() + ".png";
+		return StaticBlockModel.getSpriteStoragePath() + "/" + this.getSpriteName() + ".png";
 	}
 
 	public int getX() {
