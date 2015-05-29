@@ -1,8 +1,9 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.bridges.LevelLoadBridge;
+import fr.enssat.BoulderDash.bridges.SubscriberBridge;
 
-public abstract class LevelModel implements LevelLoadBridge implements SubscriberBridge {
+public abstract class LevelModel implements LevelLoadBridge, SubscriberBridge {
 
     private String name = "";
     private int id = -1;
@@ -15,15 +16,15 @@ public abstract class LevelModel implements LevelLoadBridge implements Subscribe
         return this.name;
     }
 
-    protected String setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return this.id;
     }
 
-    protected String setId(integer id) {
+    protected void setId(int id) {
         this.id = id;
     }
 }
