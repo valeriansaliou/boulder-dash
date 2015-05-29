@@ -9,10 +9,9 @@ public class GameController {
 
     GameView view = null;
 
-    public void GameController() {
+    public void GameController(GameView view) {
         // Initialize view
-        this.setView(new GameView());
-        System.out.println("here");
+        this.setView(view);
     }
 
     public GameView getView() {

@@ -9,9 +9,9 @@ public class LevelEditorController {
 
     LevelEditorView view = null;
 
-    public  void LevelEditorController() {
+    public  void LevelEditorController(LevelEditorView view) {
         // Initialize view
-        this.setView(new LevelEditorView());
+        this.setView(view);
     }
 
     public LevelEditorView getView() {
