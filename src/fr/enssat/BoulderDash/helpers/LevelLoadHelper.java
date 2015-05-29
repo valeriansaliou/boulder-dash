@@ -9,31 +9,34 @@ package fr.enssat.BoulderDash.helpers;
  * @version     1.0
  * @since       2015-06-19
  */
+
+// tout ce qu'on va appeler depuis le contrôleur LevelEditeurControler ou GameController (c'est ocmmun aux deux)
+// retourne la représentation interne des niveaux sous forme d'objet java
 public class LevelLoadHelper {
-    private static String pathToDataStore = "res/levels"
+    private static String pathToDataStore = "res/levels";
     private int levelId = -1;
 
     public LevelLoadHelper(int levelId) {
         this.setLevelId(levelId);
     }
 
-    private getLevelPathInDataStore() {
+    private String getLevelPathInDataStore() {
         return pathToDataStore + "/" + this.getLevelId();
     }
 
-    private loadLevelData() {
+    private void loadLevelData() {
         String pathToData = this.getLevelPathInDataStore();
     }
 
-    private processLevelData() {
+    private void processLevelData() {
 
     }
 
-    public getLevelId() {
+    public int getLevelId() {
         return this.levelId;
     }
 
-    private setLevelId(int levelId) {
+    private void setLevelId(int levelId) {
         this.levelId = levelId;
     }
 }

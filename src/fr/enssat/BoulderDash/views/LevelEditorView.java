@@ -1,4 +1,4 @@
-package fr.enssat.BoulderDash.controllers;
+package fr.enssat.BoulderDash.views;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

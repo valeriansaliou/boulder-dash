@@ -1,10 +1,10 @@
-package fr.enssat.BoulderDash.controllers;
+package fr.enssat.BoulderDash.views;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
+//appelé par gameControler
 public class GameView extends JFrame {
 
     public GameView() {
