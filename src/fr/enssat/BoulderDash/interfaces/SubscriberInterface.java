@@ -1,5 +1,5 @@
 package fr.enssat.BoulderDash.bridges;
 
-public interface LevelLoadBridge {
+public interface SubscriberInterface {
 
 }
