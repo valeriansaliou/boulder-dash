@@ -22,7 +22,7 @@ public class GameController {
         this.view = view;
     }
 
-    public void main(String[] args) {
+    public void displayView() {
     	final GameController _this = this;
     	
         EventQueue.invokeLater(new Runnable() {

@@ -9,7 +9,7 @@ public class LevelEditorController {
 
     LevelEditorView view = null;
 
-    public  void LevelEditorController(LevelEditorView view) {
+    public void LevelEditorController(LevelEditorView view) {
         // Initialize view
         this.setView(view);
     }
@@ -22,7 +22,7 @@ public class LevelEditorController {
         this.view = gameView;
     }
 
-    public void main(String[] args) {
+    public void displayView() {
     	final LevelEditorController _this = this;
     	
         EventQueue.invokeLater(new Runnable() {
