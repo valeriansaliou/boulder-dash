@@ -2,6 +2,7 @@ package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -9,31 +10,32 @@ import javax.swing.*;
 
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
-//appelé par gameControler
-public class GameView extends JFrame implements Observer{
+
+//GameView is created by GameController
+public class GameView extends JFrame implements Observer {
 	private JPanel gamePanel;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
 	private JButton newGame, pause, quit;
 	private GameController gameController;
 	private LevelModel levelModel;
-	
-	public GameView(GameController gameController){
+
+	public GameView(GameController gameController) {
 		gamePanel = new JPanel();
 		gamePanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		actionPanel = new JPanel();
 		informationPanel = new JPanel();
 		this.gameController = gameController;
 		this.levelModel = gameController.getLevelModel();
-		
+
 		newGame = createButton("New Game");
 		pause = createButton("Pause");
-		pause = createButton("Quit"); 
+		pause = createButton("Quit");
 
 		add(actionPanel, BorderLayout.SOUTH);
 		add(gamePanel, BorderLayout.CENTER);
 		add(informationPanel, BorderLayout.NORTH);
-		
+
 		setVisible(true);
 		levelModel.addObserver(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,9 +51,16 @@ public class GameView extends JFrame implements Observer{
 		return button;
 	}
 
+	public void drawCase(int x, int y, Graphics g) {
+		g.drawImage(levelModel.getImage(x,y), x, y,this);
+	}
+
+	public void paint(Graphics g){
+		drawCase(1,1,g);
+	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+
 	}
 }

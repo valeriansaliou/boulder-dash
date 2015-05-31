@@ -6,21 +6,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.GameView;
-// créé la fenetre, gère le jeu en lui mm, démarre timer, ...
+// GameController is creating the view
 public class GameController implements ActionListener{
 	private LevelModel levelModel;
 
 	public GameController(LevelModel levelModel){
 		this.levelModel = levelModel;
+		JFrame gameView = new GameView(this);
 	}
+	
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand() == "Quit") {
 			System.exit(0);
 		}		
 	}
+	
 	public LevelModel getLevelModel() {
 		return levelModel;
 	}

@@ -2,7 +2,7 @@ package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
-public class DiamondModel extends StaticBlockModel implements PublisherInterface {
+public class DiamondModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;

@@ -1,6 +1,9 @@
 package fr.enssat.BoulderDash.models;
 
-public abstract class StaticBlockModel {
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+
+public class DisplayableElementModel {
 	private static String spriteStoragePath;
 
 	private boolean isDestructible;
@@ -11,24 +14,22 @@ public abstract class StaticBlockModel {
 	private int x;
 	private int y;
 	private int priority;
-
-	static {
-		spriteStoragePath = "./res/drawable/field";
-	}
-
-	public StaticBlockModel(boolean isDestructible, boolean isMoving, int x,
-			int y, String spriteName, int priority, boolean impactExplosive,
-			boolean animate) {
+	private BufferedImage img;
+	
+	public DisplayableElementModel(boolean isDestructible, boolean isMoving,
+			int x, int y, String spriteName, int priority,
+			boolean impactExplosive, boolean animate) {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
 		this.spriteName = spriteName;
+		spriteStoragePath = "./res/drawable/field/";
 		this.x = x;
 		this.y = y;
 		this.animate = animate;
 		this.impactExplosive = impactExplosive;
 		this.setPriority(priority);
 	}
-
+	
 	public boolean isDestructible() {
 		return isDestructible;
 	}
@@ -46,7 +47,7 @@ public abstract class StaticBlockModel {
 	}
 
 	public String getPathToSprite() {
-		return StaticBlockModel.getSpriteStoragePath() + "/" + this.getSpriteName() + ".png";
+		return getSpriteStoragePath() + this.getSpriteName() + ".png";
 	}
 
 	public int getX() {
@@ -89,4 +90,11 @@ public abstract class StaticBlockModel {
 		this.impactExplosive = impactExplosive;
 	}
 
+	public Image getImg() {
+		return img;
+	}
+	
+	public void setImg(BufferedImage img){
+		this.img = img;
+	}
 }

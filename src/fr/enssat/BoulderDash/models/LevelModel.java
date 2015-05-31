@@ -1,5 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
+import java.awt.Image;
 import java.util.Observable;
 
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
@@ -9,28 +10,25 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //la vue connais le modele
 //le controlleur va modifier le model en fonction de l'utilisateur
 //le modele previens la vue qu'il y a eu des modifs
-public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
 
-    private String name = "";
-    private int id = -1;
+public class LevelModel extends Observable implements LevelLoadInterface,
+		SubscriberInterface {
+	private DisplayableElementModel[][] ground;
 
-    public LevelModel() {
-    	
-    }
+	public LevelModel() {
+		ground = new DisplayableElementModel[20][20];
+		fillGround();
+	}
 
-    public String getName() {
-        return this.name;
-    }
+	public void fillGround() {
+		for(int i=0;i<20;i++){
+			for(int j = 0;j<20;j++){
+				ground[i][j]=new DirtModel(i,j);
+			}
+		}
+	}
 
-    protected void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    protected void setId(int id) {
-        this.id = id;
-    }
+	public Image getImage(int x, int y) {
+		return ground[x][y].getImg();
+	}
 }
