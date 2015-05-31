@@ -13,30 +13,51 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 
 public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
 	private DisplayableElementModel[][] ground;
+	private int begining = 0;
+	private int sizeOfSquare= 0;
 
-	public LevelModel() {
-		ground = new DisplayableElementModel[10][10];
+	public LevelModel(int begining, int sizeOfSquare) {
+		this.begining = begining;
+		this.sizeOfSquare = sizeOfSquare;
+		ground = new DisplayableElementModel[sizeOfSquare][sizeOfSquare];
 		fillGround();
 	}
 
 	public void fillGround() {
-		for (int i = 1; i < 9; i++) {
-			for (int j = 1; j < 9; j++) {
+		for (int i = begining; i < sizeOfSquare; i++) {
+			for (int j = begining; j < sizeOfSquare; j++) {
 				ground[i][j] = new DirtModel(i, j);
 			}
 		}
-		for (int i = 0; i < 10; i++) {
-			ground[i][0] = new SteelWallModel(i, 0);
-			ground[i][9] = new SteelWallModel(i, 0);
+		for (int i = begining; i < sizeOfSquare; i++) {
+			ground[i][begining] = new SteelWallModel(i, begining);
+			ground[i][sizeOfSquare-1] = new SteelWallModel(i, begining);
 		}
-		for (int j = 0; j < 10; j++) {	
-			ground[0][j] = new SteelWallModel(j, 0);
-			ground[9][j] = new SteelWallModel(j, 0);
+		for (int i = begining; i < sizeOfSquare; i++) {
+			ground[begining][i] = new SteelWallModel(begining, i);
+			ground[sizeOfSquare-1][i] = new SteelWallModel(begining, i);
 		}
+		ground[1][1] = new RockfordModel(1, 1);
 	}
 
 	public BufferedImage getImage(int x, int y) {
 		return ground[x][y].getImg();
-		
+
+	}
+
+	public int getStart() {
+		return begining;
+	}
+
+	public void setStart(int start) {
+		this.begining = start;
+	}
+
+	public int getEnd() {
+		return sizeOfSquare;
+	}
+
+	public void setEnd(int end) {
+		this.sizeOfSquare = end;
 	}
 }

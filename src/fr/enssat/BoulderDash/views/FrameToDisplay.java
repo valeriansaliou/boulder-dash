@@ -1,8 +1,6 @@
 package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,7 +20,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 	public FrameToDisplay(GameController gameController) {
 		gamePanel = new GameView(gameController);
-		
+
 		actionPanel = new JPanel();
 		informationPanel = new JPanel();
 		this.gameController = gameController;
@@ -33,14 +31,14 @@ public class FrameToDisplay extends JFrame implements Observer {
 		pause = createButton("Quit");
 
 		add(actionPanel, BorderLayout.SOUTH);
-		add(gamePanel.getPanel(), BorderLayout.CENTER);
+		add(gamePanel, BorderLayout.CENTER);
 		add(informationPanel, BorderLayout.NORTH);
-		
+
 		setVisible(true);
 		levelModel.addObserver(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
-		setSize(500, 500);
+		setSize(480, 550);
 	}
 
 	public JButton createButton(String nom) {
@@ -53,6 +51,5 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-
 	}
 }

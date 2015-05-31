@@ -5,7 +5,7 @@ import fr.enssat.BoulderDash.models.LevelModel;
 
 public class Game {
 	public static void main(String[] args) {
-		LevelModel levelModel = new LevelModel();
+		LevelModel levelModel = new LevelModel(0,30);
 		GameController gameController = new GameController(levelModel);
 
         //CE WE :
