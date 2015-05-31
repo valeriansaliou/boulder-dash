@@ -1,5 +1,7 @@
 package fr.enssat.BoulderDash.models;
 
+import java.util.Observable;
+
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //le niveau se charge ici
@@ -7,7 +9,7 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //la vue connais le modele
 //le controlleur va modifier le model en fonction de l'utilisateur
 //le modele previens la vue qu'il y a eu des modifs
-public class LevelModel implements LevelLoadInterface, SubscriberInterface {
+public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
 
     private String name = "";
     private int id = -1;

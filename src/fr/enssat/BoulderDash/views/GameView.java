@@ -1,42 +1,57 @@
 package fr.enssat.BoulderDash.views;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.*;
+
+import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.models.LevelModel;
 //appelé par gameControler
-public class GameView extends JFrame {
+public class GameView extends JFrame implements Observer{
+	private JPanel gamePanel;
+	private JPanel actionPanel;
+	private JPanel informationPanel;
+	private JButton newGame, pause, quit;
+	private GameController gameController;
+	private LevelModel levelModel;
+	
+	public GameView(GameController gameController){
+		gamePanel = new JPanel();
+		gamePanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		actionPanel = new JPanel();
+		informationPanel = new JPanel();
+		this.gameController = gameController;
+		this.levelModel = gameController.getLevelModel();
+		
+		newGame = createButton("New Game");
+		pause = createButton("Pause");
+		pause = createButton("Quit"); 
 
-    public GameView() {
-        this.initializeView();
-    }
+		add(actionPanel, BorderLayout.SOUTH);
+		add(gamePanel, BorderLayout.CENTER);
+		add(informationPanel, BorderLayout.NORTH);
+		
+		setVisible(true);
+		levelModel.addObserver(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 200, 100);
+		setSize(500, 500);
+	}
 
-    private void initializeView() {
-        setTitle("Boulder Dash");
-        setSize(800, 600);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+	public JButton createButton(String nom) {
+		JButton button = new JButton(nom);
+		button.addActionListener(gameController);
+		button.setActionCommand(nom);
+		actionPanel.add(button);
+		return button;
+	}
 
-        this.createLayout();
-    }
-
-    
-    //definir le plateau
-    //partir sur un affichage statique
-    //...et des différents objets
-    //controleur déplace le bonhomme
-    //animations
-    
-    
-    private void createLayout() {
-        Container pane = getContentPane();
-        GridLayout gridLayout = new GridLayout(1, 2);
-        pane.setLayout(gridLayout);
-
-        JPanel gameArea = new JPanel();
-        JPanel infoArea = new JPanel();
-
-        pane.add(gameArea);
-        pane.add(infoArea);
-    }
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 }

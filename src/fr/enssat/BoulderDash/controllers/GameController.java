@@ -2,35 +2,27 @@ package fr.enssat.BoulderDash.controllers;
 
 import java.awt.EventQueue;
 import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
+import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.GameView;
 // créé la fenetre, gère le jeu en lui mm, démarre timer, ...
-public class GameController {
+public class GameController implements ActionListener{
+	private LevelModel levelModel;
 
-    GameView view = null;
+	public GameController(LevelModel levelModel){
+		this.levelModel = levelModel;
+	}
+	public void actionPerformed(ActionEvent event) {
+		if (event.getActionCommand() == "Quit") {
+			System.exit(0);
+		}		
+	}
+	public LevelModel getLevelModel() {
+		return levelModel;
+	}
 
-    public void GameController(GameView view) {
-        // Initialize view
-        this.setView(view);
-    }
-
-    public GameView getView() {
-        return this.view;
-    }
-
-    private void setView(GameView view) {
-        this.view = view;
-    }
-
-    public void displayView() {
-    	final GameController _this = this;
-    	
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                // Set view visible
-            	_this.getView().setVisible(true);
-            }
-        });
-    }
 }
