@@ -11,7 +11,7 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	private static int priority;
 
 	static {
-		spriteName = "field_00";
+		spriteName = "steelwall";
 		isDestructible = false;
 		canMove = false;
 		impactExplosive = false;

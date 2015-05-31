@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.FrameToDisplay;
 import fr.enssat.BoulderDash.views.GameView;
 // GameController is creating the view
 public class GameController implements ActionListener{
@@ -16,7 +17,7 @@ public class GameController implements ActionListener{
 
 	public GameController(LevelModel levelModel){
 		this.levelModel = levelModel;
-		JFrame gameView = new GameView(this);
+		JFrame gameView = new FrameToDisplay(this);
 	}
 	
 	public void actionPerformed(ActionEvent event) {

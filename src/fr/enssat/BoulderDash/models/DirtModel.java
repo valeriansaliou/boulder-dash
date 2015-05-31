@@ -8,8 +8,7 @@ import javax.imageio.ImageIO;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
-public class DirtModel extends DisplayableElementModel implements
-		PublisherInterface {
+public class DirtModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;
@@ -28,8 +27,7 @@ public class DirtModel extends DisplayableElementModel implements
 	}
 
 	public DirtModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority,
-				impactExplosive, animate);
+		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
 		try {
 			img = ImageIO.read(new File(getPathToSprite()));
 		} catch (IOException exc) {
