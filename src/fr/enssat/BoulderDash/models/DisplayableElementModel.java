@@ -1,10 +1,9 @@
 package fr.enssat.BoulderDash.models;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class DisplayableElementModel {
-	private static String spriteStoragePath;
+	private static String spriteStoragePath = "./res/drawable/field/";
 
 	private boolean isDestructible;
 	private boolean isMoving;
@@ -22,7 +21,7 @@ public class DisplayableElementModel {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
 		this.spriteName = spriteName;
-		spriteStoragePath = "./res/drawable/field/";
+		this.priority = priority;
 		this.x = x;
 		this.y = y;
 		this.animate = animate;
@@ -47,7 +46,7 @@ public class DisplayableElementModel {
 	}
 
 	public String getPathToSprite() {
-		return getSpriteStoragePath() + this.getSpriteName() + ".png";
+		return getSpriteStoragePath() + this.getSpriteName() + ".gif";
 	}
 
 	public int getX() {
@@ -90,7 +89,7 @@ public class DisplayableElementModel {
 		this.impactExplosive = impactExplosive;
 	}
 
-	public Image getImg() {
+	public BufferedImage getImg() {
 		return img;
 	}
 	

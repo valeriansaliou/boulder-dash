@@ -35,7 +35,6 @@ public class GameView extends JFrame implements Observer {
 		add(actionPanel, BorderLayout.SOUTH);
 		add(gamePanel, BorderLayout.CENTER);
 		add(informationPanel, BorderLayout.NORTH);
-
 		setVisible(true);
 		levelModel.addObserver(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,13 +51,13 @@ public class GameView extends JFrame implements Observer {
 	}
 
 	public void drawCase(int x, int y, Graphics g) {
-		g.drawImage(levelModel.getImage(x,y), x, y,this);
+		g.drawImage(levelModel.getImage(x, y), x, y, this);
 	}
 
-	public void paint(Graphics g){
-		drawCase(1,1,g);
+	public void paint(Graphics g) {
+		drawCase(0, 0, g);
 	}
-	
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 

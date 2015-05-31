@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
@@ -16,19 +16,19 @@ public class LevelModel extends Observable implements LevelLoadInterface,
 	private DisplayableElementModel[][] ground;
 
 	public LevelModel() {
-		ground = new DisplayableElementModel[20][20];
+		ground = new DisplayableElementModel[10][10];
 		fillGround();
 	}
 
 	public void fillGround() {
-		for(int i=0;i<20;i++){
-			for(int j = 0;j<20;j++){
-				ground[i][j]=new DirtModel(i,j);
+		for(int i=0;i<10;i++){
+			for(int j = 0;j<10;j++){
+				ground[i][j]= new DirtModel(i,j);
 			}
 		}
 	}
 
-	public Image getImage(int x, int y) {
+	public BufferedImage getImage(int x, int y) {
 		return ground[x][y].getImg();
 	}
 }

@@ -19,7 +19,7 @@ public class DirtModel extends DisplayableElementModel implements
 	private BufferedImage img;
 
 	static {
-		spriteName = "field_04";
+		spriteName = "dirt";
 		isDestructible = true;
 		canMove = false;
 		impactExplosive = false;
