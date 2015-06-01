@@ -6,9 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import fr.enssat.BoulderDash.interfaces.PublisherInterface;
-
-public class RockfordModel extends DisplayableElementModel implements PublisherInterface {
+public class backgroundModel extends DisplayableElementModel {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;
@@ -18,15 +16,15 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private BufferedImage img;
 
 	static {
-		spriteName = "boulder";
-		isDestructible = true;
-		canMove = true;
-		impactExplosive = true;
-		animate = true;
-		priority = 8;
+		spriteName = "black";
+		isDestructible = false;
+		canMove = false;
+		impactExplosive = false;
+		animate = false;
+		priority = 0;
 	}
 
-	public RockfordModel(int x, int y) {
+	public backgroundModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority,
 				impactExplosive, animate);
 		try {

@@ -1,12 +1,14 @@
 package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.*;
 
 import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.controllers.KeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 //GameView is created by GameController
@@ -19,26 +21,29 @@ public class FrameToDisplay extends JFrame implements Observer {
 	private LevelModel levelModel;
 
 	public FrameToDisplay(GameController gameController) {
-		gamePanel = new GameView(gameController);
-
-		actionPanel = new JPanel();
-		informationPanel = new JPanel();
 		this.gameController = gameController;
 		this.levelModel = gameController.getLevelModel();
+		
+		gamePanel = new GameView(gameController);		
+		actionPanel = new JPanel();
+		informationPanel = new JPanel();
 
 		newGame = createButton("New Game");
 		pause = createButton("Pause");
 		pause = createButton("Quit");
 
-		add(actionPanel, BorderLayout.SOUTH);
-		add(gamePanel, BorderLayout.CENTER);
+		add(actionPanel, BorderLayout.SOUTH);		
 		add(informationPanel, BorderLayout.NORTH);
+		add(gamePanel, BorderLayout.CENTER);
 
 		setVisible(true);
-		levelModel.addObserver(this);
+		setResizable(false);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
 		setSize(480, 550);
+		// grab the focus to use the keys
+		gamePanel.grabFocus();
 	}
 
 	public JButton createButton(String nom) {
@@ -51,5 +56,6 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		System.out.println("entered in update in frametodisplay");
 	}
 }

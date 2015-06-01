@@ -15,8 +15,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	private DisplayableElementModel[][] ground;
 	private int begining = 0;
 	private int sizeOfSquare= 0;
+	private int posXOfRockford, posYOfRockford;
 
 	public LevelModel(int begining, int sizeOfSquare) {
+		posXOfRockford = 1;
+		posYOfRockford = 1;
 		this.begining = begining;
 		this.sizeOfSquare = sizeOfSquare;
 		ground = new DisplayableElementModel[sizeOfSquare][sizeOfSquare];
@@ -37,9 +40,27 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			ground[begining][i] = new SteelWallModel(begining, i);
 			ground[sizeOfSquare-1][i] = new SteelWallModel(begining, i);
 		}
-		ground[1][1] = new RockfordModel(1, 1);
+		this.setPositionOfRockford(1,1);
+		displayGround();
 	}
 
+	public void setPositionOfRockford(int posX, int posY) {
+		ground[posXOfRockford][posYOfRockford] = new backgroundModel(posXOfRockford,posYOfRockford);
+		posXOfRockford = posX;
+		posYOfRockford = posY;
+		ground[posX][posY] = new RockfordModel(posX, posY);
+		setChanged();
+		notifyObservers();
+	}
+
+	public int getXPositionOfRockford(){
+		return posXOfRockford;
+	}
+	
+	public int getYPositionOfRockford(){
+		return posYOfRockford;
+	}
+	
 	public BufferedImage getImage(int x, int y) {
 		return ground[x][y].getImg();
 
@@ -59,5 +80,22 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 
 	public void setEnd(int end) {
 		this.sizeOfSquare = end;
+	}
+	
+	public void displayGround(){
+		for (int i = begining; i < sizeOfSquare; i++) {
+			for (int j = begining; j < sizeOfSquare; j++) {
+				if(ground[i][j].getSpriteName()=="boulder")
+					System.out.print("B ");
+				else if(ground[i][j].getSpriteName()=="steelwall")
+					System.out.print("S ");
+				else if(ground[i][j].getSpriteName()=="dirt")
+					System.out.print("D ");
+				else if(ground[i][j].getSpriteName()=="black")
+					System.out.print("  ");
+			}
+			System.out.println("");
+		}
+		System.out.println("");
 	}
 }

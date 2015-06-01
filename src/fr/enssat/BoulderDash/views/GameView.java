@@ -8,16 +8,21 @@ import java.util.Observer;
 import javax.swing.*;
 
 import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.controllers.KeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 //GameView is created by GameController
 public class GameView extends JPanel implements Observer {
 	private LevelModel levelModel;
-
+	
 	public GameView(GameController gameController) {
 		this.levelModel = gameController.getLevelModel();
 
+		levelModel.addObserver(this);
+		addKeyListener(new KeyController(levelModel));
 		setBorder(BorderFactory.createLineBorder(Color.black));
+		setFocusable(true);
+		requestFocus();
 	}
 
 	public void drawTerrain(int x, int y, Graphics g) {
@@ -30,11 +35,11 @@ public class GameView extends JPanel implements Observer {
 
 	public void paint(Graphics g) {
 		drawTerrain(levelModel.getStart(), levelModel.getEnd(), g);
-
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
-
+	public void update(Observable obs, Object obj) {
+		System.out.println("update in GameViews");
+		drawTerrain(levelModel.getStart(), levelModel.getEnd(),);
 	}
 }
