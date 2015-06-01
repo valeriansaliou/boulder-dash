@@ -39,7 +39,9 @@ public class GameView extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable obs, Object obj) {
-		System.out.println("update in GameViews");
-		drawTerrain(levelModel.getStart(), levelModel.getEnd(),);
+		repaint();
 	}
+	
+	//Q : - UPDATE ?
+	//    - CHECK WHAT IS AT LEFT / RIGHT ?
 }

@@ -17,19 +17,19 @@ public class KeyController implements KeyListener {
 		System.out.println("Entered in keypressed event");
 		switch (keyCode) {
 		case KeyEvent.VK_UP:
-			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford()-1, levelModel.getYPositionOfRockford());
-			levelModel.displayGround();
-			break;
-		case KeyEvent.VK_DOWN:
-			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford()+1, levelModel.getYPositionOfRockford());
-			levelModel.displayGround();
-			break;
-		case KeyEvent.VK_LEFT:
 			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford(), levelModel.getYPositionOfRockford()-1);
 			levelModel.displayGround();
 			break;
-		case KeyEvent.VK_RIGHT:
+		case KeyEvent.VK_DOWN:
 			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford(), levelModel.getYPositionOfRockford()+1);
+			levelModel.displayGround();
+			break;
+		case KeyEvent.VK_LEFT:
+			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford()-1, levelModel.getYPositionOfRockford());
+			levelModel.displayGround();
+			break;
+		case KeyEvent.VK_RIGHT:
+			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford()+1, levelModel.getYPositionOfRockford());
 			levelModel.displayGround();
 			break;
 		}
