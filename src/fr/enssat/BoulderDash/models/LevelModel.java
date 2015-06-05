@@ -14,8 +14,9 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
 	private DisplayableElementModel[][] ground;
 	private int begining = 0;
-	private int sizeOfSquare= 0;
+	private int sizeOfSquare = 0;
 	private int posXOfRockford, posYOfRockford;
+	private RockfordModel rockford;
 
 	public LevelModel(int begining, int sizeOfSquare) {
 		posXOfRockford = 1;
@@ -26,6 +27,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		fillGround();
 	}
 
+	//initial fill of the ground
 	public void fillGround() {
 		for (int i = begining; i < sizeOfSquare; i++) {
 			for (int j = begining; j < sizeOfSquare; j++) {
@@ -34,38 +36,47 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		}
 		for (int i = begining; i < sizeOfSquare; i++) {
 			ground[i][begining] = new SteelWallModel(i, begining);
-			ground[i][sizeOfSquare-1] = new SteelWallModel(i, begining);
+			ground[i][sizeOfSquare - 1] = new SteelWallModel(i, begining);
 		}
 		for (int i = begining; i < sizeOfSquare; i++) {
 			ground[begining][i] = new SteelWallModel(begining, i);
-			ground[sizeOfSquare-1][i] = new SteelWallModel(begining, i);
+			ground[sizeOfSquare - 1][i] = new SteelWallModel(begining, i);
 		}
-		this.setPositionOfRockford(1,1);
+		this.createRockford();
+		this.setPositionOfRockford(1, 1);
+		this.rockford.start();
 		displayGround();
 	}
 
+	private void createRockford() {
+		rockford = new RockfordModel(posXOfRockford, posYOfRockford);		
+	}
+	
+	public RockfordModel getRockford(){
+		return rockford;
+	}
+
 	public void setPositionOfRockford(int posX, int posY) {
-		if(ground[posX][posY].getSpriteName() != "steelwall"){
-			ground[posXOfRockford][posYOfRockford] = new backgroundModel(posXOfRockford,posYOfRockford);
+		if (ground[posX][posY].getSpriteName() != "steelwall") {
+			ground[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
 			posXOfRockford = posX;
 			posYOfRockford = posY;
-			ground[posX][posY] = new RockfordModel(posX, posY);
+			ground[posX][posY] = rockford;
 			setChanged();
 			notifyObservers();
 		}
 	}
 
-	public int getXPositionOfRockford(){
+	public int getXPositionOfRockford() {
 		return posXOfRockford;
 	}
-	
-	public int getYPositionOfRockford(){
+
+	public int getYPositionOfRockford() {
 		return posYOfRockford;
 	}
-	
-	public BufferedImage getImage(int x, int y) {
-		return ground[x][y].getImg();
 
+	public BufferedImage getImage(int x, int y) {
+		return ground[x][y].getSprite();
 	}
 
 	public int getStart() {
@@ -83,17 +94,19 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	public void setEnd(int end) {
 		this.sizeOfSquare = end;
 	}
+
 	
-	public void displayGround(){
+	//DEBUG
+	public void displayGround() {
 		for (int i = begining; i < sizeOfSquare; i++) {
 			for (int j = begining; j < sizeOfSquare; j++) {
-				if(ground[i][j].getSpriteName()=="boulder")
+				if (ground[i][j].getSpriteName() == "boulder")
 					System.out.print("B ");
-				else if(ground[i][j].getSpriteName()=="steelwall")
+				else if (ground[i][j].getSpriteName() == "steelwall")
 					System.out.print("S ");
-				else if(ground[i][j].getSpriteName()=="dirt")
+				else if (ground[i][j].getSpriteName() == "dirt")
 					System.out.print("D ");
-				else if(ground[i][j].getSpriteName()=="black")
+				else if (ground[i][j].getSpriteName() == "black")
 					System.out.print("  ");
 			}
 			System.out.println("");

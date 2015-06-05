@@ -29,12 +29,6 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	public SteelWallModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority,
 				impactExplosive, animate);
-		try {
-			img = ImageIO.read(new File(getPathToSprite()));
-		} catch (IOException exc) {
-			System.out.println(getPathToSprite());
-			exc.printStackTrace();
-		}
-		setImg(img);
+		loadSprite(spriteName);
 	}
 }

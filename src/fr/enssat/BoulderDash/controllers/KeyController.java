@@ -1,4 +1,4 @@
-package fr.enssat.BoulderDash.controllers;
+	package fr.enssat.BoulderDash.controllers;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

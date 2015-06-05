@@ -1,6 +1,7 @@
-package fr.enssat.BoulderDash.models;
+package modelToImplement;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 public class BrickWallModel extends DisplayableElementModel implements PublisherInterface {
 

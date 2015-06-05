@@ -1,8 +1,9 @@
-package fr.enssat.BoulderDash.models;
+package modelToImplement;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
-public class MagicWallModel extends DisplayableElementModel implements PublisherInterface {
+public class ExpandingWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;
@@ -12,14 +13,14 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 
 	static {
 		spriteName = "field_00";
-		isDestructible = false;
+		isDestructible = true;
 		canMove = false;
 		impactExplosive = false;
-		animate = false;
+		animate = true;
 		priority = 10;
 	}
 
-	public MagicWallModel(int x, int y) {
+	public ExpandingWallModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority,
 				impactExplosive, animate);
 	}

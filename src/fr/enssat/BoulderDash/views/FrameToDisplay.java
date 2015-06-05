@@ -31,7 +31,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 		newGame = createButton("New Game");
 		pause = createButton("Pause");
 		pause = createButton("Quit");
-
+		
 		add(actionPanel, BorderLayout.SOUTH);		
 		add(informationPanel, BorderLayout.NORTH);
 		add(gamePanel, BorderLayout.CENTER);
@@ -56,6 +56,5 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("entered in update in frametodisplay");
 	}
 }

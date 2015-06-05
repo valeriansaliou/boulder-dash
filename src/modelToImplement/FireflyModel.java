@@ -1,6 +1,8 @@
-package fr.enssat.BoulderDash.models;
+package modelToImplement;
 
-public class ButterflyModel extends DisplayableElementModel {
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+
+public class FireflyModel extends DisplayableElementModel {
     private static String spriteName;
     private static Boolean isDestructible;
     private static boolean impactExplosive;
@@ -17,7 +19,7 @@ public class ButterflyModel extends DisplayableElementModel {
         priority = 2;
     }
 
-    public ButterflyModel(int x, int y) {
+    public FireflyModel(int x, int y) {
     	super(animate, animate, x, y, spriteName, y, animate, animate);
     }
 }

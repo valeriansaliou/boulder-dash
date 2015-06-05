@@ -10,6 +10,7 @@ import javax.swing.*;
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.controllers.KeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.models.RockfordModel;
 
 //GameView is created by GameController
 public class GameView extends JPanel implements Observer {
@@ -19,10 +20,10 @@ public class GameView extends JPanel implements Observer {
 		this.levelModel = gameController.getLevelModel();
 
 		levelModel.addObserver(this);
+
 		addKeyListener(new KeyController(levelModel));
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setFocusable(true);
-		requestFocus();
 	}
 
 	public void drawTerrain(int x, int y, Graphics g) {
@@ -34,6 +35,7 @@ public class GameView extends JPanel implements Observer {
 	}
 
 	public void paint(Graphics g) {
+		levelModel.getRockford().update(System.currentTimeMillis());
 		drawTerrain(levelModel.getStart(), levelModel.getEnd(), g);
 	}
 
@@ -41,7 +43,4 @@ public class GameView extends JPanel implements Observer {
 	public void update(Observable obs, Object obj) {
 		repaint();
 	}
-	
-	//Q : - UPDATE ?
-	//    - CHECK WHAT IS AT LEFT / RIGHT ?
 }

@@ -21,7 +21,6 @@ public class GameController implements ActionListener{
 		}		
 	}
 
-	
 	public LevelModel getLevelModel() {
 		return levelModel;
 	}

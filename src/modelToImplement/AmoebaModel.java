@@ -1,4 +1,6 @@
-package fr.enssat.BoulderDash.models;
+package modelToImplement;
+
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 public class AmoebaModel extends DisplayableElementModel {
     private static String spriteName;

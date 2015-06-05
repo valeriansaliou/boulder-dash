@@ -1,6 +1,10 @@
 package fr.enssat.BoulderDash.models;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class DisplayableElementModel {
 	private static String spriteStoragePath = "./res/drawable/field/";
@@ -13,11 +17,9 @@ public class DisplayableElementModel {
 	private int x;
 	private int y;
 	private int priority;
-	private BufferedImage img;
-	
-	public DisplayableElementModel(boolean isDestructible, boolean isMoving,
-			int x, int y, String spriteName, int priority,
-			boolean impactExplosive, boolean animate) {
+	private BufferedImage sprite;
+
+	public DisplayableElementModel(boolean isDestructible, boolean isMoving, int x, int y, String spriteName, int priority, boolean impactExplosive, boolean animate) {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
 		this.spriteName = spriteName;
@@ -26,9 +28,9 @@ public class DisplayableElementModel {
 		this.y = y;
 		this.animate = animate;
 		this.impactExplosive = impactExplosive;
-		this.setPriority(priority);
+		this.priority = priority;
 	}
-	
+
 	public boolean isDestructible() {
 		return isDestructible;
 	}
@@ -46,7 +48,7 @@ public class DisplayableElementModel {
 	}
 
 	public String getPathToSprite() {
-		return getSpriteStoragePath() + this.getSpriteName() + ".gif";
+		return getSpriteStoragePath() + getSpriteName() + ".gif";
 	}
 
 	public int getX() {
@@ -89,11 +91,31 @@ public class DisplayableElementModel {
 		this.impactExplosive = impactExplosive;
 	}
 
-	public BufferedImage getImg() {
-		return img;
+	public void setSprite(BufferedImage sprite) {
+		this.sprite = sprite;
 	}
 	
-	public void setImg(BufferedImage img){
-		this.img = img;
+	public BufferedImage getSprite() {
+		return sprite;
+	}
+
+	public BufferedImage loadSprite(String spriteName) {
+
+		BufferedImage sprite = null;
+
+		try {
+			sprite = ImageIO.read(new File("res/drawable/field/" + spriteName + ".gif"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.sprite = sprite;
+		return sprite;
+	}
+	
+	public BufferedImage grabSprite(BufferedImage spriteSheet, int x, int y, int width, int height){
+		BufferedImage subImages = spriteSheet.getSubimage(x, y, width, height);
+
+		this.sprite = subImages;
+		return subImages;
 	}
 }

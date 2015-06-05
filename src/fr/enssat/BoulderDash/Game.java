@@ -5,12 +5,7 @@ import fr.enssat.BoulderDash.models.LevelModel;
 
 public class Game {
 	public static void main(String[] args) {
-		LevelModel levelModel = new LevelModel(0,10);
+		LevelModel levelModel = new LevelModel(0,30);
 		GameController gameController = new GameController(levelModel);
-
-        //CE WE :
-        // - RAPPORT JAVA
-        //    -CHOIX
-        // - FAIRE BOUGER ELEMENTS CLAVIER
 	}
 }
