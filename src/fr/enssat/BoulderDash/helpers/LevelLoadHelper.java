@@ -1,5 +1,13 @@
 package fr.enssat.BoulderDash.helpers;
 
+import jdk.internal.org.xml.sax.SAXException;
+import sun.plugin.dom.core.Document;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+
 /**
  * Proceeds level load routine
  * Able to deserialize level data from storage, and format it to internal representation
@@ -14,7 +22,8 @@ package fr.enssat.BoulderDash.helpers;
 // retourne la représentation interne des niveaux sous forme d'objet java
 public class LevelLoadHelper {
     private static String pathToDataStore = "res/levels";
-    private int levelId = -1;
+    private String levelId = "1";
+    Document parsedDOM;
 
     public LevelLoadHelper(int levelId) {
         this.setLevelId(levelId);
@@ -28,15 +37,28 @@ public class LevelLoadHelper {
         String pathToData = this.getLevelPathInDataStore();
     }
 
-    private void processLevelData() {
+    private void buildLevelDataNode(String pathToLevelData) {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 
+        try {
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+            // Parse data in level file
+            this.parsedDOM = documentBuilder.parse(pathToLevelData);
+        } catch(ParserConfigurationException | SAXException | IOException exc) {
+            exc.printStackTrace();
+        }
     }
 
-    public int getLevelId() {
+    private void processLevelData() {
+        // 
+    }
+
+    public String getLevelId() {
         return this.levelId;
     }
 
-    private void setLevelId(int levelId) {
+    private void setLevelId(String levelId) {
         this.levelId = levelId;
     }
 }
