@@ -21,7 +21,6 @@ public class ExpandingWallModel extends DisplayableElementModel implements Publi
 	}
 
 	public ExpandingWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority,
-				impactExplosive, animate);
+		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
 	}
 }

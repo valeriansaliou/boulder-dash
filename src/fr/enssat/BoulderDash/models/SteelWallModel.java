@@ -27,8 +27,7 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	}
 
 	public SteelWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority,
-				impactExplosive, animate);
+		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
 		loadSprite(spriteName);
 	}
 }

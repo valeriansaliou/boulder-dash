@@ -94,7 +94,7 @@ public class DisplayableElementModel {
 	public void setSprite(BufferedImage sprite) {
 		this.sprite = sprite;
 	}
-	
+
 	public BufferedImage getSprite() {
 		return sprite;
 	}
@@ -111,8 +111,8 @@ public class DisplayableElementModel {
 		this.sprite = sprite;
 		return sprite;
 	}
-	
-	public BufferedImage grabSprite(BufferedImage spriteSheet, int x, int y, int width, int height){
+
+	public BufferedImage grabSprite(BufferedImage spriteSheet, int x, int y, int width, int height) {
 		BufferedImage subImages = spriteSheet.getSubimage(x, y, width, height);
 
 		this.sprite = subImages;

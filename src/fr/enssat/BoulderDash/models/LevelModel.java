@@ -27,7 +27,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		fillGround();
 	}
 
-	//initial fill of the ground
+	// initial fill of the ground
 	public void fillGround() {
 		for (int i = begining; i < sizeOfSquare; i++) {
 			for (int j = begining; j < sizeOfSquare; j++) {
@@ -43,25 +43,29 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			ground[sizeOfSquare - 1][i] = new SteelWallModel(begining, i);
 		}
 		this.createRockford();
-		ground[8][8] = new DiamondModel(10, 10); //TODO comment faire pour les dimants ? chaque diamants qjoutés sont à ajouter a un tableau ? puis
-												 //parcour du tableau pour les update ?
+		ground[8][8] = new DiamondModel(10, 10); // TODO comment faire pour les
+													// dimants ? chaque diamants
+													// qjoutés sont à ajouter a
+													// un tableau ? puis
+													// parcour du tableau pour
+													// les update ?
 		this.setPositionOfRockford(1, 1);
 		this.rockford.startStaying();
 		displayGround();
 	}
 
 	private void createRockford() {
-		rockford = new RockfordModel(posXOfRockford, posYOfRockford);		
+		rockford = new RockfordModel(posXOfRockford, posYOfRockford);
 	}
-	
-	public RockfordModel getRockford(){
+
+	public RockfordModel getRockford() {
 		return rockford;
 	}
 
 	public void setPositionOfRockford(int posX, int posY) {
-		//TODO is this a good method ?
+		// TODO is this a good method ?
 		if (ground[posX][posY].getSpriteName() != "steelwall") {
-		//if (ground[posX][posY].getPriority() < rockford.getPriority()) {
+			// if (ground[posX][posY].getPriority() < rockford.getPriority()) {
 			ground[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
 			posXOfRockford = posX;
 			posYOfRockford = posY;
@@ -99,8 +103,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.sizeOfSquare = end;
 	}
 
-	
-	//DEBUG
+	// DEBUG
 	public void displayGround() {
 		for (int i = begining; i < sizeOfSquare; i++) {
 			for (int j = begining; j < sizeOfSquare; j++) {

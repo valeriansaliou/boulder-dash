@@ -13,6 +13,9 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 	private static boolean animate;
 	private static int priority;
 
+	private final int SIZ_X_OF_SPRITE = 16;
+	private final int SIZ_Y_OF_SPRITE = 16;
+
 	private ArrayList<BufferedImage> framesDiamond;
 
 	static {
@@ -26,19 +29,16 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 
 	public DiamondModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
-		this.framesDiamond = new ArrayList<BufferedImage>();
 		this.initSprites();
 	}
 
 	private void initSprites() {
 		/* INIT SPRITE FOR DIAMOND */
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 0, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 24, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 48, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 72, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 96, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 120, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 144, 0, 16, 16));
-		framesDiamond.add(grabSprite(loadSprite(spriteName), 168, 0, 16, 16));
+
+		this.framesDiamond = new ArrayList<BufferedImage>();
+
+		for (int i = 0; i < 8; i++) {
+			framesDiamond.add(grabSprite(loadSprite(spriteName), i * 24, 0, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+		}
 	}
 }

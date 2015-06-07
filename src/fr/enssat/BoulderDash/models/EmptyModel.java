@@ -25,8 +25,7 @@ public class EmptyModel extends DisplayableElementModel {
 	}
 
 	public EmptyModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority,
-				impactExplosive, animate);
+		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
 		loadSprite(spriteName);
 	}
 }
