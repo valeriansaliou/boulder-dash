@@ -73,11 +73,12 @@ public class LevelLoadHelper {
 
         String pathToData = this.getLevelPathInDataStore();
 
-        this.buildLevelDataNode(pathToData);
+        // Parse & process level data
+        this.parseLevelData(pathToData);
         this.processLevelData();
     }
 
-    private void buildLevelDataNode(String pathToLevelData) {
+    private void parseLevelData(String pathToLevelData) {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 
         try {
@@ -109,32 +110,31 @@ public class LevelLoadHelper {
     }
 
     private void parseNameElement() throws XPathExpressionException {
+        // Returns level name value
         this.nameValue = this.xpathBuilder.compile(
                 "/bd-level/name"
         ).evaluate(this.levelDOM);
-
-        System.out.println("");
-        System.out.print("this.nameValue > " + this.nameValue);
     }
 
     private void parseDateElement() throws XPathExpressionException, ParseException {
+        // Returns level creation date value
         this.dateCreatedValue = dateFormatter.parse(xpathBuilder.compile(
                 "/bd-level/date[@format='utc']/created"
         ).evaluate(this.levelDOM));
 
+        // Returns level modification date value
         this.dateModifiedValue = dateFormatter.parse(this.xpathBuilder.compile(
                 "/bd-level/date[@format='utc']/modified"
         ).evaluate(this.levelDOM));
-
-        System.out.println("");
-        System.out.print("this.dateCreatedValue > " + (new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")).format(this.dateCreatedValue));
     }
 
     private void parseSizeElement() throws XPathExpressionException {
+        // Returns level width value
         this.widthSizeValue = Integer.parseInt(this.xpathBuilder.compile(
                 "/bd-level/size/width"
         ).evaluate(this.levelDOM));
 
+        // Returns level height value
         this.heightSizeValue = Integer.parseInt(this.xpathBuilder.compile(
                 "/bd-level/size/height"
         ).evaluate(this.levelDOM));
@@ -193,6 +193,7 @@ public class LevelLoadHelper {
     private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex) throws UnknownSpriteException {
         DisplayableElementModel element;
 
+        // Instanciates the sprite element matching the given sprite name
         switch (spriteName) {
             case "amoeba":
                 element = new AmoebaModel(rowIndex, lineIndex);

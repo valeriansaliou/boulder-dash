@@ -16,7 +16,6 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
 	private DisplayableElementModel[][] groundGrid;
     private String levelName;
-	private int begining = 0;
     private int sizeWidth = 0;
     private int sizeHeight = 0;
     private LevelLoadHelper levelLoadHelper;
@@ -39,18 +38,18 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 
 	//initial fill of the ground
 	public void fillGround() {
-		/*for (int i = begining; i < this.sizeWidth; i++) {
-			for (int j = begining; j < this.sizeHeight; j++) {
+		/*for (int i = 0; i < this.sizeWidth; i++) {
+			for (int j = 0; j < this.sizeHeight; j++) {
 				this.groundGrid[i][j] = new DirtModel(i, j);
 			}
 		}
-		for (int i = begining; i < this.sizeHeight; i++) {
-			this.groundGrid[i][begining] = new SteelWallModel(i, begining);
-			this.groundGrid[i][this.sizeHeight - 1] = new SteelWallModel(i, begining);
+		for (int i = 0; i < this.sizeHeight; i++) {
+			this.groundGrid[i][0] = new SteelWallModel(i, 0);
+			this.groundGrid[i][this.sizeHeight - 1] = new SteelWallModel(i, 0);
 		}
-		for (int i = begining; i < this.sizeWidth; i++) {
-			this.groundGrid[begining][i] = new SteelWallModel(begining, i);
-			this.groundGrid[this.sizeWidth - 1][i] = new SteelWallModel(begining, i);
+		for (int i = 0; i < this.sizeWidth; i++) {
+			this.groundGrid[0][i] = new SteelWallModel(0, i);
+			this.groundGrid[this.sizeWidth - 1][i] = new SteelWallModel(0, i);
 		}*/
 
 		this.createRockford();
@@ -90,27 +89,27 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		return this.groundGrid[x][y].getSprite();
 	}
 
-	public int getStart() {
-		return begining;
+	public int getSizeWidth() {
+		return this.sizeWidth;
 	}
 
-	public void setStart(int start) {
-		this.begining = start;
+	public void setSizeWidth(int sizeWidth) {
+		this.sizeWidth = sizeWidth;
 	}
 
-	public int getEnd() {
-		return this.sizeWidth - 1;
-	}
+    public int getSizeHeight() {
+        return this.sizeHeight;
+    }
 
-	public void setEnd(int end) {
-        this.sizeWidth = end;
-	}
+    public void setSizeHeight(int sizeHeight) {
+        this.sizeHeight = sizeHeight;
+    }
 
 	
 	//DEBUG
-	/*public void displayGround() {
-		for (int i = begining; i < this.sizeWidth; i++) {
-			for (int j = begining; j < this.sizeHeight; j++) {
+	public void displayGround() {
+		for (int i = 0; i < this.sizeWidth; i++) {
+			for (int j = 0; j < this.sizeHeight; j++) {
 				if (this.groundGrid[j][i].getSpriteName() == "rockford")
 					System.out.print("R ");
 				else if (this.groundGrid[j][i].getSpriteName() == "steelwall")
@@ -123,5 +122,5 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			System.out.println("");
 		}
 		System.out.println("");
-	}*/
+	}
 }

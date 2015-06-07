@@ -19,24 +19,24 @@ public class GameView extends JPanel implements Observer {
 	public GameView(GameController gameController) {
 		this.levelModel = gameController.getLevelModel();
 
-		levelModel.addObserver(this);
+        this.levelModel.addObserver(this);
 
-		addKeyListener(new KeyController(levelModel));
+		addKeyListener(new KeyController(this.levelModel));
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setFocusable(true);
 	}
 
-	public void drawTerrain(int x, int y, Graphics g) {
-		for (int i = x; i < y; i++) {
-			for (int j = x; j < y; j++) {
-				g.drawImage(levelModel.getImage(i, j), i * 16, j * 16, this);
+	public void drawTerrain(int width, int height, Graphics g) {
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				g.drawImage(this.levelModel.getImage(x, y), x * 16, y * 16, this);
 			}
 		}
 	}
 
 	public void paint(Graphics g) {
-		levelModel.getRockford().update(System.currentTimeMillis());
-		drawTerrain(levelModel.getStart(), levelModel.getEnd(), g);
+		this.levelModel.getRockford().update(System.currentTimeMillis());
+		drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
 	}
 
 	@Override
