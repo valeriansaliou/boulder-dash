@@ -168,13 +168,21 @@ public class LevelLoadHelper {
                         Element currentRowElement = (Element)currentRowNode;
                         int rowIndex = Integer.parseInt(currentRowElement.getAttribute("index"));
 
-                        Element spriteElement = (Element)currentRowElement.getElementsByTagName("sprite").item(0);
-                        String spriteName = spriteElement.getAttribute("name");
+                        NodeList spriteNode = currentRowElement.getElementsByTagName("sprite");
 
-                        try {
-                            this.groundGrid[rowIndex][lineIndex] = this.constructGridElement(spriteName, rowIndex, lineIndex);
-                        } catch (UnknownSpriteException e) {
-                            e.printStackTrace();
+                        if(spriteNode.getLength() > 0) {
+                            Node currentSpriteNode = spriteNode.item(0);
+
+                            if (currentSpriteNode.getNodeType() == Node.ELEMENT_NODE) {
+                                Element currentSpriteElement = (Element)currentSpriteNode;
+                                String currentSpriteName = currentSpriteElement.getAttribute("name");
+
+                                try {
+                                    this.groundGrid[rowIndex][lineIndex] = this.constructGridElement(currentSpriteName, rowIndex, lineIndex);
+                                } catch (UnknownSpriteException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                         }
                     }
                 }
@@ -243,5 +251,53 @@ public class LevelLoadHelper {
 
     private void setLevelId(String levelId) {
         this.levelId = levelId;
+    }
+
+    public String getNameValue() {
+        return this.nameValue;
+    }
+
+    private void setNameValue(String nameValue) {
+        this.nameValue = nameValue;
+    }
+
+    public Date getDateCreatedValue() {
+        return this.dateCreatedValue;
+    }
+
+    private void setDateCreatedValue(Date dateCreatedValue) {
+        this.dateCreatedValue = dateCreatedValue;
+    }
+
+    public Date getDateModifiedValue() {
+        return this.dateModifiedValue;
+    }
+
+    private void setDateModifiedValue(Date dateModifiedValue) {
+        this.dateModifiedValue = dateModifiedValue;
+    }
+
+    public int getWidthSizeValue() {
+        return this.widthSizeValue;
+    }
+
+    private void setWidthSizeValue(int widthSizeValue) {
+        this.widthSizeValue = widthSizeValue;
+    }
+
+    public int getHeightSizeValue() {
+        return this.heightSizeValue;
+    }
+
+    private void setHeightSizeValue(int heightSizeValue) {
+        this.heightSizeValue = heightSizeValue;
+    }
+
+    public DisplayableElementModel[][] getGroundGrid() {
+        return this.groundGrid;
+    }
+
+    private void setGroundGrid(DisplayableElementModel[][] groundGrid) {
+        this.groundGrid = groundGrid;
     }
 }

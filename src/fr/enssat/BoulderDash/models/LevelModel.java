@@ -3,6 +3,8 @@ package fr.enssat.BoulderDash.models;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
+import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
+
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //le niveau se charge ici
@@ -12,40 +14,49 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //le modele previens la vue qu'il y a eu des modifs
 
 public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
-	private DisplayableElementModel[][] ground;
+	private DisplayableElementModel[][] groundGrid;
+    private String levelName;
 	private int begining = 0;
-	private int sizeOfSquare = 0;
+    private int sizeWidth = 0;
+    private int sizeHeight = 0;
+    private LevelLoadHelper levelLoadHelper;
 	private int posXOfRockford, posYOfRockford;
 	private RockfordModel rockford;
 
-	public LevelModel(int begining, int sizeOfSquare) {
+	public LevelModel(String levelName) {
 		posXOfRockford = 1;
 		posYOfRockford = 1;
-		this.begining = begining;
-		this.sizeOfSquare = sizeOfSquare;
-		ground = new DisplayableElementModel[sizeOfSquare][sizeOfSquare];
-		fillGround();
+
+        this.levelName = levelName;
+
+        this.levelLoadHelper = new LevelLoadHelper(this.levelName);
+        this.groundGrid = this.levelLoadHelper.getGroundGrid();
+        this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
+        this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
+
+        fillGround();
 	}
 
 	//initial fill of the ground
 	public void fillGround() {
-		for (int i = begining; i < sizeOfSquare; i++) {
-			for (int j = begining; j < sizeOfSquare; j++) {
-				ground[i][j] = new DirtModel(i, j);
+		/*for (int i = begining; i < this.sizeWidth; i++) {
+			for (int j = begining; j < this.sizeHeight; j++) {
+				this.groundGrid[i][j] = new DirtModel(i, j);
 			}
 		}
-		for (int i = begining; i < sizeOfSquare; i++) {
-			ground[i][begining] = new SteelWallModel(i, begining);
-			ground[i][sizeOfSquare - 1] = new SteelWallModel(i, begining);
+		for (int i = begining; i < this.sizeHeight; i++) {
+			this.groundGrid[i][begining] = new SteelWallModel(i, begining);
+			this.groundGrid[i][this.sizeHeight - 1] = new SteelWallModel(i, begining);
 		}
-		for (int i = begining; i < sizeOfSquare; i++) {
-			ground[begining][i] = new SteelWallModel(begining, i);
-			ground[sizeOfSquare - 1][i] = new SteelWallModel(begining, i);
-		}
+		for (int i = begining; i < this.sizeWidth; i++) {
+			this.groundGrid[begining][i] = new SteelWallModel(begining, i);
+			this.groundGrid[this.sizeWidth - 1][i] = new SteelWallModel(begining, i);
+		}*/
+
 		this.createRockford();
 		this.setPositionOfRockford(1, 1);
 		this.rockford.startStaying();
-		displayGround();
+		//displayGround();
 	}
 
 	private void createRockford() {
@@ -57,11 +68,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public void setPositionOfRockford(int posX, int posY) {
-		if (ground[posX][posY].getPriority() < rockford.getPriority()) {
-			ground[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
+		if (this.groundGrid[posX][posY].getPriority() < rockford.getPriority()) {
+            this.groundGrid[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
 			posXOfRockford = posX;
 			posYOfRockford = posY;
-			ground[posX][posY] = rockford;
+            this.groundGrid[posX][posY] = rockford;
 			setChanged();
 			notifyObservers();
 		}
@@ -76,7 +87,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public BufferedImage getImage(int x, int y) {
-		return ground[x][y].getSprite();
+		return this.groundGrid[x][y].getSprite();
 	}
 
 	public int getStart() {
@@ -88,29 +99,29 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public int getEnd() {
-		return sizeOfSquare;
+		return this.sizeWidth - 1;
 	}
 
 	public void setEnd(int end) {
-		this.sizeOfSquare = end;
+        this.sizeWidth = end;
 	}
 
 	
 	//DEBUG
-	public void displayGround() {
-		for (int i = begining; i < sizeOfSquare; i++) {
-			for (int j = begining; j < sizeOfSquare; j++) {
-				if (ground[j][i].getSpriteName() == "rockford")
+	/*public void displayGround() {
+		for (int i = begining; i < this.sizeWidth; i++) {
+			for (int j = begining; j < this.sizeHeight; j++) {
+				if (this.groundGrid[j][i].getSpriteName() == "rockford")
 					System.out.print("R ");
-				else if (ground[j][i].getSpriteName() == "steelwall")
+				else if (this.groundGrid[j][i].getSpriteName() == "steelwall")
 					System.out.print("S ");
-				else if (ground[j][i].getSpriteName() == "dirt")
+				else if (this.groundGrid[j][i].getSpriteName() == "dirt")
 					System.out.print("D ");
-				else if (ground[j][i].getSpriteName() == "black")
+				else if (this.groundGrid[j][i].getSpriteName() == "black")
 					System.out.print("  ");
 			}
 			System.out.println("");
 		}
 		System.out.println("");
-	}
+	}*/
 }
