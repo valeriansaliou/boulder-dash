@@ -17,6 +17,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private static ArrayList<BufferedImage> framesRunningRight;
 	private static ArrayList<BufferedImage> framesRunningUpOrDown;
 
+	private final int SIZ_X_OF_SPRITE = 16;
+	private final int SIZ_Y_OF_SPRITE = 16;
+
 	private BufferedImage img;
 
 	private long speed;
@@ -40,10 +43,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 
 	public RockfordModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
-		framesBlinking = new ArrayList<BufferedImage>();
-		framesRunningLeft = new ArrayList<BufferedImage>();
-		framesRunningRight = new ArrayList<BufferedImage>();
-		framesRunningUpOrDown = new ArrayList<BufferedImage>();
+
 		this.initSprites();
 	}
 
@@ -56,17 +56,21 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	public void update(long time) {
-		if (isStaying) {
-			if (time - previousTime >= speed) {
-				// update the animation
-				previousTime = time;
-				try {
-					currentFrame += 1;
+		if (time - previousTime >= speed) {
+			// update the animation
+			previousTime = time;
+			try {
+				currentFrame += 1;
+				if (isStaying())
 					setSprite(framesBlinking.get(currentFrame));
-				} catch (IndexOutOfBoundsException e) {
-					currentFrame = 0;
-					setSprite(framesBlinking.get(currentFrame));
-				}
+				else if (isRunningLeft())
+					setSprite(framesRunningLeft.get(currentFrame));
+				else if (isRunningRight())
+					setSprite(framesRunningRight.get(currentFrame));
+				else if (isRunningUpOrDown())
+					setSprite(framesRunningUpOrDown.get(currentFrame));
+			} catch (IndexOutOfBoundsException e) {
+				currentFrame = 0;
 			}
 		}
 	}
@@ -86,7 +90,6 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		isRunningRight = false;
 		isRunningUpOrDown = false;
 		previousTime = 0;
-		currentFrame = 0;
 	}
 
 	public void startRunningRight() {
@@ -95,7 +98,6 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		isRunningRight = true;
 		isRunningUpOrDown = false;
 		previousTime = 0;
-		currentFrame = 0;
 	}
 
 	public void startRunningUpOrDown() {
@@ -104,7 +106,6 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		isRunningRight = false;
 		isRunningUpOrDown = true;
 		previousTime = 0;
-		currentFrame = 0;
 	}
 
 	public boolean isStaying() {
@@ -123,36 +124,22 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		return isRunningUpOrDown;
 	}
 
+	/*
+	 * initialise all the sprite from the main image; takes the subimage and put
+	 * them into an array
+	 */
 	private void initSprites() {
-		/* INIT SPRITE FOR ROCKFORD STANDING */
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 7, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 31, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 55, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 79, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 103, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 127, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 151, 79, 16, 16));
-		framesBlinking.add(grabSprite(loadSprite(spriteName), 175, 79, 16, 16));
-		/* INIT SPRITE FOR ROCKFORD RUNNING LEFT */
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 7, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 31, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 55, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 79, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 103, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 127, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 151, 103, 16, 16));
-		framesRunningLeft.add(grabSprite(loadSprite(spriteName), 175, 103, 16, 16));
-		/* INIT SPRITE FOR ROCKFORD RUNNING RIGHT */
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 7, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 31, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 55, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 79, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 103, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 127, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 151, 127, 16, 16));
-		framesRunningRight.add(grabSprite(loadSprite(spriteName), 175, 127, 16, 16));
-		/* INIT SPRITE FOR ROCKFORD RUNNING RIGHT */
-		framesRunningUpOrDown.add(grabSprite(loadSprite(spriteName), 7, 7, 16, 16));
-		this.setSpeed(200);
+		framesBlinking = new ArrayList<BufferedImage>();
+		framesRunningLeft = new ArrayList<BufferedImage>();
+		framesRunningRight = new ArrayList<BufferedImage>();
+		framesRunningUpOrDown = new ArrayList<BufferedImage>();
+		/* INIT SPRITE ARRAYS FOR ROCKFORD */
+		for (int i = 0; i < 8; i++) {
+			framesBlinking.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 79, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+			framesRunningLeft.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 103, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+			framesRunningRight.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 127, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+		}
+		framesRunningUpOrDown.add(grabSprite(loadSprite(spriteName), 7, 7, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+		this.setSpeed(100);
 	}
 }

@@ -43,6 +43,8 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			ground[sizeOfSquare - 1][i] = new SteelWallModel(begining, i);
 		}
 		this.createRockford();
+		ground[8][8] = new DiamondModel(10, 10); //TODO comment faire pour les dimants ? chaque diamants qjoutés sont à ajouter a un tableau ? puis
+												 //parcour du tableau pour les update ?
 		this.setPositionOfRockford(1, 1);
 		this.rockford.startStaying();
 		displayGround();
@@ -57,6 +59,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public void setPositionOfRockford(int posX, int posY) {
+		//TODO is this a good method ?
 		if (ground[posX][posY].getSpriteName() != "steelwall") {
 			ground[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
 			posXOfRockford = posX;
