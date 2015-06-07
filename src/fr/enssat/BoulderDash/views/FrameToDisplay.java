@@ -16,7 +16,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 	private GameView gamePanel;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
-	private JButton newGame, pause, quit;
+	private JButton newGame, pause, quit,editor;
 	private GameController gameController;
 	private LevelModel levelModel;
 
@@ -29,6 +29,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 		informationPanel = new JPanel();
 
 		newGame = createButton("New Game");
+		editor = createButton("Editor");
 		pause = createButton("Pause");
 		pause = createButton("Quit");
 		

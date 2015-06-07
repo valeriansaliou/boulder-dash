@@ -44,7 +44,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		}
 		this.createRockford();
 		this.setPositionOfRockford(1, 1);
-		this.rockford.start();
+		this.rockford.startStaying();
 		displayGround();
 	}
 
@@ -100,13 +100,13 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	public void displayGround() {
 		for (int i = begining; i < sizeOfSquare; i++) {
 			for (int j = begining; j < sizeOfSquare; j++) {
-				if (ground[i][j].getSpriteName() == "boulder")
-					System.out.print("B ");
-				else if (ground[i][j].getSpriteName() == "steelwall")
+				if (ground[j][i].getSpriteName() == "rockford")
+					System.out.print("R ");
+				else if (ground[j][i].getSpriteName() == "steelwall")
 					System.out.print("S ");
-				else if (ground[i][j].getSpriteName() == "dirt")
+				else if (ground[j][i].getSpriteName() == "dirt")
 					System.out.print("D ");
-				else if (ground[i][j].getSpriteName() == "black")
+				else if (ground[j][i].getSpriteName() == "black")
 					System.out.print("  ");
 			}
 			System.out.println("");
