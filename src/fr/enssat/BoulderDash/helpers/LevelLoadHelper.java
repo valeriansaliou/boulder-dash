@@ -1,15 +1,18 @@
 package fr.enssat.BoulderDash.helpers;
 
-import jdk.internal.org.xml.sax.SAXException;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Proceeds level load routine
@@ -25,8 +28,10 @@ import java.util.Date;
 // retourne la représentation interne des niveaux sous forme d'objet java
 public class LevelLoadHelper {
     private static String pathToDataStore = "res/levels";
-    private String levelId = "1";
+    private String levelId = null;
     private Document levelDOM;
+    private XPath xpathBuilder;
+    final private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
 
     // Parsed values
     private String nameValue = null;
@@ -36,15 +41,18 @@ public class LevelLoadHelper {
     public LevelLoadHelper(String levelId) {
         this.setLevelId(levelId);
 
-        // Let's go.
-        this.loadLevelData();
+        if (this.levelId != null) {
+            // Let's go.
+            this.loadLevelData();
+        }
     }
 
     private String getLevelPathInDataStore() {
-        return pathToDataStore + "/" + this.getLevelId();
+        return pathToDataStore + "/" + this.getLevelId() + ".xml";
     }
 
     private void loadLevelData() {
+        this.xpathBuilder = XPathFactory.newInstance().newXPath();
         String pathToData = this.getLevelPathInDataStore();
 
         this.buildLevelDataNode(pathToData);
@@ -69,54 +77,35 @@ public class LevelLoadHelper {
     }
 
     private void processLevelData() {
-        Element documentElement = this.levelDOM.getDocumentElement();
-
         // Parse elements from structure
-        this.parseNameElement(documentElement.getElementsByTagName("name"));
-        this.parseNameElement(documentElement.getElementsByTagName("date"));
-        this.parseNameElement(documentElement.getElementsByTagName("grid"));
-    }
-
-    private void parseNameElement(NodeList nameSel) {
-        // Unicity: {1}
-        if (nameSel != null && nameSel.getLength() > 0) {
-            NodeList subList = nameSel.item(0).getChildNodes();
-
-            if (subList != null && subList.getLength() > 0) {
-                this.nameValue = subList.item(0).getNodeValue();
-            }
+        try {
+            this.parseNameElement();
+            this.parseNameElement();
+            this.parseNameElement();
+        } catch (XPathExpressionException e) {
+            e.printStackTrace();
         }
     }
 
-    private void parseDateElement(NodeList dateSel) {
-        // Unicity: {1}
-        if (dateSel != null && dateSel.getLength() > 0) {
-            NodeList subList = dateSel.item(0).getChildNodes();
+    private void parseNameElement() throws XPathExpressionException {
+        this.nameValue = this.xpathBuilder.compile(
+                "/bd-level/name"
+        ).evaluate(this.levelDOM);
 
-            NodeList createdSel = subList.getElementsByTagName("created");
-            NodeList modifiedSel = subList.getElementsByTagName("modified");
-
-            // Read /bd-level/date/created value
-            if (createdSel != null && createdSel.getLength() > 0) {
-                NodeList createdSubList = createdSel.item(0).getChildNodes();
-
-                if (createdSubList != null && createdSubList.getLength() > 0) {
-                    this.dateCreatedValue = createdSubList.item(0).getNodeValue();
-                }
-            }
-
-            // Read /bd-level/date/modified value
-            if (modifiedSel != null && modifiedSel.getLength() > 0) {
-                NodeList modifiedSubList = modifiedSel.item(0).getChildNodes();
-
-                if (modifiedSubList != null && modifiedSubList.getLength() > 0) {
-                    this.dateModifiedValue = modifiedSubList.item(0).getNodeValue();
-                }
-            }
-        }
+        System.out.print("this.nameValue > " + this.nameValue);
     }
 
-    private void parseGridElement(NodeList gridSel) {
+    private void parseDateElement() throws XPathExpressionException, ParseException {
+        this.dateCreatedValue = dateFormatter.parse(xpathBuilder.compile(
+                "/bd-level/date[@format='utc']/created"
+        ).evaluate(this.levelDOM));
+
+        this.dateModifiedValue = dateFormatter.parse(this.xpathBuilder.compile(
+                "/bd-level/date[@format='utc']/modified"
+        ).evaluate(this.levelDOM));
+    }
+
+    private void parseGridElement() {
         // TODO
     }
 

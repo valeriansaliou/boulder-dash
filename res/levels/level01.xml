@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bd-level xmlns="fr.enssat.boulderdash">
+    <name>Level 1</name>
+
+    <date format="utc">
+        <created>2015-05-19/15:15:20</created>
+        <modified>2015-05-19/15:15:20</modified>
+    </date>
+
+    <grid state="initial">
+        <line index="0">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="1">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="2">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+        </line>
+
+        <line index="3">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11"></item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_03" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="4">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_02" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_05" state="initial" />
+                <cursor type="player" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_02" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15"></item>
+        </line>
+
+        <line index="5">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15"></item>
+        </line>
+
+        <line index="6">
+            <item index="0">
+                <sprite group="field" name="field_02" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2"></item>
+
+            <item index="3"></item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="7">
+            <item index="0">
+                <sprite group="field" name="field_02" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_02" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_02" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="8">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="9">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+        </line>
+
+        <line index="10">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="11">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="12">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="13">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+
+        <line index="14">
+            <item index="0">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="field_01" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="field_04" state="initial" />
+            </item>
+        </line>
+    </grid>
+</bd-level>

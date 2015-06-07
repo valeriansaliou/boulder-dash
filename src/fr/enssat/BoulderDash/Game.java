@@ -11,6 +11,6 @@ public class Game {
 		GameController gameController = new GameController(levelModel);
 
 		// Load level
-		LevelLoadHelper levelLoad = new LevelLoadHelper("1");
+		LevelLoadHelper levelLoad = new LevelLoadHelper("level01");
 	}
 }

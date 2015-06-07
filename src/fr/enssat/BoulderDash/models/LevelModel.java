@@ -57,7 +57,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public void setPositionOfRockford(int posX, int posY) {
-		if (ground[posX][posY].getSpriteName() != "steelwall") {
+		if (ground[posX][posY].getPriority() < rockford.getPriority()) {
 			ground[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
 			posXOfRockford = posX;
 			posYOfRockford = posY;
