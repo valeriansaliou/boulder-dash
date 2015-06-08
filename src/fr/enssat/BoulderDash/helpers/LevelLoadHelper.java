@@ -64,6 +64,8 @@ public class LevelLoadHelper {
     private int rockfordPositionX = 0;
     private int rockfordPositionY = 0;
 
+    private DiamondModel[] diamondList;
+
     private DisplayableElementModel[][] groundGrid;
 
     public LevelLoadHelper(String levelId) {
@@ -234,6 +236,9 @@ public class LevelLoadHelper {
 
             case "diamond":
                 element = new DiamondModel(rowIndex, lineIndex);
+
+                this.setDiamondList(element);
+
                 break;
 
             case "dirt":
@@ -338,6 +343,14 @@ public class LevelLoadHelper {
 
     public void setRockfordInstance(RockfordModel rockfordInstance) {
         this.rockfordInstance = rockfordInstance;
+    }
+
+    public DiamondModel[] getDiamondList() {
+        return this.diamondList;
+    }
+
+    public void setDiamondList(DiamondModel diamondItem) {
+        this.diamondList.add(diamondItem);
     }
 
     public DisplayableElementModel[][] getGroundGrid() {
