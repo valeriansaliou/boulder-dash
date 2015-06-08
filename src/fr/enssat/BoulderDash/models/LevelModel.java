@@ -20,6 +20,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
     private int sizeHeight = 0;
     private LevelLoadHelper levelLoadHelper;
 	private DiamondModel diamond;
+	private RockfordModel rockford;
 
     private int rockfordPositionX = 0;
     private int rockfordPositionY = 0;
@@ -66,6 +67,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         this.setRockfordPositionY(
                 this.levelLoadHelper.getRockfordPositionY()
         );
+        rockford = this.getRockford();
     }
 
 	public DiamondModel getDiamonds(){
@@ -73,10 +75,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public RockfordModel getRockford() {
-        int x = this.getRockfordPositionX();
-        int y = this.getRockfordPositionY();
-
-		return (RockfordModel)this.groundGrid[x][y];
+		return (RockfordModel)this.groundGrid[rockfordPositionX][rockfordPositionY];
 	}
 
 	// a bouger dans le contrôler
