@@ -7,9 +7,9 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
-
 import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
 import modelToImplement.*;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -22,9 +22,11 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -64,7 +66,7 @@ public class LevelLoadHelper {
     private int rockfordPositionX = 0;
     private int rockfordPositionY = 0;
 
-    private DiamondModel[] diamondList;
+    private ArrayList[] diamondList;
 
     private DisplayableElementModel[][] groundGrid;
 
@@ -237,7 +239,7 @@ public class LevelLoadHelper {
             case "diamond":
                 element = new DiamondModel(rowIndex, lineIndex);
 
-                this.setDiamondList(element);
+                this.setDiamondList((DiamondModel) element);
 
                 break;
 
