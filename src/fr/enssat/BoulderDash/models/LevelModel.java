@@ -39,25 +39,33 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 
 	// initial fill of the ground
 	public void fillGround() {
-		/*for (int i = 0; i < this.sizeWidth; i++) {
-			for (int j = 0; j < this.sizeHeight; j++) {
-				this.groundGrid[i][j] = new DirtModel(i, j);
-			}
-		}
-		for (int i = 0; i < this.sizeHeight; i++) {
-			this.groundGrid[i][0] = new SteelWallModel(i, 0);
-			this.groundGrid[i][this.sizeHeight - 1] = new SteelWallModel(i, 0);
-		}
-		for (int i = 0; i < this.sizeWidth; i++) {
-			this.groundGrid[0][i] = new SteelWallModel(0, i);
-			this.groundGrid[this.sizeWidth - 1][i] = new SteelWallModel(0, i);
-		}*/
-
+        this.createLimits();
 		this.createRockford();
 		this.createDiamond();
 		this.setPositionOfRockford(posXOfRockford, posYOfRockford);
 		this.rockford.startStaying();
 	}
+
+    private void createLimits() {
+        int maxWidth = this.sizeWidth - 1;
+        int maxHeight = this.sizeHeight - 1;
+
+        System.out.print("width -> " + Integer.toString(this.groundGrid.length));
+        System.out.print("height -> " + Integer.toString(this.groundGrid[0].length));
+
+        System.out.print("maxWidth -> " + Integer.toString(maxWidth));
+        System.out.print("maxHeight -> " + Integer.toString(maxHeight));
+
+
+        for (int x = 0; x < this.sizeWidth; x++) {
+            this.groundGrid[x][0] = new SteelWallModel(x, 0);
+            this.groundGrid[x][maxHeight] = new SteelWallModel(x, maxHeight);
+        }
+        for (int y = 0; y < this.sizeHeight; y++) {
+            this.groundGrid[0][y] = new SteelWallModel(0, y);
+            this.groundGrid[maxWidth][y] = new SteelWallModel(maxWidth, y);
+        }
+    }
 
 	private void createRockford() {
 		rockford = new RockfordModel(posXOfRockford, posYOfRockford);

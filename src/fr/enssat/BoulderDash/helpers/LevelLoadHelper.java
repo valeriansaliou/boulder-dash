@@ -54,6 +54,10 @@ public class LevelLoadHelper {
     private Date dateModifiedValue = null;
     private int widthSizeValue = 0;
     private int heightSizeValue = 0;
+    private int limitsWidth = 2;
+    private int limitsHeight = 2;
+    private int limitsOffsetWidth = 1;
+    private int limitsOffsetHeight = 1;
     private DisplayableElementModel[][] groundGrid;
 
     public LevelLoadHelper(String levelId) {
@@ -134,11 +138,13 @@ public class LevelLoadHelper {
         this.widthSizeValue = Integer.parseInt(this.xpathBuilder.compile(
                 "/bd-level/size/width"
         ).evaluate(this.levelDOM));
+        this.widthSizeValue += this.limitsWidth;
 
         // Returns level height value
         this.heightSizeValue = Integer.parseInt(this.xpathBuilder.compile(
                 "/bd-level/size/height"
         ).evaluate(this.levelDOM));
+        this.heightSizeValue += this.limitsHeight;
     }
 
     private void parseGridElement() throws XPathExpressionException {
@@ -178,8 +184,12 @@ public class LevelLoadHelper {
                                 Element currentSpriteElement = (Element)currentSpriteNode;
                                 String currentSpriteName = currentSpriteElement.getAttribute("name");
 
+                                // Process positions
+                                int pX = rowIndex + this.limitsOffsetWidth;
+                                int pY = lineIndex + this.limitsOffsetHeight;
+
                                 try {
-                                    this.groundGrid[rowIndex][lineIndex] = this.constructGridElement(currentSpriteName, rowIndex, lineIndex);
+                                    this.groundGrid[pX][pY] = this.constructGridElement(currentSpriteName, pX, pY);
                                 } catch (UnknownSpriteException e) {
                                     e.printStackTrace();
                                 }
