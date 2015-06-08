@@ -307,8 +307,7 @@
             </item>
 
             <item index="7">
-                <sprite group="field" name="dirt" state="initial" />
-                <cursor type="player" />
+                <sprite group="field" name="rockford" state="initial" />
             </item>
 
             <item index="8">

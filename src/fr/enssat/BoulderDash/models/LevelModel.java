@@ -19,9 +19,10 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
     private int sizeWidth = 0;
     private int sizeHeight = 0;
     private LevelLoadHelper levelLoadHelper;
-	private int posXOfRockford, posYOfRockford;
-	private RockfordModel rockford;
 	private DiamondModel diamond;
+
+    private int rockfordPositionX = 0;
+    private int rockfordPositionY = 0;
 
 	public LevelModel(String levelName) {
 
@@ -33,7 +34,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
         this.createLimits();
-        this.rockford = new RockfordModel(1, 1);
+        this.initiateRockford();
         //this.rockford.startStaying();
 	}
 
@@ -58,12 +59,24 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         }
     }
 
+    private void initiateRockford() {
+        this.setRockfordPositionX(
+                this.levelLoadHelper.getRockfordPositionX()
+        );
+        this.setRockfordPositionY(
+                this.levelLoadHelper.getRockfordPositionY()
+        );
+    }
+
 	public DiamondModel getDiamonds(){
 		return diamond;		
 	}
 
 	public RockfordModel getRockford() {
-		return rockford;
+        int x = this.getRockfordPositionX();
+        int y = this.getRockfordPositionY();
+
+		return (RockfordModel)this.groundGrid[x][y];
 	}
 
 	// a bouger dans le contrôler
@@ -71,22 +84,33 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         // TODO is this a good method ?
         if (this.groundGrid[posX][posY].getSpriteName() != "steelwall") {
             // if (ground[posX][posY].getPriority() < rockford.getPriority()) {
-            this.groundGrid[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
-            posXOfRockford = posX;
-            posYOfRockford = posY;
-            this.groundGrid[posX][posY] = rockford;
+            int oldX = this.getRockfordPositionX();
+            int oldY = this.getRockfordPositionY();
+
+            this.groundGrid[oldX][oldY] = new EmptyModel(oldX, oldY);
+            this.setRockfordPositionX(posX);
+            this.setRockfordPositionY(posY);
+            this.groundGrid[posX][posY] = this.getRockford();
             setChanged();
             notifyObservers();
         }
     }
 
-	public int getXPositionOfRockford() {
-		return posXOfRockford;
-	}
+    public int getRockfordPositionX() {
+        return this.rockfordPositionX;
+    }
 
-	public int getYPositionOfRockford() {
-		return posYOfRockford;
-	}
+    public void setRockfordPositionX(int x) {
+        this.rockfordPositionX = x;
+    }
+
+    public int getRockfordPositionY() {
+        return this.rockfordPositionY;
+    }
+
+    public void setRockfordPositionY(int y) {
+        this.rockfordPositionY = y;
+    }
 
 	public BufferedImage getImage(int x, int y) {
 		return this.groundGrid[x][y].getSprite();

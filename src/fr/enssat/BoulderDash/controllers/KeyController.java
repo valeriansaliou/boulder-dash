@@ -16,19 +16,19 @@ public class KeyController implements KeyListener {
 		int keyCode = e.getKeyCode();
 		switch (keyCode) {
 		case KeyEvent.VK_UP:
-			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford(), levelModel.getYPositionOfRockford() - 1);
+			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
 			levelModel.getRockford().startRunningUpOrDown();
 			break;
 		case KeyEvent.VK_DOWN:
-			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford(), levelModel.getYPositionOfRockford() + 1);
+			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
 			levelModel.getRockford().startRunningUpOrDown();
 			break;
 		case KeyEvent.VK_LEFT:
-			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford() - 1, levelModel.getYPositionOfRockford());
+			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
 			levelModel.getRockford().startRunningLeft();
 			break;
 		case KeyEvent.VK_RIGHT:
-			levelModel.setPositionOfRockford(levelModel.getXPositionOfRockford() + 1, levelModel.getYPositionOfRockford());
+			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
 			levelModel.getRockford().startRunningRight();
 			break;
 		}

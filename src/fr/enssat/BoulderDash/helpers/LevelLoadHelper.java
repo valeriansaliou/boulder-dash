@@ -52,12 +52,17 @@ public class LevelLoadHelper {
     private String nameValue = null;
     private Date dateCreatedValue = null;
     private Date dateModifiedValue = null;
+
     private int widthSizeValue = 0;
     private int heightSizeValue = 0;
     private int limitsWidth = 2;
     private int limitsHeight = 2;
     private int limitsOffsetWidth = 1;
     private int limitsOffsetHeight = 1;
+
+    private int rockfordPositionX = 0;
+    private int rockfordPositionY = 0;
+
     private DisplayableElementModel[][] groundGrid;
 
     public LevelLoadHelper(String levelId) {
@@ -244,6 +249,8 @@ public class LevelLoadHelper {
 
             case "rockford":
                 element = new RockfordModel(rowIndex, lineIndex);
+                this.setRockfordPositionX(rowIndex);
+                this.setRockfordPositionY(lineIndex);
                 break;
 
             case "steelwall":
@@ -303,6 +310,22 @@ public class LevelLoadHelper {
 
     private void setHeightSizeValue(int heightSizeValue) {
         this.heightSizeValue = heightSizeValue;
+    }
+
+    public int getRockfordPositionX() {
+        return this.rockfordPositionX;
+    }
+
+    public void setRockfordPositionX(int x) {
+        this.rockfordPositionX = x;
+    }
+
+    public int getRockfordPositionY() {
+        return this.rockfordPositionY;
+    }
+
+    public void setRockfordPositionY(int y) {
+        this.rockfordPositionY = y;
     }
 
     public DisplayableElementModel[][] getGroundGrid() {
