@@ -45,7 +45,6 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		this.initSprites();
 	}
 
-
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}

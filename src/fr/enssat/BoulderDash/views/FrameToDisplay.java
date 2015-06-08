@@ -16,9 +16,10 @@ public class FrameToDisplay extends JFrame implements Observer {
 	private GameView gameView;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
-	private JButton newGame, pause, quit, editor,save;
+	private JButton newGame, pause, quit, editor, save;
 	private GameController gameController;
 	private LevelModel levelModel;
+
 	/*
 	 * Construction of the main windows which will contain all the elements :
 	 * gameView, informationPanel for scores and actionPanel to quit/newgame/etc
@@ -27,16 +28,18 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.gameController = gameController;
 		this.levelModel = levelModel;
 
-		gameView = new GameView(gameController,levelModel);
+		gameView = new GameView(gameController, levelModel);
 		actionPanel = new JPanel();
 		informationPanel = new JPanel();
 
-		//add some buttons on the informationPanel
+		// add some buttons on the informationPanel
 		this.newGame = createButton("New Game");
 		this.editor = createButton("Editor");
 		this.pause = createButton("Pause");
+		this.save = createButton("Save");// FIXME pourquoi pas un bouton
+											// sauvegarder ? fastoche avec le
+											// XML
 		this.quit = createButton("Quit");
-		this.save = createButton("Save");//FIXME pourquoi pas un bouton sauvegarder ? fastoche avec le XML
 
 		add(actionPanel, BorderLayout.SOUTH);
 		add(informationPanel, BorderLayout.NORTH);
@@ -51,11 +54,11 @@ public class FrameToDisplay extends JFrame implements Observer {
 		// grab the focus to use the keys
 		gameView.grabFocus();
 	}
-	
-	public GameView getGameView(){
+
+	public GameView getGameView() {
 		return gameView;
 	}
-	
+
 	public JButton createButton(String nom) {
 		JButton button = new JButton(nom);
 		button.addActionListener(gameController);
@@ -66,6 +69,6 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable obs, Object obj) {
-		
+
 	}
 }

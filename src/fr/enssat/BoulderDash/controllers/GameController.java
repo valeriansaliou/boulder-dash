@@ -45,10 +45,10 @@ public class GameController implements ActionListener, Runnable {
 		while (true) {
 
 			levelModel.getRockford().update(beforeTime);
-			for(int i =0; i < levelModel.getDiamonds().size(); i++)
+			for (int i = 0; i < levelModel.getDiamonds().size(); i++)
 				levelModel.getDiamonds().get(i).update(beforeTime);
-			
-			//refresh the gameView
+
+			// refresh the gameView
 			frameToDisplay.getGameView().repaint();
 
 			timeDiff = System.currentTimeMillis() - beforeTime;

@@ -47,7 +47,7 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 			}
 		}
 	}
-	
+
 	private void initSprites() {
 		/* INIT SPRITE FOR DIAMOND */
 
@@ -57,5 +57,5 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 			framesDiamond.add(grabSprite(loadSprite(spriteName), i * 24, 0, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
 		}
 	}
-	
+
 }
