@@ -307,7 +307,7 @@
             </item>
 
             <item index="7">
-                <sprite group="field" name="rockford" state="initial" />
+                <sprite group="field" name="dirt" state="initial" />
             </item>
 
             <item index="8">
@@ -357,7 +357,7 @@
             </item>
 
             <item index="3">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="rockford" state="initial" />
             </item>
 
             <item index="4">
