@@ -64,6 +64,7 @@ public class GameView extends JPanel implements Observer, Runnable {
 		while (true) {
 
 			levelModel.getRockford().update(beforeTime);
+			levelModel.getDiamonds().update(beforeTime);
 			repaint();
 
 			timeDiff = System.currentTimeMillis() - beforeTime;

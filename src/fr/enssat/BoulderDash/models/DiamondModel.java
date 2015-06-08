@@ -12,9 +12,12 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private long previousTime;
+	private int currentFrame;
 
 	private final int SIZ_X_OF_SPRITE = 16;
 	private final int SIZ_Y_OF_SPRITE = 16;
+	private long speed;
 
 	private ArrayList<BufferedImage> framesDiamond;
 
@@ -32,6 +35,19 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		this.initSprites();
 	}
 
+	public void update(long time) {
+		if (time - previousTime >= speed) {
+			// update the animation
+			previousTime = time;
+			try {
+				currentFrame += 1;
+				setSprite(framesDiamond.get(currentFrame));
+			} catch (IndexOutOfBoundsException e) {
+				currentFrame = 0;
+			}
+		}
+	}
+	
 	private void initSprites() {
 		/* INIT SPRITE FOR DIAMOND */
 
@@ -41,4 +57,5 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 			framesDiamond.add(grabSprite(loadSprite(spriteName), i * 24, 0, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
 		}
 	}
+	
 }

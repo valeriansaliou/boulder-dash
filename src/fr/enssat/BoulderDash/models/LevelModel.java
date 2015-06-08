@@ -17,6 +17,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	private int sizeOfSquare = 0;
 	private int posXOfRockford, posYOfRockford;
 	private RockfordModel rockford;
+	private DiamondModel diamond;
 
 	public LevelModel(int begining, int sizeOfSquare) {
 		posXOfRockford = 1;
@@ -43,19 +44,22 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			ground[sizeOfSquare - 1][i] = new SteelWallModel(begining, i);
 		}
 		this.createRockford();
-		ground[8][8] = new DiamondModel(10, 10); // TODO comment faire pour les
-													// dimants ? chaque diamants
-													// qjoutés sont à ajouter a
-													// un tableau ? puis
-													// parcour du tableau pour
-													// les update ?
-		this.setPositionOfRockford(1, 1);
+		this.createDiamond();
+		ground[8][8] = diamond; 
+		this.setPositionOfRockford(posXOfRockford, posYOfRockford);
 		this.rockford.startStaying();
-		displayGround();
 	}
 
 	private void createRockford() {
 		rockford = new RockfordModel(posXOfRockford, posYOfRockford);
+	}
+	
+	private void createDiamond(){
+		diamond = new DiamondModel(8, 8); 
+	}
+	
+	public DiamondModel getDiamonds(){
+		return diamond;		
 	}
 
 	public RockfordModel getRockford() {

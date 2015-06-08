@@ -20,8 +20,6 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private final int SIZ_X_OF_SPRITE = 16;
 	private final int SIZ_Y_OF_SPRITE = 16;
 
-	private BufferedImage img;
-
 	private long speed;
 
 	private boolean isStaying = true;
@@ -47,9 +45,6 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		this.initSprites();
 	}
 
-	public BufferedImage getImg() {
-		return img;
-	}
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
