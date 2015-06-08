@@ -25,6 +25,7 @@ import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -64,7 +65,7 @@ public class LevelLoadHelper {
     private int rockfordPositionX = 0;
     private int rockfordPositionY = 0;
 
-    private DiamondModel[] diamondList;
+    private ArrayList<DiamondModel> diamondList;
 
     private DisplayableElementModel[][] groundGrid;
 
@@ -345,7 +346,7 @@ public class LevelLoadHelper {
         this.rockfordInstance = rockfordInstance;
     }
 
-    public DiamondModel[] getDiamondList() {
+    public ArrayList<DiamondModel> getDiamondList() {
         return this.diamondList;
     }
 
