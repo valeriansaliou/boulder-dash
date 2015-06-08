@@ -60,6 +60,7 @@ public class LevelLoadHelper {
     private int limitsOffsetWidth = 1;
     private int limitsOffsetHeight = 1;
 
+    private RockfordModel rockfordInstance;
     private int rockfordPositionX = 0;
     private int rockfordPositionY = 0;
 
@@ -249,8 +250,11 @@ public class LevelLoadHelper {
 
             case "rockford":
                 element = new RockfordModel(rowIndex, lineIndex);
+
                 this.setRockfordPositionX(rowIndex);
                 this.setRockfordPositionY(lineIndex);
+                this.setRockfordInstance(element);
+
                 break;
 
             case "steelwall":
@@ -326,6 +330,14 @@ public class LevelLoadHelper {
 
     public void setRockfordPositionY(int y) {
         this.rockfordPositionY = y;
+    }
+
+    public RockfordModel getRockfordInstance() {
+        return this.rockfordInstance;
+    }
+
+    public void setRockfordInstance(RockfordModel rockfordInstance) {
+        this.rockfordInstance = rockfordInstance;
     }
 
     public DisplayableElementModel[][] getGroundGrid() {
