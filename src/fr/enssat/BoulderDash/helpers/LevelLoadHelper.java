@@ -259,7 +259,7 @@ public class LevelLoadHelper {
 
                 this.setRockfordPositionX(rowIndex);
                 this.setRockfordPositionY(lineIndex);
-                this.setRockfordInstance(element);
+                this.setRockfordInstance((RockfordModel) element);
 
                 break;
 
