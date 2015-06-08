@@ -13,16 +13,12 @@ import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 
 //GameView is created by GameController
-public class GameView extends JPanel implements Observer, Runnable {
+public class GameView extends JPanel implements Observer {
 	private LevelModel levelModel;
-	private Thread animator;
 
-	private final int DELAY = 25;
-
-	public GameView(GameController gameController) {
-		this.levelModel = gameController.getLevelModel();
-
-        this.levelModel.addObserver(this);
+	public GameView(GameController gameController, LevelModel levelModel) {
+		this.levelModel = levelModel;
+		this.levelModel.addObserver(this);
 
 		addKeyListener(new KeyController(this.levelModel));
 		setBorder(BorderFactory.createLineBorder(Color.black));
@@ -38,16 +34,7 @@ public class GameView extends JPanel implements Observer, Runnable {
 	}
 
 	public void paint(Graphics g) {
-		this.levelModel.getRockford().update(System.currentTimeMillis());
 		drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
-	}
-
-	@Override
-	public void addNotify() {
-		super.addNotify();
-
-		animator = new Thread(this);
-		animator.start();
 	}
 
 	@Override
@@ -55,33 +42,4 @@ public class GameView extends JPanel implements Observer, Runnable {
 		repaint();
 	}
 
-	@Override
-	public void run() {
-		long beforeTime, timeDiff, sleep;
-
-		beforeTime = System.currentTimeMillis();
-
-		while (true) {
-
-			//levelModel.getRockford().update(beforeTime);
-			//TODO update all animated things
-			repaint();
-
-			timeDiff = System.currentTimeMillis() - beforeTime;
-			sleep = DELAY - timeDiff;
-
-			if (sleep < 0) {
-				sleep = 2;
-			}
-
-			try {
-				Thread.sleep(sleep);
-			} catch (InterruptedException e) {
-				System.out.println("Interrupted: " + e.getMessage());
-			}
-
-			beforeTime = System.currentTimeMillis();
-		}
-
-	}
 }

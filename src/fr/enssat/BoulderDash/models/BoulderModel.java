@@ -14,7 +14,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	private boolean isFalling;
 
 	static {
-		spriteName = "field_00";
+		spriteName = "boulder";
 		isDestructible = false;
 		canMove = true;
 		impactExplosive = false;

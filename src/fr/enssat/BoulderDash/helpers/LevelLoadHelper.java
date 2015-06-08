@@ -73,7 +73,7 @@ public class LevelLoadHelper {
 
     public LevelLoadHelper(String levelId) {
         this.setLevelId(levelId);
-
+        this.diamondList = new ArrayList<DiamondModel>();
         if (this.levelId != null) {
             // Let's go.
             this.loadLevelData();
@@ -241,7 +241,7 @@ public class LevelLoadHelper {
                 element = new DiamondModel(rowIndex, lineIndex);
 
                 this.setDiamondList((DiamondModel) element);
-
+                
                 break;
 
             case "dirt":

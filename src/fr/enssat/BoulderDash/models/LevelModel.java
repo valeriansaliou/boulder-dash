@@ -1,10 +1,10 @@
 package fr.enssat.BoulderDash.models;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Observable;
 
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
-
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //le niveau se charge ici
@@ -19,7 +19,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
     private int sizeWidth = 0;
     private int sizeHeight = 0;
     private LevelLoadHelper levelLoadHelper;
-	private DiamondModel diamond;
 	private RockfordModel rockford;
 
     private int rockfordPositionX = 0;
@@ -67,11 +66,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         this.setRockfordPositionY(
                 this.levelLoadHelper.getRockfordPositionY()
         );
-        rockford = this.getRockford();
+        this.rockford = this.getRockford();
     }
 
-	public DiamondModel getDiamonds(){
-		return diamond;		
+	public ArrayList<DiamondModel> getDiamonds(){
+		return this.levelLoadHelper.getDiamondList();
 	}
 
 	public RockfordModel getRockford() {
