@@ -1,13 +1,14 @@
 package fr.enssat.BoulderDash.helpers;
 
 import fr.enssat.BoulderDash.models.BoulderModel;
+import fr.enssat.BoulderDash.models.BrickWallModel;
 import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.DirtModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
+import fr.enssat.BoulderDash.models.MagicWallModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
-
 import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
 import modelToImplement.*;
 
@@ -41,9 +42,6 @@ import java.util.Locale;
  * @since 2015-06-19
  */
 
-// tout ce qu'on va appeler depuis le contrôleur LevelEditeurControler ou
-// GameController (c'est ocmmun aux deux)
-// retourne la représentation interne des niveaux sous forme d'objet java
 public class LevelLoadHelper {
 	private static String pathToDataStore = "res/levels";
 	private String levelId = null;
@@ -68,12 +66,16 @@ public class LevelLoadHelper {
 	private int rockfordPositionY = 0;
 
 	private ArrayList<DiamondModel> diamondList;
+	private ArrayList<MagicWallModel> magicWallList;
 
 	private DisplayableElementModel[][] groundGrid;
 
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
+		
 		this.diamondList = new ArrayList<DiamondModel>();
+		this.magicWallList = new ArrayList<MagicWallModel>();
+		
 		if (this.levelId != null) {
 			// Let's go.
 			this.loadLevelData();
@@ -242,6 +244,9 @@ public class LevelLoadHelper {
 
 		case "magicwall":
 			element = new MagicWallModel(rowIndex, lineIndex);
+			
+			this.setMagicWallList((MagicWallModel) element);
+			
 			break;
 
 		case "rockford":
@@ -262,6 +267,10 @@ public class LevelLoadHelper {
 		}
 
 		return element;
+	}
+
+	private void setMagicWallList(MagicWallModel magicWallItem) {
+		this.magicWallList.add(magicWallItem);
 	}
 
 	public String getLevelId() {
@@ -350,5 +359,9 @@ public class LevelLoadHelper {
 
 	private void setGroundGrid(DisplayableElementModel[][] groundGrid) {
 		this.groundGrid = groundGrid;
+	}
+
+	public ArrayList<MagicWallModel> getMagicWallsList() {
+		return magicWallList;
 	}
 }

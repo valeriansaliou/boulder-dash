@@ -40,10 +40,10 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 			// update the animation
 			previousTime = time;
 			try {
-				currentFrame += 1;
-				setSprite(framesDiamond.get(currentFrame));
+				this.currentFrame += 1;
+				setSprite(framesDiamond.get(this.currentFrame));
 			} catch (IndexOutOfBoundsException e) {
-				currentFrame = 0;
+				this.currentFrame = 0;
 			}
 		}
 	}

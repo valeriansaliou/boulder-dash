@@ -1,10 +1,9 @@
-package modelToImplement;
+package fr.enssat.BoulderDash.models;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
-import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 public class MagicWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
@@ -16,8 +15,12 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 
 	private ArrayList<BufferedImage> framesMagicWall;
 
+	private long previousTime;
+	private int currentFrame;
+	private long speed;
+
 	static {
-		spriteName = "field_00";
+		spriteName = "magicwall";
 		isDestructible = false;
 		canMove = false;
 		impactExplosive = false;
@@ -27,10 +30,26 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 
 	public MagicWallModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
-		this.framesMagicWall = new ArrayList<BufferedImage>();
+		this.currentFrame = 0;
+		this.speed =  100;
+		this.initSprites();
+	}
+
+	public void update(long time) {
+		if (time - previousTime >= speed) {
+			// update the animation
+			previousTime = time;
+			try {
+				currentFrame += 1;
+				setSprite(framesMagicWall.get(this.currentFrame));
+			} catch (IndexOutOfBoundsException e) {
+				currentFrame = 0;
+			}
+		}
 	}
 
 	private void initSprites() {
+		this.framesMagicWall = new ArrayList<BufferedImage>();
 		/* INIT SPRITE FOR DIAMOND */
 		framesMagicWall.add(grabSprite(loadSprite(spriteName), 0, 0, 16, 16));
 		framesMagicWall.add(grabSprite(loadSprite(spriteName), 24, 0, 16, 16));

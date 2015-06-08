@@ -47,6 +47,8 @@ public class GameController implements ActionListener, Runnable {
 			levelModel.getRockford().update(beforeTime);
 			for (int i = 0; i < levelModel.getDiamonds().size(); i++)
 				levelModel.getDiamonds().get(i).update(beforeTime);
+			for (int i = 0; i < levelModel.getMagicWalls().size(); i++)
+				levelModel.getMagicWalls().get(i).update(beforeTime);
 
 			// refresh the gameView
 			frameToDisplay.getGameView().repaint();

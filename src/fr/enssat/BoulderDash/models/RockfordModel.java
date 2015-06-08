@@ -41,7 +41,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 
 	public RockfordModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
-
+		this.setSpeed(100);
 		this.initSprites();
 	}
 
@@ -134,6 +134,5 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 			framesRunningRight.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 127, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
 		}
 		framesRunningUpOrDown.add(grabSprite(loadSprite(spriteName), 7, 7, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
-		this.setSpeed(100);
 	}
 }

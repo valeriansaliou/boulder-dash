@@ -3,6 +3,7 @@ package fr.enssat.BoulderDash.controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 public class KeyController implements KeyListener {
@@ -43,5 +44,4 @@ public class KeyController implements KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 
 	}
-
 }

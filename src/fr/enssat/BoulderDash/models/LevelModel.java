@@ -62,21 +62,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		}
 	}
 
-	private void initiateRockford() {
-		this.setRockfordPositionX(this.levelLoadHelper.getRockfordPositionX());
-		this.setRockfordPositionY(this.levelLoadHelper.getRockfordPositionY());
-		this.rockford = this.getRockford();
-	}
-
-	public ArrayList<DiamondModel> getDiamonds() {
-		return this.levelLoadHelper.getDiamondList();
-	}
-
-	public RockfordModel getRockford() {
-		return this.levelLoadHelper.getRockfordInstance();
-	}
-
-	// a bouger dans le contrôler
 	public void setPositionOfRockford(int posX, int posY) {
 		// TODO is this a good method ?
 		if (this.groundGrid[posX][posY].getSpriteName() != "steelwall") {
@@ -91,6 +76,24 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			setChanged();
 			notifyObservers();
 		}
+	}
+	
+	private void initiateRockford() {
+		this.setRockfordPositionX(this.levelLoadHelper.getRockfordPositionX());
+		this.setRockfordPositionY(this.levelLoadHelper.getRockfordPositionY());
+		this.rockford = this.getRockford();
+	}
+
+	public ArrayList<DiamondModel> getDiamonds() {
+		return this.levelLoadHelper.getDiamondList();
+	}
+	
+	public ArrayList<MagicWallModel> getMagicWalls() {
+		return this.levelLoadHelper.getMagicWallsList();
+	}
+
+	public RockfordModel getRockford() {
+		return this.levelLoadHelper.getRockfordInstance();
 	}
 
 	public int getRockfordPositionX() {
@@ -127,5 +130,9 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 
 	public void setSizeHeight(int sizeHeight) {
 		this.sizeHeight = sizeHeight;
+	}
+	
+	public DisplayableElementModel[][] getGroundLevelModel(){
+		return groundGrid;
 	}
 }

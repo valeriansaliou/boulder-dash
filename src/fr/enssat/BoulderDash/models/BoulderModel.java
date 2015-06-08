@@ -1,5 +1,7 @@
 package fr.enssat.BoulderDash.models;
 
+import java.awt.image.BufferedImage;
+
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
 public class BoulderModel extends DisplayableElementModel implements PublisherInterface {
@@ -9,9 +11,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
-
-	private final double gravity = 9.85;
-	private boolean isFalling;
+	private BufferedImage img;
 
 	static {
 		spriteName = "boulder";
@@ -24,14 +24,6 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 
 	public BoulderModel(int x, int y) {
 		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
-	}
-
-	public void fallingSpeed() {
-		// TODO IN FUNCTION OF OUR NEED
-	}
-
-	public boolean isFalling() {
-		return false;
-		// TODO
+		this.img = loadSprite(spriteName);
 	}
 }

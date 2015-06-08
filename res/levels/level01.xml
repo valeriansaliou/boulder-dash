@@ -35,7 +35,7 @@
             </item>
 
             <item index="5">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="boulder" state="initial" />
             </item>
 
             <item index="6">
@@ -51,7 +51,7 @@
             </item>
 
             <item index="9">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="10">
