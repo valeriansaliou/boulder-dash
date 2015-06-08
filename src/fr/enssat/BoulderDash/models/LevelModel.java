@@ -36,7 +36,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         fillGround();
 	}
 
-	//initial fill of the ground
+	// initial fill of the ground
 	public void fillGround() {
 		/*for (int i = 0; i < this.sizeWidth; i++) {
 			for (int j = 0; j < this.sizeHeight; j++) {
@@ -53,29 +53,37 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		}*/
 
 		this.createRockford();
+		ground[8][8] = new DiamondModel(10, 10); // TODO comment faire pour les
+													// dimants ? chaque diamants
+													// qjoutés sont à ajouter a
+													// un tableau ? puis
+													// parcour du tableau pour
+													// les update ?
 		this.setPositionOfRockford(1, 1);
 		this.rockford.startStaying();
 		//displayGround();
 	}
 
 	private void createRockford() {
-		rockford = new RockfordModel(posXOfRockford, posYOfRockford);		
+		rockford = new RockfordModel(posXOfRockford, posYOfRockford);
 	}
-	
-	public RockfordModel getRockford(){
+
+	public RockfordModel getRockford() {
 		return rockford;
 	}
 
-	public void setPositionOfRockford(int posX, int posY) {
-		if (this.groundGrid[posX][posY].getPriority() < rockford.getPriority()) {
-            this.groundGrid[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
-			posXOfRockford = posX;
-			posYOfRockford = posY;
+    public void setPositionOfRockford(int posX, int posY) {
+        // TODO is this a good method ?
+        if (ground[posX][posY].getSpriteName() != "steelwall") {
+            // if (ground[posX][posY].getPriority() < rockford.getPriority()) {
+            ground[posXOfRockford][posYOfRockford] = new EmptyModel(posXOfRockford, posYOfRockford);
+            posXOfRockford = posX;
+            posYOfRockford = posY;
             this.groundGrid[posX][posY] = rockford;
-			setChanged();
-			notifyObservers();
-		}
-	}
+            setChanged();
+            notifyObservers();
+        }
+    }
 
 	public int getXPositionOfRockford() {
 		return posXOfRockford;
@@ -105,8 +113,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         this.sizeHeight = sizeHeight;
     }
 
-	
-	//DEBUG
+	// DEBUG
 	public void displayGround() {
 		for (int i = 0; i < this.sizeWidth; i++) {
 			for (int j = 0; j < this.sizeHeight; j++) {

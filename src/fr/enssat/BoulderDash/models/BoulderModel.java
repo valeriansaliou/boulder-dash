@@ -23,8 +23,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	}
 
 	public BoulderModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority,
-				impactExplosive, animate);
+		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
 	}
 
 	public void fallingSpeed() {

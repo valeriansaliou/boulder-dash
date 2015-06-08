@@ -13,9 +13,12 @@ import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 
 //GameView is created by GameController
-public class GameView extends JPanel implements Observer {
+public class GameView extends JPanel implements Observer, Runnable {
 	private LevelModel levelModel;
-	
+	private Thread animator;
+
+	private final int DELAY = 25;
+
 	public GameView(GameController gameController) {
 		this.levelModel = gameController.getLevelModel();
 
@@ -40,7 +43,44 @@ public class GameView extends JPanel implements Observer {
 	}
 
 	@Override
+	public void addNotify() {
+		super.addNotify();
+
+		animator = new Thread(this);
+		animator.start();
+	}
+
+	@Override
 	public void update(Observable obs, Object obj) {
 		repaint();
+	}
+
+	@Override
+	public void run() {
+		long beforeTime, timeDiff, sleep;
+
+		beforeTime = System.currentTimeMillis();
+
+		while (true) {
+
+			levelModel.getRockford().update(beforeTime);
+			repaint();
+
+			timeDiff = System.currentTimeMillis() - beforeTime;
+			sleep = DELAY - timeDiff;
+
+			if (sleep < 0) {
+				sleep = 2;
+			}
+
+			try {
+				Thread.sleep(sleep);
+			} catch (InterruptedException e) {
+				System.out.println("Interrupted: " + e.getMessage());
+			}
+
+			beforeTime = System.currentTimeMillis();
+		}
+
 	}
 }

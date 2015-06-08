@@ -13,7 +13,6 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 	private static int priority = 10;
 
 	public BrickWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, pathToSprite, priority,
-				impactExplosive, animate);
+		super(isDestructible, canMove, x, y, pathToSprite, priority, impactExplosive, animate);
 	}
 }

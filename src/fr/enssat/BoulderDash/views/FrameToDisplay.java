@@ -16,15 +16,15 @@ public class FrameToDisplay extends JFrame implements Observer {
 	private GameView gamePanel;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
-	private JButton newGame, pause, quit,editor;
+	private JButton newGame, pause, quit, editor;
 	private GameController gameController;
 	private LevelModel levelModel;
 
 	public FrameToDisplay(GameController gameController) {
 		this.gameController = gameController;
 		this.levelModel = gameController.getLevelModel();
-		
-		gamePanel = new GameView(gameController);		
+
+		gamePanel = new GameView(gameController);
 		actionPanel = new JPanel();
 		informationPanel = new JPanel();
 
@@ -32,14 +32,14 @@ public class FrameToDisplay extends JFrame implements Observer {
 		editor = createButton("Editor");
 		pause = createButton("Pause");
 		pause = createButton("Quit");
-		
-		add(actionPanel, BorderLayout.SOUTH);		
+
+		add(actionPanel, BorderLayout.SOUTH);
 		add(informationPanel, BorderLayout.NORTH);
 		add(gamePanel, BorderLayout.CENTER);
 
 		setVisible(true);
 		setResizable(false);
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
 		setSize(480, 550);
