@@ -20,12 +20,10 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
     private int sizeHeight = 0;
     private LevelLoadHelper levelLoadHelper;
 	private int posXOfRockford, posYOfRockford;
-	private RockfordModel rockford;
 	private DiamondModel diamond;
+	private RockfordModel rockford;
 
 	public LevelModel(String levelName) {
-		posXOfRockford = 1;
-		posYOfRockford = 1;
 
         this.levelName = levelName;
 
@@ -34,39 +32,9 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
         this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
-        fillGround();
+        //this.rockford.startStaying();
 	}
 
-	// initial fill of the ground
-	public void fillGround() {
-		/*for (int i = 0; i < this.sizeWidth; i++) {
-			for (int j = 0; j < this.sizeHeight; j++) {
-				this.groundGrid[i][j] = new DirtModel(i, j);
-			}
-		}
-		for (int i = 0; i < this.sizeHeight; i++) {
-			this.groundGrid[i][0] = new SteelWallModel(i, 0);
-			this.groundGrid[i][this.sizeHeight - 1] = new SteelWallModel(i, 0);
-		}
-		for (int i = 0; i < this.sizeWidth; i++) {
-			this.groundGrid[0][i] = new SteelWallModel(0, i);
-			this.groundGrid[this.sizeWidth - 1][i] = new SteelWallModel(0, i);
-		}*/
-
-		this.createRockford();
-		this.createDiamond();
-		this.setPositionOfRockford(posXOfRockford, posYOfRockford);
-		this.rockford.startStaying();
-	}
-
-	private void createRockford() {
-		rockford = new RockfordModel(posXOfRockford, posYOfRockford);
-	}
-	
-	private void createDiamond(){
-		diamond = new DiamondModel(8, 8); 
-	}
-	
 	public DiamondModel getDiamonds(){
 		return diamond;		
 	}
@@ -75,6 +43,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		return rockford;
 	}
 
+	// a bouger dans le contrôler
     public void setPositionOfRockford(int posX, int posY) {
         // TODO is this a good method ?
         if (this.groundGrid[posX][posY].getSpriteName() != "steelwall") {
@@ -115,22 +84,4 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
     public void setSizeHeight(int sizeHeight) {
         this.sizeHeight = sizeHeight;
     }
-
-	// DEBUG
-	public void displayGround() {
-		for (int i = 0; i < this.sizeWidth; i++) {
-			for (int j = 0; j < this.sizeHeight; j++) {
-				if (this.groundGrid[j][i].getSpriteName() == "rockford")
-					System.out.print("R ");
-				else if (this.groundGrid[j][i].getSpriteName() == "steelwall")
-					System.out.print("S ");
-				else if (this.groundGrid[j][i].getSpriteName() == "dirt")
-					System.out.print("D ");
-				else if (this.groundGrid[j][i].getSpriteName() == "black")
-					System.out.print("  ");
-			}
-			System.out.println("");
-		}
-		System.out.println("");
-	}
 }

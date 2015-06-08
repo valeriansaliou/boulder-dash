@@ -37,7 +37,6 @@ public class KeyController implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		levelModel.getRockford().startStaying();
-		System.out.println("released");
 	}
 
 	@Override

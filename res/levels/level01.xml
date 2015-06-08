@@ -213,7 +213,7 @@
 
         <line index="3">
             <item index="0">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="diamond" state="initial" />
             </item>
 
             <item index="1">
