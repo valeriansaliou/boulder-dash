@@ -7,6 +7,7 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
+
 import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
 import modelToImplement.*;
 
@@ -66,7 +67,7 @@ public class LevelLoadHelper {
     private int rockfordPositionX = 0;
     private int rockfordPositionY = 0;
 
-    private ArrayList[] diamondList;
+    private ArrayList<DiamondModel> diamondList;
 
     private DisplayableElementModel[][] groundGrid;
 
@@ -347,7 +348,7 @@ public class LevelLoadHelper {
         this.rockfordInstance = rockfordInstance;
     }
 
-    public DiamondModel[] getDiamondList() {
+    public ArrayList<DiamondModel> getDiamondList() {
         return this.diamondList;
     }
 
