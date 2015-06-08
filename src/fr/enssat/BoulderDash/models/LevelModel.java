@@ -22,7 +22,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	private int posXOfRockford, posYOfRockford;
 	private RockfordModel rockford;
 	private DiamondModel diamond;
-	private RockfordModel rockford;
 
 	public LevelModel(String levelName) {
 
@@ -33,16 +32,9 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
         this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
-        //this.rockford.startStaying();
-	}
-
-	// initial fill of the ground
-	public void fillGround() {
         this.createLimits();
-		this.createRockford();
-		this.createDiamond();
-		this.setPositionOfRockford(posXOfRockford, posYOfRockford);
-		this.rockford.startStaying();
+        this.rockford = new RockfordModel(1, 1);
+        //this.rockford.startStaying();
 	}
 
     private void createLimits() {
@@ -66,14 +58,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         }
     }
 
-	private void createRockford() {
-		rockford = new RockfordModel(posXOfRockford, posYOfRockford);
-	}
-	
-	private void createDiamond(){
-		diamond = new DiamondModel(8, 8); 
-	}
-	
 	public DiamondModel getDiamonds(){
 		return diamond;		
 	}
