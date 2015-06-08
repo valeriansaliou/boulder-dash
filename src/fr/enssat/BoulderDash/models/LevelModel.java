@@ -75,7 +75,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public RockfordModel getRockford() {
-		return (RockfordModel)this.groundGrid[rockfordPositionX][rockfordPositionY];
+		return this.levelLoadHelper.getRockfordInstance();
 	}
 
 	// a bouger dans le contrôler
