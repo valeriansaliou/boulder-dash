@@ -13,14 +13,14 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 //le controlleur va modifier le model en fonction de l'utilisateur
 //le modele previens la vue qu'il y a eu des modifs
 
-public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface {
+public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 	private DisplayableElementModel[][] groundGrid;
 	private String levelName;
 	private int sizeWidth = 0;
 	private int sizeHeight = 0;
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
-
+	private int score;
 	private int rockfordPositionX = 0;
 	private int rockfordPositionY = 0;
 
@@ -30,7 +30,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	 * @param levelName
 	 */
 	public LevelModel(String levelName) {
-
+		this.score = 0;
 		this.levelName = levelName;
 
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
@@ -63,33 +63,24 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public void setPositionOfRockford(int posX, int posY) {
-		// TODO is this a good method ?
-		if (this.groundGrid[posX][posY].getSpriteName() != "steelwall") {
-			// if (ground[posX][posY].getPriority() < rockford.getPriority()) {
-			int oldX = this.getRockfordPositionX();
-			int oldY = this.getRockfordPositionY();
-
-			this.groundGrid[oldX][oldY] = new EmptyModel(oldX, oldY);
-			this.setRockfordPositionX(posX);
-			this.setRockfordPositionY(posY);
-			this.groundGrid[posX][posY] = this.getRockford();
-			setChanged();
-			notifyObservers();
+		int oldX = this.getRockfordPositionX();
+		int oldY = this.getRockfordPositionY();
+		
+		if(groundGrid[posX][posY].getSpriteName() == "diamond"){
+			this.score += 1;
+			System.out.println(score);
 		}
+
+		this.groundGrid[oldX][oldY] = new EmptyModel(oldX, oldY);
+		this.setRockfordPositionX(posX);
+		this.setRockfordPositionY(posY);
+		this.groundGrid[posX][posY] = this.getRockford();
 	}
 	
 	private void initiateRockford() {
 		this.setRockfordPositionX(this.levelLoadHelper.getRockfordPositionX());
 		this.setRockfordPositionY(this.levelLoadHelper.getRockfordPositionY());
 		this.rockford = this.getRockford();
-	}
-
-	public ArrayList<DiamondModel> getDiamonds() {
-		return this.levelLoadHelper.getDiamondList();
-	}
-	
-	public ArrayList<MagicWallModel> getMagicWalls() {
-		return this.levelLoadHelper.getMagicWallsList();
 	}
 
 	public RockfordModel getRockford() {
@@ -134,5 +125,9 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	
 	public DisplayableElementModel[][] getGroundLevelModel(){
 		return groundGrid;
+	}
+
+	public void update(int x, int y) {
+		groundGrid[x][y].update(System.currentTimeMillis());		
 	}
 }

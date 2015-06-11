@@ -959,7 +959,7 @@
             </item>
 
             <item index="5">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="diamond" state="initial" />
             </item>
 
             <item index="6">

@@ -3,6 +3,7 @@ package fr.enssat.BoulderDash.controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 
@@ -17,20 +18,36 @@ public class KeyController implements KeyListener {
 		int keyCode = e.getKeyCode();
 		switch (keyCode) {
 		case KeyEvent.VK_UP:
-			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
-			levelModel.getRockford().startRunningUpOrDown();
+			DisplayableElementModel upElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX()][levelModel.getRockfordPositionY() - 1];
+			if (upElement.getPriority() < levelModel.getRockford().getPriority()) {
+				levelModel.setPositionOfRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
+				levelModel.getRockford().startRunningUpOrDown();
+			}
 			break;
 		case KeyEvent.VK_DOWN:
-			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
-			levelModel.getRockford().startRunningUpOrDown();
+			DisplayableElementModel downElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX()][levelModel.getRockfordPositionY() + 1];
+			if (downElement.getPriority() < levelModel.getRockford().getPriority()) {
+				levelModel.setPositionOfRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
+				levelModel.getRockford().startRunningUpOrDown();
+			}
 			break;
 		case KeyEvent.VK_LEFT:
-			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
-			levelModel.getRockford().startRunningLeft();
+			DisplayableElementModel leftElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX() - 1][levelModel.getRockfordPositionY()];
+			if (leftElement.getPriority() < levelModel.getRockford().getPriority()) {
+				levelModel.setPositionOfRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
+				levelModel.getRockford().startRunningLeft();
+			} else {
+				levelModel.getRockford().startStaying();
+			}
 			break;
 		case KeyEvent.VK_RIGHT:
-			levelModel.setPositionOfRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
-			levelModel.getRockford().startRunningRight();
+			DisplayableElementModel rightElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX() + 1][levelModel.getRockfordPositionY()];
+			if (rightElement.getPriority() < levelModel.getRockford().getPriority()) {
+				levelModel.setPositionOfRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
+				levelModel.getRockford().startRunningRight();
+			} else {
+				levelModel.getRockford().startStaying();
+			}
 			break;
 		}
 	}

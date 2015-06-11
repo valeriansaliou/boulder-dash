@@ -12,13 +12,19 @@ import fr.enssat.BoulderDash.controllers.KeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 
-//GameView is created by GameController
+/**
+ * GameView, created by controller; we notice that we don't need to make levelModel observable;
+ * Because of the sprites we have to refresh the game windows very often so don't need of observers/observable mechanism
+ * @author colinleverger
+ * 
+ * This view is basically drawing into the Frame the levelModel. 
+ *
+ */
 public class GameView extends JPanel implements Observer {
 	private LevelModel levelModel;
 
 	public GameView(GameController gameController, LevelModel levelModel) {
 		this.levelModel = levelModel;
-		this.levelModel.addObserver(this);
 
 		addKeyListener(new KeyController(this.levelModel));
 		setBorder(BorderFactory.createLineBorder(Color.black));

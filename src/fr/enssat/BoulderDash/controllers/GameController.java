@@ -42,22 +42,22 @@ public class GameController implements ActionListener, Runnable {
 
 		beforeTime = System.currentTimeMillis();
 
-		while (true) {
-
-			levelModel.getRockford().update(beforeTime);
-			for (int i = 0; i < levelModel.getDiamonds().size(); i++)
-				levelModel.getDiamonds().get(i).update(beforeTime);
-			for (int i = 0; i < levelModel.getMagicWalls().size(); i++)
-				levelModel.getMagicWalls().get(i).update(beforeTime);
-
-			// refresh the gameView
+		while (true){
+			// Refresh the model
+			for (int x = 0; x < this.levelModel.getSizeWidth(); x++) {
+				for (int y = 0; y < this.levelModel.getSizeHeight(); y++) {
+					this.levelModel.update(x, y);
+				}
+			}
+			// Refresh the gameView
 			frameToDisplay.getGameView().repaint();
 
 			timeDiff = System.currentTimeMillis() - beforeTime;
 			sleep = DELAY - timeDiff;
 
+			// Speed of sprite animation
 			if (sleep < 0) {
-				sleep = 2;
+				sleep = 10;
 			}
 
 			try {

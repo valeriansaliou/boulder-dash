@@ -65,17 +65,11 @@ public class LevelLoadHelper {
 	private int rockfordPositionX = 0;
 	private int rockfordPositionY = 0;
 
-	private ArrayList<DiamondModel> diamondList;
-	private ArrayList<MagicWallModel> magicWallList;
-
 	private DisplayableElementModel[][] groundGrid;
 
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
-		
-		this.diamondList = new ArrayList<DiamondModel>();
-		this.magicWallList = new ArrayList<MagicWallModel>();
-		
+
 		if (this.levelId != null) {
 			// Let's go.
 			this.loadLevelData();
@@ -229,9 +223,6 @@ public class LevelLoadHelper {
 
 		case "diamond":
 			element = new DiamondModel(rowIndex, lineIndex);
-
-			this.setDiamondList((DiamondModel) element);
-
 			break;
 
 		case "dirt":
@@ -244,9 +235,6 @@ public class LevelLoadHelper {
 
 		case "magicwall":
 			element = new MagicWallModel(rowIndex, lineIndex);
-			
-			this.setMagicWallList((MagicWallModel) element);
-			
 			break;
 
 		case "rockford":
@@ -267,10 +255,6 @@ public class LevelLoadHelper {
 		}
 
 		return element;
-	}
-
-	private void setMagicWallList(MagicWallModel magicWallItem) {
-		this.magicWallList.add(magicWallItem);
 	}
 
 	public String getLevelId() {
@@ -345,14 +329,6 @@ public class LevelLoadHelper {
 		this.rockfordInstance = rockfordInstance;
 	}
 
-	public ArrayList<DiamondModel> getDiamondList() {
-		return this.diamondList;
-	}
-
-	public void setDiamondList(DiamondModel diamondItem) {
-		this.diamondList.add(diamondItem);
-	}
-
 	public DisplayableElementModel[][] getGroundGrid() {
 		return this.groundGrid;
 	}
@@ -361,7 +337,4 @@ public class LevelLoadHelper {
 		this.groundGrid = groundGrid;
 	}
 
-	public ArrayList<MagicWallModel> getMagicWallsList() {
-		return magicWallList;
-	}
 }

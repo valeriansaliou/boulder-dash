@@ -118,4 +118,10 @@ public class DisplayableElementModel {
 		this.sprite = subImages;
 		return subImages;
 	}
+
+	public void update(long currentTimeMillis) {
+		if (this.getSpriteName() == "rockford" || this.getSpriteName() == "diamond" || this.getSpriteName() == "magicwall") {
+			this.update(currentTimeMillis);
+		}
+	}
 }
