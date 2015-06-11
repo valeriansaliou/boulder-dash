@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
+/**
+ * RockfordModel represents the hero of the game.
+ * @author colinleverger
+ *
+ */
 public class RockfordModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
@@ -12,6 +17,8 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	
+	// ArrayList of BufferedImage to get all the subimages from the sprite file...
 	private static ArrayList<BufferedImage> framesBlinking;
 	private static ArrayList<BufferedImage> framesRunningLeft;
 	private static ArrayList<BufferedImage> framesRunningRight;
@@ -22,6 +29,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 
 	private long speed;
 
+	// Differents states possible for Rockford
 	private boolean isStaying = true;
 	private boolean isRunningLeft = false;
 	private boolean isRunningRight = false;
@@ -50,21 +58,21 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	public void update(long time) {
-		if (time - previousTime >= speed) {
+		if (time - this.previousTime >= this.speed) {
 			// update the animation
-			previousTime = time;
+			this.previousTime = time;
 			try {
 				currentFrame += 1;
 				if (isStaying())
-					setSprite(framesBlinking.get(currentFrame));
+					this.setSprite(framesBlinking.get(currentFrame));
 				else if (isRunningLeft())
-					setSprite(framesRunningLeft.get(currentFrame));
+					this.setSprite(framesRunningLeft.get(currentFrame));
 				else if (isRunningRight())
-					setSprite(framesRunningRight.get(currentFrame));
+					this.setSprite(framesRunningRight.get(currentFrame));
 				else if (isRunningUpOrDown())
-					setSprite(framesRunningUpOrDown.get(currentFrame));
+					this.setSprite(framesRunningUpOrDown.get(currentFrame));
 			} catch (IndexOutOfBoundsException e) {
-				currentFrame = 0;
+				this.currentFrame = 0;
 			}
 		}
 	}
@@ -103,24 +111,24 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	public boolean isStaying() {
-		return isStaying;
+		return this.isStaying;
 	}
 
 	public boolean isRunningLeft() {
-		return isRunningLeft;
+		return this.isRunningLeft;
 	}
 
 	public boolean isRunningRight() {
-		return isRunningRight;
+		return this.isRunningRight;
 	}
 
 	public boolean isRunningUpOrDown() {
-		return isRunningUpOrDown;
+		return this.isRunningUpOrDown;
 	}
 
 	/*
-	 * initialise all the sprite from the main image; takes the subimage and put
-	 * them into an array
+	 * Initialise all the sprite from the main image; takes the subimage and put
+	 * them into the arrays
 	 */
 	private void initSprites() {
 		framesBlinking = new ArrayList<BufferedImage>();

@@ -1,13 +1,12 @@
 package fr.enssat.BoulderDash.models;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
+/**
+ * SteelWallModel, it represents the steelWall
+ * @author colinleverger
+ *
+ */
 public class SteelWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
@@ -15,7 +14,6 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
-	private BufferedImage img;
 
 	static {
 		spriteName = "steelwall";
@@ -23,7 +21,7 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 		canMove = false;
 		impactExplosive = false;
 		animate = false;
-		priority = 8;
+		priority = 10;
 	}
 
 	public SteelWallModel(int x, int y) {

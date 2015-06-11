@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
+/**
+ * MagicWallModel, it represents the magic wall.
+ * @author colinleverger
+ *
+ */
 public class MagicWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;
@@ -13,6 +18,7 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 	private static boolean animate;
 	private static int priority;
 
+	// Store the frames for the sprite
 	private ArrayList<BufferedImage> framesMagicWall;
 
 	private long previousTime;
@@ -35,6 +41,9 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 		this.initSprites();
 	}
 
+	/**
+	 * Function to annimate the sprite
+	 */
 	public void update(long time) {
 		if (time - previousTime >= speed) {
 			// update the animation
@@ -47,7 +56,10 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 			}
 		}
 	}
-
+	
+	/**
+	 * Init the subimages
+	 */
 	private void initSprites() {
 		this.framesMagicWall = new ArrayList<BufferedImage>();
 		/* INIT SPRITE FOR DIAMOND */

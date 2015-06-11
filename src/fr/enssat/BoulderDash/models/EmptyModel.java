@@ -1,11 +1,10 @@
 package fr.enssat.BoulderDash.models;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+/**
+ * EmptyModel, represent "nothing"
+ * @author colinleverger
+ *
+ */
 public class EmptyModel extends DisplayableElementModel {
 	private static String spriteName;
 	private static boolean isDestructible;
@@ -13,7 +12,6 @@ public class EmptyModel extends DisplayableElementModel {
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
-	private BufferedImage img;
 
 	static {
 		spriteName = "black";

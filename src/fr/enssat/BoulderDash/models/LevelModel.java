@@ -1,8 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Observable;
 
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
@@ -25,7 +23,7 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 	private int rockfordPositionY = 0;
 
 	/**
-	 * here is modeled our game
+	 * Here is modeled our game
 	 * 
 	 * @param levelName
 	 */
@@ -41,11 +39,13 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		this.createLimits();
 		this.initiateRockford();
 	}
-
+	/**
+	 * Create the limits : steelWall all around the game panel.
+	 */
 	private void createLimits() {
 		int maxWidth = this.sizeWidth - 1;
 		int maxHeight = this.sizeHeight - 1;
-
+		//DEBUG
 		System.out.print("width -> " + Integer.toString(this.groundGrid.length));
 		System.out.print("height -> " + Integer.toString(this.groundGrid[0].length));
 
@@ -72,8 +72,11 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		}
 
 		this.groundGrid[oldX][oldY] = new EmptyModel(oldX, oldY);
+		// Save the x / y pos of Rockford in the levelModel and in the RockfordModel...
 		this.setRockfordPositionX(posX);
 		this.setRockfordPositionY(posY);
+		this.rockford.setX(posX);
+		this.rockford.setY(posY);
 		this.groundGrid[posX][posY] = this.getRockford();
 	}
 	
