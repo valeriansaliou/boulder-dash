@@ -23,10 +23,10 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 		canMove = false;
 		impactExplosive = false;
 		animate = false;
-		priority = 10;
+		priority = 3;
 	}
-	public BrickWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, pathToSprite, priority, impactExplosive, animate);
+	public BrickWallModel() {
+		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate);
 		loadSprite(spriteName);
 	}
 }

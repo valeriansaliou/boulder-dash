@@ -20,7 +20,7 @@ public class ExpandingWallModel extends DisplayableElementModel implements Publi
 		priority = 10;
 	}
 
-	public ExpandingWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public ExpandingWallModel() {
+		super(animate, animate, spriteName, priority, animate, animate);//TODO IT IS NOT IN THE RIGHT ORDER
 	}
 }

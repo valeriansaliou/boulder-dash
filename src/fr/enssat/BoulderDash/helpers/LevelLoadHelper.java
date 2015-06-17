@@ -202,43 +202,43 @@ public class LevelLoadHelper {
 		// Instanciates the sprite element matching the given sprite name
 		switch (spriteName) {
 		case "amoeba":
-			element = new AmoebaModel(rowIndex, lineIndex);
+			element = new AmoebaModel();
 			break;
 
 		case "black":
-			element = new EmptyModel(rowIndex, lineIndex);
+			element = new EmptyModel();
 			break;
 
 		case "boulder":
-			element = new BoulderModel(rowIndex, lineIndex);
+			element = new BoulderModel();
 			break;
 
 		case "brickwall":
-			element = new BrickWallModel(rowIndex, lineIndex);
+			element = new BrickWallModel();
 			break;
 
 		case "butterfly":
-			element = new ButterflyModel(rowIndex, lineIndex);
+			element = new ButterflyModel();
 			break;
 
 		case "diamond":
-			element = new DiamondModel(rowIndex, lineIndex);
+			element = new DiamondModel();
 			break;
 
 		case "dirt":
-			element = new DirtModel(rowIndex, lineIndex);
+			element = new DirtModel();
 			break;
 
 		case "firefly":
-			element = new FireflyModel(rowIndex, lineIndex);
+			element = new FireflyModel();
 			break;
 
 		case "magicwall":
-			element = new MagicWallModel(rowIndex, lineIndex);
+			element = new MagicWallModel();
 			break;
 
 		case "rockford":
-			element = new RockfordModel(rowIndex, lineIndex);
+			element = new RockfordModel();
 
 			this.setRockfordPositionX(rowIndex);
 			this.setRockfordPositionY(lineIndex);
@@ -247,7 +247,7 @@ public class LevelLoadHelper {
 			break;
 
 		case "steelwall":
-			element = new SteelWallModel(rowIndex, lineIndex);
+			element = new SteelWallModel();
 			break;
 
 		default:

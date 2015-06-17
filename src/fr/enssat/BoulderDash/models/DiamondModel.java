@@ -27,11 +27,11 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		canMove = true;
 		impactExplosive = false;
 		animate = true;
-		priority = 1;
+		priority = 0;
 	}
 
-	public DiamondModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public DiamondModel() {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		this.initSprites();
 	}
 

@@ -21,11 +21,11 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 		canMove = false;
 		impactExplosive = false;
 		animate = false;
-		priority = 10;
+		priority = 3;
 	}
 
-	public SteelWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public SteelWallModel() {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		loadSprite(spriteName);
 	}
 }

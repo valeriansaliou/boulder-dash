@@ -14,18 +14,14 @@ public class DisplayableElementModel {
 	private boolean animate;
 	private boolean impactExplosive;
 	private String spriteName;
-	private int x;
-	private int y;
 	private int priority;
 	private BufferedImage sprite;
 
-	public DisplayableElementModel(boolean isDestructible, boolean isMoving, int x, int y, String spriteName, int priority, boolean impactExplosive, boolean animate) {
+	public DisplayableElementModel(boolean isDestructible, boolean isMoving, String spriteName, int priority, boolean impactExplosive, boolean animate) {
 		this.isMoving = isMoving;
 		this.isDestructible = isDestructible;
 		this.spriteName = spriteName;
 		this.priority = priority;
-		this.x = x;
-		this.y = y;
 		this.animate = animate;
 		this.impactExplosive = impactExplosive;
 		this.priority = priority;
@@ -49,22 +45,6 @@ public class DisplayableElementModel {
 
 	public String getPathToSprite() {
 		return getSpriteStoragePath() + getSpriteName() + ".gif";
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	public int getPriority() {
@@ -94,7 +74,7 @@ public class DisplayableElementModel {
 	public void setSprite(BufferedImage sprite) {
 		this.sprite = sprite;
 	}
-
+	
 	public BufferedImage getSprite() {
 		return sprite;
 	}
@@ -119,9 +99,5 @@ public class DisplayableElementModel {
 		return subImages;
 	}
 
-	public void update(long currentTimeMillis) {
-		if (this.getSpriteName() == "rockford" || this.getSpriteName() == "diamond" || this.getSpriteName() == "magicwall") {
-			this.update(currentTimeMillis);
-		}
-	}
+	public void update(long currentTimeMillis) {}
 }

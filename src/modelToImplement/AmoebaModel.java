@@ -19,7 +19,7 @@ public class AmoebaModel extends DisplayableElementModel {
 		priority = 2;
 	}
 
-	public AmoebaModel(int x, int y) {
-		super(animate, animate, x, y, spriteName, y, animate, animate);
+	public AmoebaModel() {
+		super(animate, animate, spriteName, priority, animate, animate);//TODO IT IS NOT IN THE RIGHT ORDER
 	}
 }

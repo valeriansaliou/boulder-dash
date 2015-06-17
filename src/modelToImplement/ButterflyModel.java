@@ -19,7 +19,7 @@ public class ButterflyModel extends DisplayableElementModel {
 		priority = 2;
 	}
 
-	public ButterflyModel(int x, int y) {
-		super(animate, animate, x, y, spriteName, y, animate, animate);
+	public ButterflyModel() {
+		super(animate, animate, spriteName, priority, animate, animate);//TODO IT IS NOT IN THE RIGHT ORDER
 	}
 }

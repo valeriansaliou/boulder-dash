@@ -22,11 +22,11 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 		canMove = true;
 		impactExplosive = false;
 		animate = true;
-		priority = 10;
+		priority = 2;
 	}
 
-	public BoulderModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public BoulderModel() {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		this.falling = false;
 		loadSprite(spriteName);
 	}

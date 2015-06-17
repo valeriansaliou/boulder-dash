@@ -20,11 +20,11 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 		canMove = false;
 		impactExplosive = false;
 		animate = false;
-		priority = 3;
+		priority = 0;
 	}
 
-	public DirtModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public DirtModel() {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		loadSprite(spriteName);
 	}
 

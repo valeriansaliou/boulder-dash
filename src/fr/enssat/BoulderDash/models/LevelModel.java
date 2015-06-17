@@ -19,8 +19,7 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
 	private int score;
-	private int rockfordPositionX = 0;
-	private int rockfordPositionY = 0;
+	private int rockfordPositionX,rockfordPositionY;
 
 	/**
 	 * Here is modeled our game
@@ -37,7 +36,13 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
 		this.createLimits();
-		this.initiateRockford();
+		this.initRockford();
+	}
+
+	private void initRockford() {
+		this.rockfordPositionX = this.levelLoadHelper.getRockfordPositionX();
+		this.rockfordPositionY = this.levelLoadHelper.getRockfordPositionY();
+		this.rockford = this.levelLoadHelper.getRockfordInstance();		
 	}
 
 	/**
@@ -54,12 +59,12 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		System.out.print("maxHeight -> " + Integer.toString(maxHeight));
 
 		for (int x = 0; x < this.sizeWidth; x++) {
-			this.groundGrid[x][0] = new SteelWallModel(x, 0);
-			this.groundGrid[x][maxHeight] = new SteelWallModel(x, maxHeight);
+			this.groundGrid[x][0] = new SteelWallModel();
+			this.groundGrid[x][maxHeight] = new SteelWallModel();
 		}
 		for (int y = 0; y < this.sizeHeight; y++) {
-			this.groundGrid[0][y] = new SteelWallModel(0, y);
-			this.groundGrid[maxWidth][y] = new SteelWallModel(maxWidth, y);
+			this.groundGrid[0][y] = new SteelWallModel();
+			this.groundGrid[maxWidth][y] = new SteelWallModel();
 		}
 	}
 
@@ -71,45 +76,43 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 			this.score += 1;
 			System.out.println(score);
 		}
-
-		this.groundGrid[oldX][oldY] = new EmptyModel(oldX, oldY);
-		// Save the x / y pos of Rockford in the levelModel and in the
-		// RockfordModel...
-		this.setRockfordPositionX(posX);
-		this.setRockfordPositionY(posY);
-		this.rockford.setX(posX);
-		this.rockford.setY(posY);
-		this.groundGrid[posX][posY] = this.getRockford();
+		if (posX > 0 && posY > 0 && posX < this.levelLoadHelper.getHeightSizeValue() && posY < this.levelLoadHelper.getWidthSizeValue()) {
+			this.groundGrid[oldX][oldY] = new EmptyModel();
+			// Save the x / y pos of Rockford in the levelModel and in the
+			// RockfordModel...
+			this.setRockfordPositionX(posX);
+			this.setRockfordPositionY(posY);
+			this.groundGrid[posX][posY] = this.getRockford();
+		}
 	}
 
-	private void initiateRockford() {
-		this.setRockfordPositionX(this.levelLoadHelper.getRockfordPositionX());
-		this.setRockfordPositionY(this.levelLoadHelper.getRockfordPositionY());
-		this.rockford = this.getRockford();
+	
+	public int getRockfordPositionX() {
+		return rockfordPositionX;
+	}
+
+	public void setRockfordPositionX(int rockfordPositionX) {
+		this.rockfordPositionX = rockfordPositionX;
+	}
+
+	public int getRockfordPositionY() {
+		return rockfordPositionY;
+	}
+
+	public void setRockfordPositionY(int rockfordPositionY) {
+		this.rockfordPositionY = rockfordPositionY;
 	}
 
 	public RockfordModel getRockford() {
 		return this.levelLoadHelper.getRockfordInstance();
 	}
 
-	public int getRockfordPositionX() {
-		return this.rockfordPositionX;
-	}
-
-	public void setRockfordPositionX(int x) {
-		this.rockfordPositionX = x;
-	}
-
-	public int getRockfordPositionY() {
-		return this.rockfordPositionY;
-	}
-
-	public void setRockfordPositionY(int y) {
-		this.rockfordPositionY = y;
-	}
-
 	public BufferedImage getImage(int x, int y) {
 		return this.groundGrid[x][y].getSprite();
+	}
+
+	public DisplayableElementModel getDisplayableElement(int x, int y) {
+		return this.groundGrid[x][y];
 	}
 
 	public int getSizeWidth() {
@@ -135,14 +138,13 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 	public void update(int x, int y) {
 		// Update the animations
 		groundGrid[x][y].update(System.currentTimeMillis());
-
-		if (groundGrid[x][y].getSpriteName() == "boulder" && groundGrid[x][y + 1].getSpriteName() == "black") {
-			groundGrid[x][y + 1] = groundGrid[x][y];
-			groundGrid[x][y] = new EmptyModel(x, y);
-		} else if (groundGrid[x][y].getSpriteName() == "diamond" && groundGrid[x][y + 1].getSpriteName() == "black") {
-			groundGrid[x][y + 1] = groundGrid[x][y];
-			groundGrid[x][y] = new EmptyModel(x, y);
-		}
-
 	}
+	
+//	if (groundGrid[x][y].getSpriteName() == "boulder" && groundGrid[x][y + 1].getSpriteName() == "black") {
+//	groundGrid[x][y + 1] = groundGrid[x][y];
+//	groundGrid[x][y] = new EmptyModel(x, y);
+//} else if (groundGrid[x][y].getSpriteName() == "diamond" && groundGrid[x][y + 1].getSpriteName() == "black") {
+//	groundGrid[x][y + 1] = groundGrid[x][y];
+//	groundGrid[x][y] = new EmptyModel(x, y);
+//} TODO
 }

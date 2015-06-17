@@ -31,11 +31,11 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 		canMove = false;
 		impactExplosive = false;
 		animate = false;
-		priority = 10;
+		priority = 3;
 	}
 
-	public MagicWallModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public MagicWallModel() {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		this.currentFrame = 0;
 		this.speed =  100;
 		this.initSprites();

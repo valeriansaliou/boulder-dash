@@ -44,11 +44,11 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		canMove = true;
 		impactExplosive = true;
 		animate = true;
-		priority = 8;
+		priority = 1;
 	}
 
-	public RockfordModel(int x, int y) {
-		super(isDestructible, canMove, x, y, spriteName, priority, impactExplosive, animate);
+	public RockfordModel() {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		this.setSpeed(100);
 		this.initSprites();
 	}
