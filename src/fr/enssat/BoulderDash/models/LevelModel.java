@@ -8,9 +8,9 @@ import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 
 /**
- * Level is loading here from the XML file. The vue know the modele, the
+ * Level is loading here from the XML file. The view know the model, the
  * controller is going to modify the model in function of the game panel. The
- * modele notify the vue when there is some modification on it.
+ * model notify the view when there is some modification on it.
  * 
  * @author colinleverger
  *
@@ -54,8 +54,8 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	 * Init the thread animator
 	 */
 	private void initThreadAnimator() {
-		spriteAnimator = new Thread(this);
-		spriteAnimator.start();
+		this.spriteAnimator = new Thread(this);
+		this.spriteAnimator.start();
 	}
 
 	/**
@@ -102,15 +102,15 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	public int getRockfordPositionX() {
-		return rockfordPositionX;
+		return this.rockfordPositionX;
 	}
 
 	public int getRockfordPositionY() {
-		return rockfordPositionY;
+		return this.rockfordPositionY;
 	}
 
 	public RockfordModel getRockford() {
-		return this.levelLoadHelper.getRockfordInstance();
+		return this.rockford;
 	}
 
 	public BufferedImage getImage(int x, int y) {

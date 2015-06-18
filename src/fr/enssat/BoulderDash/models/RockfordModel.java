@@ -70,8 +70,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 				currentFrame += 1;
 				if (isStaying())
 					this.setSprite(framesBlinking.get(currentFrame));
-				else if (isRunningLeft())
-					this.setSprite(framesRunningLeft.get(currentFrame));
+				else if (isRunningLeft()){
+					System.out.println("update left");
+					this.setSprite(framesRunningLeft.get(currentFrame));}
 				else if (isRunningRight())
 					this.setSprite(framesRunningRight.get(currentFrame));
 				else if (isRunningUpOrDown())

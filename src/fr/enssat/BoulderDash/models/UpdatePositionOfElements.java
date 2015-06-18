@@ -3,11 +3,15 @@ package fr.enssat.BoulderDash.models;
 public class UpdatePositionOfElements implements Runnable {
 	private LevelModel levelModel;
 	private Thread elementMovingThread;
+	private int rockfordYPosition;
+	private int rockfordXPosition;
+	private boolean rockfordHasMoved;
 	
 	public UpdatePositionOfElements(LevelModel levelModel){
 		this.levelModel = levelModel;
-		this.elementMovingThread = new Thread();
+		this.elementMovingThread = new Thread(this);
 		this.elementMovingThread.start();
+		this.rockfordHasMoved = false;
 	}
 	/**
 	 * Move Rockford inside the model
@@ -40,6 +44,25 @@ public class UpdatePositionOfElements implements Runnable {
 	 * Thread to move the elements one by one and slowly ... TODO
 	 */
 	public void run() {
-		
+		while(true){
+			
+			if(this.rockfordHasMoved){
+				this.setPositionOfRockford(rockfordXPosition,rockfordYPosition);
+				this.rockfordHasMoved = false;
+			}
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void moveRockford(int rockfordXPosition, int rockfordYPosition) {
+		this.rockfordXPosition = rockfordXPosition;
+		this.rockfordYPosition = rockfordYPosition;
+		this.rockfordHasMoved = true;
 	}
 }
