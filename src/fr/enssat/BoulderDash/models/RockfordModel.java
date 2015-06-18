@@ -49,7 +49,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 
 	public RockfordModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
+		// Speed of the animation of the sprite
 		this.setSpeed(100);
+		// Init the sprites in arrays
 		this.initSprites();
 	}
 
@@ -57,6 +59,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		this.speed = speed;
 	}
 
+	/**
+	 * Update the sprite animation (only that)
+	 */
 	public void update(long time) {
 		if (time - this.previousTime >= this.speed) {
 			// update the animation
@@ -77,6 +82,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		}
 	}
 
+	/**
+	 * Rockford stayin
+	 */
 	public void startStaying() {
 		isStaying = true;
 		isRunningLeft = false;
@@ -86,6 +94,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		currentFrame = 0;
 	}
 
+	/**
+	 * Rockford running left
+	 */
 	public void startRunningLeft() {
 		isStaying = false;
 		isRunningLeft = true;
@@ -94,6 +105,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		previousTime = 0;
 	}
 
+	/**
+	 * Rockford running right
+	 */
 	public void startRunningRight() {
 		isStaying = false;
 		isRunningLeft = false;
@@ -102,6 +116,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		previousTime = 0;
 	}
 
+	/**
+	 * Rockford running up or down (same picture)
+	 */
 	public void startRunningUpOrDown() {
 		isStaying = false;
 		isRunningLeft = false;

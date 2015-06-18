@@ -42,7 +42,7 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 	}
 
 	/**
-	 * Function to annimate the sprite
+	 * Function to animate the sprite
 	 */
 	public void update(long time) {
 		if (time - previousTime >= speed) {

@@ -36,9 +36,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.newGame = createButton("New Game");
 		this.editor = createButton("Editor");
 		this.pause = createButton("Pause");
-		this.save = createButton("Save");// FIXME pourquoi pas un bouton
-											// sauvegarder ? fastoche avec le
-											// XML
+		this.save = createButton("Save");
 		this.quit = createButton("Quit");
 
 		add(actionPanel, BorderLayout.SOUTH);

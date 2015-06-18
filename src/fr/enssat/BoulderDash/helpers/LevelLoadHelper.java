@@ -336,5 +336,4 @@ public class LevelLoadHelper {
 	private void setGroundGrid(DisplayableElementModel[][] groundGrid) {
 		this.groundGrid = groundGrid;
 	}
-
 }

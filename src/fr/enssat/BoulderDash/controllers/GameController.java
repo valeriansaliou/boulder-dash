@@ -8,19 +8,25 @@ import javax.swing.JFrame;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.FrameToDisplay;
 
-// GameController is creating the view
+/**
+ * The GameController is creating the view. There is also the game loop on it.
+ * 
+ * @author colinleverger
+ *
+ */
 public class GameController implements ActionListener, Runnable {
 	private LevelModel levelModel;
 	private Thread animator;
-	private FrameToDisplay frameToDisplay;
 
+	// Speed of animation
 	private final int DELAY = 25;
 
 	public GameController(LevelModel levelModel) {
 		this.levelModel = levelModel;
-		this.frameToDisplay = new FrameToDisplay(this, levelModel);
+		new FrameToDisplay(this, levelModel);
 
-		this.addNotify();
+		animator = new Thread(this);
+		animator.start();
 	}
 
 	public void actionPerformed(ActionEvent event) {
@@ -29,44 +35,20 @@ public class GameController implements ActionListener, Runnable {
 		}
 	}
 
-	public void addNotify() {
-		frameToDisplay.getGameView().addNotify();
+//	public void addNotify() { //TODO is this useful ?
+//		frameToDisplay.getGameView().addNotify();
+//
+//		animator = new Thread(this);
+//		animator.start();
+//	}
 
-		animator = new Thread(this);
-		animator.start();
-	}
-
-	@Override
+	/**
+	 * Thread to update the sprites (and only the sprites !)
+	 */
 	public void run() {
-		long beforeTime, timeDiff, sleep;
 
-		beforeTime = System.currentTimeMillis();
-
-		while (true){
-			// Refresh the model
-			for (int x = 0; x < this.levelModel.getSizeWidth(); x++) {
-				for (int y = 0; y < this.levelModel.getSizeHeight(); y++) {
-					this.levelModel.update(x, y);
-				}
-			}
-			// Refresh the gameView
-			frameToDisplay.getGameView().repaint();
-
-			timeDiff = System.currentTimeMillis() - beforeTime;
-			sleep = DELAY - timeDiff;
-
-			// Speed of sprite animation
-			if (sleep < 0) {
-				sleep = 10;
-			}
-
-			try {
-				Thread.sleep(sleep);
-			} catch (InterruptedException e) {
-				System.out.println("Interrupted: " + e.getMessage());
-			}
-
-			beforeTime = System.currentTimeMillis();
+		while (true) {
+			
 		}
 
 	}

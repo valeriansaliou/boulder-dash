@@ -1,17 +1,21 @@
 package fr.enssat.BoulderDash.models;
 
 import java.awt.image.BufferedImage;
+import java.util.Observable;
 
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
-//le niveau se charge ici
-//a partir du fichier
-//la vue connais le modele
-//le controlleur va modifier le model en fonction de l'utilisateur
-//le modele previens la vue qu'il y a eu des modifs
 
-public class LevelModel implements LevelLoadInterface, SubscriberInterface {
+/**
+ * Level is loading here from the XML file. The vue know the modele, the
+ * controller is going to modify the model in function of the game panel. The
+ * modele notify the vue when there is some modification on it.
+ * 
+ * @author colinleverger
+ *
+ */
+public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface, Runnable {
 	private DisplayableElementModel[][] groundGrid;
 	private String levelName;
 	private int sizeWidth = 0;
@@ -19,7 +23,13 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
 	private int score;
-	private int rockfordPositionX,rockfordPositionY;
+	private int rockfordPositionX, rockfordPositionY;
+
+	// Thread for sprite animation.
+	private Thread spriteAnimator;
+
+	// Speed of animation
+	private final int DELAY = 25;
 
 	/**
 	 * Here is modeled our game
@@ -37,12 +47,24 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 
 		this.createLimits();
 		this.initRockford();
+		this.initThreadAnimator();
 	}
 
+	/**
+	 * Init the thread animator
+	 */
+	private void initThreadAnimator() {
+		spriteAnimator = new Thread(this);
+		spriteAnimator.start();
+	}
+
+	/**
+	 * Function to initialize the RockfordPosition
+	 */
 	private void initRockford() {
 		this.rockfordPositionX = this.levelLoadHelper.getRockfordPositionX();
 		this.rockfordPositionY = this.levelLoadHelper.getRockfordPositionY();
-		this.rockford = this.levelLoadHelper.getRockfordInstance();		
+		this.rockford = this.levelLoadHelper.getRockfordInstance();
 	}
 
 	/**
@@ -52,11 +74,11 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		int maxWidth = this.sizeWidth - 1;
 		int maxHeight = this.sizeHeight - 1;
 		// DEBUG
-		System.out.print("width -> " + Integer.toString(this.groundGrid.length));
-		System.out.print("height -> " + Integer.toString(this.groundGrid[0].length));
+		System.out.println("width -> " + Integer.toString(this.groundGrid.length));
+		System.out.println("height -> " + Integer.toString(this.groundGrid[0].length));
 
-		System.out.print("maxWidth -> " + Integer.toString(maxWidth));
-		System.out.print("maxHeight -> " + Integer.toString(maxHeight));
+		System.out.println("maxWidth -> " + Integer.toString(maxWidth));
+		System.out.println("maxHeight -> " + Integer.toString(maxHeight));
 
 		for (int x = 0; x < this.sizeWidth; x++) {
 			this.groundGrid[x][0] = new SteelWallModel();
@@ -68,39 +90,23 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		}
 	}
 
-	public void setPositionOfRockford(int posX, int posY) {
-		int oldX = this.getRockfordPositionX();
-		int oldY = this.getRockfordPositionY();
-
-		if (groundGrid[posX][posY].getSpriteName() == "diamond") {
-			this.score += 1;
-			System.out.println(score);
-		}
-		if (posX > 0 && posY > 0 && posX < this.levelLoadHelper.getHeightSizeValue() && posY < this.levelLoadHelper.getWidthSizeValue()) {
-			this.groundGrid[oldX][oldY] = new EmptyModel();
-			// Save the x / y pos of Rockford in the levelModel and in the
-			// RockfordModel...
-			this.setRockfordPositionX(posX);
-			this.setRockfordPositionY(posY);
-			this.groundGrid[posX][posY] = this.getRockford();
-		}
+	/**
+	 * Update the x,y pos of Rockford in the model.
+	 * 
+	 * @param posX
+	 * @param posY
+	 */
+	public void updateRockfordPosition(int posX, int posY) {
+		this.rockfordPositionY = posY;
+		this.rockfordPositionX = posX;
 	}
 
-	
 	public int getRockfordPositionX() {
 		return rockfordPositionX;
 	}
 
-	public void setRockfordPositionX(int rockfordPositionX) {
-		this.rockfordPositionX = rockfordPositionX;
-	}
-
 	public int getRockfordPositionY() {
 		return rockfordPositionY;
-	}
-
-	public void setRockfordPositionY(int rockfordPositionY) {
-		this.rockfordPositionY = rockfordPositionY;
 	}
 
 	public RockfordModel getRockford() {
@@ -135,16 +141,45 @@ public class LevelModel implements LevelLoadInterface, SubscriberInterface {
 		return groundGrid;
 	}
 
-	public void update(int x, int y) {
-		// Update the animations
+	/**
+	 * Update the current image. Notify the observers after that.
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public void updateSprites(int x, int y) {
 		groundGrid[x][y].update(System.currentTimeMillis());
+		notifyObservers();
+		setChanged();
 	}
-	
-//	if (groundGrid[x][y].getSpriteName() == "boulder" && groundGrid[x][y + 1].getSpriteName() == "black") {
-//	groundGrid[x][y + 1] = groundGrid[x][y];
-//	groundGrid[x][y] = new EmptyModel(x, y);
-//} else if (groundGrid[x][y].getSpriteName() == "diamond" && groundGrid[x][y + 1].getSpriteName() == "black") {
-//	groundGrid[x][y + 1] = groundGrid[x][y];
-//	groundGrid[x][y] = new EmptyModel(x, y);
-//} TODO
+
+	/**
+	 * Update all the sprites for the animations.
+	 */
+	public void run() {
+		while (true) {
+
+			for (int x = 0; x < this.getSizeWidth(); x++) {
+				for (int y = 0; y < this.getSizeHeight(); y++) {
+					this.updateSprites(x, y);
+				}
+			}
+
+			try {
+				Thread.sleep(DELAY);
+			} catch (InterruptedException e) {
+				System.out.println("Interrupted: " + e.getMessage());
+			}
+
+		}
+
+	}
+
+	public void incrementScore() {
+		this.score +=1;		
+	}
+
+	public LevelLoadHelper getLevelLoadHelper() {
+		return levelLoadHelper;
+	}
 }

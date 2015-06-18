@@ -3,7 +3,7 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 
 /**
- * BoulderModel, it reprents the boulders.
+ * BoulderModel, it represents the boulders.
  * @author colinleverger
  *
  */
