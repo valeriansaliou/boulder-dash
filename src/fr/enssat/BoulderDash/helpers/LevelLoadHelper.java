@@ -212,13 +212,14 @@ public class LevelLoadHelper {
 							if (currentSpriteNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element currentSpriteElement = (Element) currentSpriteNode;
 								String currentSpriteName = currentSpriteElement.getAttribute("name");
+                                String currentSpriteConvertible = currentSpriteElement.getAttribute("convertible");
 
 								// Process positions
 								int pX = rowIndex + this.limitsOffsetWidth;
 								int pY = lineIndex + this.limitsOffsetHeight;
 
 								try {
-									this.groundGrid[pX][pY] = this.constructGridElement(currentSpriteName, pX, pY);
+									this.groundGrid[pX][pY] = this.constructGridElement(currentSpriteName, pX, pY, currentSpriteConvertible);
 								} catch (UnknownSpriteException e) {
 									e.printStackTrace();
 								}
@@ -237,7 +238,7 @@ public class LevelLoadHelper {
      * @param  rowIndex    Position in row (horizontal axis)
      * @param  lineIndex   Position in line (vertical axis)
      */
-	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex) throws UnknownSpriteException {
+	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex, String convertible) throws UnknownSpriteException {
 		DisplayableElementModel element;
 
 		// Instanciates the sprite element matching the given sprite name
@@ -247,7 +248,7 @@ public class LevelLoadHelper {
                 break;
 
             case "boulder":
-                element = new BoulderModel();
+                element = new BoulderModel(convertible);
                 break;
 
             case "brickwall":

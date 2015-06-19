@@ -1,9 +1,12 @@
 package fr.enssat.BoulderDash.views;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
+import java.awt.*;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+
+import com.apple.eawt.Application;
 
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
@@ -54,11 +57,18 @@ public class FrameToDisplay extends JFrame implements Observer {
 		setVisible(true);
 		setResizable(false);
 
+        // UI parameters
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
 		setSize(432, 510);
 
-		// grab the focus to use the keys
+        // App parameters
+        setTitle("Boulder Dash");
+
+        Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
+        setIconImage(appIcon);
+
+		// Grab the focus to use the keys
 		this.gameView.grabFocus();
 	}
 
