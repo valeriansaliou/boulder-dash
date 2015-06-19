@@ -76,5 +76,4 @@ public class GameView extends JPanel implements Observer {
 	public void update(Observable obs, Object obj) {
 		repaint();
 	}
-
 }
