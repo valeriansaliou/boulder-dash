@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.GameView;
 
 
 /**

@@ -1,15 +1,20 @@
 package fr.enssat.BoulderDash.helpers;
 
 import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
-import fr.enssat.BoulderDash.models.*;
-import modelToImplement.AmoebaModel;
-import modelToImplement.ButterflyModel;
-import modelToImplement.FireflyModel;
+import fr.enssat.BoulderDash.models.RockfordModel;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.models.EmptyModel;
+import fr.enssat.BoulderDash.models.BrickWallModel;
+import fr.enssat.BoulderDash.models.BoulderModel;
+import fr.enssat.BoulderDash.models.DiamondModel;
+import fr.enssat.BoulderDash.models.DirtModel;
+import fr.enssat.BoulderDash.models.MagicWallModel;
+import fr.enssat.BoulderDash.models.SteelWallModel;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -237,57 +242,45 @@ public class LevelLoadHelper {
 
 		// Instanciates the sprite element matching the given sprite name
 		switch (spriteName) {
-		case "amoeba":
-			element = new AmoebaModel();
-			break;
+            case "black":
+                element = new EmptyModel();
+                break;
 
-		case "black":
-			element = new EmptyModel();
-			break;
+            case "boulder":
+                element = new BoulderModel();
+                break;
 
-		case "boulder":
-			element = new BoulderModel();
-			break;
+            case "brickwall":
+                element = new BrickWallModel();
+                break;
 
-		case "brickwall":
-			element = new BrickWallModel();
-			break;
+            case "diamond":
+                element = new DiamondModel();
+                break;
 
-		case "butterfly":
-			element = new ButterflyModel();
-			break;
+            case "dirt":
+                element = new DirtModel();
+                break;
 
-		case "diamond":
-			element = new DiamondModel();
-			break;
+            case "magicwall":
+                element = new MagicWallModel();
+                break;
 
-		case "dirt":
-			element = new DirtModel();
-			break;
+            case "rockford":
+                element = new RockfordModel();
 
-		case "firefly":
-			element = new FireflyModel();
-			break;
+                this.setRockfordPositionX(rowIndex);
+                this.setRockfordPositionY(lineIndex);
+                this.setRockfordInstance((RockfordModel) element);
 
-		case "magicwall":
-			element = new MagicWallModel();
-			break;
+                break;
 
-		case "rockford":
-			element = new RockfordModel();
+            case "steelwall":
+                element = new SteelWallModel();
+                break;
 
-			this.setRockfordPositionX(rowIndex);
-			this.setRockfordPositionY(lineIndex);
-			this.setRockfordInstance((RockfordModel) element);
-
-			break;
-
-		case "steelwall":
-			element = new SteelWallModel();
-			break;
-
-		default:
-			throw new UnknownSpriteException("Unknown sprite element");
+            default:
+                throw new UnknownSpriteException("Unknown sprite element");
 		}
 
 		return element;

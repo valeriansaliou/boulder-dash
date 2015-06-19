@@ -3,6 +3,9 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.models.RockfordModel;
+import fr.enssat.BoulderDash.models.SteelWallModel;
 
 import java.awt.image.BufferedImage;
 import java.util.Observable;
