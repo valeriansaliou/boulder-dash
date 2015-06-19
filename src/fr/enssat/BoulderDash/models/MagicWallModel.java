@@ -21,6 +21,7 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private static boolean falling;
 
     /**
      * Stores the frames
@@ -43,13 +44,14 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 		impactExplosive = false;
 		animate = false;
 		priority = 3;
+		falling = false;
 	}
 
     /**
      * Class constructor
      */
 	public MagicWallModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
 		this.currentFrame = 0;
 		this.speed =  100;
 		this.initSprites();

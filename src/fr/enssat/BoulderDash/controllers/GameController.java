@@ -2,7 +2,7 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.FrameToDisplay;
-import fr.enssat.boulderdash.helpers.AudioLoadHelper;
+import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,8 +35,8 @@ public class GameController implements ActionListener {
 		this.levelModel = levelModel;
 		new FrameToDisplay(this, levelModel);
 
-        this.audioLoadHelper = new AudioLoadHelper();
-        this.audioLoadHelper.startMusic("game");
+//        this.audioLoadHelper = new AudioLoadHelper();
+//        this.audioLoadHelper.startMusic("game");
 	}
 
 	/**
@@ -47,6 +47,8 @@ public class GameController implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand() == "Quit") {
 			System.exit(0);
+		}else if (event.getActionCommand() == "New Game") {
+			this.levelModel.resetGame();
 		}
 	}
 

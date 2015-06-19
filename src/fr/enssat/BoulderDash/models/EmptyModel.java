@@ -15,6 +15,7 @@ public class EmptyModel extends DisplayableElementModel {
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private static boolean falling;
 
     /**
      * Static dataset
@@ -27,13 +28,14 @@ public class EmptyModel extends DisplayableElementModel {
 		impactExplosive = false;
 		animate = false;
 		priority = 0;
+		falling = false;
 	}
 
     /**
      * Class constructor
      */
 	public EmptyModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
 
 		this.loadSprite(spriteName);
 	}

@@ -9,6 +9,7 @@ public class AmoebaModel extends DisplayableElementModel {
 	private static boolean isMoving;
 	private static boolean animate;
 	private static int priority;
+	private static boolean falling;
 
 	static {
 		spriteName = "field_00";
@@ -17,9 +18,10 @@ public class AmoebaModel extends DisplayableElementModel {
 		impactExplosive = true;
 		animate = true;
 		priority = 2;
+		falling = false;
 	}
 
 	public AmoebaModel() {
-		super(animate, animate, spriteName, priority, animate, animate);//TODO IT IS NOT IN THE RIGHT ORDER
+		super(animate, animate, spriteName, priority, animate, animate, falling);//TODO IT IS NOT IN THE RIGHT ORDER
 	}
 }
