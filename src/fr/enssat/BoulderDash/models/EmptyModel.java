@@ -19,6 +19,10 @@ public class EmptyModel extends DisplayableElementModel {
 	private static boolean animate;
 	private static int priority;
 
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "black";
 		isDestructible = false;
@@ -28,6 +32,9 @@ public class EmptyModel extends DisplayableElementModel {
 		priority = 0;
 	}
 
+    /**
+     * Class constructor
+     */
 	public EmptyModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 

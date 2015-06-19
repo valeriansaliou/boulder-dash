@@ -27,7 +27,8 @@ public abstract class DisplayableElementModel {
 	private BufferedImage sprite;
 
 	/**
-	 * Constructor for a DisplayableElementModel.
+     * Class constructor
+     *
 	 * @param destructible
 	 * @param moving
 	 * @param spriteName

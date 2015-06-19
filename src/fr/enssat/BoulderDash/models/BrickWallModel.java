@@ -20,7 +20,11 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 	private static boolean impactExplosive ;
 	private static boolean animate ;
 	private static int priority ;
-	
+
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "brickwall";
 		isDestructible = true;
@@ -30,6 +34,9 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 		priority = 3;
 	}
 
+    /**
+     * Class constructor
+     */
 	public BrickWallModel() {
 		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate);
 

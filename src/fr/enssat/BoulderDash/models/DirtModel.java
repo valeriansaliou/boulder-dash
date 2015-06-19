@@ -20,6 +20,10 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 	private static boolean animate;
 	private static int priority;
 
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "dirt";
 		isDestructible = true;
@@ -29,6 +33,9 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 		priority = 0;
 	}
 
+    /**
+     * Class constructor
+     */
 	public DirtModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 

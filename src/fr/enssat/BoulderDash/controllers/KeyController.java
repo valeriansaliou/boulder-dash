@@ -20,6 +20,11 @@ public class KeyController implements KeyListener {
 	private LevelModel levelModel;
 	private ElementPositionUpdateHelper updatePos;
 
+    /**
+     * Class constructor
+     *
+     * @param  levelModel  Level model
+     */
 	public KeyController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		this.updatePos = new ElementPositionUpdateHelper(levelModel);

@@ -15,7 +15,9 @@ import javax.swing.*;
  * @since       2015-06-19
  */
 public class LevelEditorView extends JFrame {
-
+    /**
+     * Class constructor
+     */
 	public LevelEditorView() {
 		this.initializeView();
 	}

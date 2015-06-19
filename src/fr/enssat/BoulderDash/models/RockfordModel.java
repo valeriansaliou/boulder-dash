@@ -43,6 +43,10 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private long previousTime;
 	private int currentFrame;
 
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "rockford";
 		isDestructible = true;
@@ -52,6 +56,9 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		priority = 1;
 	}
 
+    /**
+     * Class constructor
+     */
 	public RockfordModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		// Speed of the animation of the sprite

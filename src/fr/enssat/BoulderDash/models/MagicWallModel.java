@@ -30,6 +30,10 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 	private int currentFrame;
 	private long speed;
 
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "magicwall";
 		isDestructible = false;
@@ -39,6 +43,9 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 		priority = 3;
 	}
 
+    /**
+     * Class constructor
+     */
 	public MagicWallModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		this.currentFrame = 0;

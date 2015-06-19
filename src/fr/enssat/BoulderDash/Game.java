@@ -13,6 +13,11 @@ import fr.enssat.BoulderDash.models.LevelModel;
  * @since       2015-06-19
  */
 public class Game {
+    /**
+     * Class constructor
+     *
+     * @param  args  Command-line arguments
+     */
 	public static void main(String[] args) {
 		LevelModel levelModel = new LevelModel("level01");
 		new GameController(levelModel);

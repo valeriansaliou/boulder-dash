@@ -31,6 +31,10 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 
 	private ArrayList<BufferedImage> framesDiamond;
 
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "diamond";
 		isDestructible = true;
@@ -40,6 +44,9 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		priority = 0;
 	}
 
+    /**
+     * Class constructor
+     */
 	public DiamondModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 

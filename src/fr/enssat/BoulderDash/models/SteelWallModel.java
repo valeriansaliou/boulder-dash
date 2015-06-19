@@ -20,6 +20,10 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	private static boolean animate;
 	private static int priority;
 
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "steelwall";
 		isDestructible = false;
@@ -29,6 +33,9 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 		priority = 3;
 	}
 
+    /**
+     * Class constructor
+     */
 	public SteelWallModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 		this.loadSprite(spriteName);

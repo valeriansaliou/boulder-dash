@@ -20,7 +20,11 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	private static boolean animate;
 	private static int priority;
 	private boolean falling;
-	
+
+    /**
+     * Static dataset
+     * Specifies the physical parameters of the object
+     */
 	static {
 		spriteName = "boulder";
 		isDestructible = false;
@@ -30,6 +34,9 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 		priority = 2;
 	}
 
+    /**
+     * Class constructor
+     */
 	public BoulderModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 

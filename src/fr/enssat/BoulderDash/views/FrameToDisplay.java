@@ -28,10 +28,12 @@ public class FrameToDisplay extends JFrame implements Observer {
 	private GameController gameController;
 	private LevelModel levelModel;
 
-	/*
-	 * Construction of the main windows which will contain all the elements :
-	 * gameView, informationPanel for scores and actionPanel to quit/newgame/etc
-	 */
+    /**
+     * Class constructor
+     *
+     * @param  gameController  Game controller
+     * @param  levelModel      Level model
+     */
 	public FrameToDisplay(GameController gameController, LevelModel levelModel) {
 		this.gameController = gameController;
 		this.levelModel = levelModel;

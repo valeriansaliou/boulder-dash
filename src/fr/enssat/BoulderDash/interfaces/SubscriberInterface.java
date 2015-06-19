@@ -10,5 +10,10 @@ package fr.enssat.BoulderDash.interfaces;
  * @since       2015-06-19
  */
 public interface SubscriberInterface {
-
+    /**
+     * Class constructor
+     */
+    public SubscriberInterface() {
+        // TODO
+    }
 }

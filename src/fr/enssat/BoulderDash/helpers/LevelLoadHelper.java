@@ -68,6 +68,11 @@ public class LevelLoadHelper {
 
 	private DisplayableElementModel[][] groundGrid;
 
+    /**
+     * Class constructor
+     *
+     * @param  levelId  Level identifier
+     */
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
 

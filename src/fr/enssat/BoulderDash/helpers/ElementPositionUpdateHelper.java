@@ -20,7 +20,12 @@ public class ElementPositionUpdateHelper implements Runnable {
 	private int rockfordYPosition;
 	private int rockfordXPosition;
 	private boolean rockfordHasMoved;
-	
+
+    /**
+     * Class constructor
+     *
+     * @param  levelModel  Level model
+     */
 	public ElementPositionUpdateHelper(LevelModel levelModel){
 		this.levelModel = levelModel;
 		this.elementMovingThread = new Thread(this);

@@ -28,6 +28,12 @@ import fr.enssat.BoulderDash.models.RockfordModel;
 public class GameView extends JPanel implements Observer {
 	private LevelModel levelModel;
 
+    /**
+     * Class constructor
+     *
+     * @param  gameController  Game controller
+     * @param  levelModel      Level model
+     */
 	public GameView(GameController gameController, LevelModel levelModel) {
 		this.levelModel = levelModel;
 

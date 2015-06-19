@@ -20,9 +20,16 @@ public class GameController implements ActionListener, Runnable {
 	private LevelModel levelModel;
 	private Thread animator;
 
-	// Speed of animation
+    /**
+     * Animation speed
+     */
 	private final int DELAY = 25;
 
+    /**
+     * Class constructor
+     *
+     * @param  levelModel  Level model
+     */
 	public GameController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		new FrameToDisplay(this, levelModel);
@@ -32,9 +39,9 @@ public class GameController implements ActionListener, Runnable {
 	}
 
 	/**
-	 * XXXX
-	 * @param xxx
-	 * @return xxx
+	 * Handles the 'action performed' event
+     *
+	 * @param  event  Action event
 	 */
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand() == "Quit") {
@@ -49,12 +56,12 @@ public class GameController implements ActionListener, Runnable {
 //		animator.start();
 //	}
 
-	/**
-	 * Thread to update the sprites (and only the sprites !)
-	 */
+    /**
+     * Updates the sprites
+     */
 	public void run() {
 		while (true) {
-			
+			// TODO
 		}
 	}
 }

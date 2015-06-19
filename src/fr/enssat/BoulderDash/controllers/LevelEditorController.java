@@ -15,5 +15,10 @@ import fr.enssat.BoulderDash.views.LevelEditorView;
  * @since       2015-06-19
  */
 public class LevelEditorController {
-
+    /**
+     * Class constructor
+     */
+    public LevelEditorController() {
+        // TODO
+    }
 }

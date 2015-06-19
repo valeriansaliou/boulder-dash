@@ -37,11 +37,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	// Speed of animation
 	private final int DELAY = 25;
 
-	/**
-	 * Here is modeled our game
-	 * 
-	 * @param levelName
-	 */
+    /**
+     * Class constructor
+     *
+     * @param  levelModel  Level model
+     */
 	public LevelModel(String levelName) {
 		this.score = 0;
 		this.levelName = levelName;
