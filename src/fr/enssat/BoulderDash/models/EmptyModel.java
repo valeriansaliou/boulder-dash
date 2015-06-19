@@ -1,8 +1,5 @@
 package fr.enssat.BoulderDash.models;
 
-import fr.enssat.BoulderDash.models.DisplayableElementModel;
-
-
 /**
  * EmptyModel
  *
