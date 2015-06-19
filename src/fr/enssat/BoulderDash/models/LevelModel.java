@@ -41,7 +41,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      * Animation speed
      */
 	private final int DELAY = 25;
-	private boolean rockfordHasMoved;
 
     /**
      * Class constructor
@@ -52,8 +51,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.score = 0;
 		this.levelName = levelName;
 		this.gameRunning = true;
-
-		this.rockfordHasMoved = false;
 		
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
 		this.groundGrid = this.levelLoadHelper.getGroundGrid();
@@ -286,14 +283,25 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		return this.levelLoadHelper;
 	}
 
+	/**
+	 * set the game to a defined state
+	 * @param gameRunning
+	 */
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
 	}
 	
+	/**
+	 * tells if the game is running
+	 * @return whether the game is running or not
+	 */
 	public boolean isGameRunning(){
 		return gameRunning;
 	}
 
+	/**
+	 * Function that reset the game
+	 */
 	public void resetGame() {
 		System.out.println("reset");
 	}
@@ -310,11 +318,36 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.groundGrid[x-1][y-1] = new EmptyModel();
 	}
 
-	public void setRockfordHasMoved(boolean rockfordHasMoved) {
-		this.rockfordHasMoved = rockfordHasMoved;
+	public void makeThisDisplayableElementFall(int x, int y) {
+		this.getGroundLevelModel()[x][y].setFalling(true);
+		this.getGroundLevelModel()[x][y + 1] = this.getGroundLevelModel()[x][y];
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
-	public boolean isRockfordHasMoved() {
-		return rockfordHasMoved;
+	public void makeThisBoulderSlideLeft(int x, int y) {
+		this.getGroundLevelModel()[x][y].setFalling(true);
+		this.getGroundLevelModel()[x - 1][y + 1] = this.getGroundLevelModel()[x][y];
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+	}
+
+	public void makeThisBoulderSlideRight(int x, int y) {
+		this.getGroundLevelModel()[x][y].setFalling(true);
+		this.getGroundLevelModel()[x + 1][y + 1] = this.getGroundLevelModel()[x][y];
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+	}
+
+	public void transformThisBoulderIntoADiamond(int x, int y) {
+		this.getGroundLevelModel()[x][y+2] = new DiamondModel();
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+	}
+
+	public void moveThisBoulderToRight(int x, int y) {
+		this.getGroundLevelModel()[x+1][y] = this.getGroundLevelModel()[x][y];
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+	}
+
+	public void moveThisBoulderToLeft(int x, int y) {
+		this.getGroundLevelModel()[x-1][y] = this.getGroundLevelModel()[x][y];
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 }

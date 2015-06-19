@@ -37,7 +37,7 @@ public class BoulderAndDiamondController implements Runnable {
 	public void run() {
 		while (this.levelModel.isGameRunning()) {
 			this.manageFallingObject();
-			
+
 			try {
 				Thread.sleep(250);
 			} catch (InterruptedException e) {
@@ -55,12 +55,13 @@ public class BoulderAndDiamondController implements Runnable {
 	private void manageFallingObject() {
 		for (int x = this.levelModel.getSizeWidth() - 1; x >= 0; x--) {
 			for (int y = this.levelModel.getSizeHeight() - 1; y >= 0; y--) {
-				// Gets the spriteName of actual DisplayableElementModel object scanned
+				// Gets the spriteName of actual DisplayableElementModel object
+				// scanned
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 
 				// If it is a boulder...
 				if (spriteName == "boulder" || spriteName == "diamond") {
-					this.manageFall(x,y);
+					this.manageFall(x, y);
 				}
 			}
 		}
@@ -81,53 +82,35 @@ public class BoulderAndDiamondController implements Runnable {
 
 		// Then, process in case of the surrounding
 		if (spriteNameUnder == "black") {
-			this.levelModel.getGroundLevelModel()[x][y].setFalling(true);
-			this.levelModel.getGroundLevelModel()[x][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
-			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
-			// Something falling (to stop the game if there is something falling on the player)
-
+			this.levelModel.makeThisDisplayableElementFall(x, y);
 		} else if (spriteNameUnder == "boulder") {
 			// Boulders have to roll if they hit another boulder
 			if (this.levelModel.getGroundLevelModel()[x - 1][y + 1].getSpriteName() == "black") {
-				this.levelModel.getGroundLevelModel()[x][y].setFalling(true);
-				this.levelModel.getGroundLevelModel()[x - 1][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
-				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+				this.levelModel.makeThisBoulderSlideLeft(x, y);
 			} else if (this.levelModel.getGroundLevelModel()[x + 1][y + 1].getSpriteName() == "black") {
-				this.levelModel.getGroundLevelModel()[x][y].setFalling(true);
-				this.levelModel.getGroundLevelModel()[x + 1][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
-				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+				this.levelModel.makeThisBoulderSlideRight(x, y);
 			}
 		} else if (spriteNameUnder == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
-			this.levelModel.exploseGround(x,y+1);
+			this.levelModel.exploseGround(x, y + 1);
 			try {
 				Thread.sleep(25);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			this.levelModel.setGameRunning(false);
-		} else if(spriteNameUnder == "magicwall"){
-			if(this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder"){
-				this.levelModel.getGroundLevelModel()[x][y+2] = new DiamondModel();
-				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
-			}else{
-				this.levelModel.getGroundLevelModel()[x][y+2] = new BoulderModel();
-				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
-			}				
-		}
-		else if(spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() 
-				  && this.levelModel.getGroundLevelModel()[x+1][y].getSpriteName() == "black"){
-			
-			this.levelModel.getGroundLevelModel()[x+1][y] = this.levelModel.getGroundLevelModel()[x][y];
-			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
-			
-		} else if(spriteNameRight == "rockford" && this.levelModel.getRockford().isRunningLeft()
-			      && this.levelModel.getGroundLevelModel()[x-1][y].getSpriteName() == "black"){
-			
-			this.levelModel.getGroundLevelModel()[x-1][y] = this.levelModel.getGroundLevelModel()[x][y];
-			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
-		}else{
+		} else if (spriteNameUnder == "magicwall") {
+			if (this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder") {
+				this.levelModel.transformThisBoulderIntoADiamond(x, y);
+			}
+		} else if (spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() && this.levelModel.getGroundLevelModel()[x + 1][y].getSpriteName() == "black") {
+
+			this.levelModel.moveThisBoulderToRight(x, y);
+
+		} else if (spriteNameRight == "rockford" && this.levelModel.getRockford().isRunningLeft() && this.levelModel.getGroundLevelModel()[x - 1][y].getSpriteName() == "black") {
+
+			this.levelModel.moveThisBoulderToLeft(x, y);
+		} else {
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
-	}	
+	}
 }
