@@ -24,7 +24,7 @@ import fr.enssat.BoulderDash.views.GameView;
 public class FrameToDisplay extends JFrame implements Observer {
 	private GameView gameView;
 	private JPanel actionPanel;
-	private JPanel informationPanel;
+	private InformationPanel informationPanel;
 	private JButton newGame, pause, quit, editor, save;
 	private GameController gameController;
 	private LevelModel levelModel;
@@ -41,7 +41,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 		this.gameView = new GameView(gameController, levelModel);
 		this.actionPanel = new JPanel();
-		this.informationPanel = new JPanel();
+		this.informationPanel = new InformationPanel(levelModel);
 
 		// Add some buttons on the informationPanel
 		this.newGame = createButton("New Game");
@@ -60,7 +60,8 @@ public class FrameToDisplay extends JFrame implements Observer {
         // UI parameters
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
-		setSize(432, 510);
+//		setSize(432, 510);
+		setSize(600, 600);
 
         // App parameters
         setTitle("Boulder Dash");

@@ -129,15 +129,15 @@
             </item>
 
             <item index="3">
-                <sprite group="field" name="boulder" state="initial" convertible="1" />
+                <sprite group="field" name="boulder" state="initial" convertible="true" />
             </item>
 
             <item index="4">
-                <sprite group="field" name="boulder" state="initial" convertible="1" />
+                <sprite group="field" name="boulder" state="initial" convertible="true" />
             </item>
 
             <item index="5">
-                <sprite group="field" name="boulder" state="initial" convertible="1" />
+                <sprite group="field" name="boulder" state="initial" convertible="true" />
             </item>
 
             <item index="6">
