@@ -13,7 +13,7 @@ import fr.enssat.boulderdash.bridges.SoundJLayerBridge;
 public class AudioLoadHelper {
     private static String pathToAudioStore = "res/audio";
 
-    private SoundJLayerBridge soundToPlay;
+    private SoundJLayerBridge musicToPlay;
 
     /**
      * Gets music storage path
@@ -41,18 +41,21 @@ public class AudioLoadHelper {
      * @param  musicId  Music identifier
      */
     public void startMusic(String musicId) {
-        this.soundToPlay = new SoundJLayerBridge(
+        if(this.musicToPlay != null) {
+            this.stopMusic();
+        }
+
+        this.musicToPlay = new SoundJLayerBridge(
                 this.getMusicPathInAudioStore(musicId)
         );
-
-        soundToPlay.play();
+        this.musicToPlay.play();
     }
 
     /**
      * Stops game music
      */
     public void stopMusic() {
-        soundToPlay.stop();
+        this.musicToPlay.stop();
     }
 
     /**
@@ -61,6 +64,9 @@ public class AudioLoadHelper {
      * @param  soundId  Sound identifier
      */
     public void playSound(String soundId) {
-        // TODO
+        SoundJLayerBridge sound = new SoundJLayerBridge(
+                this.getMusicPathInAudioStore(soundId)
+        );
+        sound.play();
     }
 }
