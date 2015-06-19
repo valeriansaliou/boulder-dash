@@ -1,5 +1,7 @@
-package fr.enssat.BoulderDash.helpers;
+package fr.enssat.BoulderDash.controllers;
 
+import fr.enssat.BoulderDash.models.BoulderModel;
+import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 
@@ -13,13 +15,9 @@ import fr.enssat.BoulderDash.models.LevelModel;
  * @author Colin Leverger <me@colinleverger.fr>
  * @since 2015-06-19
  */
-public class ElementPositionUpdateHelper implements Runnable {
+public class BoulderAndDiamondController implements Runnable {
 	private LevelModel levelModel;
 	private Thread elementMovingThread;
-	private int rockfordYPosition;
-	private int rockfordXPosition;
-	private boolean rockfordHasMoved;
-	private boolean somethingFalling;
 
 	/**
 	 * Class constructor
@@ -27,39 +25,10 @@ public class ElementPositionUpdateHelper implements Runnable {
 	 * @param levelModel
 	 *            Level model
 	 */
-	public ElementPositionUpdateHelper(LevelModel levelModel) {
+	public BoulderAndDiamondController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		this.elementMovingThread = new Thread(this);
 		this.elementMovingThread.start();
-		this.rockfordHasMoved = false;
-	}
-
-	/**
-	 * Sets the new Rockford position
-	 * 
-	 * @param posX
-	 *            Next horizontal position on the grid
-	 * @param posY
-	 *            Next vertical position on the grid
-	 */
-	public void setPositionOfRockford(int posX, int posY) {
-		int oldX = this.levelModel.getRockfordPositionX();
-		int oldY = this.levelModel.getRockfordPositionY();
-
-		if (this.levelModel.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
-			this.levelModel.incrementScore();
-		}
-
-		// Check that we are not out of bound ...
-		if (posX > 0 && posY > 0 && posX < this.levelModel.getLevelLoadHelper().getHeightSizeValue() && posY < this.levelModel.getLevelLoadHelper().getWidthSizeValue()) {
-			// Create a new empty model in the old pos of Rockford
-			this.levelModel.getGroundLevelModel()[oldX][oldY] = new EmptyModel();
-
-			// Save the x / y pos of Rockford in the levelModel only
-			this.levelModel.updateRockfordPosition(posX, posY);
-
-			this.levelModel.getGroundLevelModel()[posX][posY] = this.levelModel.getRockford();
-		}
 	}
 
 	/**
@@ -67,14 +36,10 @@ public class ElementPositionUpdateHelper implements Runnable {
 	 */
 	public void run() {
 		while (this.levelModel.isGameRunning()) {
-			if (this.rockfordHasMoved) {
-				this.setPositionOfRockford(rockfordXPosition, rockfordYPosition);
-				this.rockfordHasMoved = false;
-			}
 			this.manageFallingObject();
-
+			
 			try {
-				Thread.sleep(100);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -94,7 +59,7 @@ public class ElementPositionUpdateHelper implements Runnable {
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 
 				// If it is a boulder...
-				if (spriteName == "boulder") {
+				if (spriteName == "boulder" || spriteName == "diamond") {
 					this.manageFall(x,y);
 				}
 			}
@@ -116,7 +81,6 @@ public class ElementPositionUpdateHelper implements Runnable {
 
 		// Then, process in case of the surrounding
 		if (spriteNameUnder == "black") {
-
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(true);
 			this.levelModel.getGroundLevelModel()[x][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
 			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
@@ -133,49 +97,37 @@ public class ElementPositionUpdateHelper implements Runnable {
 				this.levelModel.getGroundLevelModel()[x + 1][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
 				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
 			}
-
 		} else if (spriteNameUnder == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
-			levelModel.gameRunning();
-			somethingFalling = false;
-		} else if(spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() 
+			this.levelModel.exploseGround(x,y+1);
+			try {
+				Thread.sleep(25);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.levelModel.setGameRunning(false);
+		} else if(spriteNameUnder == "magicwall"){
+			if(this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder"){
+				this.levelModel.getGroundLevelModel()[x][y+2] = new DiamondModel();
+				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+			}else{
+				this.levelModel.getGroundLevelModel()[x][y+2] = new BoulderModel();
+				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+			}				
+		}
+		else if(spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() 
 				  && this.levelModel.getGroundLevelModel()[x+1][y].getSpriteName() == "black"){
 			
 			this.levelModel.getGroundLevelModel()[x+1][y] = this.levelModel.getGroundLevelModel()[x][y];
 			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
-			System.out.println("boulder going right");
 			
 		} else if(spriteNameRight == "rockford" && this.levelModel.getRockford().isRunningLeft()
 			      && this.levelModel.getGroundLevelModel()[x-1][y].getSpriteName() == "black"){
 			
 			this.levelModel.getGroundLevelModel()[x-1][y] = this.levelModel.getGroundLevelModel()[x][y];
-			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();						
-			System.out.println("boulder going left");
+			this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
 		}else{
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
-	}
-
-	/**
-	 * Moves Rockford
-	 *
-	 * @param rockfordXPosition
-	 *            Next horizontal position on the grid
-	 * @param rockfordYPosition
-	 *            Next vertical position on the grid
-	 */
-	public void moveRockford(int rockfordXPosition, int rockfordYPosition) {
-		this.rockfordXPosition = rockfordXPosition;
-		this.rockfordYPosition = rockfordYPosition;
-		this.rockfordHasMoved = true;
-	}
-
-	public boolean isSomethingFalling() {
-		return somethingFalling;
-	}
-
-	public void setSomethingFalling(boolean somethingFalling) {
-		this.somethingFalling = somethingFalling;
-	}
-	
-	
+	}	
 }

@@ -45,8 +45,8 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 		// Add some buttons on the informationPanel
 		this.newGame = createButton("New Game");
-		this.editor = createButton("Editor");
-		this.pause = createButton("Pause");
+		//this.editor = createButton("Editor"); TODO
+		//this.pause = createButton("Pause");   TODO
 		this.save = createButton("Save");
 		this.quit = createButton("Quit");
 

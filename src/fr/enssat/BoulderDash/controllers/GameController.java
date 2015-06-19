@@ -23,11 +23,6 @@ public class GameController implements ActionListener {
     private AudioLoadHelper audioLoadHelper;
 
     /**
-     * Animation speed
-     */
-	private final int DELAY = 25;
-
-    /**
      * Class constructor
      *
      * @param  levelModel  Level model

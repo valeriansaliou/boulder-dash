@@ -2,7 +2,6 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.helpers.ElementPositionUpdateHelper;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -18,7 +17,8 @@ import java.awt.event.KeyListener;
  */
 public class KeyController implements KeyListener {
 	private LevelModel levelModel;
-	private ElementPositionUpdateHelper updatePos;
+	private RockfordUpdateController updatePosRockford;
+	private BoulderAndDiamondController updateFallingElements;
 
     /**
      * Class constructor
@@ -27,7 +27,8 @@ public class KeyController implements KeyListener {
      */
 	public KeyController(LevelModel levelModel) {
 		this.levelModel = levelModel;
-		this.updatePos = new ElementPositionUpdateHelper(levelModel);
+		this.updateFallingElements = new BoulderAndDiamondController(levelModel);
+		this.updatePosRockford = new RockfordUpdateController(levelModel);
 	}
 
     /**
@@ -44,8 +45,8 @@ public class KeyController implements KeyListener {
                 DisplayableElementModel upElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX()][levelModel.getRockfordPositionY() - 1];
 
                 if (upElement.getPriority() < levelModel.getRockford().getPriority()) {
-                    updatePos.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
-                    levelModel.getRockford().startRunningUpOrDown();
+                    this.updatePosRockford.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
+                    this.levelModel.getRockford().startRunningUpOrDown();
                 }
 
                 break;
@@ -55,8 +56,8 @@ public class KeyController implements KeyListener {
                 DisplayableElementModel downElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX()][levelModel.getRockfordPositionY() + 1];
 
                 if (downElement.getPriority() < levelModel.getRockford().getPriority()) {
-                    updatePos.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
-                    levelModel.getRockford().startRunningUpOrDown();
+                    this.updatePosRockford.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
+                    this.levelModel.getRockford().startRunningUpOrDown();
                 }
 
                 break;
@@ -66,8 +67,8 @@ public class KeyController implements KeyListener {
                 DisplayableElementModel leftElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX() - 1][levelModel.getRockfordPositionY()];
 
                 if (leftElement.getPriority() < levelModel.getRockford().getPriority()) {
-                    updatePos.moveRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
-                    levelModel.getRockford().startRunningLeft();
+                    this.updatePosRockford.moveRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
+                    this.levelModel.getRockford().startRunningLeft();
                 }
 
                 break;
@@ -77,8 +78,8 @@ public class KeyController implements KeyListener {
                 DisplayableElementModel rightElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX() + 1][levelModel.getRockfordPositionY()];
 
                 if (rightElement.getPriority() < levelModel.getRockford().getPriority()) {
-                    updatePos.moveRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
-                    levelModel.getRockford().startRunningRight();
+                    this.updatePosRockford.moveRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
+                    this.levelModel.getRockford().startRunningRight();
                 }
 
                 break;
