@@ -48,7 +48,7 @@ public class LevelLoadHelper {
 	private String levelId = null;
 	private Document levelDOM;
 	private XPath xpathBuilder;
-	final private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
+    private SimpleDateFormat dateFormatter;
 
 	// Parsed values
 	private String nameValue = null;
@@ -76,16 +76,27 @@ public class LevelLoadHelper {
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
 
+        // Requirements
+        dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
+
 		if (this.levelId != null) {
 			// Let's go.
 			this.loadLevelData();
 		}
 	}
 
+    /**
+     * Gets level storage path
+     *
+     * @return  Level path, with file extension
+     */
 	private String getLevelPathInDataStore() {
 		return pathToDataStore + "/" + this.getLevelId() + ".xml";
 	}
 
+    /**
+     * Loads the level data into instance data space
+     */
 	private void loadLevelData() {
 		this.xpathBuilder = XPathFactory.newInstance().newXPath();
 
@@ -96,6 +107,12 @@ public class LevelLoadHelper {
 		this.processLevelData();
 	}
 
+    /**
+     * Parses the level data for the given file
+     * Handles the task of reading and storing the parsed DOM
+     *
+     * @param  pathToLevelData  FS path to the level data
+     */
 	private void parseLevelData(String pathToLevelData) {
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 
@@ -113,13 +130,16 @@ public class LevelLoadHelper {
 		}
 	}
 
+    /**
+     * Processes the parsed level data
+     */
 	private void processLevelData() {
 		// Parse elements from structure
 		try {
-			this.parseNameElement();
-			this.parseDateElement();
-			this.parseSizeElement();
-			this.parseGridElement();
+			this.processNameElement();
+			this.processDateElement();
+			this.processSizeElement();
+			this.processGridElement();
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
@@ -127,12 +147,18 @@ public class LevelLoadHelper {
 		}
 	}
 
-	private void parseNameElement() throws XPathExpressionException {
+    /**
+     * Processes the 'name' element
+     */
+	private void processNameElement() throws XPathExpressionException {
 		// Returns level name value
 		this.nameValue = this.xpathBuilder.compile("/bd-level/name").evaluate(this.levelDOM);
 	}
 
-	private void parseDateElement() throws XPathExpressionException, ParseException {
+    /**
+     * Processes the 'date' element
+     */
+	private void processDateElement() throws XPathExpressionException, ParseException {
 		// Returns level creation date value
 		this.dateCreatedValue = dateFormatter.parse(xpathBuilder.compile("/bd-level/date[@format='utc']/created").evaluate(this.levelDOM));
 
@@ -140,7 +166,10 @@ public class LevelLoadHelper {
 		this.dateModifiedValue = dateFormatter.parse(this.xpathBuilder.compile("/bd-level/date[@format='utc']/modified").evaluate(this.levelDOM));
 	}
 
-	private void parseSizeElement() throws XPathExpressionException {
+    /**
+     * Processes the 'size' element
+     */
+	private void processSizeElement() throws XPathExpressionException {
 		// Returns level width value
 		this.widthSizeValue = Integer.parseInt(this.xpathBuilder.compile("/bd-level/size/width").evaluate(this.levelDOM));
 		this.widthSizeValue += this.limitsWidth;
@@ -150,7 +179,10 @@ public class LevelLoadHelper {
 		this.heightSizeValue += this.limitsHeight;
 	}
 
-	private void parseGridElement() throws XPathExpressionException {
+    /**
+     * Processes the 'grid' element
+     */
+	private void processGridElement() throws XPathExpressionException {
 		// Initialize the grid
 		this.groundGrid = new DisplayableElementModel[this.widthSizeValue][this.heightSizeValue];
 
@@ -202,6 +234,13 @@ public class LevelLoadHelper {
 		}
 	}
 
+    /**
+     * Constructs the grid element
+     *
+     * @param  spriteName  Sprite name
+     * @param  rowIndex    Position in row (horizontal axis)
+     * @param  lineIndex   Position in line (vertical axis)
+     */
 	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex) throws UnknownSpriteException {
 		DisplayableElementModel element;
 
@@ -263,82 +302,182 @@ public class LevelLoadHelper {
 		return element;
 	}
 
+    /**
+     * Gets the level identifier
+     *
+     * @return  Level identifier
+     */
 	public String getLevelId() {
 		return this.levelId;
 	}
 
+    /**
+     * Sets the level identifier
+     *
+     * @param  levelId  Level identifier
+     */
 	private void setLevelId(String levelId) {
 		this.levelId = levelId;
 	}
 
+    /**
+     * Gets the name value
+     *
+     * @return  Name value
+     */
 	public String getNameValue() {
 		return this.nameValue;
 	}
 
+    /**
+     * Sets the name value
+     *
+     * @param  nameValue  Name value
+     */
 	private void setNameValue(String nameValue) {
 		this.nameValue = nameValue;
 	}
 
+    /**
+     * Gets the creation date value
+     *
+     * @return  Creation date value
+     */
 	public Date getDateCreatedValue() {
 		return this.dateCreatedValue;
 	}
 
+    /**
+     * Sets the creation date value
+     *
+     * @param  dateCreatedValue  Creation date value
+     */
 	private void setDateCreatedValue(Date dateCreatedValue) {
 		this.dateCreatedValue = dateCreatedValue;
 	}
 
+    /**
+     * Gets the modified date value
+     *
+     * @return  Modified date value
+     */
 	public Date getDateModifiedValue() {
 		return this.dateModifiedValue;
 	}
 
+    /**
+     * Sets the modified date value
+     *
+     * @param  dateModifiedValue  Modified date value
+     */
 	private void setDateModifiedValue(Date dateModifiedValue) {
 		this.dateModifiedValue = dateModifiedValue;
 	}
 
+    /**
+     * Gets the width size value
+     *
+     * @return  Width size value
+     */
 	public int getWidthSizeValue() {
 		return this.widthSizeValue;
 	}
 
+    /**
+     * Sets the width size value
+     *
+     * @param  widthSizeValue  Width size value
+     */
 	private void setWidthSizeValue(int widthSizeValue) {
 		this.widthSizeValue = widthSizeValue;
 	}
 
+    /**
+     * Gets the height size value
+     *
+     * @return  Height size value
+     */
 	public int getHeightSizeValue() {
 		return this.heightSizeValue;
 	}
 
+    /**
+     * Sets the eight size value
+     *
+     * @param  heightSizeValue  Height size value
+     */
 	private void setHeightSizeValue(int heightSizeValue) {
 		this.heightSizeValue = heightSizeValue;
 	}
 
+    /**
+     * Gets the horizontal position of the Rockford element
+     *
+     * @return  Horizontal position of the Rockford element
+     */
 	public int getRockfordPositionX() {
 		return this.rockfordPositionX;
 	}
 
+    /**
+     * Sets the horizontal position of the Rockford element
+     *
+     * @param  x  Horizontal position of the Rockford element
+     */
 	public void setRockfordPositionX(int x) {
 		this.rockfordPositionX = x;
 	}
 
+    /**
+     * Gets the vertical position of the Rockford element
+     *
+     * @return  Vertical position of the Rockford element
+     */
 	public int getRockfordPositionY() {
 		return this.rockfordPositionY;
 	}
 
+    /**
+     * Sets the vertical position of the Rockford element
+     *
+     * @param  y  Vertical position of the Rockford element
+     */
 	public void setRockfordPositionY(int y) {
 		this.rockfordPositionY = y;
 	}
 
+    /**
+     * Gets the instance of Rockford
+     *
+     * @return  Rockford instance
+     */
 	public RockfordModel getRockfordInstance() {
 		return this.rockfordInstance;
 	}
 
+    /**
+     * Sets the instance of Rockford
+     *
+     * @param  rockfordInstance  Rockford instance
+     */
 	public void setRockfordInstance(RockfordModel rockfordInstance) {
 		this.rockfordInstance = rockfordInstance;
 	}
 
+    /**
+     * Gets the ground grid
+     *
+     * @return  Ground grid
+     */
 	public DisplayableElementModel[][] getGroundGrid() {
 		return this.groundGrid;
 	}
 
+    /**
+     * Sets the ground grid
+     *
+     * @param  groundGrid  Ground grid
+     */
 	private void setGroundGrid(DisplayableElementModel[][] groundGrid) {
 		this.groundGrid = groundGrid;
 	}

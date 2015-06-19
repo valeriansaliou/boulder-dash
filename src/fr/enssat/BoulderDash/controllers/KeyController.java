@@ -30,6 +30,11 @@ public class KeyController implements KeyListener {
 		this.updatePos = new ElementPositionUpdateHelper(levelModel);
 	}
 
+    /**
+     * Handles the 'key pressed' event
+     *
+     * @param  e  Key event
+     */
 	public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
@@ -84,13 +89,23 @@ public class KeyController implements KeyListener {
         }
 	}
 
+    /**
+     * Handles the 'key released' event
+     *
+     * @param  e  Key event
+     */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		this.levelModel.getRockford().startStaying();
 	}
 
+    /**
+     * Handles the 'key typed' event
+     *
+     * @param  e  Key event
+     */
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(KeyEvent e) {
         // TODO
 	}
 }

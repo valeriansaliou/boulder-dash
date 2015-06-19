@@ -45,10 +45,20 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
         this.loadSprite(spriteName);
 	}
 
+    /**
+     * Gets the falling state of the object
+     *
+     * @return  Whether object is falling or not
+     */
 	public boolean isFalling() {
 		return this.falling;
 	}
 
+    /**
+     * Sets the falling state of the object
+     *
+     * @param  falling  Whether object is falling or not
+     */
 	public void setFalling(boolean falling) {
 		this.falling = falling;
 	}

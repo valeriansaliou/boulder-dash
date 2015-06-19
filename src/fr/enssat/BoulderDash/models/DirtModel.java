@@ -41,8 +41,4 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 
         this.loadSprite(spriteName);
 	}
-
-	public String getSpriteName() {
-		return spriteName;
-	}
 }

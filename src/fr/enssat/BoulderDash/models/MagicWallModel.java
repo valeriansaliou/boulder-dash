@@ -23,7 +23,10 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 	private static boolean animate;
 	private static int priority;
 
-	// Store the frames for the sprite
+    /**
+     * Stores the frames
+     * Used for the sprites
+     */
 	private ArrayList<BufferedImage> framesMagicWall;
 
 	private long previousTime;

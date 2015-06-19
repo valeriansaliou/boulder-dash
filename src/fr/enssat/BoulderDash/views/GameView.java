@@ -45,6 +45,13 @@ public class GameView extends JPanel implements Observer {
 		setFocusable(true);
 	}
 
+    /**
+     * Draws the map
+     *
+     * @param   width   Map width
+     * @param   height  Map height
+     * @param   g       Map graphical object
+     */
 	public void drawTerrain(int width, int height, Graphics g) {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
@@ -53,10 +60,21 @@ public class GameView extends JPanel implements Observer {
 		}
 	}
 
+    /**
+     * Paints the map
+     *
+     * @param   g  Map graphical object
+     */
 	public void paint(Graphics g) {
 		this.drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
 	}
 
+    /**
+     * Updates the view
+     *
+     * @param   obs  Observable item
+     * @param   obj  Object item
+     */
 	@Override
 	public void update(Observable obs, Object obj) {
 		repaint();

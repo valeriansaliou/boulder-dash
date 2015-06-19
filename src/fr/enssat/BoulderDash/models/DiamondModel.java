@@ -53,6 +53,11 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		this.initSprites();
 	}
 
+    /**
+     * Updates the sprite (animation loop)
+     *
+     * @param  time  Current time
+     */
 	public void update(long time) {
 		if (time - previousTime >= speed) {
 			// Update the animation
@@ -67,6 +72,10 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		}
 	}
 
+    /**
+     * Initialize the sprites
+     * This is an animated element, hence this method
+     */
 	private void initSprites() {
 		/* Initialize object sprites */
 		this.framesDiamond = new ArrayList<BufferedImage>();

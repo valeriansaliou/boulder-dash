@@ -42,7 +42,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.actionPanel = new JPanel();
 		this.informationPanel = new JPanel();
 
-		// add some buttons on the informationPanel
+		// Add some buttons on the informationPanel
 		this.newGame = createButton("New Game");
 		this.editor = createButton("Editor");
 		this.pause = createButton("Pause");
@@ -64,20 +64,37 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.gameView.grabFocus();
 	}
 
+    /**
+     * Gets the game view
+     *
+     * @return  Game view
+     */
 	public GameView getGameView() {
 		return this.gameView;
 	}
 
-	public JButton createButton(String nom) {
-		JButton button = new JButton(nom);
+    /**
+     * Creates the given button
+     *
+     * @param   name  Button name
+     * @return  Created button
+     */
+	public JButton createButton(String name) {
+		JButton button = new JButton(name);
 		button.addActionListener(this.gameController);
-		button.setActionCommand(nom);
+		button.setActionCommand(name);
 
 		this.actionPanel.add(button);
 
 		return button;
 	}
 
+    /**
+     * Updates the frame
+     *
+     * @param   obs  Observable item
+     * @param   obj  Object item
+     */
 	@Override
 	public void update(Observable obs, Object obj) {
 		// TODO

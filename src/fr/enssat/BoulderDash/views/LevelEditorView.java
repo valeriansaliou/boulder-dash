@@ -22,6 +22,9 @@ public class LevelEditorView extends JFrame {
 		this.initializeView();
 	}
 
+    /**
+     * Initializes the view layout
+     */
 	private void initializeView() {
 		setTitle("Level editor | Boulder Dash");
 		setSize(800, 600);
@@ -31,6 +34,9 @@ public class LevelEditorView extends JFrame {
 		this.createLayout();
 	}
 
+    /**
+     * Creates the view layout
+     */
 	private void createLayout() {
 		Container pane = getContentPane();
 		GridLayout gridLayout = new GridLayout(1, 2);

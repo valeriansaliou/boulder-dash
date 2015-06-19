@@ -34,10 +34,10 @@ public class ElementPositionUpdateHelper implements Runnable {
 	}
 
 	/**
-	 * Move Rockford inside the model
+	 * Sets the new Rockford position
 	 * 
-	 * @param posX
-	 * @param posY
+	 * @param  posX  Next horizontal position on the grid
+	 * @param  posY  Next vertical position on the grid
 	 */
 	public void setPositionOfRockford(int posX, int posY) {
 		int oldX = this.levelModel.getRockfordPositionX();
@@ -62,7 +62,7 @@ public class ElementPositionUpdateHelper implements Runnable {
 	}
 	
 	/**
-	 * Thread to move the elements one by one and slowly ... TODO
+	 * Watches for elements to be moved
 	 */
 	public void run() {
 		while(true) {
@@ -79,7 +79,13 @@ public class ElementPositionUpdateHelper implements Runnable {
 			}
 		}
 	}
-	
+
+    /**
+     * Moves Rockford
+     *
+     * @param  rockfordXPosition  Next horizontal position on the grid
+     * @param  rockfordYPosition  Next vertical position on the grid
+     */
 	public void moveRockford(int rockfordXPosition, int rockfordYPosition) {
 		this.rockfordXPosition = rockfordXPosition;
 		this.rockfordYPosition = rockfordYPosition;

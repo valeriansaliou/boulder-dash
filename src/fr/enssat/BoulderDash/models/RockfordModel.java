@@ -22,19 +22,29 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
-	
-	// ArrayList of BufferedImage to get all the subimages from the sprite file...
+
+    /**
+     * Maps the sub images of the sprite file
+     */
 	private static ArrayList<BufferedImage> framesBlinking;
 	private static ArrayList<BufferedImage> framesRunningLeft;
 	private static ArrayList<BufferedImage> framesRunningRight;
 	private static ArrayList<BufferedImage> framesRunningUpOrDown;
 
+    /**
+     * Defines the size of the sprite
+     */
 	private final int SIZ_X_OF_SPRITE = 16;
 	private final int SIZ_Y_OF_SPRITE = 16;
 
+    /**
+     * Defines the current speed of the object
+     */
 	private long speed;
 
-	// Differents states possible for Rockford
+    /**
+     * Maps possible states for Rockford
+     */
 	private boolean isStaying = true;
 	private boolean isRunningLeft = false;
 	private boolean isRunningRight = false;
@@ -72,7 +82,8 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	/**
-	 * Update the sprite animation (only that)
+	 * Updates the sprite animation
+     * (And only that single thing)
 	 */
 	public void update(long time) {
 		if (time - this.previousTime >= this.speed) {
@@ -98,7 +109,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	/**
-	 * Rockford stayin
+	 * Stops the Rockford movement
 	 */
 	public void startStaying() {
 		isStaying = true;
@@ -110,7 +121,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	/**
-	 * Rockford running left
+	 * Starts moving Rockford to the left
 	 */
 	public void startRunningLeft() {
 		isStaying = false;
@@ -121,7 +132,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
 	/**
-	 * Rockford running right
+	 * Starts moving Rockford to the right
 	 */
 	public void startRunningRight() {
 		isStaying = false;
@@ -142,25 +153,45 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		previousTime = 0;
 	}
 
+    /**
+     * Gets whether Rockford is standing still or not
+     *
+     * @return  Rockford staying or not
+     */
 	public boolean isStaying() {
 		return this.isStaying;
 	}
 
+    /**
+     * Gets whether Rockford is running to the left or not
+     *
+     * @return  Rockford running to the left or not
+     */
 	public boolean isRunningLeft() {
 		return this.isRunningLeft;
 	}
 
+    /**
+     * Gets whether Rockford is running to the right or not
+     *
+     * @return  Rockford running to the right or not
+     */
 	public boolean isRunningRight() {
 		return this.isRunningRight;
 	}
 
+    /**
+     * Gets whether Rockford is running up or down, or not
+     *
+     * @return  Rockford running up or down, or not
+     */
 	public boolean isRunningUpOrDown() {
 		return this.isRunningUpOrDown;
 	}
 
-	/*
-	 * Initialise all the sprite from the main image; takes the subimage and put
-	 * them into the arrays
+	/**
+	 * Initializes all sprites from the main image
+     * Takes the sub images and append them into storage arrays
 	 */
 	private void initSprites() {
 		framesBlinking = new ArrayList<BufferedImage>();
