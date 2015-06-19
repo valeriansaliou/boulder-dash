@@ -24,6 +24,9 @@ public class SoundJLayerBridge extends PlaybackListener implements Runnable {
         this.filePath = filePath;
     }
 
+    /**
+     * Play the target sound
+     */
     public void play() {
         try {
             String urlAsString = "file:///"
@@ -45,6 +48,9 @@ public class SoundJLayerBridge extends PlaybackListener implements Runnable {
         }
     }
 
+    /**
+     * Stops the target sound
+     */
     public void stop() {
         try {
             this.playerThread.stop();
@@ -53,14 +59,23 @@ public class SoundJLayerBridge extends PlaybackListener implements Runnable {
         }
     }
 
+    /**
+     * Called when playback started
+     */
     public void playbackStarted(PlaybackEvent playbackEvent) {
         System.out.println("playbackStarted()");
     }
 
+    /**
+     * Called when playback finished
+     */
     public void playbackFinished(PlaybackEvent playbackEvent) {
         System.out.println("playbackEnded()");
     }
 
+    /**
+     * Run the player thread
+     */
     public void run() {
         try {
             this.player.play();
