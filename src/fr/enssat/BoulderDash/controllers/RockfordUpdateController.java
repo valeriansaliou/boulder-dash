@@ -40,7 +40,7 @@ public class RockfordUpdateController implements Runnable {
 			
 			if (this.rockfordHasMoved) {
 				this.levelModel.setPositionOfRockford(rockfordPositionX, rockfordPositionY);
-				this.levelModel.setRockfordHasMoved(false);
+				this.rockfordHasMoved = false;
 			}
 			
 			try {
