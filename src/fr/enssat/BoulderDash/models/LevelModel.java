@@ -30,6 +30,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	private RockfordModel rockford;
 	private int score;
 	private int rockfordPositionX, rockfordPositionY;
+	private boolean gameRunning;
 
     /**
      * Sprite animation thread
@@ -49,7 +50,8 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	public LevelModel(String levelName) {
 		this.score = 0;
 		this.levelName = levelName;
-
+		this.gameRunning = true;
+		
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
 		this.groundGrid = this.levelLoadHelper.getGroundGrid();
 		this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
@@ -219,7 +221,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      * So that they can be animated
 	 */
 	public void run() {
-		while (true) {
+		while (gameRunning) {
 
 			for (int x = 0; x < this.getSizeWidth(); x++) {
 				for (int y = 0; y < this.getSizeHeight(); y++) {
@@ -251,5 +253,9 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      */
 	public LevelLoadHelper getLevelLoadHelper() {
 		return this.levelLoadHelper;
+	}
+
+	public void gameIsFinished() {
+		gameRunning = false;
 	}
 }
