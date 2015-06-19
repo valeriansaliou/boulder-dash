@@ -39,38 +39,46 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.gameController = gameController;
 		this.levelModel = levelModel;
 
-		this.gameView = new GameView(gameController, levelModel);
-		this.actionPanel = new JPanel();
-		this.informationPanel = new JPanel();
-
-		// Add some buttons on the informationPanel
-		this.newGame = createButton("New Game");
-		//this.editor = createButton("Editor"); TODO
-		//this.pause = createButton("Pause");   TODO
-		this.save = createButton("Save");
-		this.quit = createButton("Quit");
-
-		add(this.actionPanel, BorderLayout.SOUTH);
-		add(this.informationPanel, BorderLayout.NORTH);
-		add(this.gameView, BorderLayout.CENTER);
-
-		setVisible(true);
-		setResizable(false);
+        this.setVisible(true);
+        this.setResizable(false);
 
         // UI parameters
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 200, 100);
-		setSize(432, 510);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(100, 100, 200, 100);
+        this.setSize(432, 510);
 
         // App parameters
-        setTitle("Boulder Dash");
+        this.setTitle("Boulder Dash");
 
         Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
-        setIconImage(appIcon);
+        this.setIconImage(appIcon);
+
+        // Create the layout
+        this.createLayout();
 
 		// Grab the focus to use the keys
 		this.gameView.grabFocus();
 	}
+
+    /**
+     * Creates the view layout
+     */
+    private void createLayout() {
+        this.gameView = new GameView(this.gameController, this.levelModel);
+        this.actionPanel = new JPanel();
+        this.informationPanel = new JPanel();
+
+        // Add some buttons on the informationPanel
+        this.newGame = this.createButton("Restart");
+        this.editor = this.createButton("Editor");
+        this.pause = this.createButton("Pause");
+        this.save = this.createButton("Save");
+        this.quit = this.createButton("Quit");
+
+        this.add(this.actionPanel, BorderLayout.SOUTH);
+        this.add(this.informationPanel, BorderLayout.NORTH);
+        this.add(this.gameView, BorderLayout.CENTER);
+    }
 
     /**
      * Gets the game view

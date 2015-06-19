@@ -13,6 +13,9 @@ import java.awt.*;
  * @since       2015-06-19
  */
 public class LevelEditorView extends JFrame {
+    private JPanel fieldPanel;
+    private JPanel selectPanel;
+
     /**
      * Class constructor
      */
@@ -24,10 +27,20 @@ public class LevelEditorView extends JFrame {
      * Initializes the view layout
      */
 	private void initializeView() {
-		setTitle("Level editor | Boulder Dash");
-		setSize(800, 600);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setFocusable(true);
+        this.setVisible(true);
+        this.setResizable(false);
+
+        // UI parameters
+        this.setSize(800, 510);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // App parameters
+        this.setTitle("Level Editor | Boulder Dash");
+
+        Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
+        this.setIconImage(appIcon);
 
 		this.createLayout();
 	}
@@ -36,14 +49,13 @@ public class LevelEditorView extends JFrame {
      * Creates the view layout
      */
 	private void createLayout() {
-		Container pane = getContentPane();
 		GridLayout gridLayout = new GridLayout(1, 2);
-		pane.setLayout(gridLayout);
+        this.setLayout(gridLayout);
 
-		JPanel fieldArea = new JPanel();
-		JPanel selectArea = new JPanel();
+		this.fieldPanel = new JPanel();
+		this.selectPanel = new JPanel();
 
-		pane.add(fieldArea);
-		pane.add(selectArea);
+        this.add(this.fieldPanel, BorderLayout.WEST);
+        this.add(this.selectPanel, BorderLayout.EAST);
 	}
 }
