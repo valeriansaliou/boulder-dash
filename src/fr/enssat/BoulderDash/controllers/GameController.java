@@ -19,7 +19,6 @@ import java.awt.event.ActionListener;
  */
 public class GameController implements ActionListener {
 	private LevelModel levelModel;
-
     private AudioLoadHelper audioLoadHelper;
 
     /**
@@ -35,15 +34,9 @@ public class GameController implements ActionListener {
 	public GameController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		new FrameToDisplay(this, levelModel);
-<<<<<<< HEAD
 
-        audioLoadHelper = new AudioLoadHelper();
-        audioLoadHelper.startMusic("game");
-
-		animator = new Thread(this);
-		animator.start();
-=======
->>>>>>> d134ae545360afd09d7cedb7fc9f515f3d4c81ec
+        this.audioLoadHelper = new AudioLoadHelper();
+        this.audioLoadHelper.startMusic("game");
 	}
 
 	/**
