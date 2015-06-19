@@ -1,7 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
-import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 
 /**

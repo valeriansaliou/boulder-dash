@@ -1,11 +1,11 @@
 package fr.enssat.BoulderDash.controllers;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.boulderdash.helpers.ElementPositionUpdateHelper;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 /**

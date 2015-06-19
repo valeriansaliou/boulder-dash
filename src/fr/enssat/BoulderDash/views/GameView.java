@@ -1,16 +1,13 @@
 package fr.enssat.BoulderDash.views;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.util.Observable;
-import java.util.Observer;
-
-import javax.swing.*;
-
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.controllers.KeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.models.RockfordModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**

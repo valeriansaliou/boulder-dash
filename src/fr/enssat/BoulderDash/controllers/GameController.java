@@ -1,10 +1,11 @@
 package fr.enssat.BoulderDash.controllers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.FrameToDisplay;
+import fr.enssat.boulderdash.helpers.AudioLoadHelper;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -20,6 +21,8 @@ public class GameController implements ActionListener, Runnable {
 	private LevelModel levelModel;
 	private Thread animator;
 
+    private AudioLoadHelper audioLoadHelper;
+
     /**
      * Animation speed
      */
@@ -33,6 +36,9 @@ public class GameController implements ActionListener, Runnable {
 	public GameController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		new FrameToDisplay(this, levelModel);
+
+        audioLoadHelper = new AudioLoadHelper();
+        audioLoadHelper.startMusic("game");
 
 		animator = new Thread(this);
 		animator.start();

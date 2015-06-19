@@ -1,17 +1,10 @@
 package fr.enssat.BoulderDash.helpers;
 
-import fr.enssat.BoulderDash.models.BoulderModel;
-import fr.enssat.BoulderDash.models.BrickWallModel;
-import fr.enssat.BoulderDash.models.DiamondModel;
-import fr.enssat.BoulderDash.models.DirtModel;
-import fr.enssat.BoulderDash.models.DisplayableElementModel;
-import fr.enssat.BoulderDash.models.EmptyModel;
-import fr.enssat.BoulderDash.models.MagicWallModel;
-import fr.enssat.BoulderDash.models.RockfordModel;
-import fr.enssat.BoulderDash.models.SteelWallModel;
 import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
-import modelToImplement.*;
-
+import fr.enssat.BoulderDash.models.*;
+import modelToImplement.AmoebaModel;
+import modelToImplement.ButterflyModel;
+import modelToImplement.FireflyModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,11 +17,9 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -91,7 +82,7 @@ public class LevelLoadHelper {
      * @return  Level path, with file extension
      */
 	private String getLevelPathInDataStore() {
-		return pathToDataStore + "/" + this.getLevelId() + ".xml";
+		return this.pathToDataStore + "/" + this.getLevelId() + ".xml";
 	}
 
     /**
