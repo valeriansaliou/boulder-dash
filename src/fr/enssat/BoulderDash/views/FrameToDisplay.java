@@ -55,7 +55,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
-		setSize(480, 550);
+		setSize(432, 510);
 
 		// grab the focus to use the keys
 		this.gameView.grabFocus();

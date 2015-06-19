@@ -8,8 +8,8 @@
     </date>
 
     <size>
-        <width>16</width>
-        <height>15</height>
+        <width>25</width>
+        <height>25</height>
     </size>
 
     <grid state="initial">
@@ -75,6 +75,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -143,6 +179,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="2">
@@ -207,6 +279,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -275,6 +383,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="4">
@@ -339,6 +483,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -407,6 +587,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="6">
@@ -471,6 +687,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -539,6 +791,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="8">
@@ -603,6 +891,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -671,6 +995,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="10">
@@ -735,6 +1095,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -803,6 +1199,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="12">
@@ -867,6 +1299,42 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
@@ -935,6 +1403,42 @@
             <item index="15">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
         </line>
 
         <line index="14">
@@ -999,6 +1503,1062 @@
             </item>
 
             <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="15">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="16">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="17">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="18">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="19">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="20">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="21">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="22">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="23">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+        </line>
+
+        <line index="24">
+            <item index="0">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="1">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="2">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="3">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="4">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="5">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="6">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="7">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="8">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="9">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="10">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="11">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="12">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="13">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="14">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="15">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="16">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="17">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="18">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="19">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="20">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="21">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="22">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="23">
+                <sprite group="field" name="dirt" state="initial" />
+            </item>
+
+            <item index="24">
                 <sprite group="field" name="dirt" state="initial" />
             </item>
         </line>
