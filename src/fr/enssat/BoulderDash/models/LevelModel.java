@@ -255,7 +255,15 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		return this.levelLoadHelper;
 	}
 
-	public void gameIsFinished() {
+	public void gameRunning() {
 		gameRunning = false;
+	}
+	
+	public boolean isGameRunning(){
+		return gameRunning;
+	}
+
+	public void resetGame() {
+		System.out.println("reset");
 	}
 }

@@ -10,6 +10,7 @@ public class ExpandingWallModel extends DisplayableElementModel implements Publi
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private static boolean falling;
 
 	static {
 		spriteName = "field_00";
@@ -18,9 +19,10 @@ public class ExpandingWallModel extends DisplayableElementModel implements Publi
 		impactExplosive = false;
 		animate = true;
 		priority = 10;
+		falling = false;
 	}
 
 	public ExpandingWallModel() {
-		super(animate, animate, spriteName, priority, animate, animate);//TODO IT IS NOT IN THE RIGHT ORDER
+		super(animate, animate, spriteName, priority, animate, animate, falling);//TODO IT IS NOT IN THE RIGHT ORDER
 	}
 }

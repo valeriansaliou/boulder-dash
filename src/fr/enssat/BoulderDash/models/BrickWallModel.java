@@ -20,6 +20,7 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 	private static boolean impactExplosive ;
 	private static boolean animate ;
 	private static int priority ;
+	private static boolean falling;
 
     /**
      * Static dataset
@@ -32,13 +33,14 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 		impactExplosive = false;
 		animate = false;
 		priority = 3;
+		falling = false;
 	}
 
     /**
      * Class constructor
      */
 	public BrickWallModel() {
-		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate);
+		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate, falling);
 
         this.loadSprite(spriteName);
 	}

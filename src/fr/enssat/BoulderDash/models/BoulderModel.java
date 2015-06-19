@@ -19,7 +19,6 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
-	private boolean falling;
 
     /**
      * Static dataset
@@ -38,28 +37,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
      * Class constructor
      */
 	public BoulderModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
-
-        this.falling = false;
-
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false);
         this.loadSprite(spriteName);
-	}
-
-    /**
-     * Gets the falling state of the object
-     *
-     * @return  Whether object is falling or not
-     */
-	public boolean isFalling() {
-		return this.falling;
-	}
-
-    /**
-     * Sets the falling state of the object
-     *
-     * @param  falling  Whether object is falling or not
-     */
-	public void setFalling(boolean falling) {
-		this.falling = falling;
 	}
 }

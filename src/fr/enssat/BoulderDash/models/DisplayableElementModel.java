@@ -25,6 +25,7 @@ public abstract class DisplayableElementModel {
 	private String spriteName;
 	private int priority;
 	private BufferedImage sprite;
+	private boolean falling;
 
 	/**
      * Class constructor
@@ -36,7 +37,7 @@ public abstract class DisplayableElementModel {
 	 * @param impactExplosive
 	 * @param animate
 	 */
-	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate) {
+	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling) {
 		this.moving = moving;
 		this.destructible = destructible;
 		this.spriteName = spriteName;
@@ -44,6 +45,7 @@ public abstract class DisplayableElementModel {
 		this.animate = animate;
 		this.impactExplosive = impactExplosive;
 		this.priority = priority;
+		this.falling = falling;
 	}
 
 	/**
@@ -198,7 +200,25 @@ public abstract class DisplayableElementModel {
 		this.sprite = subImage;
 		return subImage;
 	}
+	
+    /**
+     * Gets the falling state of the object
+     *
+     * @return  Whether object is falling or not
+     */
+	public boolean isFalling() {
+		return this.falling;
+	}
 
+    /**
+     * Sets the falling state of the object
+     *
+     * @param  falling  Whether object is falling or not
+     */
+	public void setFalling(boolean falling) {
+		this.falling = falling;
+	}
+	
 	/**
 	 * Function to update the sprites
 	 * @param currentTimeMillis

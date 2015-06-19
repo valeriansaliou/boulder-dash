@@ -19,6 +19,7 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private static boolean falling;
 
     /**
      * Static dataset
@@ -31,13 +32,14 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 		impactExplosive = false;
 		animate = false;
 		priority = 3;
+		falling = false;
 	}
 
     /**
      * Class constructor
      */
 	public SteelWallModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
 		this.loadSprite(spriteName);
 	}
 }

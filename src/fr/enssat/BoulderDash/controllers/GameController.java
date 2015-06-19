@@ -42,6 +42,8 @@ public class GameController implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand() == "Quit") {
 			System.exit(0);
+		}else if (event.getActionCommand() == "New Game") {
+			this.levelModel.resetGame();
 		}
 	}
 

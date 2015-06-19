@@ -19,7 +19,8 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
-
+	private static boolean falling;
+	
     /**
      * Static dataset
      * Specifies the physical parameters of the object
@@ -31,13 +32,14 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 		impactExplosive = false;
 		animate = false;
 		priority = 0;
+		falling = false;
 	}
 
     /**
      * Class constructor
      */
 	public DirtModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
 
         this.loadSprite(spriteName);
 	}
