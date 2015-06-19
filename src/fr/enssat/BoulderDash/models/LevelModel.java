@@ -255,8 +255,8 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		return this.levelLoadHelper;
 	}
 
-	public void gameRunning() {
-		gameRunning = false;
+	public void setGameRunning(boolean gameRunning) {
+		this.gameRunning = gameRunning;
 	}
 	
 	public boolean isGameRunning(){
@@ -265,5 +265,17 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 
 	public void resetGame() {
 		System.out.println("reset");
+	}
+
+	public void exploseGround(int x, int y) {
+		this.groundGrid[x][y] = new EmptyModel();
+		this.groundGrid[x+1][y] = new EmptyModel();
+		this.groundGrid[x-1][y] = new EmptyModel();
+		this.groundGrid[x][y+1] = new EmptyModel();
+		this.groundGrid[x+1][y+1] = new EmptyModel();
+		this.groundGrid[x-1][y+1] = new EmptyModel();
+		this.groundGrid[x][y-1] = new EmptyModel();
+		this.groundGrid[x+1][y-1] = new EmptyModel();
+		this.groundGrid[x-1][y-1] = new EmptyModel();
 	}
 }

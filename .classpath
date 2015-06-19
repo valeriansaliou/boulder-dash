@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/colinleverger/Google Drive/ENSSAT/POO/PARTIE 2/TP_NOTE/boulder-dash/res/libs/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="libs/jl1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
