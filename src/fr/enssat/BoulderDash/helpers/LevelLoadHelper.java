@@ -212,7 +212,12 @@ public class LevelLoadHelper {
 							if (currentSpriteNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element currentSpriteElement = (Element) currentSpriteNode;
 								String currentSpriteName = currentSpriteElement.getAttribute("name");
-                                String currentSpriteConvertible = currentSpriteElement.getAttribute("convertible");
+                                String currentSpriteConvertibleValue = currentSpriteElement.getAttribute("convertible");
+                                boolean currentSpriteConvertible = false;
+
+                                if(currentSpriteConvertibleValue == "1") {
+                                    currentSpriteConvertible = true;
+                                }
 
 								// Process positions
 								int pX = rowIndex + this.limitsOffsetWidth;
@@ -238,7 +243,7 @@ public class LevelLoadHelper {
      * @param  rowIndex    Position in row (horizontal axis)
      * @param  lineIndex   Position in line (vertical axis)
      */
-	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex, String convertible) throws UnknownSpriteException {
+	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex, boolean convertible) throws UnknownSpriteException {
 		DisplayableElementModel element;
 
 		// Instanciates the sprite element matching the given sprite name

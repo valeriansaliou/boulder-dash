@@ -25,7 +25,7 @@ public abstract class DisplayableElementModel {
 	private int priority;
 	private BufferedImage sprite;
     private boolean falling;
-    private String convertible;
+    private boolean convertible;
 
 	/**
      * Class constructor
@@ -37,7 +37,7 @@ public abstract class DisplayableElementModel {
 	 * @param impactExplosive
 	 * @param animate
 	 */
-	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String convertible) {
+	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, boolean convertible) {
 		this.moving = moving;
 		this.destructible = destructible;
 		this.spriteName = spriteName;
@@ -51,7 +51,7 @@ public abstract class DisplayableElementModel {
 
     public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling) {
         this(
-                destructible, moving, spriteName, priority, impactExplosive, animate, falling, null
+                destructible, moving, spriteName, priority, impactExplosive, animate, falling, false
         );
     }
 
@@ -231,7 +231,7 @@ public abstract class DisplayableElementModel {
      *
      * @return  Convertible value
      */
-    public String getConvertibleValue() {
+    public boolean getConvertibleValue() {
         return this.convertible;
     }
 
@@ -240,7 +240,7 @@ public abstract class DisplayableElementModel {
      *
      * @param  convertible  Convertible value
      */
-    public void setConvertibleValue(String convertible) {
+    public void setConvertibleValue(boolean convertible) {
         this.convertible = convertible;
     }
 	
