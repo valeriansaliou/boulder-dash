@@ -43,7 +43,6 @@ public class KeyController implements KeyListener {
             case KeyEvent.VK_UP:
                 DisplayableElementModel upElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX()][levelModel.getRockfordPositionY() - 1];
 
-                updatePos.setSomethingFalling(false);
                 if (upElement.getPriority() < levelModel.getRockford().getPriority()) {
                     updatePos.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
                     levelModel.getRockford().startRunningUpOrDown();
@@ -55,7 +54,6 @@ public class KeyController implements KeyListener {
             case KeyEvent.VK_DOWN:
                 DisplayableElementModel downElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX()][levelModel.getRockfordPositionY() + 1];
 
-                updatePos.setSomethingFalling(false);
                 if (downElement.getPriority() < levelModel.getRockford().getPriority()) {
                     updatePos.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
                     levelModel.getRockford().startRunningUpOrDown();
@@ -67,7 +65,6 @@ public class KeyController implements KeyListener {
             case KeyEvent.VK_LEFT:
                 DisplayableElementModel leftElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX() - 1][levelModel.getRockfordPositionY()];
 
-                updatePos.setSomethingFalling(false);
                 if (leftElement.getPriority() < levelModel.getRockford().getPriority()) {
                     updatePos.moveRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
                     levelModel.getRockford().startRunningLeft();
@@ -79,7 +76,6 @@ public class KeyController implements KeyListener {
             case KeyEvent.VK_RIGHT:
                 DisplayableElementModel rightElement = levelModel.getGroundLevelModel()[levelModel.getRockfordPositionX() + 1][levelModel.getRockfordPositionY()];
 
-                updatePos.setSomethingFalling(false);
                 if (rightElement.getPriority() < levelModel.getRockford().getPriority()) {
                     updatePos.moveRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
                     levelModel.getRockford().startRunningRight();

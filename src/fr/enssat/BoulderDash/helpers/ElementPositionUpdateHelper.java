@@ -71,7 +71,7 @@ public class ElementPositionUpdateHelper implements Runnable {
 				this.setPositionOfRockford(rockfordXPosition, rockfordYPosition);
 				this.rockfordHasMoved = false;
 			}
-			this.checkFallingsBoulders();
+			this.manageBoulders();
 
 			try {
 				Thread.sleep(100);
@@ -87,17 +87,15 @@ public class ElementPositionUpdateHelper implements Runnable {
 	 * fall if necessary Note : scan of the ground upside down: we want the
 	 * things to fall slowly !
 	 */
-	private void checkFallingsBoulders() {
+	private void manageBoulders() {
 		for (int x = this.levelModel.getSizeWidth() - 1; x >= 0; x--) {
 			for (int y = this.levelModel.getSizeHeight() - 1; y >= 0; y--) {
-				// Gets the spriteName of actual DisplayableElementModel object
-				// scanned
+				// Gets the spriteName of actual DisplayableElementModel object scanned
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 
 				// If it is a boulder or a diamond and
 				if (spriteName == "boulder" || spriteName == "diamond") {
-					// ... Save the DisplayableElementModel object under this
-					// one
+					// ... Save the DisplayableElementModel object under this one
 					String spriteNameUnder = this.levelModel.getGroundLevelModel()[x][y + 1].getSpriteName();
 					// ... And the DisplayableElementModel object at his left...
 					String spriteNameLeft = this.levelModel.getGroundLevelModel()[x - 1][y].getSpriteName();
@@ -109,10 +107,11 @@ public class ElementPositionUpdateHelper implements Runnable {
 
 						this.levelModel.getGroundLevelModel()[x][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
 						this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+						// Something falling (to stop the game if there is something falling on the player)
 						somethingFalling = true;
 
 					} else if (spriteNameUnder == "boulder") {
-
+						// Boulders have to roll if they hit another boulder
 						if (this.levelModel.getGroundLevelModel()[x - 1][y + 1].getSpriteName() == "black") {
 							this.levelModel.getGroundLevelModel()[x - 1][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
 							this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
@@ -122,8 +121,22 @@ public class ElementPositionUpdateHelper implements Runnable {
 						}
 
 					} else if (spriteNameUnder == "rockford" && somethingFalling) {
-						levelModel.gameIsFinished();
+//						levelModel.gameIsFinished();
+						System.out.println("game should finish now");
 						somethingFalling = false;
+					} else if(spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() 
+							&& this.levelModel.getGroundLevelModel()[x+1][y].getSpriteName() == "black"){
+						
+						this.levelModel.getGroundLevelModel()[x+1][y] = this.levelModel.getGroundLevelModel()[x][y];
+						this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+						System.out.println("boulder going right");
+						
+					} else if(spriteNameRight == "rockford" && this.levelModel.getRockford().isRunningLeft()
+						&& this.levelModel.getGroundLevelModel()[x-1][y].getSpriteName() == "black"){
+						
+						this.levelModel.getGroundLevelModel()[x-1][y] = this.levelModel.getGroundLevelModel()[x][y];
+						this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+						System.out.println("boulder going left");
 					}
 				}
 			}
