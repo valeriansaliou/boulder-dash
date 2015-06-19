@@ -2,7 +2,7 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.boulderdash.helpers.ElementPositionUpdateHelper;
+import fr.enssat.BoulderDash.helpers.ElementPositionUpdateHelper;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -68,8 +68,6 @@ public class KeyController implements KeyListener {
                 if (leftElement.getPriority() < levelModel.getRockford().getPriority()) {
                     updatePos.moveRockford(levelModel.getRockfordPositionX() - 1, levelModel.getRockfordPositionY());
                     levelModel.getRockford().startRunningLeft();
-                } else {
-                    levelModel.getRockford().startStaying();
                 }
 
                 break;
@@ -81,8 +79,6 @@ public class KeyController implements KeyListener {
                 if (rightElement.getPriority() < levelModel.getRockford().getPriority()) {
                     updatePos.moveRockford(levelModel.getRockfordPositionX() + 1, levelModel.getRockfordPositionY());
                     levelModel.getRockford().startRunningRight();
-                } else {
-                    levelModel.getRockford().startStaying();
                 }
 
                 break;

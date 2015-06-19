@@ -1,14 +1,5 @@
 package fr.enssat.BoulderDash.views;
 
-<<<<<<< HEAD
-=======
-import java.awt.BorderLayout;
-import java.util.Observable;
-import java.util.Observer;
-
-import javax.swing.*;
-
->>>>>>> d134ae545360afd09d7cedb7fc9f515f3d4c81ec
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
 

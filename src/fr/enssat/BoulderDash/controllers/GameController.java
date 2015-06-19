@@ -17,9 +17,8 @@ import java.awt.event.ActionListener;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class GameController implements ActionListener, Runnable {
+public class GameController implements ActionListener {
 	private LevelModel levelModel;
-	private Thread animator;
 
     private AudioLoadHelper audioLoadHelper;
 
@@ -36,12 +35,15 @@ public class GameController implements ActionListener, Runnable {
 	public GameController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		new FrameToDisplay(this, levelModel);
+<<<<<<< HEAD
 
         audioLoadHelper = new AudioLoadHelper();
         audioLoadHelper.startMusic("game");
 
 		animator = new Thread(this);
 		animator.start();
+=======
+>>>>>>> d134ae545360afd09d7cedb7fc9f515f3d4c81ec
 	}
 
 	/**
@@ -61,13 +63,4 @@ public class GameController implements ActionListener, Runnable {
 //		animator = new Thread(this);
 //		animator.start();
 //	}
-
-    /**
-     * Updates the sprites
-     */
-	public void run() {
-		while (true) {
-			// TODO
-		}
-	}
 }
