@@ -1,6 +1,6 @@
-package fr.enssat.boulderdash.helpers;
+package fr.enssat.BoulderDash.helpers;
 
-import fr.enssat.boulderdash.bridges.SoundJLayerBridge;
+import fr.enssat.BoulderDash.bridges.SoundJLayerBridge;
 
 /**
  * AudioLoadHelper

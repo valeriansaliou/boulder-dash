@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.bridges;
+package fr.enssat.BoulderDash.bridges;
 
 import javazoom.jl.player.advanced.*;
 
