@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 /**
  * MagicWallModel, it represents the magic wall.
@@ -46,11 +47,13 @@ public class MagicWallModel extends DisplayableElementModel implements Publisher
 	 */
 	public void update(long time) {
 		if (time - previousTime >= speed) {
-			// update the animation
+			// Update animation
 			previousTime = time;
+
 			try {
 				currentFrame += 1;
-				setSprite(framesMagicWall.get(this.currentFrame));
+
+				this.setSprite(framesMagicWall.get(this.currentFrame));
 			} catch (IndexOutOfBoundsException e) {
 				currentFrame = 0;
 			}

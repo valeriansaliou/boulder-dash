@@ -46,10 +46,8 @@ public class GameController implements ActionListener, Runnable {
 	 * Thread to update the sprites (and only the sprites !)
 	 */
 	public void run() {
-
 		while (true) {
 			
 		}
-
 	}
 }

@@ -1,18 +1,22 @@
-package fr.enssat.BoulderDash.models;
+package fr.enssat.boulderdash.helpers;
 
-public class UpdatePositionOfElements implements Runnable {
+import fr.enssat.BoulderDash.models.EmptyModel;
+import fr.enssat.BoulderDash.models.LevelModel;
+
+public class ElementPositionUpdateHelper implements Runnable {
 	private LevelModel levelModel;
 	private Thread elementMovingThread;
 	private int rockfordYPosition;
 	private int rockfordXPosition;
 	private boolean rockfordHasMoved;
 	
-	public UpdatePositionOfElements(LevelModel levelModel){
+	public ElementPositionUpdateHelper(LevelModel levelModel){
 		this.levelModel = levelModel;
 		this.elementMovingThread = new Thread(this);
 		this.elementMovingThread.start();
 		this.rockfordHasMoved = false;
 	}
+
 	/**
 	 * Move Rockford inside the model
 	 * 
@@ -26,10 +30,11 @@ public class UpdatePositionOfElements implements Runnable {
 		if (this.levelModel.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
 			this.levelModel.incrementScore();
 		}
+
 		// Check that we are not out of bound ...
-		if (posX > 0 && posY > 0 
-				&& posX < this.levelModel.getLevelLoadHelper().getHeightSizeValue()
-				&& posY < this.levelModel.getLevelLoadHelper().getWidthSizeValue()) {
+		if (posX > 0 && posY > 0 &&
+		    posX < this.levelModel.getLevelLoadHelper().getHeightSizeValue() &&
+		    posY < this.levelModel.getLevelLoadHelper().getWidthSizeValue()) {
 			// Create a new empty model in the old pos of Rockford
 			this.levelModel.getGroundLevelModel()[oldX][oldY] = new EmptyModel();
 			
@@ -44,8 +49,7 @@ public class UpdatePositionOfElements implements Runnable {
 	 * Thread to move the elements one by one and slowly ... TODO
 	 */
 	public void run() {
-		while(true){
-			
+		while(true) {
 			if(this.rockfordHasMoved){
 				this.setPositionOfRockford(rockfordXPosition,rockfordYPosition);
 				this.rockfordHasMoved = false;

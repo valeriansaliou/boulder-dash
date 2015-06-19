@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 public class DiamondModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
@@ -32,16 +33,18 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 
 	public DiamondModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
+
 		this.initSprites();
 	}
 
 	public void update(long time) {
 		if (time - previousTime >= speed) {
-			// update the animation
+			// Update the animation
 			previousTime = time;
-			try {
+
+            try {
 				this.currentFrame += 1;
-				setSprite(framesDiamond.get(this.currentFrame));
+                this.setSprite(framesDiamond.get(this.currentFrame));
 			} catch (IndexOutOfBoundsException e) {
 				this.currentFrame = 0;
 			}
@@ -49,12 +52,13 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 	}
 
 	private void initSprites() {
-		/* INIT SPRITE FOR DIAMOND */
-
+		/* Initialize object sprites */
 		this.framesDiamond = new ArrayList<BufferedImage>();
 
 		for (int i = 0; i < 8; i++) {
-			framesDiamond.add(grabSprite(loadSprite(spriteName), i * 24, 0, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+            this.framesDiamond.add(
+                    this.grabSprite(loadSprite(spriteName), i * 24, 0, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
+            );
 		}
 	}
 

@@ -1,14 +1,14 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 /**
- * BrickWallModel, it represents the brick wall in the game
+ * BrickWallModel
+ * Represents the brick wall in the game
  * @author colinleverger
- *
  */
 public class BrickWallModel extends DisplayableElementModel implements PublisherInterface {
-
 	private static String pathToSprite;
 	private static String spriteName;
 	private static boolean isDestructible ;
@@ -25,8 +25,10 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 		animate = false;
 		priority = 3;
 	}
+
 	public BrickWallModel() {
 		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate);
-		loadSprite(spriteName);
+
+        this.loadSprite(spriteName);
 	}
 }

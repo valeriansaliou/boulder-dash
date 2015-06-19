@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import fr.enssat.BoulderDash.views.GameView;
 import fr.enssat.BoulderDash.views.LevelEditorView;
 
-//gère l'éditeur de LVL
+// Manages the level editor
 public class LevelEditorController {
 
 }

@@ -1,5 +1,7 @@
 package fr.enssat.BoulderDash.models;
 
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+
 /**
  * EmptyModel, represent "nothing"
  * @author colinleverger
@@ -24,6 +26,7 @@ public class EmptyModel extends DisplayableElementModel {
 
 	public EmptyModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
-		loadSprite(spriteName);
+
+		this.loadSprite(spriteName);
 	}
 }

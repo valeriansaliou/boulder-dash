@@ -1,10 +1,12 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+
 /**
- * DirtModel, it represents the dirt in the game.
+ * DirtModel
+ * Represents the dirt in the game.
  * @author colinleverger
- *
  */
 public class DirtModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
@@ -25,11 +27,11 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 
 	public DirtModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
-		loadSprite(spriteName);
+
+        this.loadSprite(spriteName);
 	}
 
 	public String getSpriteName() {
 		return spriteName;
 	}
-
 }

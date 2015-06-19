@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 /**
  * RockfordModel represents the hero of the game.
@@ -68,15 +69,17 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 			this.previousTime = time;
 			try {
 				currentFrame += 1;
-				if (isStaying())
+
+				if (isStaying()) {
 					this.setSprite(framesBlinking.get(currentFrame));
-				else if (isRunningLeft()){
+				} else if (isRunningLeft()) {
 					System.out.println("update left");
-					this.setSprite(framesRunningLeft.get(currentFrame));}
-				else if (isRunningRight())
+					this.setSprite(framesRunningLeft.get(currentFrame));
+				} else if (isRunningRight()) {
 					this.setSprite(framesRunningRight.get(currentFrame));
-				else if (isRunningUpOrDown())
+				} else if (isRunningUpOrDown()) {
 					this.setSprite(framesRunningUpOrDown.get(currentFrame));
+				}
 			} catch (IndexOutOfBoundsException e) {
 				this.currentFrame = 0;
 			}
@@ -153,12 +156,22 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		framesRunningLeft = new ArrayList<BufferedImage>();
 		framesRunningRight = new ArrayList<BufferedImage>();
 		framesRunningUpOrDown = new ArrayList<BufferedImage>();
+
 		/* INIT SPRITE ARRAYS FOR ROCKFORD */
 		for (int i = 0; i < 8; i++) {
-			framesBlinking.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 79, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
-			framesRunningLeft.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 103, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
-			framesRunningRight.add(grabSprite(loadSprite(spriteName), 7 + (24 * i), 127, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+			framesBlinking.add(
+					this.grabSprite(this.loadSprite(spriteName), 7 + (24 * i), 79, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
+			);
+			framesRunningLeft.add(
+					this.grabSprite(this.loadSprite(spriteName), 7 + (24 * i), 103, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
+			);
+			framesRunningRight.add(
+					this.grabSprite(this.loadSprite(spriteName), 7 + (24 * i), 127, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
+			);
 		}
-		framesRunningUpOrDown.add(grabSprite(loadSprite(spriteName), 7, 7, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE));
+
+		framesRunningUpOrDown.add(
+				this.grabSprite(this.loadSprite(spriteName), 7, 7, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
+		);
 	}
 }

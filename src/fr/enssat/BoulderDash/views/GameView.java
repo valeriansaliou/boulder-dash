@@ -25,8 +25,11 @@ public class GameView extends JPanel implements Observer {
 
 	public GameView(GameController gameController, LevelModel levelModel) {
 		this.levelModel = levelModel;
+
 		levelModel.addObserver(this);
+
 		addKeyListener(new KeyController(this.levelModel));
+
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setFocusable(true);
 	}
@@ -40,7 +43,7 @@ public class GameView extends JPanel implements Observer {
 	}
 
 	public void paint(Graphics g) {
-		drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
+		this.drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
 	}
 
 	@Override

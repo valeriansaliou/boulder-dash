@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 /**
  * SteelWallModel, it represents the steelWall
@@ -26,6 +27,6 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 
 	public SteelWallModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
-		loadSprite(spriteName);
+		this.loadSprite(spriteName);
 	}
 }

@@ -6,6 +6,9 @@ import java.util.Observable;
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.models.RockfordModel;
+import fr.enssat.BoulderDash.models.SteelWallModel;
 
 /**
  * Level is loading here from the XML file. The view know the model, the
@@ -73,12 +76,6 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	private void createLimits() {
 		int maxWidth = this.sizeWidth - 1;
 		int maxHeight = this.sizeHeight - 1;
-		// DEBUG
-		System.out.println("width -> " + Integer.toString(this.groundGrid.length));
-		System.out.println("height -> " + Integer.toString(this.groundGrid[0].length));
-
-		System.out.println("maxWidth -> " + Integer.toString(maxWidth));
-		System.out.println("maxHeight -> " + Integer.toString(maxHeight));
 
 		for (int x = 0; x < this.sizeWidth; x++) {
 			this.groundGrid[x][0] = new SteelWallModel();
@@ -149,8 +146,9 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	 */
 	public void updateSprites(int x, int y) {
 		groundGrid[x][y].update(System.currentTimeMillis());
-		notifyObservers();
-		setChanged();
+
+		this.notifyObservers();
+		this.setChanged();
 	}
 
 	/**

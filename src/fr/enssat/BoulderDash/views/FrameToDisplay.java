@@ -28,9 +28,9 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.gameController = gameController;
 		this.levelModel = levelModel;
 
-		gameView = new GameView(gameController, levelModel);
-		actionPanel = new JPanel();
-		informationPanel = new JPanel();
+		this.gameView = new GameView(gameController, levelModel);
+		this.actionPanel = new JPanel();
+		this.informationPanel = new JPanel();
 
 		// add some buttons on the informationPanel
 		this.newGame = createButton("New Game");
@@ -39,9 +39,9 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.save = createButton("Save");
 		this.quit = createButton("Quit");
 
-		add(actionPanel, BorderLayout.SOUTH);
-		add(informationPanel, BorderLayout.NORTH);
-		add(gameView, BorderLayout.CENTER);
+		add(this.actionPanel, BorderLayout.SOUTH);
+		add(this.informationPanel, BorderLayout.NORTH);
+		add(this.gameView, BorderLayout.CENTER);
 
 		setVisible(true);
 		setResizable(false);
@@ -49,24 +49,27 @@ public class FrameToDisplay extends JFrame implements Observer {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 100);
 		setSize(480, 550);
+
 		// grab the focus to use the keys
-		gameView.grabFocus();
+		this.gameView.grabFocus();
 	}
 
 	public GameView getGameView() {
-		return gameView;
+		return this.gameView;
 	}
 
 	public JButton createButton(String nom) {
 		JButton button = new JButton(nom);
-		button.addActionListener(gameController);
+		button.addActionListener(this.gameController);
 		button.setActionCommand(nom);
-		actionPanel.add(button);
+
+		this.actionPanel.add(button);
+
 		return button;
 	}
 
 	@Override
 	public void update(Observable obs, Object obj) {
-
+		// TODO
 	}
 }
