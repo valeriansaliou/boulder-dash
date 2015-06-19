@@ -3,6 +3,17 @@ package fr.enssat.boulderdash.helpers;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 
+
+/**
+ * ElementPositionUpdateHelper
+ *
+ * Updates position of all elements displayed on the map, according to their next potential position.
+ * Each object has a weight, which is used to compare their power to destroy in the food chain.
+ * Sorry for that Darwinism.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
+ */
 public class ElementPositionUpdateHelper implements Runnable {
 	private LevelModel levelModel;
 	private Thread elementMovingThread;

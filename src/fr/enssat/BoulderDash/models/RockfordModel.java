@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
- * RockfordModel represents the hero of the game.
- * @author colinleverger
+ * RockfordModel
  *
+ * Represents the hero of the game.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class RockfordModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;

@@ -5,6 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+
+/**
+ * LevelEditorView
+ *
+ * Specifies the level editor view.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
+ */
 public class LevelEditorView extends JFrame {
 
 	public LevelEditorView() {

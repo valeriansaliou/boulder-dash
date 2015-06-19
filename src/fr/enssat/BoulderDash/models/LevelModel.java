@@ -10,13 +10,16 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
 
+
 /**
- * Level is loading here from the XML file. The view know the model, the
- * controller is going to modify the model in function of the game panel. The
- * model notify the view when there is some modification on it.
- * 
- * @author colinleverger
+ * LevelModel
  *
+ * Levels are loaded from XML file. The view knows the model, the
+ * controller is going to modify the model in function of the game panel. The
+ * model notifies the view when there are changes on it.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface, Runnable {
 	private DisplayableElementModel[][] groundGrid;

@@ -6,7 +6,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class DisplayableElementModel {
+
+/**
+ * DisplayableElementModel
+ *
+ * Represents a abstract displayable element
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
+ */
+public abstract class DisplayableElementModel {
 	private static String spriteStorageFolderPath = "./res/drawable/field/";
 
 	private boolean destructible;

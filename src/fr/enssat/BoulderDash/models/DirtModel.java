@@ -3,10 +3,14 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
  * DirtModel
+ *
  * Represents the dirt in the game.
- * @author colinleverger
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class DirtModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;

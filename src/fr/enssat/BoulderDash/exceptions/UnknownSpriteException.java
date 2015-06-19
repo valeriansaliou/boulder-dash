@@ -1,7 +1,14 @@
 package fr.enssat.BoulderDash.exceptions;
 
+
 /**
- * Created by valerian on 6/7/15.
+ * UnknownSpriteException
+ *
+ * Raises an 'UnknownSpriteException' exception.
+ * Given the exception message.
+ *
+ * @author      Valerian Saliou <valerian@valeriansaliou.name>
+ * @since       2015-06-19
  */
 public class UnknownSpriteException extends Exception {
 	public UnknownSpriteException(String message) {

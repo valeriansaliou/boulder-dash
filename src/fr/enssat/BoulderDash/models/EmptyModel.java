@@ -2,10 +2,14 @@ package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
- * EmptyModel, represent "nothing"
- * @author colinleverger
+ * EmptyModel
  *
+ * Represents "nothing".
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class EmptyModel extends DisplayableElementModel {
 	private static String spriteName;

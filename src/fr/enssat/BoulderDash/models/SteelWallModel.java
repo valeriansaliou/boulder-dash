@@ -3,10 +3,14 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
- * SteelWallModel, it represents the steelWall
- * @author colinleverger
+ * SteelWallModel
  *
+ * Represents the steelWall
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class SteelWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;

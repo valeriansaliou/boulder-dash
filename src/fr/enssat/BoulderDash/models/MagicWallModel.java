@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
- * MagicWallModel, it represents the magic wall.
- * @author colinleverger
+ * MagicWallModel
  *
+ * Represents the magic wall.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class MagicWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;

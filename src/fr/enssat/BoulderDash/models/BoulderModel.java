@@ -3,10 +3,14 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
  * BoulderModel
+ *
  * Represents the boulders.
- * @author colinleverger
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class BoulderModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
@@ -29,7 +33,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	public BoulderModel() {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate);
 
-		this.falling = false;
+        this.falling = false;
 
         this.loadSprite(spriteName);
 	}

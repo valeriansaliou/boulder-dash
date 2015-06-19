@@ -3,16 +3,18 @@ package fr.enssat.BoulderDash.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.FrameToDisplay;
 
+
 /**
- * The GameController is creating the view. There is also the game loop on it.
- * 
- * @author colinleverger
+ * GameController
  *
+ * This system creates the view.
+ * The game loop is also handled there.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class GameController implements ActionListener, Runnable {
 	private LevelModel levelModel;
@@ -29,6 +31,11 @@ public class GameController implements ActionListener, Runnable {
 		animator.start();
 	}
 
+	/**
+	 * XXXX
+	 * @param xxx
+	 * @return xxx
+	 */
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand() == "Quit") {
 			System.exit(0);

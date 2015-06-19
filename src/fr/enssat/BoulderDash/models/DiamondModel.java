@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
+/**
+ * DiamondModel
+ *
+ * Represents a diamond in the game.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
+ */
 public class DiamondModel extends DisplayableElementModel implements PublisherInterface {
 	private static String spriteName;
 	private static boolean isDestructible;

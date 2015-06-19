@@ -3,10 +3,14 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
+
 /**
  * BrickWallModel
- * Represents the brick wall in the game
- * @author colinleverger
+ *
+ * Represents the brick wall in the game.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
  */
 public class BrickWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String pathToSprite;

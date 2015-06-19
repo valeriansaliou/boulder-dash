@@ -7,6 +7,15 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.boulderdash.helpers.ElementPositionUpdateHelper;
 
+
+/**
+ * KeyController
+ *
+ * Manages the key events controller.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
+ */
 public class KeyController implements KeyListener {
 	private LevelModel levelModel;
 	private ElementPositionUpdateHelper updatePos;

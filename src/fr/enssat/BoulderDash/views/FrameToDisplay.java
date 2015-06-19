@@ -11,7 +11,15 @@ import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.controllers.KeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 
-//GameView is created by GameController
+
+/**
+ * FrameToDisplay
+ *
+ * Specifies a displayable frame.
+ *
+ * @author      Colin Leverger <me@colinleverger.fr>
+ * @since       2015-06-19
+ */
 public class FrameToDisplay extends JFrame implements Observer {
 	private GameView gameView;
 	private JPanel actionPanel;
