@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.boulderdash.helpers.ElementPositionUpdateHelper;
+import fr.enssat.BoulderDash.helpers.ElementPositionUpdateHelper;
 
 
 /**

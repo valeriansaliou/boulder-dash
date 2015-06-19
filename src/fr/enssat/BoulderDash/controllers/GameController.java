@@ -16,9 +16,8 @@ import fr.enssat.BoulderDash.views.FrameToDisplay;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class GameController implements ActionListener, Runnable {
+public class GameController implements ActionListener {
 	private LevelModel levelModel;
-	private Thread animator;
 
     /**
      * Animation speed
@@ -33,9 +32,6 @@ public class GameController implements ActionListener, Runnable {
 	public GameController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		new FrameToDisplay(this, levelModel);
-
-		animator = new Thread(this);
-		animator.start();
 	}
 
 	/**
@@ -55,13 +51,4 @@ public class GameController implements ActionListener, Runnable {
 //		animator = new Thread(this);
 //		animator.start();
 //	}
-
-    /**
-     * Updates the sprites
-     */
-	public void run() {
-		while (true) {
-			// TODO
-		}
-	}
 }

@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.helpers;
+package fr.enssat.BoulderDash.helpers;
 
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
@@ -71,6 +71,8 @@ public class ElementPositionUpdateHelper implements Runnable {
 				this.rockfordHasMoved = false;
 			}
 			
+			this.checkFallingsBoulders();
+			
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
@@ -80,7 +82,11 @@ public class ElementPositionUpdateHelper implements Runnable {
 		}
 	}
 
-    /**
+    private void checkFallingsBoulders() {
+		
+	}
+
+	/**
      * Moves Rockford
      *
      * @param  rockfordXPosition  Next horizontal position on the grid
