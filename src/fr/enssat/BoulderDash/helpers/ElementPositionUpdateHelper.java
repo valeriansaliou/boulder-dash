@@ -20,6 +20,7 @@ public class ElementPositionUpdateHelper implements Runnable {
 	private int rockfordYPosition;
 	private int rockfordXPosition;
 	private boolean rockfordHasMoved;
+	private boolean somethingFallig;
 
     /**
      * Class constructor
@@ -70,7 +71,6 @@ public class ElementPositionUpdateHelper implements Runnable {
 				this.setPositionOfRockford(rockfordXPosition,rockfordYPosition);
 				this.rockfordHasMoved = false;
 			}
-			
 			this.checkFallingsBoulders();
 			
 			try {
@@ -82,8 +82,43 @@ public class ElementPositionUpdateHelper implements Runnable {
 		}
 	}
 
+	/**
+	 * Scan the ground to detect the boulders & the diamonds, then make them fall if necessary
+	 * Note : scan of the ground upside down: we want the things to fall slowly !
+	 */
     private void checkFallingsBoulders() {
-		
+		for (int x = this.levelModel.getSizeWidth()-1; x >= 0; x--) {
+			for (int y = this.levelModel.getSizeHeight()-1; y >= 0; y--) {
+				// Gets the spriteName of actual DisplayableElementModel object scanned
+				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
+				
+				// If it is a boulder or a diamond and 
+				if(spriteName == "boulder" || spriteName == "diamond" ){
+					// ... Save the DisplayableElementModel object under this one
+					String spriteNameUnder = this.levelModel.getGroundLevelModel()[x][y+1].getSpriteName();
+					// ... And the DisplayableElementModel object at his left...
+					String spriteNameLeft = this.levelModel.getGroundLevelModel()[x-1][y].getSpriteName();
+					// ... Right
+					String spriteNameRight = this.levelModel.getGroundLevelModel()[x+1][y].getSpriteName();
+
+					// Then, process in case of the surrounding
+					if(spriteNameUnder =="black"){
+					
+					this.levelModel.getGroundLevelModel()[x][y+1] = this.levelModel.getGroundLevelModel()[x][y];
+					this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+					}else if(spriteNameUnder == "boulder"){
+						if(this.levelModel.getGroundLevelModel()[x-1][y+1].getSpriteName() == "black"){
+							this.levelModel.getGroundLevelModel()[x-1][y+1] = this.levelModel.getGroundLevelModel()[x][y];
+							this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+						}
+						else if(this.levelModel.getGroundLevelModel()[x+1][y+1].getSpriteName() == "black"){
+							this.levelModel.getGroundLevelModel()[x+1][y+1] = this.levelModel.getGroundLevelModel()[x][y];
+							this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
