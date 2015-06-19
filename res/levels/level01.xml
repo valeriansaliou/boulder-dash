@@ -1851,31 +1851,31 @@
 
         <line index="18">
             <item index="0">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="1">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="2">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="3">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="4">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="5">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="6">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="magicwall" state="initial" />
             </item>
 
             <item index="7">

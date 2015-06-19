@@ -1,5 +1,7 @@
 package fr.enssat.BoulderDash.helpers;
 
+import fr.enssat.BoulderDash.models.BoulderModel;
+import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 
@@ -13,13 +15,9 @@ import fr.enssat.BoulderDash.models.LevelModel;
  * @author Colin Leverger <me@colinleverger.fr>
  * @since 2015-06-19
  */
-public class ElementPositionUpdateHelper implements Runnable {
+public class BoulderAndDiamondUpdateHelper implements Runnable {
 	private LevelModel levelModel;
 	private Thread elementMovingThread;
-	private int rockfordYPosition;
-	private int rockfordXPosition;
-	private boolean rockfordHasMoved;
-	private boolean somethingFalling;
 
 	/**
 	 * Class constructor
@@ -27,11 +25,10 @@ public class ElementPositionUpdateHelper implements Runnable {
 	 * @param levelModel
 	 *            Level model
 	 */
-	public ElementPositionUpdateHelper(LevelModel levelModel) {
+	public BoulderAndDiamondUpdateHelper(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		this.elementMovingThread = new Thread(this);
 		this.elementMovingThread.start();
-		this.rockfordHasMoved = false;
 	}
 
 	/**
@@ -67,14 +64,10 @@ public class ElementPositionUpdateHelper implements Runnable {
 	 */
 	public void run() {
 		while (this.levelModel.isGameRunning()) {
-			if (this.rockfordHasMoved) {
-				this.setPositionOfRockford(rockfordXPosition, rockfordYPosition);
-				this.rockfordHasMoved = false;
-			}
 			this.manageFallingObject();
-
+			
 			try {
-				Thread.sleep(100);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -94,7 +87,7 @@ public class ElementPositionUpdateHelper implements Runnable {
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 
 				// If it is a boulder...
-				if (spriteName == "boulder") {
+				if (spriteName == "boulder" || spriteName == "diamond") {
 					this.manageFall(x,y);
 				}
 			}
@@ -133,11 +126,18 @@ public class ElementPositionUpdateHelper implements Runnable {
 				this.levelModel.getGroundLevelModel()[x + 1][y + 1] = this.levelModel.getGroundLevelModel()[x][y];
 				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
 			}
-
 		} else if (spriteNameUnder == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 			levelModel.gameRunning();
-			somethingFalling = false;
-		} else if(spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() 
+		} else if(spriteNameUnder == "magicwall"){
+			if(this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder"){
+				this.levelModel.getGroundLevelModel()[x][y+2] = new DiamondModel();
+				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+			}else{
+				this.levelModel.getGroundLevelModel()[x][y+2] = new BoulderModel();
+				this.levelModel.getGroundLevelModel()[x][y] = new EmptyModel();
+			}				
+		}
+		else if(spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() 
 				  && this.levelModel.getGroundLevelModel()[x+1][y].getSpriteName() == "black"){
 			
 			this.levelModel.getGroundLevelModel()[x+1][y] = this.levelModel.getGroundLevelModel()[x][y];
@@ -153,29 +153,5 @@ public class ElementPositionUpdateHelper implements Runnable {
 		}else{
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
-	}
-
-	/**
-	 * Moves Rockford
-	 *
-	 * @param rockfordXPosition
-	 *            Next horizontal position on the grid
-	 * @param rockfordYPosition
-	 *            Next vertical position on the grid
-	 */
-	public void moveRockford(int rockfordXPosition, int rockfordYPosition) {
-		this.rockfordXPosition = rockfordXPosition;
-		this.rockfordYPosition = rockfordYPosition;
-		this.rockfordHasMoved = true;
-	}
-
-	public boolean isSomethingFalling() {
-		return somethingFalling;
-	}
-
-	public void setSomethingFalling(boolean somethingFalling) {
-		this.somethingFalling = somethingFalling;
-	}
-	
-	
+	}	
 }
