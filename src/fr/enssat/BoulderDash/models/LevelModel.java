@@ -41,6 +41,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      * Animation speed
      */
 	private final int DELAY = 25;
+	private boolean rockfordHasMoved;
 
     /**
      * Class constructor
@@ -51,6 +52,8 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.score = 0;
 		this.levelName = levelName;
 		this.gameRunning = true;
+
+		this.rockfordHasMoved = false;
 		
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
 		this.groundGrid = this.levelLoadHelper.getGroundGrid();
@@ -115,6 +118,34 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      */
 	public int getRockfordPositionX() {
 		return this.rockfordPositionX;
+	}
+	
+	/**
+	 * Sets the new Rockford position
+	 * 
+	 * @param posX
+	 *            Next horizontal position on the grid
+	 * @param posY
+	 *            Next vertical position on the grid
+	 */
+	public void setPositionOfRockford(int posX, int posY) {
+		int oldX = this.getRockfordPositionX();
+		int oldY = this.getRockfordPositionY();
+
+		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
+			this.incrementScore();
+		}
+
+		// Check that we are not out of bound ...
+		if (posX > 0 && posY > 0 && posX < this.getLevelLoadHelper().getHeightSizeValue() && posY < this.getLevelLoadHelper().getWidthSizeValue()) {
+			// Create a new empty model in the old pos of Rockford
+			this.getGroundLevelModel()[oldX][oldY] = new EmptyModel();
+
+			// Save the x / y pos of Rockford in the levelModel only
+			this.updateRockfordPosition(posX, posY);
+
+			this.getGroundLevelModel()[posX][posY] = this.getRockford();
+		}
 	}
 
     /**
@@ -277,5 +308,13 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.groundGrid[x][y-1] = new EmptyModel();
 		this.groundGrid[x+1][y-1] = new EmptyModel();
 		this.groundGrid[x-1][y-1] = new EmptyModel();
+	}
+
+	public void setRockfordHasMoved(boolean rockfordHasMoved) {
+		this.rockfordHasMoved = rockfordHasMoved;
+	}
+
+	public boolean isRockfordHasMoved() {
+		return rockfordHasMoved;
 	}
 }

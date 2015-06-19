@@ -1,4 +1,4 @@
-package fr.enssat.BoulderDash.helpers;
+package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.BoulderModel;
 import fr.enssat.BoulderDash.models.DiamondModel;
@@ -15,7 +15,7 @@ import fr.enssat.BoulderDash.models.LevelModel;
  * @author Colin Leverger <me@colinleverger.fr>
  * @since 2015-06-19
  */
-public class BoulderAndDiamondUpdateHelper implements Runnable {
+public class BoulderAndDiamondController implements Runnable {
 	private LevelModel levelModel;
 	private Thread elementMovingThread;
 
@@ -25,38 +25,10 @@ public class BoulderAndDiamondUpdateHelper implements Runnable {
 	 * @param levelModel
 	 *            Level model
 	 */
-	public BoulderAndDiamondUpdateHelper(LevelModel levelModel) {
+	public BoulderAndDiamondController(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		this.elementMovingThread = new Thread(this);
 		this.elementMovingThread.start();
-	}
-
-	/**
-	 * Sets the new Rockford position
-	 * 
-	 * @param posX
-	 *            Next horizontal position on the grid
-	 * @param posY
-	 *            Next vertical position on the grid
-	 */
-	public void setPositionOfRockford(int posX, int posY) {
-		int oldX = this.levelModel.getRockfordPositionX();
-		int oldY = this.levelModel.getRockfordPositionY();
-
-		if (this.levelModel.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
-			this.levelModel.incrementScore();
-		}
-
-		// Check that we are not out of bound ...
-		if (posX > 0 && posY > 0 && posX < this.levelModel.getLevelLoadHelper().getHeightSizeValue() && posY < this.levelModel.getLevelLoadHelper().getWidthSizeValue()) {
-			// Create a new empty model in the old pos of Rockford
-			this.levelModel.getGroundLevelModel()[oldX][oldY] = new EmptyModel();
-
-			// Save the x / y pos of Rockford in the levelModel only
-			this.levelModel.updateRockfordPosition(posX, posY);
-
-			this.levelModel.getGroundLevelModel()[posX][posY] = this.levelModel.getRockford();
-		}
 	}
 
 	/**
