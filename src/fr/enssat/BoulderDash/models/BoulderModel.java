@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.interfaces.PublisherInterface;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
 
 /**
@@ -35,8 +36,8 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
     /**
      * Class constructor
      */
-	public BoulderModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false);
+	public BoulderModel(String convertible) {
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, convertible);
         this.loadSprite(spriteName);
 	}
 }

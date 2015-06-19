@@ -24,7 +24,8 @@ public abstract class DisplayableElementModel {
 	private String spriteName;
 	private int priority;
 	private BufferedImage sprite;
-	private boolean falling;
+    private boolean falling;
+    private String convertible;
 
 	/**
      * Class constructor
@@ -36,7 +37,7 @@ public abstract class DisplayableElementModel {
 	 * @param impactExplosive
 	 * @param animate
 	 */
-	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling) {
+	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String convertible) {
 		this.moving = moving;
 		this.destructible = destructible;
 		this.spriteName = spriteName;
@@ -45,10 +46,17 @@ public abstract class DisplayableElementModel {
 		this.impactExplosive = impactExplosive;
 		this.priority = priority;
 		this.falling = falling;
+        this.convertible = convertible;
 	}
 
-	/**
-	 * Gets the 'destructible' value
+    public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling) {
+        this(
+                destructible, moving, spriteName, priority, impactExplosive, animate, falling, null
+        );
+    }
+
+    /**
+     * Gets the 'destructible' value
      *
 	 * @return  Whether object is destructible or not
 	 */
@@ -199,24 +207,42 @@ public abstract class DisplayableElementModel {
 		this.sprite = subImage;
 		return subImage;
 	}
-	
+
     /**
      * Gets the falling state of the object
      *
      * @return  Whether object is falling or not
      */
-	public boolean isFalling() {
-		return this.falling;
-	}
+    public boolean isFalling() {
+        return this.falling;
+    }
 
     /**
      * Sets the falling state of the object
      *
      * @param  falling  Whether object is falling or not
      */
-	public void setFalling(boolean falling) {
-		this.falling = falling;
-	}
+    public void setFalling(boolean falling) {
+        this.falling = falling;
+    }
+
+    /**
+     * Gets the convertible value of the object
+     *
+     * @return  Convertible value
+     */
+    public String getConvertibleValue() {
+        return this.convertible;
+    }
+
+    /**
+     * Sets the convertible value of the object
+     *
+     * @param  convertible  Convertible value
+     */
+    public void setConvertibleValue(String convertible) {
+        this.convertible = convertible;
+    }
 	
 	/**
 	 * Function to update the sprites
