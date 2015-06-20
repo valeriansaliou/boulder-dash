@@ -31,7 +31,8 @@ public class GameController implements ActionListener {
 		this.levelModel = levelModel;
         new FrameToDisplay(this, levelModel);
 
-//        this.audioLoadHelper = new AudioLoadHelper();
+        this.audioLoadHelper = new AudioLoadHelper();
+        this.audioLoadHelper.playSound("new");
 //        this.audioLoadHelper.startMusic("game");
 	}
 

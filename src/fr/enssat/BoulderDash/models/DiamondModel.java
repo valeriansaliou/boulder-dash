@@ -43,7 +43,7 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		impactExplosive = false;
 		animate = true;
 		priority = 0;
-		collideSound = null;
+		collideSound = "coin";
 	}
 
     /**

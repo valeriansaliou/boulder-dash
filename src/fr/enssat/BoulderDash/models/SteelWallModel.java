@@ -34,7 +34,7 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 		animate = false;
 		priority = 3;
 		falling = false;
-		collideSound = null;
+		collideSound = "touch";
 	}
 
     /**

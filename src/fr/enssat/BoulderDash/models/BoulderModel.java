@@ -32,7 +32,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 		impactExplosive = false;
 		animate = true;
 		priority = 2;
-		collideSound = null;
+		collideSound = "die";
 	}
 
     /**

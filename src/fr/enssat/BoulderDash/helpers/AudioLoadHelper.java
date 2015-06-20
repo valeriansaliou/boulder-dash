@@ -65,7 +65,7 @@ public class AudioLoadHelper {
      */
     public void playSound(String soundId) {
         SoundJLayerBridge sound = new SoundJLayerBridge(
-                this.getMusicPathInAudioStore(soundId)
+                this.getSoundPathInAudioStore(soundId)
         );
         sound.play();
     }
