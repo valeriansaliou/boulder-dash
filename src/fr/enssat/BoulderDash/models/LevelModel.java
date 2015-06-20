@@ -318,36 +318,83 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.groundGrid[x-1][y-1] = new EmptyModel();
 	}
 
+	/**
+	 * Make the DisplayableElement[x][y] fall one box down
+	 * @param x
+	 * @param y
+	 */
 	public void makeThisDisplayableElementFall(int x, int y) {
 		this.getGroundLevelModel()[x][y].setFalling(true);
 		this.getGroundLevelModel()[x][y + 1] = this.getGroundLevelModel()[x][y];
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
+	/**
+	 * Make the BoulderModel[x][y] slide left
+	 * @param x
+	 * @param y
+	 */
 	public void makeThisBoulderSlideLeft(int x, int y) {
 		this.getGroundLevelModel()[x][y].setFalling(true);
 		this.getGroundLevelModel()[x - 1][y + 1] = this.getGroundLevelModel()[x][y];
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
+	/**
+	 * Make the BoulderModel[x][y] slide right
+	 * @param x
+	 * @param y
+	 */
 	public void makeThisBoulderSlideRight(int x, int y) {
 		this.getGroundLevelModel()[x][y].setFalling(true);
 		this.getGroundLevelModel()[x + 1][y + 1] = this.getGroundLevelModel()[x][y];
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
+	/**
+	 * Make the BoulderModel[x][y] transform into a diamond
+	 * @param x
+	 * @param y
+	 */
 	public void transformThisBoulderIntoADiamond(int x, int y) {
 		this.getGroundLevelModel()[x][y+2] = new DiamondModel();
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
+	/**
+	 * Make the BoulderModel[x][y] moving to right
+	 * @param x
+	 * @param y
+	 */
 	public void moveThisBoulderToRight(int x, int y) {
 		this.getGroundLevelModel()[x+1][y] = this.getGroundLevelModel()[x][y];
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
+	/**
+	 * Make the BoulderModel[x][y] moving to left
+	 * @param x
+	 * @param y
+	 */
 	public void moveThisBoulderToLeft(int x, int y) {
 		this.getGroundLevelModel()[x-1][y] = this.getGroundLevelModel()[x][y];
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
+	}
+
+	/**
+	 * Delete the BoulderModel[x][y]
+	 * @param x
+	 * @param y
+	 */
+	public void deleteThisBoulder(int x, int y) {
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public int getRemainingDiamondsNumber() {
+		return 10;
 	}
 }

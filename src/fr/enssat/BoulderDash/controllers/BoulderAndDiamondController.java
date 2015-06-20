@@ -100,7 +100,10 @@ public class BoulderAndDiamondController implements Runnable {
 			this.levelModel.setGameRunning(false);
 		} else if (spriteNameUnder == "magicwall") {
 			if (this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder") {
-				this.levelModel.transformThisBoulderIntoADiamond(x, y);
+				if(this.levelModel.getGroundLevelModel()[x][y].isConvertible())
+					this.levelModel.transformThisBoulderIntoADiamond(x, y);
+				else
+					this.levelModel.deleteThisBoulder(x,y);
 			}
 		} else if (spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() && this.levelModel.getGroundLevelModel()[x + 1][y].getSpriteName() == "black") {
 

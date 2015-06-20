@@ -231,7 +231,7 @@ public abstract class DisplayableElementModel {
      *
      * @return  Convertible value
      */
-    public boolean getConvertibleValue() {
+    public boolean isConvertible() {
         return this.convertible;
     }
 

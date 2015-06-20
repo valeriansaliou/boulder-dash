@@ -34,7 +34,7 @@ public class GameView extends JPanel implements Observer {
 	public GameView(GameController gameController, LevelModel levelModel) {
 		this.levelModel = levelModel;
 
-		levelModel.addObserver(this);
+		this.levelModel.addObserver(this);
 
 		addKeyListener(new KeyController(this.levelModel));
 
