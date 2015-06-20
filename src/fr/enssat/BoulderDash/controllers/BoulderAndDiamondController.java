@@ -59,7 +59,11 @@ public class BoulderAndDiamondController implements Runnable {
 				// scanned
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 
-				// If it is a boulder...
+				//DEBUG
+				if (spriteName == "boulder")
+					System.out.println(this.levelModel.getGroundLevelModel()[x][y].isConvertible());
+				
+				// If it is a boulder or a diamond...
 				if (spriteName == "boulder" || spriteName == "diamond") {
 					this.manageFall(x, y);
 				}
