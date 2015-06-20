@@ -39,6 +39,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	public BoulderModel(boolean convertible) {
 		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, convertible);
         this.loadSprite(spriteName);
+        System.out.println(convertible);
 	}
 
     public BoulderModel() {

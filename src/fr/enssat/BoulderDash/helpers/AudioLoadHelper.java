@@ -10,7 +10,7 @@ import fr.enssat.BoulderDash.bridges.SoundJLayerBridge;
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-19
  */
-public class  {
+public class  AudioLoadHelper {
     private static String pathToAudioStore = "res/audio";
 
     private SoundJLayerBridge musicToPlay;

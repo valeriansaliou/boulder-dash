@@ -42,7 +42,7 @@ public class GameController implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent event) {
         switch(event.getActionCommand()) {
-            case "quit":
+            case "Quit":
                 System.exit(0);
                 break;
 
