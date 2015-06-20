@@ -15,12 +15,13 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
 public class BrickWallModel extends DisplayableElementModel implements PublisherInterface {
 	private static String pathToSprite;
 	private static String spriteName;
-	private static boolean isDestructible ;
-	private static boolean canMove ;
-	private static boolean impactExplosive ;
-	private static boolean animate ;
-	private static int priority ;
+	private static boolean isDestructible;
+	private static boolean canMove;
+	private static boolean impactExplosive;
+	private static boolean animate;
+	private static int priority;
 	private static boolean falling;
+	private static String collideSound;
 
     /**
      * Static dataset
@@ -34,13 +35,14 @@ public class BrickWallModel extends DisplayableElementModel implements Publisher
 		animate = false;
 		priority = 3;
 		falling = false;
+		collideSound = null;
 	}
 
     /**
      * Class constructor
      */
 	public BrickWallModel() {
-		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate, falling);
+		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate, falling, collideSound);
 
         this.loadSprite(spriteName);
 	}

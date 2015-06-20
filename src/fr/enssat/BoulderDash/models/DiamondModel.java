@@ -22,6 +22,7 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private static String collideSound;
 	private long previousTime;
 	private int currentFrame;
 
@@ -42,13 +43,14 @@ public class DiamondModel extends DisplayableElementModel implements PublisherIn
 		impactExplosive = false;
 		animate = true;
 		priority = 0;
+		collideSound = null;
 	}
 
     /**
      * Class constructor
      */
 	public DiamondModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate,false);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, collideSound);
 
 		this.initSprites();
 	}

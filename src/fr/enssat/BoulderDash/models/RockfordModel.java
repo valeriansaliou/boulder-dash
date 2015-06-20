@@ -23,6 +23,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private static boolean animate;
 	private static int priority;
 	private static boolean falling;
+	private static String collideSound;
 
     /**
      * Maps the sub images of the sprite file
@@ -66,13 +67,14 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		animate = true;
 		priority = 1;
 		falling = false;
+		collideSound = null;
 	}
 
     /**
      * Class constructor
      */
 	public RockfordModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
 		// Speed of the animation of the sprite
 		this.setSpeed(100);
 		// Init the sprites in arrays
