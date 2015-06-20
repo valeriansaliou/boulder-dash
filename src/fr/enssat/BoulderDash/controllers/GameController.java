@@ -41,11 +41,27 @@ public class GameController implements ActionListener {
 	 * @param  event  Action event
 	 */
 	public void actionPerformed(ActionEvent event) {
-		if (event.getActionCommand() == "Quit") {
-			System.exit(0);
-		} else if (event.getActionCommand() == "New Game") {
-			this.levelModel.resetGame();
-		}
+        switch(event.getActionCommand()) {
+            case "quit":
+                System.exit(0);
+                break;
+
+            case "editor":
+                // TODO
+                break;
+
+            case "pause":
+                // TODO
+                break;
+
+            case "save":
+                // TODO
+                break;
+
+            case "restart":
+                this.levelModel.resetGame();
+                break;
+        }
 	}
 
 //	public void addNotify() { //TODO is this useful ?

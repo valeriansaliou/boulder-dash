@@ -69,11 +69,11 @@ public class FrameToDisplay extends JFrame implements Observer {
         this.informationPanel = new JPanel();
 
         // Add some buttons on the informationPanel
-        this.newGame = this.createButton("Restart");
-        this.editor = this.createButton("Editor");
-        this.pause = this.createButton("Pause");
-        this.save = this.createButton("Save");
-        this.quit = this.createButton("Quit");
+        this.newGame = this.createButton("restart", "Restart");
+        this.editor = this.createButton("editor", "Editor");
+        this.pause = this.createButton("pause", "Pause");
+        this.save = this.createButton("save", "Save");
+        this.quit = this.createButton("quit", "Quit");
 
         this.add(this.actionPanel, BorderLayout.SOUTH);
         this.add(this.informationPanel, BorderLayout.NORTH);
@@ -95,7 +95,7 @@ public class FrameToDisplay extends JFrame implements Observer {
      * @param   name  Button name
      * @return  Created button
      */
-	public JButton createButton(String name) {
+	public JButton createButton(String id, String name) {
 		JButton button = new JButton(name);
 		button.addActionListener(this.gameController);
 		button.setActionCommand(name);
