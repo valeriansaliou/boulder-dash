@@ -66,7 +66,7 @@ public class FrameToDisplay extends JFrame implements Observer {
     private void createLayout() {
         this.gameView = new GameView(this.gameController, this.levelModel);
         this.actionPanel = new JPanel();
-        this.informationPanel = new JPanel();
+        this.informationPanel = new InformationPanel(this.levelModel);
 
         // Add some buttons on the informationPanel
         this.newGame = this.createButton("restart", "Restart");
