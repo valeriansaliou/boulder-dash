@@ -16,7 +16,7 @@ public class InformationPanel extends JPanel{
 		this.add(this.text);
 	}
 	
-	public void updateText(){
+	public void updateText() {
 		this.text.setText("Score : " + this.levelModel.getScore() + "\nRemaining diamonds : " + this.levelModel.getRemainingDiamondsNumber());
 		//FIXME
 	}
