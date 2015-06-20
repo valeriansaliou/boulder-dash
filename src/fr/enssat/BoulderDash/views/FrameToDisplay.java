@@ -45,7 +45,7 @@ public class FrameToDisplay extends JFrame implements Observer {
         // UI parameters
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(100, 100, 200, 100);
-        this.setSize(432, 510);
+        this.setSize(432, 536);
 
         // App parameters
         this.setTitle("Boulder Dash");

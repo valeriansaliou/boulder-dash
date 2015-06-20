@@ -47,6 +47,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
     /**
      * Maps possible states for Rockford
      */
+	private boolean isCollisionDone = false;
 	private boolean isStaying = true;
 	private boolean isRunningLeft = false;
 	private boolean isRunningRight = false;
@@ -116,6 +117,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	 * Stops the Rockford movement
 	 */
 	public void startStaying() {
+		isCollisionDone = false;
 		isStaying = true;
 		isRunningLeft = false;
 		isRunningRight = false;
@@ -129,6 +131,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	 * Starts moving Rockford to the left
 	 */
 	public void startRunningLeft() {
+		isCollisionDone = false;
 		isStaying = false;
 		isRunningLeft = true;
 		isRunningRight = false;
@@ -141,6 +144,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	 * Starts moving Rockford to the right
 	 */
 	public void startRunningRight() {
+		isCollisionDone = false;
 		isStaying = false;
 		isRunningLeft = false;
 		isRunningRight = true;
@@ -153,6 +157,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	 * Rockford running up
 	 */
 	public void startRunningUp() {
+		isCollisionDone = false;
 		isStaying = false;
 		isRunningLeft = false;
 		isRunningRight = false;
@@ -165,6 +170,7 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	 * Rockford running down
 	 */
 	public void startRunningDown() {
+		isCollisionDone = false;
 		isStaying = false;
 		isRunningLeft = false;
 		isRunningRight = false;
@@ -174,10 +180,28 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	}
 
     /**
-     * Gets whether Rockford is standing still or not
+     * Gets whether Rockford collision has been handled or not
      *
-     * @return  Rockford staying or not
+     * @return  Rockford collision handled or not
      */
+    public boolean isCollisionDone() {
+        return this.isCollisionDone;
+    }
+
+    /**
+     * Sets whether Rockford collision has been handled or not
+     *
+     * @param  isCollisionDone  Rockford collision handled or not
+     */
+    public void setCollisionDone(boolean isCollisionDone) {
+        this.isCollisionDone = isCollisionDone;
+    }
+
+	/**
+	 * Gets whether Rockford is standing still or not
+	 *
+	 * @return  Rockford staying or not
+	 */
 	public boolean isStaying() {
 		return this.isStaying;
 	}

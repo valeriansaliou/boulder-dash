@@ -52,8 +52,8 @@ public class BoulderAndDiamondController implements Runnable {
 
 	/**
 	 * Scan the ground to detect the boulders & the diamonds, then make them
-	 * fall if necessary Note : scan of the ground upside down: we want the
-	 * things to fall slowly !
+	 * fall if necessary
+     * Note: scan of the ground upside down: we want things to fall slowly !
 	 */
 	private void manageFallingObject() {
 		for (int x = this.levelModel.getSizeWidth() - 1; x >= 0; x--) {
@@ -77,7 +77,7 @@ public class BoulderAndDiamondController implements Runnable {
 	 * @param  y  Vertical position
 	 */
 	private void manageFall(int x, int y) {
-		// ... Save the DisplayableElementModel object under this one
+		// Get informed about Rockford surroundings
         DisplayableElementModel elementAbove = this.levelModel.getGroundLevelModel()[x][y - 1];
         DisplayableElementModel elementBelow = this.levelModel.getGroundLevelModel()[x][y + 1];
         DisplayableElementModel elementLeft = this.levelModel.getGroundLevelModel()[x - 1][y];
@@ -101,6 +101,9 @@ public class BoulderAndDiamondController implements Runnable {
 		} else if (spriteNameBelow == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 			this.levelModel.exploseGround(x, y + 1);
 
+            AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
+            audioLoadHelper.playSound("die");
+
 			try {
 				Thread.sleep(25);
 			} catch (InterruptedException e) {
@@ -123,22 +126,5 @@ public class BoulderAndDiamondController implements Runnable {
 		} else {
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
-
-        // Play a sound?
-        // TODO: commonize this code which is way more proper
-        DisplayableElementModel nextElement = elementBelow;
-
-        if (this.levelModel.getRockford().isRunningRight()) {
-            nextElement = elementRight;
-        } else if (this.levelModel.getRockford().isRunningLeft()) {
-            nextElement = elementLeft;
-        } else if (this.levelModel.getRockford().isRunningUp()) {
-            nextElement = elementAbove;
-        }
-
-        if(nextElement.getCollideSound() != null) {
-            AudioLoadHelper audioLoad = new AudioLoadHelper();
-            audioLoad.playSound(nextElement.getCollideSound());
-        }
 	}
 }

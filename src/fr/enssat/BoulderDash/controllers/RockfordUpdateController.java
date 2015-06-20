@@ -37,7 +37,6 @@ public class RockfordUpdateController implements Runnable {
 	 */
 	public void run() {
 		while (this.levelModel.isGameRunning()) {
-			
 			if (this.rockfordHasMoved) {
 				this.levelModel.setPositionOfRockford(rockfordPositionX, rockfordPositionY);
 				this.rockfordHasMoved = false;

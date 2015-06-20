@@ -6,6 +6,7 @@ import fr.enssat.BoulderDash.interfaces.SubscriberInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
+import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -70,14 +71,14 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.spriteAnimator.start();
 	}
 
-	/**
-	 * Initializes the Rockford position attributes
-	 */
-	private void initRockford() {
-		this.rockfordPositionX = this.levelLoadHelper.getRockfordPositionX();
-		this.rockfordPositionY = this.levelLoadHelper.getRockfordPositionY();
-		this.rockford = this.levelLoadHelper.getRockfordInstance();
-	}
+    /**
+     * Initializes the Rockford position attributes
+     */
+    private void initRockford() {
+        this.rockfordPositionX = this.levelLoadHelper.getRockfordPositionX();
+        this.rockfordPositionY = this.levelLoadHelper.getRockfordPositionY();
+        this.rockford = this.levelLoadHelper.getRockfordInstance();
+    }
 
 	/**
 	 * Creates the limits
@@ -109,6 +110,44 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
     /**
+     * Checks whether position is out-of-bounds or not
+     *
+     * @param  posX  Horizontal position
+     * @param  posY  Vertical position
+     */
+    private boolean isOutOfBounds(int posX, int posY) {
+        if(posX > 0 && posY > 0 && posX < this.getLevelLoadHelper().getHeightSizeValue() && posY < this.getLevelLoadHelper().getWidthSizeValue()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Plays collision sound
+     */
+    private void playCollisionSound(int posX, int posY) {
+        String collisionSound = null;
+
+        if(this.getRockford().isCollisionDone() == false) {
+            // Out of bounds?
+            if (this.isOutOfBounds(posX, posY) == true) {
+                collisionSound = "touch";
+            } else {
+                DisplayableElementModel nextElement = this.getGroundLevelModel()[posX][posY];
+                collisionSound = nextElement.getCollideSound();
+            }
+
+            this.getRockford().setCollisionDone(true);
+        }
+
+        if(collisionSound != null) {
+            AudioLoadHelper audioLoad = new AudioLoadHelper();
+            audioLoad.playSound(collisionSound);
+        }
+    }
+
+    /**
      * Gets the horizontal position of Rockford from the model
      *
      * @return  Horizontal position of Rockford
@@ -133,8 +172,10 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 			this.incrementScore();
 		}
 
-		// Check that we are not out of bound ...
-		if (posX > 0 && posY > 0 && posX < this.getLevelLoadHelper().getHeightSizeValue() && posY < this.getLevelLoadHelper().getWidthSizeValue()) {
+        this.playCollisionSound(posX, posY);
+
+		// Check that we are not out of bound...
+		if (this.isOutOfBounds(posX, posY) == false) {
 			// Create a new empty model in the old pos of Rockford
 			this.getGroundLevelModel()[oldX][oldY] = new EmptyModel();
 
