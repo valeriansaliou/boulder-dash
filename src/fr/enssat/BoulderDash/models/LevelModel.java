@@ -28,7 +28,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	private int sizeHeight = 0;
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
-	private int score;
+	private GameInformationsModel gameInformationsModel;
 	private int rockfordPositionX, rockfordPositionY;
 	private boolean gameRunning;
 
@@ -48,7 +48,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      * @param  levelModel  Level model
      */
 	public LevelModel(String levelName) {
-		this.score = 0;
+		this.gameInformationsModel = new GameInformationsModel();
 		this.levelName = levelName;
 		this.gameRunning = true;
 		
@@ -271,7 +271,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      * Increments the user score
      */
 	public void incrementScore() {
-		this.score +=1;		
+		this.gameInformationsModel.incrementScore();		
 	}
 
     /**
@@ -284,7 +284,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * set the game to a defined state
+	 * sets the game to a defined state
 	 * @param gameRunning
 	 */
 	public void setGameRunning(boolean gameRunning) {
@@ -306,6 +306,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		System.out.println("reset");
 	}
 
+	/**
+	 * When a boulder is falling on Rockford there is an explosion around him
+	 * @param x
+	 * @param y
+	 */
 	public void exploseGround(int x, int y) {
 		this.groundGrid[x][y] = new EmptyModel();
 		this.groundGrid[x+1][y] = new EmptyModel();
@@ -319,7 +324,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Make the DisplayableElement[x][y] fall one box down
+	 * Makes the DisplayableElement[x][y] fall one box down
 	 * @param x
 	 * @param y
 	 */
@@ -330,7 +335,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Make the BoulderModel[x][y] slide left
+	 * Makes the BoulderModel[x][y] slide left
 	 * @param x
 	 * @param y
 	 */
@@ -341,7 +346,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Make the BoulderModel[x][y] slide right
+	 * Makes the BoulderModel[x][y] slide right
 	 * @param x
 	 * @param y
 	 */
@@ -352,7 +357,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Make the BoulderModel[x][y] transform into a diamond
+	 * Makes the BoulderModel[x][y] transform into a diamond
 	 * @param x
 	 * @param y
 	 */
@@ -362,7 +367,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Make the BoulderModel[x][y] moving to right
+	 * Makes the BoulderModel[x][y] moving to right
 	 * @param x
 	 * @param y
 	 */
@@ -372,7 +377,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Make the BoulderModel[x][y] moving to left
+	 * Makes the BoulderModel[x][y] moving to left
 	 * @param x
 	 * @param y
 	 */
@@ -382,7 +387,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 	}
 
 	/**
-	 * Delete the BoulderModel[x][y]
+	 * Deletes the BoulderModel[x][y]
 	 * @param x
 	 * @param y
 	 */
@@ -390,11 +395,13 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
 	}
 
-	public int getScore() {
-		return score;
+	/**
+	 * Gets gameInformationsModel
+	 * @return gameInfos like score, remainings Diamonds etc
+	 */
+	public GameInformationsModel getGameInformationsModel() {
+		return gameInformationsModel;
 	}
-
-	public int getRemainingDiamondsNumber() {
-		return 10;
-	}
+	
+	
 }
