@@ -1,5 +1,7 @@
 package fr.enssat.BoulderDash.controllers;
 
+import java.awt.event.ActionEvent;
+
 /**
  * LevelEditorController
  *
@@ -11,8 +13,23 @@ package fr.enssat.BoulderDash.controllers;
 public class LevelEditorController {
     /**
      * Class constructor
+     *
+     * @param  levelModel  Level model
      */
     public LevelEditorController() {
-        // TODO
+        // TODO: as needed
+    }
+
+    /**
+     * Handles the 'action performed' event
+     *
+     * @param  event  Action event
+     */
+    public void actionPerformed(ActionEvent event) {
+        switch(event.getActionCommand()) {
+            case "quit":
+                System.exit(0);
+                break;
+        }
     }
 }

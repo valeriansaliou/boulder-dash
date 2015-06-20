@@ -20,10 +20,17 @@ public class InformationPanel extends JPanel implements Observer{
 				"\nRemaining diamonds : " + levelModel.getGameInformationsModel().getRemainingsDiamonds());
 		this.add(this.text);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public void update(Observable o, Object arg) {
 		this.text.setText("Score : " + this.levelModel.getGameInformationsModel().getScore() + 
 				"\nRemaining diamonds : " + this.levelModel.getGameInformationsModel().getRemainingsDiamonds());
+=======
+	
+	public void updateText() {
+		this.text.setText("Score : " + this.levelModel.getScore() + "\nRemaining diamonds : " + this.levelModel.getRemainingDiamondsNumber());
+		//FIXME
+>>>>>>> d18ed65ed4d08b4242309c0e82baa89fa78372fc
 	}
 }

@@ -215,8 +215,8 @@ public class LevelLoadHelper {
                                 String currentSpriteConvertibleValue = currentSpriteElement.getAttribute("convertible");
                                 boolean currentSpriteConvertible = false;
 
-                                if(currentSpriteConvertibleValue == "1") {
-                                    currentSpriteConvertible = true;
+                                if(currentSpriteConvertibleValue.equals("1")) {
+									currentSpriteConvertible = true;
                                 }
 
 								// Process positions
