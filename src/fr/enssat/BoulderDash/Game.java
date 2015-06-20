@@ -3,6 +3,7 @@ package fr.enssat.BoulderDash;
 import com.apple.eawt.Application;
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,8 +44,11 @@ public class Game {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                LevelModel levelModel = new LevelModel("level01");
-                new GameController(levelModel);
+                AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
+                LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
+
+                // Go!
+                new GameController(levelModel, audioLoadHelper);
             }
         });
     }

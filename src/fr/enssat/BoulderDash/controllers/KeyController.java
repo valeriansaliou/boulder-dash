@@ -4,7 +4,7 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.controllers.RockfordUpdateController;
 import fr.enssat.BoulderDash.controllers.BoulderAndDiamondController;
-import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -22,18 +22,18 @@ public class KeyController implements KeyListener {
 	private LevelModel levelModel;
 	private RockfordUpdateController updatePosRockford;
 	private BoulderAndDiamondController updateFallingElements;
-    private GameController gameController;
+    private AudioLoadHelper audioLoadHelper;
 
     /**
      * Class constructor
      *
      * @param  levelModel  Level model
      */
-	public KeyController(LevelModel levelModel, GameController gameController) {
+	public KeyController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
 		this.levelModel = levelModel;
-		this.updateFallingElements = new BoulderAndDiamondController(levelModel, gameController);
+        this.audioLoadHelper = audioLoadHelper;
+		this.updateFallingElements = new BoulderAndDiamondController(levelModel, audioLoadHelper);
 		this.updatePosRockford = new RockfordUpdateController(levelModel);
-        this.gameController = gameController;
 	}
 
     /**

@@ -27,13 +27,14 @@ public class GameController implements ActionListener {
      *
      * @param  levelModel  Level model
      */
-	public GameController(LevelModel levelModel) {
+	public GameController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
 		this.levelModel = levelModel;
+        this.audioLoadHelper = audioLoadHelper;
+
         new FrameToDisplay(this, levelModel);
 
-        this.audioLoadHelper = new AudioLoadHelper();
         this.getAudioLoadHelper().playSound("new");
-//        this.audioLoadHelper.startMusic("game");
+//        this.getAudioLoadHelper().startMusic("game");
 	}
 
 	/**

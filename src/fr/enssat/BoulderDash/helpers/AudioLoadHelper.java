@@ -2,6 +2,10 @@ package fr.enssat.BoulderDash.helpers;
 
 import fr.enssat.BoulderDash.bridges.SoundJLayerBridge;
 
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.HashMap;
+
 /**
  * AudioLoadHelper
  *
@@ -10,10 +14,18 @@ import fr.enssat.BoulderDash.bridges.SoundJLayerBridge;
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-19
  */
-public class  AudioLoadHelper {
+public class AudioLoadHelper {
     private static String pathToAudioStore = "res/audio";
 
     private SoundJLayerBridge musicToPlay;
+    private HashMap<String, SoundJLayerBridge> preloadedSounds;
+
+    /**
+     * Class constructor
+     */
+    public AudioLoadHelper() {
+        this.preloadSounds();
+    }
 
     /**
      * Gets music storage path
@@ -59,14 +71,49 @@ public class  AudioLoadHelper {
     }
 
     /**
+     * Preloads available sounds
+     */
+    private void preloadSounds() {
+        // Initialize
+        String curSoundIdPrep;
+        this.preloadedSounds = new HashMap<String, SoundJLayerBridge>();
+
+        // List sound files
+        File soundsDir = new File(this.pathToAudioStore + "/sounds/");
+        File [] soundFiles = soundsDir.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".mp3");
+            }
+        });
+
+        // Cache them all!
+        for (File curSoundId : soundFiles) {
+            curSoundIdPrep = curSoundId.getName();
+            curSoundIdPrep = curSoundIdPrep.substring(0, curSoundIdPrep.lastIndexOf('.'));
+
+            this.preloadedSounds.put(curSoundIdPrep, new SoundJLayerBridge(
+                    curSoundId.getPath()
+            ));
+        }
+    }
+
+    /**
+     * Gets a preloaded sound
+     *
+     * @param  soundId  Sound identifier
+     * @return  Preloaded sound instance
+     */
+    private SoundJLayerBridge getPreloadedSound(String soundId) {
+        return this.preloadedSounds.get(soundId);
+    }
+
+    /**
      * Plays a sound
      *
      * @param  soundId  Sound identifier
      */
     public void playSound(String soundId) {
-        SoundJLayerBridge sound = new SoundJLayerBridge(
-                this.getSoundPathInAudioStore(soundId)
-        );
-        sound.play();
+        this.getPreloadedSound(soundId).play();
     }
 }

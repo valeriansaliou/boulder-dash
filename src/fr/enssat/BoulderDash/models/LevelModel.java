@@ -25,6 +25,7 @@ import java.util.Observable;
 public class LevelModel extends Observable implements LevelLoadInterface, SubscriberInterface, Runnable {
 	private DisplayableElementModel[][] groundGrid;
 	private String levelName;
+    private AudioLoadHelper audioLoadHelper;
 	private int sizeWidth = 0;
 	private int sizeHeight = 0;
 	private LevelLoadHelper levelLoadHelper;
@@ -48,9 +49,10 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
      *
      * @param  levelModel  Level model
      */
-	public LevelModel(String levelName) {
+	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
 		this.gameInformationsModel = new GameInformationsModel();
 		this.levelName = levelName;
+        this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = true;
 		
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
@@ -142,8 +144,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Subscr
         }
 
         if(collisionSound != null) {
-            AudioLoadHelper audioLoad = new AudioLoadHelper();
-            audioLoad.playSound(collisionSound);
+            this.audioLoadHelper.playSound(collisionSound);
         }
     }
 
