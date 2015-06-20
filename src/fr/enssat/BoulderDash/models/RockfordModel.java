@@ -50,7 +50,8 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 	private boolean isStaying = true;
 	private boolean isRunningLeft = false;
 	private boolean isRunningRight = false;
-	private boolean isRunningUpOrDown = false;
+	private boolean isRunningUp = false;
+	private boolean isRunningDown = false;
 
 	private long previousTime;
 	private int currentFrame;
@@ -118,7 +119,8 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		isStaying = true;
 		isRunningLeft = false;
 		isRunningRight = false;
-		isRunningUpOrDown = false;
+		isRunningUp = false;
+		isRunningDown = false;
 		previousTime = 0;
 		currentFrame = 0;
 	}
@@ -130,7 +132,8 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		isStaying = false;
 		isRunningLeft = true;
 		isRunningRight = false;
-		isRunningUpOrDown = false;
+		isRunningUp = false;
+		isRunningDown = false;
 		previousTime = 0;
 	}
 
@@ -141,18 +144,32 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		isStaying = false;
 		isRunningLeft = false;
 		isRunningRight = true;
-		isRunningUpOrDown = false;
+		isRunningUp = false;
+		isRunningDown = false;
 		previousTime = 0;
 	}
 
 	/**
-	 * Rockford running up or down (same picture)
+	 * Rockford running up
 	 */
-	public void startRunningUpOrDown() {
+	public void startRunningUp() {
 		isStaying = false;
 		isRunningLeft = false;
 		isRunningRight = false;
-		isRunningUpOrDown = true;
+		isRunningUp = true;
+		isRunningDown = false;
+		previousTime = 0;
+	}
+
+	/**
+	 * Rockford running down
+	 */
+	public void startRunningDown() {
+		isStaying = false;
+		isRunningLeft = false;
+		isRunningRight = false;
+		isRunningUp = false;
+		isRunningDown = true;
 		previousTime = 0;
 	}
 
@@ -183,13 +200,31 @@ public class RockfordModel extends DisplayableElementModel implements PublisherI
 		return this.isRunningRight;
 	}
 
-    /**
-     * Gets whether Rockford is running up or down, or not
-     *
-     * @return  Rockford running up or down, or not
-     */
+	/**
+	 * Gets whether Rockford is running up or not
+	 *
+	 * @return  Rockford running up, or not
+	 */
+	public boolean isRunningUp() {
+		return this.isRunningUp;
+	}
+
+	/**
+	 * Gets whether Rockford is running down or not
+	 *
+	 * @return  Rockford running down, or not
+	 */
+	public boolean isRunningDown() {
+		return this.isRunningDown;
+	}
+
+	/**
+	 * Gets whether Rockford is running up or down, or not
+	 *
+	 * @return  Rockford running up or down, or not
+	 */
 	public boolean isRunningUpOrDown() {
-		return this.isRunningUpOrDown;
+		return this.isRunningUp() || this.isRunningDown();
 	}
 
 	/**

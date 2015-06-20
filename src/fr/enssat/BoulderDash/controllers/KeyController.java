@@ -46,7 +46,7 @@ public class KeyController implements KeyListener {
 
                 if (upElement.getPriority() < levelModel.getRockford().getPriority()) {
                     this.updatePosRockford.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() - 1);
-                    this.levelModel.getRockford().startRunningUpOrDown();
+                    this.levelModel.getRockford().startRunningUp();
                 }
 
                 break;
@@ -57,7 +57,7 @@ public class KeyController implements KeyListener {
 
                 if (downElement.getPriority() < levelModel.getRockford().getPriority()) {
                     this.updatePosRockford.moveRockford(levelModel.getRockfordPositionX(), levelModel.getRockfordPositionY() + 1);
-                    this.levelModel.getRockford().startRunningUpOrDown();
+                    this.levelModel.getRockford().startRunningDown();
                 }
 
                 break;

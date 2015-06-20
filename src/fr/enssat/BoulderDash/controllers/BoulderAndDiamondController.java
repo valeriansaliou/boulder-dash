@@ -4,6 +4,9 @@ import fr.enssat.BoulderDash.models.BoulderModel;
 import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
+import sun.jvm.hotspot.memory.Space;
 
 /**
  * ElementPositionUpdateHelper
@@ -58,10 +61,6 @@ public class BoulderAndDiamondController implements Runnable {
 				// Gets the spriteName of actual DisplayableElementModel object
 				// scanned
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
-
-				//DEBUG
-				if (spriteName == "boulder")
-					System.out.println(this.levelModel.getGroundLevelModel()[x][y].isConvertible());
 				
 				// If it is a boulder or a diamond...
 				if (spriteName == "boulder" || spriteName == "diamond") {
@@ -79,23 +78,27 @@ public class BoulderAndDiamondController implements Runnable {
 	 */
 	private void manageFall(int x, int y) {
 		// ... Save the DisplayableElementModel object under this one
-		String spriteNameUnder = this.levelModel.getGroundLevelModel()[x][y + 1].getSpriteName();
-		// ... And the DisplayableElementModel object at his left...
-		String spriteNameLeft = this.levelModel.getGroundLevelModel()[x - 1][y].getSpriteName();
-		// ... Right
-		String spriteNameRight = this.levelModel.getGroundLevelModel()[x + 1][y].getSpriteName();
+        DisplayableElementModel elementAbove = this.levelModel.getGroundLevelModel()[x][y - 1];
+        DisplayableElementModel elementBelow = this.levelModel.getGroundLevelModel()[x][y + 1];
+        DisplayableElementModel elementLeft = this.levelModel.getGroundLevelModel()[x - 1][y];
+        DisplayableElementModel elementRight = this.levelModel.getGroundLevelModel()[x + 1][y];
+
+        String spriteNameAbove = elementAbove.getSpriteName();
+        String spriteNameBelow = elementBelow.getSpriteName();
+		String spriteNameLeft = elementLeft.getSpriteName();
+		String spriteNameRight = elementRight.getSpriteName();
 
 		// Then, process in case of the surrounding
-		if (spriteNameUnder == "black") {
+		if (spriteNameBelow == "black") {
 			this.levelModel.makeThisDisplayableElementFall(x, y);
-		} else if (spriteNameUnder == "boulder") {
+		} else if (spriteNameBelow == "boulder") {
 			// Boulders have to roll if they hit another boulder
 			if (this.levelModel.getGroundLevelModel()[x - 1][y + 1].getSpriteName() == "black") {
 				this.levelModel.makeThisBoulderSlideLeft(x, y);
 			} else if (this.levelModel.getGroundLevelModel()[x + 1][y + 1].getSpriteName() == "black") {
 				this.levelModel.makeThisBoulderSlideRight(x, y);
 			}
-		} else if (spriteNameUnder == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
+		} else if (spriteNameBelow == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 			this.levelModel.exploseGround(x, y + 1);
 
 			try {
@@ -105,7 +108,7 @@ public class BoulderAndDiamondController implements Runnable {
 			}
 
 			this.levelModel.setGameRunning(false);
-		} else if (spriteNameUnder == "magicwall") {
+		} else if (spriteNameBelow == "magicwall") {
 			if (this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder") {
 				if(this.levelModel.getGroundLevelModel()[x][y].isConvertible()) {
 					this.levelModel.transformThisBoulderIntoADiamond(x, y);
@@ -120,5 +123,22 @@ public class BoulderAndDiamondController implements Runnable {
 		} else {
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
+
+        // Play a sound?
+        // TODO: commonize this code which is way more proper
+        DisplayableElementModel nextElement = elementBelow;
+
+        if (this.levelModel.getRockford().isRunningRight()) {
+            nextElement = elementRight;
+        } else if (this.levelModel.getRockford().isRunningLeft()) {
+            nextElement = elementLeft;
+        } else if (this.levelModel.getRockford().isRunningUp()) {
+            nextElement = elementAbove;
+        }
+
+        if(nextElement.getCollideSound() != null) {
+            AudioLoadHelper audioLoad = new AudioLoadHelper();
+            audioLoad.playSound(nextElement.getCollideSound());
+        }
 	}
 }
