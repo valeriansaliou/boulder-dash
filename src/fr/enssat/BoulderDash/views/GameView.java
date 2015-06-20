@@ -36,7 +36,7 @@ public class GameView extends JPanel implements Observer {
 
 		this.levelModel.addObserver(this);
 
-		addKeyListener(new KeyController(this.levelModel));
+		addKeyListener(new KeyController(this.levelModel, gameController));
 
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setFocusable(true);

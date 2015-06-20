@@ -32,7 +32,7 @@ public class GameController implements ActionListener {
         new FrameToDisplay(this, levelModel);
 
         this.audioLoadHelper = new AudioLoadHelper();
-        this.audioLoadHelper.playSound("new");
+        this.getAudioLoadHelper().playSound("new");
 //        this.audioLoadHelper.startMusic("game");
 	}
 
@@ -64,6 +64,15 @@ public class GameController implements ActionListener {
                 break;
         }
 	}
+
+    /**
+     * Gets the audio load helper instance
+     *
+     * @return  Audio load helper instance
+     */
+    public AudioLoadHelper getAudioLoadHelper() {
+        return this.audioLoadHelper;
+    }
 
 //	public void addNotify() { //TODO is this useful ?
 //		frameToDisplay.getGameView().addNotify();

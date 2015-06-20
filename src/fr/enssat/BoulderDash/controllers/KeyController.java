@@ -2,6 +2,9 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.controllers.RockfordUpdateController;
+import fr.enssat.BoulderDash.controllers.BoulderAndDiamondController;
+import fr.enssat.BoulderDash.controllers.GameController;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,16 +22,18 @@ public class KeyController implements KeyListener {
 	private LevelModel levelModel;
 	private RockfordUpdateController updatePosRockford;
 	private BoulderAndDiamondController updateFallingElements;
+    private GameController gameController;
 
     /**
      * Class constructor
      *
      * @param  levelModel  Level model
      */
-	public KeyController(LevelModel levelModel) {
+	public KeyController(LevelModel levelModel, GameController gameController) {
 		this.levelModel = levelModel;
-		this.updateFallingElements = new BoulderAndDiamondController(levelModel);
+		this.updateFallingElements = new BoulderAndDiamondController(levelModel, gameController);
 		this.updatePosRockford = new RockfordUpdateController(levelModel);
+        this.gameController = gameController;
 	}
 
     /**

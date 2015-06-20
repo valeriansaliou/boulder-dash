@@ -5,6 +5,7 @@ import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import sun.jvm.hotspot.memory.Space;
 
@@ -20,6 +21,7 @@ import sun.jvm.hotspot.memory.Space;
  */
 public class BoulderAndDiamondController implements Runnable {
 	private LevelModel levelModel;
+    private GameController gameController;
 	private Thread elementMovingThread;
 
 	/**
@@ -28,8 +30,11 @@ public class BoulderAndDiamondController implements Runnable {
 	 * @param levelModel
 	 *            Level model
 	 */
-	public BoulderAndDiamondController(LevelModel levelModel) {
+	public BoulderAndDiamondController(LevelModel levelModel, GameController gameController) {
 		this.levelModel = levelModel;
+        this.gameController = gameController;
+
+        // Start thread
 		this.elementMovingThread = new Thread(this);
 		this.elementMovingThread.start();
 	}
@@ -101,8 +106,7 @@ public class BoulderAndDiamondController implements Runnable {
 		} else if (spriteNameBelow == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 			this.levelModel.exploseGround(x, y + 1);
 
-            AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
-            audioLoadHelper.playSound("die");
+            this.gameController.getAudioLoadHelper().playSound("die");
 
 			try {
 				Thread.sleep(25);
