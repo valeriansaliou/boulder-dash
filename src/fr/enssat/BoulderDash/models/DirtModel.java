@@ -20,6 +20,7 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 	private static boolean animate;
 	private static int priority;
 	private static boolean falling;
+	private static String collideSound;
 	
     /**
      * Static dataset
@@ -33,13 +34,14 @@ public class DirtModel extends DisplayableElementModel implements PublisherInter
 		animate = false;
 		priority = 0;
 		falling = false;
+		collideSound = null;
 	}
 
     /**
      * Class constructor
      */
 	public DirtModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
 
         this.loadSprite(spriteName);
 	}

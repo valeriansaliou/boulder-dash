@@ -20,6 +20,7 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 	private static boolean animate;
 	private static int priority;
 	private static boolean falling;
+	private static String collideSound;
 
     /**
      * Static dataset
@@ -33,13 +34,14 @@ public class SteelWallModel extends DisplayableElementModel implements Publisher
 		animate = false;
 		priority = 3;
 		falling = false;
+		collideSound = "touch";
 	}
 
     /**
      * Class constructor
      */
 	public SteelWallModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
 		this.loadSprite(spriteName);
 	}
 }

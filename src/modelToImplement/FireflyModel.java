@@ -10,6 +10,7 @@ public class FireflyModel extends DisplayableElementModel {
 	private static boolean animate;
 	private static int priority;
 	private static boolean falling;
+	private static String collideSound;
 
 	static {
 		spriteName = "field_00";
@@ -19,9 +20,10 @@ public class FireflyModel extends DisplayableElementModel {
 		animate = true;
 		priority = 2;
 		falling = false;
+		collideSound = null;
 	}
 
 	public FireflyModel() {
-		super(animate, animate, spriteName, priority, animate, animate, falling);//TODO IT IS NOT IN THE RIGHT ORDER
+		super(animate, animate, spriteName, priority, animate, animate, falling, collideSound);//TODO IT IS NOT IN THE RIGHT ORDER
 	}
 }

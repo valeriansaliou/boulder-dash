@@ -25,7 +25,8 @@ public abstract class DisplayableElementModel {
 	private int priority;
 	private BufferedImage sprite;
     private boolean falling;
-    private boolean convertible;
+	private boolean convertible;
+	private String collideSound;
 
 	/**
      * Class constructor
@@ -37,7 +38,7 @@ public abstract class DisplayableElementModel {
 	 * @param impactExplosive
 	 * @param animate
 	 */
-	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, boolean convertible) {
+	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound, boolean convertible) {
 		this.moving = moving;
 		this.destructible = destructible;
 		this.spriteName = spriteName;
@@ -47,11 +48,12 @@ public abstract class DisplayableElementModel {
 		this.priority = priority;
 		this.falling = falling;
         this.convertible = convertible;
+		this.collideSound = collideSound;
 	}
 
-    public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling) {
+    public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound) {
         this(
-                destructible, moving, spriteName, priority, impactExplosive, animate, falling, false
+                destructible, moving, spriteName, priority, impactExplosive, animate, falling, collideSound, false
         );
     }
 
@@ -224,6 +226,24 @@ public abstract class DisplayableElementModel {
      */
     public void setFalling(boolean falling) {
         this.falling = falling;
+    }
+
+    /**
+     * Gets the collide sound of the object
+     *
+     * @return  Collide sound
+     */
+    public String getCollideSound() {
+        return this.collideSound;
+    }
+
+    /**
+     * Sets the collide sound of the object
+     *
+     * @param  collideSound  Collide sound
+     */
+    public void setCollideSound(String collideSound) {
+        this.collideSound = collideSound;
     }
 
     /**

@@ -18,6 +18,7 @@ public class EmptyModel extends DisplayableElementModel {
 	private static boolean animate;
 	private static int priority;
 	private static boolean falling;
+	private static String collideSound;
 
     /**
      * Static dataset
@@ -31,13 +32,14 @@ public class EmptyModel extends DisplayableElementModel {
 		animate = false;
 		priority = 0;
 		falling = false;
+		collideSound = null;
 	}
 
     /**
      * Class constructor
      */
 	public EmptyModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
 
 		this.loadSprite(spriteName);
 	}

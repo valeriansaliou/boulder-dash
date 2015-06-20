@@ -19,6 +19,7 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 	private static boolean impactExplosive;
 	private static boolean animate;
 	private static int priority;
+	private static String collideSound;
 
     /**
      * Static dataset
@@ -31,13 +32,14 @@ public class BoulderModel extends DisplayableElementModel implements PublisherIn
 		impactExplosive = false;
 		animate = true;
 		priority = 2;
+		collideSound = "die";
 	}
 
     /**
      * Class constructor
      */
 	public BoulderModel(boolean convertible) {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, convertible);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, collideSound, convertible);
         this.loadSprite(spriteName);
         System.out.println(convertible);
 	}
