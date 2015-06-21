@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.views;
+package fr.enssat.BoulderDash.views;
 
 import fr.enssat.BoulderDash.views.FieldView;
 import fr.enssat.BoulderDash.controllers.GameController;
