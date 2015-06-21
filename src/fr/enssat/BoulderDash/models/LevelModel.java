@@ -162,10 +162,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Sets the new Rockford position
 	 * 
-	 * @param posX
-	 *            Next horizontal position on the grid
-	 * @param posY
-	 *            Next vertical position on the grid
+	 * @param  posX  Next horizontal position on the grid
+	 * @param  posY  Next vertical position on the grid
 	 */
 	public void setPositionOfRockford(int posX, int posY) {
 		int oldX = this.getRockfordPositionX();
@@ -328,7 +326,8 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * sets the game to a defined state
-	 * @param gameRunning
+	 *
+	 * @param   gameRunning  Whether game is running or not
 	 */
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
@@ -336,7 +335,8 @@ public class LevelModel extends Observable implements Runnable {
 	
 	/**
 	 * tells if the game is running
-	 * @return whether the game is running or not
+	 *
+	 * @return  whether the game is running or not
 	 */
 	public boolean isGameRunning(){
 		return gameRunning;
@@ -351,8 +351,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * When a boulder is falling on Rockford there is an explosion around him
-	 * @param x
-	 * @param y
+	 *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void exploseGround(int x, int y) {
 		this.groundGrid[x][y] = new EmptyModel();
@@ -368,8 +369,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Makes the DisplayableElement[x][y] fall one box down
-	 * @param x
-	 * @param y
+	 *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void makeThisDisplayableElementFall(int x, int y) {
 		this.getGroundLevelModel()[x][y].setFalling(true);
@@ -379,8 +381,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Makes the BoulderModel[x][y] slide left
-	 * @param x
-	 * @param y
+	 *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void makeThisBoulderSlideLeft(int x, int y) {
 		this.getGroundLevelModel()[x][y].setFalling(true);
@@ -390,8 +393,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Makes the BoulderModel[x][y] slide right
-	 * @param x
-	 * @param y
+	 *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void makeThisBoulderSlideRight(int x, int y) {
 		this.getGroundLevelModel()[x][y].setFalling(true);
@@ -401,8 +405,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Makes the BoulderModel[x][y] transform into a diamond
-	 * @param x
-	 * @param y
+     *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void transformThisBoulderIntoADiamond(int x, int y) {
 		this.getGroundLevelModel()[x][y+2] = new DiamondModel();
@@ -411,8 +416,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Makes the BoulderModel[x][y] moving to right
-	 * @param x
-	 * @param y
+     *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void moveThisBoulderToRight(int x, int y) {
 		this.getGroundLevelModel()[x+1][y] = this.getGroundLevelModel()[x][y];
@@ -421,8 +427,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Makes the BoulderModel[x][y] moving to left
-	 * @param x
-	 * @param y
+     *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void moveThisBoulderToLeft(int x, int y) {
 		this.getGroundLevelModel()[x-1][y] = this.getGroundLevelModel()[x][y];
@@ -431,8 +438,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Deletes the BoulderModel[x][y]
-	 * @param x
-	 * @param y
+     *
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void deleteThisBoulder(int x, int y) {
 		this.getGroundLevelModel()[x][y] = new EmptyModel();
@@ -440,11 +448,10 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Gets gameInformationModel
-	 * @return gameInfos like score, remainings Diamonds etc
+     *
+	 * @return  gameInfos like score, remainings Diamonds etc
 	 */
 	public GameInformationModel getGameInformationModel() {
 		return this.gameInformationModel;
 	}
-	
-	
 }
