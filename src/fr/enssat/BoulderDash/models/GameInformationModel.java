@@ -15,9 +15,9 @@ public class GameInformationModel extends Observable  {
 	private int remainingsDiamonds;
 	private int timer;
 
-	public GameInformationModel() {
+	public GameInformationModel(int remainingsDiamonds) {
 		this.score = 0;
-		this.remainingsDiamonds = 0;
+		this.remainingsDiamonds = remainingsDiamonds;
 		this.timer = 0;
 	}
 
@@ -75,6 +75,14 @@ public class GameInformationModel extends Observable  {
 	private void myNotify(){
 		this.notifyObservers();
 		this.setChanged();
+	}
+
+	/**
+	 * Decrement of one the number total of remainings diamonds.
+	 */
+	public void decrementRemainingsDiamonds() {
+		this.remainingsDiamonds -= 1;
+		this.myNotify();
 	}
 
 }

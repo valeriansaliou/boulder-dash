@@ -53,16 +53,18 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 	 * @param  audioLoadHelper  Audio load helper
      */
 	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
-		this.gameInformationsModel = new GameInformationModel();
 		this.levelName = levelName;
         this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = true;
 		
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
+
 		this.groundGrid = this.levelLoadHelper.getGroundGrid();
 		this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
 		this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
+		this.gameInformationsModel = new GameInformationModel(this.levelLoadHelper.getDiamondsToCatch());
+		
 		this.createLimits();
 		this.initRockford();
 		this.initThreadAnimator();
@@ -174,6 +176,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 
 		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
 			this.gameInformationsModel.incrementScore();
+			this.gameInformationsModel.decrementRemainingsDiamonds();
 		}
 
         this.playCollisionSound(posX, posY);

@@ -64,6 +64,8 @@ public class LevelLoadHelper {
 	private RockfordModel rockfordInstance;
 	private int rockfordPositionX = 0;
 	private int rockfordPositionY = 0;
+	
+	private int diamondsToCatch;
 
 	private DisplayableElementModel[][] groundGrid;
 
@@ -74,7 +76,7 @@ public class LevelLoadHelper {
      */
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
-
+		this.diamondsToCatch = 0;
         // Requirements
         dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
 
@@ -265,6 +267,7 @@ public class LevelLoadHelper {
 
             case "diamond":
                 element = new DiamondModel();
+                diamondsToCatch += 1;
                 break;
 
             case "dirt":
@@ -478,4 +481,22 @@ public class LevelLoadHelper {
 	private void setGroundGrid(DisplayableElementModel[][] groundGrid) {
 		this.groundGrid = groundGrid;
 	}
+
+	/**
+	 * Gets the number of Diamonds to catch 
+	 * @return number of Diamonds to catch
+	 */
+	public int getDiamondsToCatch() {
+		return diamondsToCatch;
+	}
+
+	/** 
+	 * Sets the number of Diamonds to catch
+	 * @param diamondsToCatch
+	 */
+	public void setDiamondsToCatch(int diamondsToCatch) {
+		this.diamondsToCatch = diamondsToCatch;
+	}
+	
+	
 }
