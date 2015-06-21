@@ -177,6 +177,13 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
 			this.gameInformationsModel.incrementScore();
 			this.gameInformationsModel.decrementRemainingsDiamonds();
+			if(this.gameInformationsModel.getRemainingsDiamonds() == 0){
+				this.spawnExit();
+			}
+		}
+		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "door") {
+			System.out.println("WIN");
+			this.gameRunning = false;
 		}
 
         this.playCollisionSound(posX, posY);
@@ -193,7 +200,17 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 		}
 	}
 
-    /**
+	/** 
+	 * When there is no more diamonds to catch, spawn a exit door
+	 * randomly in the game
+	 */
+    private void spawnExit() {
+    	int x = (int) (Math.random() * (this.getSizeHeight()));
+    	int y = (int) (Math.random() * (this.getSizeWidth()));
+    	this.groundGrid[x][y] = new DoorModel();
+	}
+
+	/**
      * Gets the vertical position of Rockford from the model
      *
      * @return  Vertical position of Rockford

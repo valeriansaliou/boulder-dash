@@ -81,8 +81,10 @@ public class GameInformationModel extends Observable  {
 	 * Decrement of one the number total of remainings diamonds.
 	 */
 	public void decrementRemainingsDiamonds() {
-		this.remainingsDiamonds -= 1;
-		this.myNotify();
+		if(remainingsDiamonds > 0){
+			this.remainingsDiamonds -= 1;
+			this.myNotify();
+		}
 	}
 
 }
