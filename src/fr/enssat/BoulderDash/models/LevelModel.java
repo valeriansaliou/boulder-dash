@@ -31,7 +31,7 @@ public class LevelModel extends Observable implements Runnable {
 	private int sizeHeight = 0;
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
-	private GameInformationModel gameInformationsModel;
+	private GameInformationModel gameInformationModel;
 	private int rockfordPositionX, rockfordPositionY;
 	private boolean gameRunning;
 
@@ -52,7 +52,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  audioLoadHelper  Audio load helper
      */
 	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
-		this.gameInformationsModel = new GameInformationModel();
+		this.gameInformationModel = new GameInformationModel();
 		this.levelName = levelName;
         this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = true;
@@ -172,7 +172,7 @@ public class LevelModel extends Observable implements Runnable {
 		int oldY = this.getRockfordPositionY();
 
 		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
-			this.gameInformationsModel.incrementScore();
+			this.gameInformationModel.incrementScore();
 		}
 
         this.playCollisionSound(posX, posY);
@@ -315,7 +315,7 @@ public class LevelModel extends Observable implements Runnable {
      * Increments the user score
      */
 	public void incrementScore() {
-		this.gameInformationsModel.incrementScore();
+		this.gameInformationModel.incrementScore();
 	}
 
      /** Gets the associated level load helper
@@ -443,7 +443,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @return gameInfos like score, remainings Diamonds etc
 	 */
 	public GameInformationModel getGameInformationModel() {
-		return gameInformationsModel;
+		return this.gameInformationModel;
 	}
 	
 	
