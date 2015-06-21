@@ -10,12 +10,12 @@ import java.util.Observable;
  * @since       2015-06-19
  * 
  */
-public class GameInformationsModel extends Observable  {
+public class GameInformationModel extends Observable  {
 	private int score;
 	private int remainingsDiamonds;
 	private int timer;
 
-	public GameInformationsModel() {
+	public GameInformationModel() {
 		this.score = 0;
 		this.remainingsDiamonds = 0;
 		this.timer = 0;
@@ -49,8 +49,8 @@ public class GameInformationsModel extends Observable  {
 	 * Sets the number of remainingDiamonds
 	 * @param remainingDiamonds
 	 */
-	public void setRemainingsDiamonds(int remainigDiamonds) {
-		this.remainingsDiamonds = remainigDiamonds;
+	public void setRemainingsDiamonds(int remainingDiamonds) {
+		this.remainingsDiamonds = remainingDiamonds;
 	}
 
 	public int getTimer() {

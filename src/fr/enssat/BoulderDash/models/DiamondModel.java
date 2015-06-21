@@ -3,6 +3,8 @@ package fr.enssat.BoulderDash.models;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+
 
 /**
  * DiamondModel

@@ -80,6 +80,6 @@ public class LevelEditorView extends JFrame implements Observer {
      */
     @Override
     public void update(Observable obs, Object obj) {
-        // TODO
+        // Nothing done.
     }
 }

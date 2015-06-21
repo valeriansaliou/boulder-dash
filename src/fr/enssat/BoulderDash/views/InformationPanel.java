@@ -27,9 +27,14 @@ public class InformationPanel extends JPanel implements Observer {
 	public InformationPanel(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		this.text = new JTextArea();
-		this.levelModel.getGameInformationsModel().addObserver(this);
-		this.text.setText("Score : " + levelModel.getGameInformationsModel().getScore() + 
-				"\nRemaining diamonds : " + levelModel.getGameInformationsModel().getRemainingsDiamonds());
+
+		this.levelModel.getGameInformationModel().addObserver(this);
+
+		this.text.setText(
+                "Score : " + levelModel.getGameInformationModel().getScore() +
+				"\nRemaining diamonds : " + levelModel.getGameInformationModel().getRemainingsDiamonds()
+        );
+
 		this.add(this.text);
 	}
 
@@ -41,7 +46,9 @@ public class InformationPanel extends JPanel implements Observer {
      */
 	@Override
 	public void update(Observable o, Object arg) {
-		this.text.setText("Score : " + this.levelModel.getGameInformationsModel().getScore() +
-				"\nRemaining diamonds : " + this.levelModel.getGameInformationsModel().getRemainingsDiamonds());
+		this.text.setText(
+                "Score : " + this.levelModel.getGameInformationModel().getScore() +
+				"\nRemaining diamonds : " + this.levelModel.getGameInformationModel().getRemainingsDiamonds()
+        );
 	}
 }

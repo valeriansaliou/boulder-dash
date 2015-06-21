@@ -45,7 +45,6 @@ public class RockfordUpdateController implements Runnable {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -54,10 +53,8 @@ public class RockfordUpdateController implements Runnable {
 	/**
 	 * Moves Rockford
 	 *
-	 * @param rockfordXPosition
-	 *            Next horizontal position on the grid
-	 * @param rockfordYPosition
-	 *            Next vertical position on the grid
+	 * @param rockfordXPosition  Next horizontal position on the grid
+	 * @param rockfordYPosition  Next vertical position on the grid
 	 */
 	public void moveRockford(int rockfordPositionX, int rockfordPositionY) {
 		this.rockfordPositionX = rockfordPositionX;

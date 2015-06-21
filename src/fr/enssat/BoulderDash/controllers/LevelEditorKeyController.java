@@ -37,18 +37,22 @@ public class LevelEditorKeyController implements KeyListener {
         switch (keyCode) {
             // Direction: UP
             case KeyEvent.VK_UP:
+                // Do nothing.
                 break;
 
             // Direction: DOWN
             case KeyEvent.VK_DOWN:
+                // Do nothing.
                 break;
 
             // Direction: LEFT
             case KeyEvent.VK_LEFT:
+                // Do nothing.
                 break;
 
             // Direction: RIGHT
             case KeyEvent.VK_RIGHT:
+                // Do nothing.
                 break;
         }
     }
@@ -60,7 +64,7 @@ public class LevelEditorKeyController implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO
+        // Do nothing.
     }
 
     /**
@@ -70,6 +74,6 @@ public class LevelEditorKeyController implements KeyListener {
      */
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO
+        // Do nothing.
     }
 }

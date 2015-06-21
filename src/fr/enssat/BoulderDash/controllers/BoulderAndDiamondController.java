@@ -1,12 +1,8 @@
 package fr.enssat.BoulderDash.controllers;
 
-import fr.enssat.BoulderDash.models.BoulderModel;
-import fr.enssat.BoulderDash.models.DiamondModel;
-import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
-import sun.jvm.hotspot.memory.Space;
 
 /**
  * ElementPositionUpdateHelper
@@ -26,8 +22,7 @@ public class BoulderAndDiamondController implements Runnable {
 	/**
 	 * Class constructor
 	 *
-	 * @param levelModel
-	 *            Level model
+	 * @param levelModel  Level model
 	 */
 	public BoulderAndDiamondController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
 		this.levelModel = levelModel;
@@ -48,7 +43,6 @@ public class BoulderAndDiamondController implements Runnable {
 			try {
 				Thread.sleep(250);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -84,12 +78,12 @@ public class BoulderAndDiamondController implements Runnable {
 		// Get informed about Rockford surroundings
         DisplayableElementModel elementAbove = this.levelModel.getGroundLevelModel()[x][y - 1];
         DisplayableElementModel elementBelow = this.levelModel.getGroundLevelModel()[x][y + 1];
-        DisplayableElementModel elementLeft = this.levelModel.getGroundLevelModel()[x - 1][y];
+        DisplayableElementModel elementLeft  = this.levelModel.getGroundLevelModel()[x - 1][y];
         DisplayableElementModel elementRight = this.levelModel.getGroundLevelModel()[x + 1][y];
 
         String spriteNameAbove = elementAbove.getSpriteName();
         String spriteNameBelow = elementBelow.getSpriteName();
-		String spriteNameLeft = elementLeft.getSpriteName();
+		String spriteNameLeft  = elementLeft.getSpriteName();
 		String spriteNameRight = elementRight.getSpriteName();
 
 		// Then, process in case of the surrounding

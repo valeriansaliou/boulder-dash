@@ -2,6 +2,7 @@ package fr.enssat.boulderdash.views;
 
 import fr.enssat.BoulderDash.views.FieldView;
 import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.controllers.GameKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class GameFieldView extends FieldView {
 
         this.gameController = gameController;
 
-        this.addKeyListener(new fr.enssat.BoulderDash.controllers.GameKeyController(this.levelModel, this.gameController.getAudioLoadHelper()));
+        this.addKeyListener(new GameKeyController(this.levelModel, this.gameController.getAudioLoadHelper()));
 
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setFocusable(true);

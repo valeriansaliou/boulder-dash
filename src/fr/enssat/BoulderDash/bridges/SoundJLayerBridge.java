@@ -1,11 +1,15 @@
 package fr.enssat.BoulderDash.bridges;
 
+import java.net.URL;
+
 import javazoom.jl.player.advanced.*;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.FactoryRegistry;
 
 /**
  * SoundJLayerBridge
  *
- * Sound bridge to the JLayer library
+ * Sound bridge to the JLayer library.
  *
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-19
@@ -30,13 +34,13 @@ public class SoundJLayerBridge extends PlaybackListener implements Runnable {
     public void play() {
         try {
             String urlAsString = "file:///"
-                    + new java.io.File(".").getCanonicalPath()
-                    + "/"
-                    + this.filePath;
+                               + new java.io.File(".").getCanonicalPath()
+                               + "/"
+                               + this.filePath;
 
             this.player = new AdvancedPlayer(
-                    new java.net.URL(urlAsString).openStream(),
-                    javazoom.jl.player.FactoryRegistry.systemRegistry().createAudioDevice()
+                    new URL(urlAsString).openStream(),
+                    FactoryRegistry.systemRegistry().createAudioDevice()
             );
 
             this.player.setPlayBackListener(this);
@@ -60,12 +64,12 @@ public class SoundJLayerBridge extends PlaybackListener implements Runnable {
     }
 
     /**
-     * Run the player thread
+     * Runs the player thread
      */
     public void run() {
         try {
             this.player.play();
-        } catch (javazoom.jl.decoder.JavaLayerException ex) {
+        } catch (JavaLayerException ex) {
             ex.printStackTrace();
         }
     }

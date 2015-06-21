@@ -25,6 +25,24 @@ public class Game {
      * @param  args  Command-line arguments
      */
     public static void main(String[] args) {
+        setAppleUI();
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
+                LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
+
+                // Go!
+                //new GameController(levelModel, audioLoadHelper);
+                new LevelEditorController(levelModel);
+            }
+        });
+    }
+
+    /**
+     * Sets Apple User Interface elements (look and feel)
+     */
+    public static void setAppleUI() {
         try {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Boulder Dash");
@@ -42,16 +60,5 @@ public class Game {
         } catch (UnsupportedLookAndFeelException e) {
             System.out.println("UnsupportedLookAndFeelException: " + e.getMessage());
         }
-
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
-                LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
-
-                // Go!
-                //new GameController(levelModel, audioLoadHelper);
-                new LevelEditorController(levelModel);
-            }
-        });
     }
 }

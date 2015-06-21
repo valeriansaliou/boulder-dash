@@ -3,6 +3,12 @@ package fr.enssat.BoulderDash.models;
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.models.RockfordModel;
+import fr.enssat.BoulderDash.models.GameInformationModel;
+import fr.enssat.BoulderDash.models.SteelWallModel;
+import fr.enssat.BoulderDash.models.EmptyModel;
+import fr.enssat.BoulderDash.models.DiamondModel;
 
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -26,7 +32,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 	private int sizeHeight = 0;
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
-	private GameInformationsModel gameInformationsModel;
+	private GameInformationModel gameInformationModel;
 	private int rockfordPositionX, rockfordPositionY;
 	private boolean gameRunning;
 
@@ -43,10 +49,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
     /**
      * Class constructor
      *
-     * @param  levelModel  Level model
+     * @param  levelName        Level name
+	 * @param  audioLoadHelper  Audio load helper
      */
 	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
-		this.gameInformationsModel = new GameInformationsModel();
+		this.gameInformationModel = new GameInformationModel();
 		this.levelName = levelName;
         this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = true;
@@ -309,7 +316,7 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
      * Increments the user score
      */
 	public void incrementScore() {
-		this.gameInformationsModel.incrementScore();		
+		this.gameInformationModel.incrementScore();
 	}
 
     /**
@@ -434,11 +441,11 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 	}
 
 	/**
-	 * Gets gameInformationsModel
+	 * Gets gameInformationModel
 	 * @return gameInfos like score, remainings Diamonds etc
 	 */
-	public GameInformationsModel getGameInformationsModel() {
-		return gameInformationsModel;
+	public GameInformationModel getGameInformationModel() {
+		return gameInformationModel;
 	}
 	
 	
