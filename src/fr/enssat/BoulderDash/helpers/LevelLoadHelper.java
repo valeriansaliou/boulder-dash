@@ -32,8 +32,9 @@ import java.util.Locale;
 /**
  * LevelLoadHelper
  *
- * Proceeds level load routine Able to deserialize level data from storage, and
- * format it to internal representation To be used as a data factory from level
+ * Proceeds level load routine
+ * Able to deserialize level data from storage, and format it to
+ * internal representation To be used as a data factory from level
  * model classes
  *
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
@@ -73,7 +74,7 @@ public class LevelLoadHelper {
 		this.setLevelId(levelId);
 
         // Requirements
-        dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
+        this.dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
 
 		if (this.levelId != null) {
 			// Let's go.
@@ -156,10 +157,10 @@ public class LevelLoadHelper {
      */
 	private void processDateElement() throws XPathExpressionException, ParseException {
 		// Returns level creation date value
-		this.dateCreatedValue = dateFormatter.parse(xpathBuilder.compile("/bd-level/date[@format='utc']/created").evaluate(this.levelDOM));
+		this.dateCreatedValue = this.dateFormatter.parse(xpathBuilder.compile("/bd-level/date[@format='utc']/created").evaluate(this.levelDOM));
 
 		// Returns level modification date value
-		this.dateModifiedValue = dateFormatter.parse(this.xpathBuilder.compile("/bd-level/date[@format='utc']/modified").evaluate(this.levelDOM));
+		this.dateModifiedValue = this.dateFormatter.parse(this.xpathBuilder.compile("/bd-level/date[@format='utc']/modified").evaluate(this.levelDOM));
 	}
 
     /**
