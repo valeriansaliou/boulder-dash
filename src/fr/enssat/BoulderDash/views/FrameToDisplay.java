@@ -11,6 +11,7 @@ import com.apple.eawt.Application;
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.GameView;
+import fr.enssat.BoulderDash.views.InformationPanel;
 
 
 /**
@@ -39,6 +40,16 @@ public class FrameToDisplay extends JFrame implements Observer {
 		this.gameController = gameController;
 		this.levelModel = levelModel;
 
+        this.initializeView();
+        this.createLayout();
+
+        this.gameView.grabFocus();
+	}
+
+    /**
+     * Initializes the view
+     */
+    private void initializeView() {
         this.setVisible(true);
         this.setResizable(false);
 
@@ -52,13 +63,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 
         Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
         this.setIconImage(appIcon);
-
-        // Create the layout
-        this.createLayout();
-
-		// Grab the focus to use the keys
-		this.gameView.grabFocus();
-	}
+    }
 
     /**
      * Creates the view layout
@@ -98,7 +103,7 @@ public class FrameToDisplay extends JFrame implements Observer {
 	public JButton createButton(String id, String name) {
 		JButton button = new JButton(name);
 		button.addActionListener(this.gameController);
-		button.setActionCommand(name);
+		button.setActionCommand(id);
 
 		this.actionPanel.add(button);
 

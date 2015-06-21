@@ -2,6 +2,10 @@ package fr.enssat.BoulderDash.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
+
+import fr.enssat.BoulderDash.models.LevelModel;
 
 
 /**
@@ -12,15 +16,19 @@ import java.awt.*;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class LevelEditorView extends JFrame {
+public class LevelEditorView extends JFrame implements Observer {
     private JPanel fieldPanel;
     private JPanel selectPanel;
+    private LevelModel levelModel;
 
     /**
      * Class constructor
      */
-	public LevelEditorView() {
+	public LevelEditorView(LevelModel levelModel) {
+        this.levelModel = levelModel;
+
 		this.initializeView();
+        this.createLayout();
 	}
 
     /**
@@ -41,8 +49,6 @@ public class LevelEditorView extends JFrame {
 
         Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
         this.setIconImage(appIcon);
-
-		this.createLayout();
 	}
 
     /**
@@ -58,4 +64,15 @@ public class LevelEditorView extends JFrame {
         this.add(this.fieldPanel, BorderLayout.WEST);
         this.add(this.selectPanel, BorderLayout.EAST);
 	}
+
+    /**
+     * Updates the view
+     *
+     * @param   obs  Observable item
+     * @param   obj  Object item
+     */
+    @Override
+    public void update(Observable obs, Object obj) {
+        // TODO
+    }
 }

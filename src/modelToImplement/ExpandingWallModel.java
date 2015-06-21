@@ -1,9 +1,8 @@
 package modelToImplement;
 
-import fr.enssat.BoulderDash.interfaces.PublisherInterface;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 
-public class ExpandingWallModel extends DisplayableElementModel implements PublisherInterface {
+public class ExpandingWallModel extends DisplayableElementModel {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;

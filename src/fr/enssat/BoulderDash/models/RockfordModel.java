@@ -1,8 +1,5 @@
 package fr.enssat.BoulderDash.models;
 
-import fr.enssat.BoulderDash.interfaces.PublisherInterface;
-import fr.enssat.BoulderDash.models.DisplayableElementModel;
-
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -15,7 +12,7 @@ import java.util.ArrayList;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class RockfordModel extends DisplayableElementModel implements PublisherInterface {
+public class RockfordModel extends DisplayableElementModel {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;

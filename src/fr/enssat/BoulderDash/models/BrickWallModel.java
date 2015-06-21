@@ -1,8 +1,5 @@
 package fr.enssat.BoulderDash.models;
 
-import fr.enssat.BoulderDash.interfaces.PublisherInterface;
-import fr.enssat.BoulderDash.models.DisplayableElementModel;
-
 
 /**
  * BrickWallModel
@@ -12,7 +9,7 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class BrickWallModel extends DisplayableElementModel implements PublisherInterface {
+public class BrickWallModel extends DisplayableElementModel {
 	private static String pathToSprite;
 	private static String spriteName;
 	private static boolean isDestructible;
