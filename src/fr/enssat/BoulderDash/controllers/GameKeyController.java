@@ -11,14 +11,14 @@ import java.awt.event.KeyListener;
 
 
 /**
- * KeyController
+ * GameKeyController
  *
  * Manages the key events controller.
  *
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class KeyController implements KeyListener {
+public class GameKeyController implements KeyListener {
 	private LevelModel levelModel;
 	private RockfordUpdateController updatePosRockford;
 	private BoulderAndDiamondController updateFallingElements;
@@ -29,7 +29,7 @@ public class KeyController implements KeyListener {
      *
      * @param  levelModel  Level model
      */
-	public KeyController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
+	public GameKeyController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
 		this.updateFallingElements = new BoulderAndDiamondController(levelModel, audioLoadHelper);

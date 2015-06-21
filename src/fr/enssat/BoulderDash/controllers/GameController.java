@@ -1,10 +1,8 @@
 package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.views.FrameToDisplay;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +29,7 @@ public class GameController implements ActionListener {
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
 
-        new FrameToDisplay(this, levelModel);
+        new fr.enssat.BoulderDash.views.GameView(this, levelModel);
 
         this.getAudioLoadHelper().playSound("new");
 //        this.getAudioLoadHelper().startMusic("game");
@@ -49,7 +47,7 @@ public class GameController implements ActionListener {
                 break;
 
             case "editor":
-                // TODO
+                new LevelEditorController(this.levelModel);
                 break;
 
             case "pause":
@@ -76,7 +74,7 @@ public class GameController implements ActionListener {
     }
 
 //	public void addNotify() { //TODO is this useful ?
-//		frameToDisplay.getGameView().addNotify();
+//		frameToDisplay.getGameFieldView().addNotify();
 //
 //		animator = new Thread(this);
 //		animator.start();

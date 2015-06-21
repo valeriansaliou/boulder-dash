@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
+import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 
@@ -30,6 +31,10 @@ public class LevelEditorView extends JFrame implements Observer {
 	public LevelEditorView(LevelEditorController levelEditorController, LevelModel levelModel) {
         this.levelEditorController = levelEditorController;
         this.levelModel = levelModel;
+
+        this.levelModel.addObserver(this);
+
+        this.addKeyListener(new LevelEditorKeyController(this.levelModel));
 
 		this.initializeView();
         this.createLayout();

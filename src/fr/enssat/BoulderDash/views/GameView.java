@@ -1,28 +1,33 @@
 package fr.enssat.BoulderDash.views;
 
-import fr.enssat.BoulderDash.controllers.GameController;
-import fr.enssat.BoulderDash.controllers.KeyController;
-import fr.enssat.BoulderDash.models.LevelModel;
-
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+
+import com.apple.eawt.Application;
+
+import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.GameFieldView;
+import fr.enssat.BoulderDash.views.InformationPanel;
 
 
 /**
  * GameView
  *
- * GameView, created by controller; we notice that we don't need to make levelModel observable;
- * Because of the sprites we have to refresh the game windows very often so don't need of observers/observable mechanism
+ * Specifies the game view itself.
  *
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
- * 
- * This view is basically drawing into the Frame the levelModel. 
- *
  */
-public class GameView extends JPanel implements Observer {
+public class GameView extends JFrame implements Observer {
+	private GameFieldView gameFieldView;
+	private JPanel actionPanel;
+	private JPanel informationPanel;
+	private JButton newGame, pause, quit, editor, save;
+	private GameController gameController;
 	private LevelModel levelModel;
 
     /**
@@ -32,48 +37,87 @@ public class GameView extends JPanel implements Observer {
      * @param  levelModel      Level model
      */
 	public GameView(GameController gameController, LevelModel levelModel) {
+		this.gameController = gameController;
 		this.levelModel = levelModel;
 
-		this.levelModel.addObserver(this);
+        this.initializeView();
+        this.createLayout();
 
-		addKeyListener(new KeyController(this.levelModel, gameController.getAudioLoadHelper()));
-
-		setBorder(BorderFactory.createLineBorder(Color.black));
-		setFocusable(true);
+        this.gameFieldView.grabFocus();
 	}
 
     /**
-     * Draws the map
-     *
-     * @param   width   Map width
-     * @param   height  Map height
-     * @param   g       Map graphical object
+     * Initializes the view
      */
-	public void drawTerrain(int width, int height, Graphics g) {
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
-				g.drawImage(this.levelModel.getImage(x, y), x * 16, y * 16, this);
-			}
-		}
-	}
+    private void initializeView() {
+        this.setVisible(true);
+        this.setResizable(false);
+
+        // UI parameters
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(100, 100, 200, 100);
+        this.setSize(432, 536);
+
+        // App parameters
+        this.setTitle("Boulder Dash");
+
+        Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
+        this.setIconImage(appIcon);
+    }
 
     /**
-     * Paints the map
-     *
-     * @param   g  Map graphical object
+     * Creates the view layout
      */
-	public void paint(Graphics g) {
-		this.drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
+    private void createLayout() {
+        this.gameFieldView = new GameFieldView(this.gameController, this.levelModel);
+        this.actionPanel = new JPanel();
+        this.informationPanel = new InformationPanel(this.levelModel);
+
+        // Add some buttons on the informationPanel
+        this.newGame = this.createButton("restart", "Restart");
+        this.editor = this.createButton("editor", "Editor");
+        this.pause = this.createButton("pause", "Pause");
+        this.save = this.createButton("save", "Save");
+        this.quit = this.createButton("quit", "Quit");
+
+        this.add(this.actionPanel, BorderLayout.SOUTH);
+        this.add(this.informationPanel, BorderLayout.NORTH);
+        this.add(this.gameFieldView, BorderLayout.CENTER);
+    }
+
+    /**
+     * Gets the game field view
+     *
+     * @return  Game field view
+     */
+	public GameFieldView getGameFieldView() {
+		return this.gameFieldView;
 	}
 
     /**
-     * Updates the view
+     * Creates the given button
+     *
+     * @param   name  Button name
+     * @return  Created button
+     */
+	public JButton createButton(String id, String name) {
+		JButton button = new JButton(name);
+		button.addActionListener(this.gameController);
+		button.setActionCommand(id);
+
+		this.actionPanel.add(button);
+
+		return button;
+	}
+
+    /**
+     * Updates the frame
      *
      * @param   obs  Observable item
      * @param   obj  Object item
      */
 	@Override
 	public void update(Observable obs, Object obj) {
-		repaint();
+		// TODO
 	}
 }
