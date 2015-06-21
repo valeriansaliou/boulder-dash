@@ -2,6 +2,8 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
+import fr.enssat.BoulderDash.controllers.LevelEditorController;
+import fr.enssat.BoulderDash.views.GameView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +31,7 @@ public class GameController implements ActionListener {
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
 
-        new fr.enssat.BoulderDash.views.GameView(this, levelModel);
+        new GameView(this, levelModel);
 
         this.getAudioLoadHelper().playSound("new");
 //        this.getAudioLoadHelper().startMusic("game");
