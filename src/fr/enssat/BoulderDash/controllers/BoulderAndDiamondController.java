@@ -63,9 +63,37 @@ public class BoulderAndDiamondController implements Runnable {
 				// If it is a boulder or a diamond...
 				if (spriteName == "boulder" || spriteName == "diamond") {
 					this.manageFall(x, y);
+				} else if(spriteName == "expandingwall"){
+					String way = this.expandWall(x,y);
+					if(way.equals("left")){
+						x -= 1;
+					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Expand the wall at left & right
+	 * @param x
+	 * @param y
+	 */
+	private String expandWall(int x, int y) {
+		DisplayableElementModel elementLeft  = this.levelModel.getGroundLevelModel()[x - 1][y];
+        DisplayableElementModel elementRight = this.levelModel.getGroundLevelModel()[x + 1][y];
+        String spriteNameLeft  = elementLeft.getSpriteName();
+		String spriteNameRight = elementRight.getSpriteName();
+		
+		String way = "";
+		if(spriteNameLeft == "black"){
+			this.levelModel.expandThisWallToLeft(x,y);
+			way = "left";
+		}
+		if(spriteNameRight == "black"){
+			this.levelModel.expandThisWallToRight(x,y);
+			way = "right";
+		}
+		return way;
 	}
 
 	/**
@@ -109,13 +137,17 @@ public class BoulderAndDiamondController implements Runnable {
 
 			this.levelModel.setGameRunning(false);
 		} else if (spriteNameBelow == "magicwall") {
-			if (this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder") {
+			if (this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder" 
+					&& (this.levelModel.getGroundLevelModel()[x][y+2].getSpriteName() == "dirt" ||
+							this.levelModel.getGroundLevelModel()[x][y+2].getSpriteName() == "black")) {
 				if(this.levelModel.getGroundLevelModel()[x][y].isConvertible()) {
 					this.levelModel.transformThisBoulderIntoADiamond(x, y);
 				} else {
 					this.levelModel.deleteThisBoulder(x, y);
 				}
 			}
+		} else if (elementBelow.isDestructible() && spriteNameBelow != "dirt" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
+				this.levelModel.exploseThisBrickWall(x, y);
 		} else if (spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() && this.levelModel.getGroundLevelModel()[x + 1][y].getSpriteName() == "black") {
 			this.levelModel.moveThisBoulderToRight(x, y);
 		} else if (spriteNameRight == "rockford" && this.levelModel.getRockford().isRunningLeft() && this.levelModel.getGroundLevelModel()[x - 1][y].getSpriteName() == "black") {

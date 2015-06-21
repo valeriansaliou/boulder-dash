@@ -1303,7 +1303,7 @@
             </item>
 
             <item index="16">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="expandingwall" state="initial" />
             </item>
 
             <item index="17">
@@ -1349,19 +1349,19 @@
             </item>
 
             <item index="2">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="3">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="4">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="5">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="6">
@@ -1409,19 +1409,19 @@
             </item>
 
             <item index="17">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="18">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="19">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="20">
-                <sprite group="field" name="dirt" state="initial" />
+                <sprite group="field" name="brickwall" state="initial" />
             </item>
 
             <item index="21">

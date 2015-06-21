@@ -446,6 +446,34 @@ public class LevelModel extends Observable implements LevelLoadInterface, Runnab
 	public GameInformationModel getGameInformationModel() {
 		return gameInformationsModel;
 	}
+
+	/**
+	 * Explose the brick wall
+	 * @param x
+	 * @param y
+	 */
+	public void exploseThisBrickWall(int x, int y) {
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+		this.getGroundLevelModel()[x][y+1] = new EmptyModel();
+	}
+
+	/**
+	 * Expand the ExpandingWallModel to left
+	 * @param x
+	 * @param y
+	 */
+	public void expandThisWallToLeft(int x, int y) {
+		this.getGroundLevelModel()[x-1][y] = new ExpandingWallModel();
+	}
+	
+	/**
+	 * Expand the ExpandingWallModel to right
+	 * @param x
+	 * @param y
+	 */
+	public void expandThisWallToRight(int x, int y) {
+		this.getGroundLevelModel()[x+1][y] = new ExpandingWallModel();
+	}
 	
 	
 }
