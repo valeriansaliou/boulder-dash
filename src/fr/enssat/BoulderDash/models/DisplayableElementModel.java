@@ -17,6 +17,9 @@ import java.io.IOException;
 public abstract class DisplayableElementModel {
 	private static String spriteStorageFolderPath = "./res/drawable/field/";
 
+	private static String groupName;
+	private static String stateValue;
+
 	private boolean destructible;
 	private boolean moving;
 	private boolean animate;
@@ -27,6 +30,14 @@ public abstract class DisplayableElementModel {
     private boolean falling;
 	private boolean convertible;
 	private String collideSound;
+
+	/**
+	 * Static dataset
+	 */
+	static {
+		groupName = "field";
+		stateValue = "initial";
+	}
 
 	/**
      * Class constructor
@@ -73,6 +84,24 @@ public abstract class DisplayableElementModel {
 	 */
 	public boolean isMoving() {
 		return this.moving;
+	}
+
+	/**
+	 * Gets the group name value
+	 *
+	 * @return  Group name value
+	 */
+	public String getGroupName() {
+		return this.groupName;
+	}
+
+	/**
+	 * Gets the state value
+	 *
+	 * @return  State value
+	 */
+	public String getStateValue() {
+		return this.stateValue;
 	}
 
 	/**

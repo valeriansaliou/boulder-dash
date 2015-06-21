@@ -76,7 +76,13 @@ public class LevelSaveHelper {
             document.appendChild(bdLevel);
 
             // append child elements to root element
-            bdLevel.appendChild(dateNode(document, "2015-05-19/15:15:20", "2015-05-19/15:15:20"));
+            bdLevel.appendChild(this.nameNode(document));
+            bdLevel.appendChild(this.dateNode(document));
+            bdLevel.appendChild(this.sizeNode(document));
+            bdLevel.appendChild(this.gridNode(document));
+
+            // Write to disk
+            // TODO
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,28 +92,36 @@ public class LevelSaveHelper {
      * Creates the name node
      *
      * @param   document  Document
-     * @param   name      'name' child value
      * @return  Name node
      */
-    private static Node nameNode(Document document, String name) {
-        return textNode(document, "name", name);
+    private Node nameNode(Document document) {
+        String nameValue;
+
+        nameValue = "Unknown Level Name";
+
+        return this.textNode(document, "name", nameValue);
     }
 
     /**
      * Creates the date node
      *
-     * @param   document       Document
-     * @param   date_created   'date_created' child value
-     * @param   date_modified  'date_modified' child value
+     * @param   document  Document
      * @return  Date node
      */
-    private static Node dateNode(Document document, String date_created, String date_modified) {
+    private Node dateNode(Document document) {
+        // Get values
+        String dateCreatedValue, dateModifiedValue;
+
+        dateCreatedValue  = "0000-00-00/00:00:00";
+        dateModifiedValue = "0000-00-00/00:00:00";
+
+        // Create element
         Element dateElement = document.createElement("date");
 
         dateElement.setAttribute("format", "utc");
 
-        dateElement.appendChild(textNode(document, "created", date_created));
-        dateElement.appendChild(textNode(document, "modified", date_modified));
+        dateElement.appendChild(this.textNode(document, "created", dateCreatedValue));
+        dateElement.appendChild(this.textNode(document, "modified", dateModifiedValue));
 
         return dateElement;
     }
@@ -116,17 +130,119 @@ public class LevelSaveHelper {
      * Creates the size node
      *
      * @param   document  Document
-     * @param   width     'width' child value
-     * @param   height    'height' child value
      * @return  Size node
      */
-    private static Node sizeNode(Document document, String width, String height) {
+    private Node sizeNode(Document document) {
+        // Get values
+        Integer widthValue = 0, heightValue = 0;
+
+        widthValue = this.getGroundGrid().length;
+
+        if(widthValue > 0) {
+            heightValue = this.getGroundGrid()[0].length;
+        }
+
+        // Create element
         Element sizeElement = document.createElement("size");
 
-        sizeElement.appendChild(textNode(document, "width", width));
-        sizeElement.appendChild(textNode(document, "height", height));
+        sizeElement.appendChild(this.textNode(document, "width", widthValue.toString()));
+        sizeElement.appendChild(this.textNode(document, "height", heightValue.toString()));
 
         return sizeElement;
+    }
+
+    /**
+     * Creates the grid node
+     *
+     * @param   document  Document
+     * @return  Grid node
+     */
+    private Node gridNode(Document document) {
+        Element gridElement = document.createElement("grid");
+        gridElement.setAttribute("state", "initial");
+
+        // Iterate in MATRIX:{x}
+        if(this.getGroundGrid().length > 0) {
+            // XML structure matrix is the inverse of the internal representation (hence the weird loop)
+            for (Integer curLineIndex = 0; curLineIndex < this.getGroundGrid()[0].length; curLineIndex++) {
+                gridElement.appendChild(this.gridLineNode(document, curLineIndex));
+            }
+        }
+
+        return gridElement;
+    }
+
+    /**
+     * Creates the grid line node
+     *
+     * @param   document      Document
+     * @param   curLineIndex  Current line index
+     * @return  Grid line node
+     */
+    private Node gridLineNode(Document document, Integer curLineIndex) {
+        Element gridLineElement = document.createElement("line");
+        gridLineElement.setAttribute("index", curLineIndex.toString());
+
+        // Iterate in MATRIX:X:{y}
+        if(this.getGroundGrid().length > 0) {
+            // XML structure matrix is the inverse of the internal representation (hence the weird loop)
+            for (Integer curItemIndex = 0; curItemIndex < this.getGroundGrid().length; curItemIndex++) {
+                gridLineElement.appendChild(this.gridLineItemNode(document, curLineIndex, curItemIndex));
+            }
+        }
+
+        return gridLineElement;
+    }
+
+    /**
+     * Creates the grid line item node
+     *
+     * @param   document      Document
+     * @param   curLineIndex  Current line index
+     * @param   curItemIndex  Current line item index
+     * @return  Grid line item node
+     */
+    private Node gridLineItemNode(Document document, Integer curLineIndex, Integer curItemIndex) {
+        Element gridLineItemElement = document.createElement("item");
+        gridLineItemElement.setAttribute("index", curItemIndex.toString());
+
+        gridLineItemElement.appendChild(this.gridLineItemSpriteNode(document, curLineIndex, curItemIndex));
+
+        return gridLineItemElement;
+    }
+
+    /**
+     * Creates the grid line sprite item node
+     *
+     * @param   document      Document
+     * @param   curLineIndex  Current line index
+     * @param   curItemIndex  Current line item index
+     * @return  Grid line item sprite node
+     */
+    private Node gridLineItemSpriteNode(Document document, Integer curLineIndex, Integer curItemIndex) {
+        String groupValue, nameValue, stateValue, convertibleValue;
+
+        DisplayableElementModel curGridElement = this.getGroundGrid()[curItemIndex][curLineIndex];
+
+        // Retrieve current values
+        groupValue       = curGridElement.getGroupName();
+        nameValue        = curGridElement.getSpriteName();
+        stateValue       = curGridElement.getStateValue();
+        convertibleValue = curGridElement.isConvertible() ? "1" : "0";
+
+        // Create sprite XML element
+        Element gridLineItemSpriteElement = document.createElement("sprite");
+
+        // Sprite attributes
+        gridLineItemSpriteElement.setAttribute("group", groupValue);
+        gridLineItemSpriteElement.setAttribute("name", nameValue);
+        gridLineItemSpriteElement.setAttribute("state", stateValue);
+
+        if(convertibleValue == "1") {
+            gridLineItemSpriteElement.setAttribute("convertible", convertibleValue);
+        }
+
+        return gridLineItemSpriteElement;
     }
 
     /**
@@ -137,7 +253,7 @@ public class LevelSaveHelper {
      * @param   value     Element value
      * @return  Text node
      */
-    private static Node textNode(Document document, String name, String value) {
+    private Node textNode(Document document, String name, String value) {
         Element node = document.createElement(name);
         node.appendChild(document.createTextNode(value));
 

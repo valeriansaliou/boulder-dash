@@ -1,7 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
-import fr.enssat.BoulderDash.interfaces.LevelLoadInterface;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
@@ -24,7 +23,7 @@ import java.util.Observable;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
-public class LevelModel extends Observable implements LevelLoadInterface, Runnable {
+public class LevelModel extends Observable implements Runnable {
 	private DisplayableElementModel[][] groundGrid;
 	private String levelName;
     private AudioLoadHelper audioLoadHelper;
