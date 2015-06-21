@@ -1,18 +1,13 @@
 package fr.enssat.BoulderDash.helpers;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import java.io.File;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -82,10 +77,34 @@ public class LevelSaveHelper {
             bdLevel.appendChild(this.gridNode(document));
 
             // Write to disk
-            // TODO
+            this.writeDocumentToDisk(document);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Writes the level document data to disk
+     *
+     * @param   document  Document to be saved
+     * @return  Whether save was successful or not
+     */
+    private boolean writeDocumentToDisk(Document document) {
+        boolean isSuccessful = true;
+
+        try {
+            XMLSerializer serializer = new XMLSerializer();
+
+            serializer.setOutputCharStream(new java.io.FileWriter(
+                    this.getLevelPathInDataStore()
+            ));
+            serializer.serialize(document);
+        } catch (IOException e) {
+            isSuccessful = false;
+            e.printStackTrace();
+        }
+
+        return isSuccessful;
     }
 
     /**
