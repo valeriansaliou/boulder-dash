@@ -8,6 +8,7 @@ import java.util.Observer;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.LevelEditorFieldView;
 
 
 /**
@@ -19,7 +20,7 @@ import fr.enssat.BoulderDash.models.LevelModel;
  * @since       2015-06-19
  */
 public class LevelEditorView extends JFrame implements Observer {
-    private JPanel fieldPanel;
+    private LevelEditorFieldView fieldPanel;
     private JPanel selectPanel;
 
     private LevelEditorController levelEditorController;
@@ -64,10 +65,7 @@ public class LevelEditorView extends JFrame implements Observer {
      * Creates the view layout
      */
 	private void createLayout() {
-		GridLayout gridLayout = new GridLayout(1, 2);
-        this.setLayout(gridLayout);
-
-		this.fieldPanel = new JPanel();
+		this.fieldPanel = new LevelEditorFieldView(this.levelModel);
 		this.selectPanel = new JPanel();
 
         this.add(this.fieldPanel, BorderLayout.WEST);
