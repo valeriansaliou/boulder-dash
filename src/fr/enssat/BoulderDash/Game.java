@@ -2,6 +2,7 @@ package fr.enssat.BoulderDash;
 
 import com.apple.eawt.Application;
 import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
@@ -48,7 +49,8 @@ public class Game {
                 LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
 
                 // Go!
-                new GameController(levelModel, audioLoadHelper);
+                //new GameController(levelModel, audioLoadHelper);
+                new LevelEditorController(levelModel);
             }
         });
     }

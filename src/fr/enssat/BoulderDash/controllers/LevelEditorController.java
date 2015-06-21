@@ -2,6 +2,9 @@ package fr.enssat.BoulderDash.controllers;
 
 import java.awt.event.ActionEvent;
 
+import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.LevelEditorView;
+
 /**
  * LevelEditorController
  *
@@ -11,13 +14,17 @@ import java.awt.event.ActionEvent;
  * @since       2015-06-19
  */
 public class LevelEditorController {
+    private LevelModel levelModel;
+
     /**
      * Class constructor
      *
      * @param  levelModel  Level model
      */
-    public LevelEditorController() {
-        // TODO: as needed
+    public LevelEditorController(LevelModel levelModel) {
+        this.levelModel = levelModel;
+
+        new LevelEditorView(this, levelModel);
     }
 
     /**
