@@ -33,8 +33,8 @@ public class Game {
                 LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
 
                 // Go!
-                new GameController(levelModel, audioLoadHelper);
-                //new LevelEditorController(levelModel);
+                //new GameController(levelModel, audioLoadHelper);
+                new LevelEditorController(levelModel);
             }
         });
     }

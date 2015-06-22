@@ -8,6 +8,8 @@ import fr.enssat.BoulderDash.models.GameInformationModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.DiamondModel;
+import fr.enssat.BoulderDash.models.DoorModel;
+import fr.enssat.BoulderDash.models.ExpandingWallModel;
 
 import java.awt.image.BufferedImage;
 import java.util.Observable;

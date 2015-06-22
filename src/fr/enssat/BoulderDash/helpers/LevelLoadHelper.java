@@ -78,6 +78,7 @@ public class LevelLoadHelper {
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
 		this.diamondsToCatch = 0;
+
         // Requirements
         this.dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
 

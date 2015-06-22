@@ -9,6 +9,7 @@ import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.LevelEditorFieldView;
+import fr.enssat.BoulderDash.views.AssetsLevelEditorComponent;
 
 
 /**
@@ -22,6 +23,8 @@ import fr.enssat.BoulderDash.views.LevelEditorFieldView;
 public class LevelEditorView extends JFrame implements Observer {
     private LevelEditorFieldView fieldPanel;
     private JPanel selectPanel;
+    private AssetsLevelEditorComponent assetsComponent;
+    private JPanel actionsComponent;
 
     private LevelEditorController levelEditorController;
     private LevelModel levelModel;
@@ -66,11 +69,39 @@ public class LevelEditorView extends JFrame implements Observer {
      */
 	private void createLayout() {
 		this.fieldPanel = new LevelEditorFieldView(this.levelModel);
-		this.selectPanel = new JPanel();
+        this.selectPanel = new JPanel();
 
+        this.assetsComponent = new AssetsLevelEditorComponent();
+        this.actionsComponent = new JPanel();
+
+        // Add actions
+        this.actionsComponent.add(this.createButton("save", "Save"));
+        this.actionsComponent.add(this.createButton("delete", "Delete"));
+        this.actionsComponent.add(this.createButton("clear", "Clear"));
+        this.actionsComponent.add(this.createButton("new", "New map..."));
+
+        // Add select panel subcomponents
+        this.selectPanel.add(this.assetsComponent, BorderLayout.NORTH);
+        this.selectPanel.add(this.actionsComponent, BorderLayout.SOUTH);
+
+        // Add top components
         this.add(this.fieldPanel, BorderLayout.WEST);
         this.add(this.selectPanel, BorderLayout.EAST);
 	}
+
+    /**
+     * Creates the given button
+     *
+     * @param   name  Button name
+     * @return  Created button
+     */
+    public JButton createButton(String id, String name) {
+        JButton button = new JButton(name);
+        //button.addActionListener(this.gameController);
+        button.setActionCommand(id);
+
+        return button;
+    }
 
     /**
      * Updates the view
