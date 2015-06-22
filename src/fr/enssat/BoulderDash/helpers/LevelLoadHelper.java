@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.helpers;
 
 import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
+import fr.enssat.BoulderDash.models.ExpandingWallModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
@@ -15,6 +16,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +24,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -62,6 +65,8 @@ public class LevelLoadHelper {
 	private RockfordModel rockfordInstance;
 	private int rockfordPositionX = 0;
 	private int rockfordPositionY = 0;
+	
+	private int diamondsToCatch;
 
 	private DisplayableElementModel[][] groundGrid;
 
@@ -72,7 +77,7 @@ public class LevelLoadHelper {
      */
 	public LevelLoadHelper(String levelId) {
 		this.setLevelId(levelId);
-
+		this.diamondsToCatch = 0;
         // Requirements
         this.dateFormatter = new SimpleDateFormat("yyy-MM-dd/HH:mm:ss", Locale.ENGLISH);
 
@@ -263,6 +268,7 @@ public class LevelLoadHelper {
 
             case "diamond":
                 element = new DiamondModel();
+                diamondsToCatch += 1;
                 break;
 
             case "dirt":
@@ -284,6 +290,10 @@ public class LevelLoadHelper {
 
             case "steelwall":
                 element = new SteelWallModel();
+                break;
+            
+            case "expandingwall":
+                element = new ExpandingWallModel();
                 break;
 
             default:
@@ -472,4 +482,22 @@ public class LevelLoadHelper {
 	private void setGroundGrid(DisplayableElementModel[][] groundGrid) {
 		this.groundGrid = groundGrid;
 	}
+
+	/**
+	 * Gets the number of Diamonds to catch 
+	 * @return number of Diamonds to catch
+	 */
+	public int getDiamondsToCatch() {
+		return diamondsToCatch;
+	}
+
+	/** 
+	 * Sets the number of Diamonds to catch
+	 * @param diamondsToCatch
+	 */
+	public void setDiamondsToCatch(int diamondsToCatch) {
+		this.diamondsToCatch = diamondsToCatch;
+	}
+	
+	
 }

@@ -52,16 +52,18 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  audioLoadHelper  Audio load helper
      */
 	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
-		this.gameInformationModel = new GameInformationModel();
 		this.levelName = levelName;
         this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = true;
 		
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
+
 		this.groundGrid = this.levelLoadHelper.getGroundGrid();
 		this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
 		this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
+		this.gameInformationModel = new GameInformationModel(this.levelLoadHelper.getDiamondsToCatch());
+		
 		this.createLimits();
 		this.initRockford();
 		this.initThreadAnimator();
@@ -171,6 +173,14 @@ public class LevelModel extends Observable implements Runnable {
 
 		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "diamond") {
 			this.gameInformationModel.incrementScore();
+			this.gameInformationModel.decrementRemainingsDiamonds();
+			if(this.gameInformationModel.getRemainingsDiamonds() == 0){
+				this.spawnExit();
+			}
+		}
+		if (this.getGroundLevelModel()[posX][posY].getSpriteName() == "door") {
+			System.out.println("WIN");
+			this.gameRunning = false;
 		}
 
         this.playCollisionSound(posX, posY);
@@ -187,7 +197,17 @@ public class LevelModel extends Observable implements Runnable {
 		}
 	}
 
-    /**
+	/** 
+	 * When there is no more diamonds to catch, spawn a exit door
+	 * randomly in the game
+	 */
+    private void spawnExit() {
+    	int x = (int) (Math.random() * (this.getSizeHeight()));
+    	int y = (int) (Math.random() * (this.getSizeWidth()));
+    	this.groundGrid[x][y] = new DoorModel();
+	}
+
+	/**
      * Gets the vertical position of Rockford from the model
      *
      * @return  Vertical position of Rockford
@@ -453,5 +473,33 @@ public class LevelModel extends Observable implements Runnable {
 	 */
 	public GameInformationModel getGameInformationModel() {
 		return this.gameInformationModel;
+	}
+
+	/**
+	 * Explose the brick wall
+	 * @param x
+	 * @param y
+	 */
+	public void exploseThisBrickWall(int x, int y) {
+		this.getGroundLevelModel()[x][y] = new EmptyModel();
+		this.getGroundLevelModel()[x][y+1] = new EmptyModel();
+	}
+
+	/**
+	 * Expand the ExpandingWallModel to left
+	 * @param x
+	 * @param y
+	 */
+	public void expandThisWallToLeft(int x, int y) {
+		this.getGroundLevelModel()[x-1][y] = new ExpandingWallModel();
+	}
+	
+	/**
+	 * Expand the ExpandingWallModel to right
+	 * @param x
+	 * @param y
+	 */
+	public void expandThisWallToRight(int x, int y) {
+		this.getGroundLevelModel()[x+1][y] = new ExpandingWallModel();
 	}
 }
