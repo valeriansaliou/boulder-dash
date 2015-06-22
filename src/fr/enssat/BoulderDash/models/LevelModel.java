@@ -1,7 +1,10 @@
 package fr.enssat.BoulderDash.models;
 
+import fr.enssat.BoulderDash.exceptions.UnknownModelException;
+
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
+import fr.enssat.BoulderDash.helpers.ModelConvertHelper;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.GameInformationModel;
@@ -230,15 +233,42 @@ public class LevelModel extends Observable implements Runnable {
 		}
 	}
 
-	/** 
-	 * When there is no more diamonds to catch, spawn a exit door
-	 * randomly in the game
-	 */
+    /**
+     * When there is no more diamonds to catch, spawn a exit door
+     * randomly in the game
+     */
     private void spawnExit() {
-    	int x = (int) (Math.random() * (this.getSizeHeight()));
-    	int y = (int) (Math.random() * (this.getSizeWidth()));
-    	this.groundGrid[x][y] = new DoorModel();
-	}
+        int x = (int) (Math.random() * (this.getSizeHeight()));
+        int y = (int) (Math.random() * (this.getSizeWidth()));
+        this.groundGrid[x][y] = new DoorModel();
+    }
+
+    /**
+     * Trigger block change with provided value
+     *
+     * @param  blockValue  New value
+     */
+    public void triggerBlockChange(String blockValue) {
+        // Grab model value
+        ModelConvertHelper modelConverter = new ModelConvertHelper();
+        DisplayableElementModel targetModel;
+        int xPos, yPos;
+
+        xPos = this.getCursorXPosition();
+        yPos = this.getCursorYPosition();
+
+        try {
+            targetModel = modelConverter.toModel(blockValue, false);
+
+            // Apply new model in place of cursor
+            this.groundGrid[yPos][xPos] = targetModel;
+
+            // Disable cursor (important)
+            this.setShowCursor(false);
+        } catch (UnknownModelException e) {
+            e.printStackTrace();
+        }
+    }
 
 	/**
      * Gets the vertical position of Rockford from the model

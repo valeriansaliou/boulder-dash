@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.LevelEditorView;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,14 +17,16 @@ import java.awt.event.KeyListener;
  */
 public class LevelEditorKeyController implements KeyListener {
     private LevelModel levelModel;
+    private LevelEditorView levelEditorView;
 
     /**
      * Class constructor
      *
      * @param  levelModel  Level model
      */
-    public LevelEditorKeyController(LevelModel levelModel) {
+    public LevelEditorKeyController(LevelModel levelModel, LevelEditorView levelEditorView) {
         this.levelModel = levelModel;
+        this.levelEditorView = levelEditorView;
     }
 
     /**
@@ -53,6 +56,11 @@ public class LevelEditorKeyController implements KeyListener {
             // Direction: RIGHT
             case KeyEvent.VK_RIGHT:
                 this.levelModel.incrementCursorXPosition();
+                break;
+
+            // Key: SPACE
+            case KeyEvent.VK_SPACE:
+                this.levelModel.triggerBlockChange(this.levelEditorView.getPickedBlockValue());
                 break;
         }
     }

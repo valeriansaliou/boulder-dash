@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.*;
 
+import fr.enssat.BoulderDash.views.LevelEditorView;
+
 
 /**
  * AssetsLevelEditorComponent
@@ -16,11 +18,21 @@ import javax.swing.*;
  * @since       2015-06-22
  */
 public class AssetsLevelEditorComponent extends JPanel implements ActionListener {
+    private LevelEditorView levelEditorView;
+
+    /**
+     * Available choices
+     */
     static List<String> choiceList = Arrays.asList(
             "Boulder", "Diamond", "Dirt", "Brick Wall", "Expanding Wall", "Magic Wall", "Steel Wall", "Rockford"
     );
 
-    public AssetsLevelEditorComponent() {
+    /**
+     * Class constructor
+     *
+     * @param  levelEditorView  Controller for level editor
+     */
+    public AssetsLevelEditorComponent(LevelEditorView levelEditorView) {
         super(new BorderLayout());
 
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -47,11 +59,18 @@ public class AssetsLevelEditorComponent extends JPanel implements ActionListener
         }
 
         this.add(radioPanel, BorderLayout.LINE_START);
-        this.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        this.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
     }
 
-    /** Listens to the radio buttons. */
+    /**
+     * Listens for action events
+     *
+     * @param  e  Action event
+     */
     public void actionPerformed(ActionEvent e) {
-        // TODO; e.getActionCommand()
+        JRadioButton sourceButton = (JRadioButton) e.getSource();
+        String sourceText = sourceButton.getText();
+
+        this.levelEditorView.setPickedBlockValue(sourceText);
     }
 }

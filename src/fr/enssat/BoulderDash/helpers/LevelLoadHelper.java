@@ -1,6 +1,8 @@
 package fr.enssat.BoulderDash.helpers;
 
-import fr.enssat.BoulderDash.exceptions.UnknownSpriteException;
+import fr.enssat.BoulderDash.exceptions.UnknownModelException;
+
+import fr.enssat.BoulderDash.helpers.ModelConvertHelper;
 import fr.enssat.BoulderDash.models.ExpandingWallModel;
 import fr.enssat.BoulderDash.models.RockfordModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
@@ -232,7 +234,7 @@ public class LevelLoadHelper {
 
 								try {
 									this.groundGrid[pX][pY] = this.constructGridElement(currentSpriteName, pX, pY, currentSpriteConvertible);
-								} catch (UnknownSpriteException e) {
+								} catch (UnknownModelException e) {
 									e.printStackTrace();
 								}
 							}
@@ -250,55 +252,21 @@ public class LevelLoadHelper {
      * @param  rowIndex    Position in row (horizontal axis)
      * @param  lineIndex   Position in line (vertical axis)
      */
-	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex, boolean convertible) throws UnknownSpriteException {
-		DisplayableElementModel element;
+	private DisplayableElementModel constructGridElement(String spriteName, int rowIndex, int lineIndex, boolean convertible) throws UnknownModelException {
+        ModelConvertHelper modelConvert = new ModelConvertHelper();
+        DisplayableElementModel element = modelConvert.toModel(spriteName, convertible);
 
-		// Instanciates the sprite element matching the given sprite name
+		// Custom actions?
 		switch (spriteName) {
-            case "black":
-                element = new EmptyModel();
-                break;
-
-            case "boulder":
-                element = new BoulderModel(convertible);
-                break;
-
-            case "brickwall":
-                element = new BrickWallModel();
-                break;
-
             case "diamond":
-                element = new DiamondModel();
                 diamondsToCatch += 1;
                 break;
 
-            case "dirt":
-                element = new DirtModel();
-                break;
-
-            case "magicwall":
-                element = new MagicWallModel();
-                break;
-
             case "rockford":
-                element = new RockfordModel();
-
                 this.setRockfordPositionX(rowIndex);
                 this.setRockfordPositionY(lineIndex);
                 this.setRockfordInstance((RockfordModel) element);
-
                 break;
-
-            case "steelwall":
-                element = new SteelWallModel();
-                break;
-            
-            case "expandingwall":
-                element = new ExpandingWallModel();
-                break;
-
-            default:
-                throw new UnknownSpriteException("Unknown sprite element");
 		}
 
 		return element;

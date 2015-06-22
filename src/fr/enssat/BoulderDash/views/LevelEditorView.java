@@ -29,6 +29,8 @@ public class LevelEditorView extends JFrame implements Observer {
     private LevelEditorController levelEditorController;
     private LevelModel levelModel;
 
+    private String pickedBlockValue;
+
     /**
      * Class constructor
      */
@@ -38,7 +40,7 @@ public class LevelEditorView extends JFrame implements Observer {
 
         this.levelModel.addObserver(this);
 
-        this.addKeyListener(new LevelEditorKeyController(this.levelModel));
+        this.addKeyListener(new LevelEditorKeyController(this.levelModel, this));
 
 		this.initializeView();
         this.createLayout();
@@ -71,7 +73,7 @@ public class LevelEditorView extends JFrame implements Observer {
 		this.fieldPanel = new LevelEditorFieldView(this.levelModel);
         this.selectPanel = new JPanel();
 
-        this.assetsComponent = new AssetsLevelEditorComponent();
+        this.assetsComponent = new AssetsLevelEditorComponent(this);
         this.actionsComponent = new JPanel();
 
         // Add actions
@@ -103,6 +105,24 @@ public class LevelEditorView extends JFrame implements Observer {
         button.setActionCommand(id);
 
         return button;
+    }
+
+    /**
+     * Gets picked block value
+     *
+     * @return  Picked block value
+     */
+    public String getPickedBlockValue() {
+        return this.pickedBlockValue;
+    }
+
+    /**
+     * Sets picked block value
+     *
+     * @param  pickedBlockValue  Picked block value
+     */
+    public void setPickedBlockValue(String pickedBlockValue) {
+        this.pickedBlockValue = pickedBlockValue;
     }
 
     /**

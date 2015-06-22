@@ -49,14 +49,14 @@ public abstract class FieldView extends JPanel implements Observer {
         }
 
         // Place cursor?
-        if (this.levelModel.getShowCursor()) {
+        /*if (this.levelModel.getShowCursor()) {
             g.drawImage(
                     this.levelModel.getCursorImage(),
                     (this.levelModel.getCursorXPosition() * 16),
                     (this.levelModel.getCursorYPosition() * 16),
                     this
             );
-        }
+        }*/
     }
 
     /**
