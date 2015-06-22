@@ -81,13 +81,10 @@ public class LevelEditorView extends JFrame implements Observer {
         this.actionsComponent.add(this.createButton("new", "New map..."));
 
         // Add select panel subcomponents
-        this.selectPanel.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        this.selectPanel.setLayout(new BoxLayout(this.selectPanel, BoxLayout.Y_AXIS));
 
-        this.selectPanel.add(this.assetsComponent, gbc);
-        this.selectPanel.add(this.actionsComponent, gbc);
-
-        this.selectPanel.add(this.selectPanel);
+        this.selectPanel.add(this.assetsComponent);
+        this.selectPanel.add(this.actionsComponent);
 
         // Add top components
         this.add(this.fieldPanel, BorderLayout.CENTER);
