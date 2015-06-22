@@ -410,7 +410,7 @@ public class LevelModel extends Observable implements Runnable {
      * @return  Cursor position new X value
      */
     public int incrementCursorXPosition() {
-        if(this.cursorXPosition < this.getSizeWidth()) {
+        if(this.cursorXPosition < (this.getSizeWidth() - 1)) {
             this.cursorXPosition = this.cursorXPosition + 1;
         }
 
@@ -436,7 +436,7 @@ public class LevelModel extends Observable implements Runnable {
      * @return  Cursor position new Y value
      */
     public int incrementCursorYPosition() {
-        if(this.cursorYPosition < this.getSizeHeight()) {
+        if(this.cursorYPosition < (this.getSizeHeight() - 1)) {
             this.cursorYPosition = this.cursorYPosition + 1;
         }
 
