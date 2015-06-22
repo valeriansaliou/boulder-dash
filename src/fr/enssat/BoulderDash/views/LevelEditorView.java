@@ -53,7 +53,7 @@ public class LevelEditorView extends JFrame implements Observer {
         this.setResizable(true);
 
         // UI parameters
-        this.setSize(1000, 500);
+        this.setSize(950, 422);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -81,8 +81,13 @@ public class LevelEditorView extends JFrame implements Observer {
         this.actionsComponent.add(this.createButton("new", "New map..."));
 
         // Add select panel subcomponents
-        this.selectPanel.add(this.assetsComponent, BorderLayout.NORTH);
-        this.selectPanel.add(this.actionsComponent, BorderLayout.SOUTH);
+        this.selectPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        this.selectPanel.add(this.assetsComponent, gbc);
+        this.selectPanel.add(this.actionsComponent, gbc);
+
+        this.selectPanel.add(this.selectPanel);
 
         // Add top components
         this.add(this.fieldPanel, BorderLayout.CENTER);
