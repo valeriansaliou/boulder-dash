@@ -25,7 +25,7 @@ public class Game {
      * @param  args  Command-line arguments
      */
     public static void main(String[] args) {
-        setAppleUI();
+        //setAppleUI();
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
