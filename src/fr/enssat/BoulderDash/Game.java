@@ -30,10 +30,11 @@ public class Game {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
-                LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
 
-                // Go!
+                //LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
                 //new GameController(levelModel, audioLoadHelper);
+
+                LevelModel levelModel = new LevelModel(audioLoadHelper);
                 new LevelEditorController(levelModel);
             }
         });

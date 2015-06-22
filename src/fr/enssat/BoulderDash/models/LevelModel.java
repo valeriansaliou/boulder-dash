@@ -9,6 +9,7 @@ import fr.enssat.BoulderDash.models.SteelWallModel;
 import fr.enssat.BoulderDash.models.EmptyModel;
 import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.DoorModel;
+import fr.enssat.BoulderDash.models.DirtModel;
 import fr.enssat.BoulderDash.models.ExpandingWallModel;
 
 import java.awt.image.BufferedImage;
@@ -51,25 +52,49 @@ public class LevelModel extends Observable implements Runnable {
      * Class constructor
      *
      * @param  levelName        Level name
-	 * @param  audioLoadHelper  Audio load helper
+     * @param  audioLoadHelper  Audio load helper
      */
-	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
-		this.levelName = levelName;
+    public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
+        this.levelName = levelName;
         this.audioLoadHelper = audioLoadHelper;
-		this.gameRunning = true;
-		
-		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
+        this.gameRunning = true;
 
-		this.groundGrid = this.levelLoadHelper.getGroundGrid();
-		this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
-		this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
+        this.levelLoadHelper = new LevelLoadHelper(this.levelName);
 
-		this.gameInformationModel = new GameInformationModel(this.levelLoadHelper.getDiamondsToCatch());
-		
-		this.createLimits();
-		this.initRockford();
-		this.initThreadAnimator();
-	}
+        this.groundGrid = this.levelLoadHelper.getGroundGrid();
+        this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
+        this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
+
+        this.gameInformationModel = new GameInformationModel(this.levelLoadHelper.getDiamondsToCatch());
+
+        this.createLimits();
+        this.initRockford();
+        this.initThreadAnimator();
+    }
+
+    /**
+     * Class constructor
+     *
+     * @param  audioLoadHelper  Audio load helper
+     */
+    public LevelModel(AudioLoadHelper audioLoadHelper) {
+        this.audioLoadHelper = audioLoadHelper;
+        this.gameRunning = false;
+
+        this.sizeWidth = 25;
+        this.sizeHeight = 25;
+
+        // Generate dirt
+        this.groundGrid = new DisplayableElementModel[this.sizeWidth][this.sizeHeight];
+
+        for(int x = 0; x < this.sizeWidth; x++) {
+            for(int y = 0; y < this.sizeHeight; y++) {
+                this.groundGrid[x][y] = new DirtModel();
+            }
+        }
+
+        this.createLimits();
+    }
 
 	/**
 	 * Initializes the animator thread
