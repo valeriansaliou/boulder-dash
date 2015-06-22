@@ -53,7 +53,7 @@ public class LevelEditorView extends JFrame implements Observer {
         this.setResizable(true);
 
         // UI parameters
-        this.setSize(950, 422);
+        this.setSize(774, 422);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
