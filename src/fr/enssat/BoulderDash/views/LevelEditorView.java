@@ -50,10 +50,10 @@ public class LevelEditorView extends JFrame implements Observer {
 	private void initializeView() {
         this.setFocusable(true);
         this.setVisible(true);
-        this.setResizable(false);
+        this.setResizable(true);
 
         // UI parameters
-        this.setSize(800, 510);
+        this.setSize(1000, 500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -85,8 +85,8 @@ public class LevelEditorView extends JFrame implements Observer {
         this.selectPanel.add(this.actionsComponent, BorderLayout.SOUTH);
 
         // Add top components
-        this.add(this.fieldPanel, BorderLayout.WEST);
-        this.add(this.selectPanel, BorderLayout.EAST);
+        this.add(this.fieldPanel, BorderLayout.CENTER);
+        this.add(this.selectPanel, BorderLayout.WEST);
 	}
 
     /**
