@@ -210,7 +210,6 @@ public abstract class DisplayableElementModel {
      * @return  Sprite object
      */
 	public BufferedImage loadSprite(String spriteName) {
-
 		BufferedImage sprite = null;
 
 		try {
@@ -218,7 +217,9 @@ public abstract class DisplayableElementModel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		this.sprite = sprite;
+
 		return sprite;
 	}
 

@@ -37,22 +37,22 @@ public class LevelEditorKeyController implements KeyListener {
         switch (keyCode) {
             // Direction: UP
             case KeyEvent.VK_UP:
-                // Do nothing.
+                this.levelModel.decrementCursorYPosition();
                 break;
 
             // Direction: DOWN
             case KeyEvent.VK_DOWN:
-                // Do nothing.
+                this.levelModel.incrementCursorYPosition();
                 break;
 
             // Direction: LEFT
             case KeyEvent.VK_LEFT:
-                // Do nothing.
+                this.levelModel.decrementCursorXPosition();
                 break;
 
             // Direction: RIGHT
             case KeyEvent.VK_RIGHT:
-                // Do nothing.
+                this.levelModel.incrementCursorXPosition();
                 break;
         }
     }

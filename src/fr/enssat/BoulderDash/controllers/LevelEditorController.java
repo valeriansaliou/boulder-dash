@@ -23,6 +23,7 @@ public class LevelEditorController {
      */
     public LevelEditorController(LevelModel levelModel) {
         this.levelModel = levelModel;
+        this.levelModel.setShowCursor(true);
 
         new LevelEditorView(this, levelModel);
     }

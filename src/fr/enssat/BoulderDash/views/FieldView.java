@@ -41,10 +41,21 @@ public abstract class FieldView extends JPanel implements Observer {
      * @param   g       Map graphical object
      */
     public void drawTerrain(int width, int height, Graphics g) {
+        // Draw items
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                g.drawImage(this.levelModel.getImage(x, y), x * 16, y * 16, this);
+                g.drawImage(this.levelModel.getImage(x, y), (x * 16), (y * 16), this);
             }
+        }
+
+        // Place cursor?
+        if (this.levelModel.getShowCursor()) {
+            g.drawImage(
+                    this.levelModel.getCursorImage(),
+                    (this.levelModel.getCursorXPosition() * 16),
+                    (this.levelModel.getCursorYPosition() * 16),
+                    this
+            );
         }
     }
 

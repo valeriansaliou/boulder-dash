@@ -11,6 +11,7 @@ import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.DoorModel;
 import fr.enssat.BoulderDash.models.DirtModel;
 import fr.enssat.BoulderDash.models.ExpandingWallModel;
+import fr.enssat.BoulderDash.models.CursorModel;
 
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -31,7 +32,11 @@ public class LevelModel extends Observable implements Runnable {
 	private String levelName;
     private AudioLoadHelper audioLoadHelper;
 	private int sizeWidth = 0;
-	private int sizeHeight = 0;
+    private int sizeHeight = 0;
+    private int cursorXPosition = 0;
+    private int cursorYPosition = 0;
+    private boolean showCursor = false;
+    private CursorModel cursorModel;
 	private LevelLoadHelper levelLoadHelper;
 	private RockfordModel rockford;
 	private GameInformationModel gameInformationModel;
@@ -65,6 +70,7 @@ public class LevelModel extends Observable implements Runnable {
         this.sizeWidth = this.levelLoadHelper.getWidthSizeValue();
         this.sizeHeight = this.levelLoadHelper.getHeightSizeValue();
 
+        this.cursorModel = new CursorModel();
         this.gameInformationModel = new GameInformationModel(this.levelLoadHelper.getDiamondsToCatch());
 
         this.createLimits();
@@ -270,9 +276,18 @@ public class LevelModel extends Observable implements Runnable {
      * @param   y  Block vertical position
      * @return  Image at given positions
      */
-	public BufferedImage getImage(int x, int y) {
-		return this.getDisplayableElement(x, y).getSprite();
-	}
+    public BufferedImage getImage(int x, int y) {
+        return this.getDisplayableElement(x, y).getSprite();
+    }
+
+    /**
+     * Gets the cursor image image
+     *
+     * @return  Cursor image
+     */
+    public BufferedImage getCursorImage() {
+        return this.cursorModel.getSprite();
+    }
 
     /**
      * Gets the level horizontal size
@@ -371,6 +386,76 @@ public class LevelModel extends Observable implements Runnable {
 		return this.levelLoadHelper;
 	}
 
+    /**
+     * Gets the cursor position X value
+     *
+     * @return  Cursor position X value
+     */
+    public int getCursorXPosition() {
+        return this.cursorXPosition;
+    }
+
+    /**
+     * Gets the cursor position Y value
+     *
+     * @return  Cursor position Y value
+     */
+    public int getCursorYPosition() {
+        return this.cursorYPosition;
+    }
+
+    /**
+     * Increaments the cursor position X value
+     *
+     * @return  Cursor position new X value
+     */
+    public int incrementCursorXPosition() {
+        if(this.cursorXPosition < this.getSizeWidth()) {
+            this.cursorXPosition = this.cursorXPosition + 1;
+        }
+
+        return this.getCursorXPosition();
+    }
+
+    /**
+     * Decrements the cursor position X value
+     *
+     * @return  Cursor position new X value
+     */
+    public int decrementCursorXPosition() {
+        if(this.cursorXPosition > 0) {
+            this.cursorXPosition = this.cursorXPosition - 1;
+        }
+
+        return this.getCursorXPosition();
+    }
+
+    /**
+     * Increaments the cursor position Y value
+     *
+     * @return  Cursor position new Y value
+     */
+    public int incrementCursorYPosition() {
+        if(this.cursorYPosition < this.getSizeHeight()) {
+            this.cursorYPosition = this.cursorYPosition + 1;
+        }
+
+        return this.getCursorYPosition();
+    }
+
+    /**
+     * Decrements the cursor position Y value
+     *
+     * @return  Cursor position new Y value
+     */
+    public int decrementCursorYPosition() {
+        if(this.cursorYPosition > 0) {
+            this.cursorYPosition = this.cursorYPosition - 1;
+        }
+
+        return this.getCursorYPosition();
+    }
+
 	/**
 	 * sets the game to a defined state
 	 *
@@ -379,15 +464,33 @@ public class LevelModel extends Observable implements Runnable {
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
 	}
-	
-	/**
-	 * tells if the game is running
-	 *
-	 * @return  whether the game is running or not
-	 */
-	public boolean isGameRunning(){
-		return gameRunning;
-	}
+
+    /**
+     * tells if the game is running
+     *
+     * @return  whether the game is running or not
+     */
+    public boolean isGameRunning(){
+        return gameRunning;
+    }
+
+    /**
+     * Gets whether cursor is to be shown or not
+     *
+     * @return  whether cursor needs to be shown or not
+     */
+    public boolean getShowCursor() {
+        return this.showCursor;
+    }
+
+    /**
+     * Sets whether cursor is to be shown or not
+     *
+     * @param  showCursor  whether cursor needs to be shown or not
+     */
+    public void setShowCursor(boolean showCursor) {
+        this.showCursor = showCursor;
+    }
 
 	/**
 	 * Function that reset the game
