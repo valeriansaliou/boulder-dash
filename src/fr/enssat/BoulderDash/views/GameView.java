@@ -38,7 +38,6 @@ public class GameView extends JFrame implements Observer {
      *
      * @param  gameController  Game controller
      * @param  levelModel      Level model
-     * @param navigationBetweenViewController 
      */
 	public GameView(GameController gameController, LevelModel levelModel) {
 		this.gameController = gameController;

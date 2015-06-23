@@ -22,8 +22,7 @@ public class RockfordUpdateController implements Runnable {
 	/**
 	 * Class constructor
 	 *
-	 * @param levelModel
-	 *            Level model
+	 * @param levelModel  Level model
 	 */
 	public RockfordUpdateController(LevelModel levelModel) {
 		this.levelModel = levelModel;

@@ -22,6 +22,9 @@ public class NavigationBetweenViewController implements ActionListener {
 	private LevelModel levelModelForGame, levelModelForEditor;
 	private GameController gameController;
 
+    /**
+     * Class constructor
+     */
 	public NavigationBetweenViewController() {
 		this.audioLoadHelper = new AudioLoadHelper();
 
@@ -32,6 +35,11 @@ public class NavigationBetweenViewController implements ActionListener {
 		this.firstView = new FirstView(this);
 	}
 
+    /**
+     * Action performed event handler
+     *
+     * @param  event  Action event
+     */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		switch (event.getActionCommand()) {
@@ -93,7 +101,7 @@ public class NavigationBetweenViewController implements ActionListener {
 	/**
 	 * Set the first view
 	 * 
-	 * @param firstView
+	 * @param  firstView
 	 */
 	public void setFirstView(FirstView firstView) {
 		this.firstView = firstView;

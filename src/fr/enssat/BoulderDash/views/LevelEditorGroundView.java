@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.views;
 
 import fr.enssat.BoulderDash.views.GroundView;
+import fr.enssat.BoulderDash.views.LevelEditorView;
 import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 

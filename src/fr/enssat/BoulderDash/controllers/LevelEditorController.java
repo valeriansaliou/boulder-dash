@@ -21,7 +21,7 @@ public class LevelEditorController implements ActionListener {
 	private NavigationBetweenViewController nav;
 
     /**
-     * Class constructor
+     * Class constructor'
      *
      * @param  levelModel  Level model
      */
