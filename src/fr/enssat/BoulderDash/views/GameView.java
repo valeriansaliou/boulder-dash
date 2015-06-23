@@ -122,4 +122,15 @@ public class GameView extends JFrame implements Observer {
 	public void update(Observable obs, Object obj) {
 		// TODO
 	}
+
+    /**
+     * Paints the frame
+     *
+     * @param   g  Graphics object
+     */
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.white);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+    }
 }

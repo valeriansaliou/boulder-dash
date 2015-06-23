@@ -2,6 +2,7 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
+import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 import fr.enssat.BoulderDash.views.FirstView;
 import fr.enssat.BoulderDash.views.GameView;
 
@@ -32,7 +33,6 @@ public class GameController implements ActionListener {
      * @param navigationBetweenViewController 
      */
 	public GameController(LevelModel levelModel, AudioLoadHelper audioLoadHelper, NavigationBetweenViewController navigationBetweenViewController) {
-
         this.firstClickOnPause = true;
         
 		this.levelModel = levelModel;
@@ -40,7 +40,7 @@ public class GameController implements ActionListener {
         this.gameView = new GameView(this, levelModel); 
         this.firstView = navigationBetweenViewController.getFirstView();
         this.getAudioLoadHelper().playSound("new");
-//        this.getAudioLoadHelper().startMusic("game"); //TODO real game music I sent you Vale (also start the music where we enter on the game)
+		this.getAudioLoadHelper().startMusic("game");
 	}
 
 	/**
@@ -51,9 +51,9 @@ public class GameController implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
         switch(event.getActionCommand()) {
             case "pause":
-            	if(this.firstClickOnPause){
+            	if(this.firstClickOnPause) {
             		this.levelModel.setGamePaused(true);
-            	} else if(!this.firstClickOnPause){
+            	} else if(!this.firstClickOnPause) {
             		this.levelModel.setGamePaused(false);
             	}
 
@@ -113,6 +113,4 @@ public class GameController implements ActionListener {
 	public void setGameView(GameView gameView) {
 		this.gameView = gameView;
 	}
-    
-    
 }
