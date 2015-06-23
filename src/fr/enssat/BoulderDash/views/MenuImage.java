@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 /**
  * MenuImage
  *
- * Instanciates the menu image
+ * Specifies the menu image
  *
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-23

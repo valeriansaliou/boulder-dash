@@ -2,21 +2,33 @@ package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import fr.enssat.BoulderDash.views.MenuImage;
+import fr.enssat.BoulderDash.views.MenuLevelSelector;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
+
+/**
+ * FirstView
+ *
+ * Menu view
+ *
+ * @author      Valerian Saliou <valerian@valeriansaliou.name>
+ * @since       2015-06-23
+ */
 public class FirstView extends JFrame {
 	private JButton game;
 	private JButton editor;
 	private JButton quit;
 	private NavigationBetweenViewController navigationBetweenViewController;
     private MenuImage menuImage;
+    private JComboBox menuLevelList;
 	private JPanel actionPanel;
 
+    /**
+     * Class constructor
+     */
 	public FirstView(NavigationBetweenViewController navigationBetweenViewController) {
 		this.navigationBetweenViewController = navigationBetweenViewController;
 		this.initializeView();
@@ -43,6 +55,10 @@ public class FirstView extends JFrame {
      * Creates the view layout
      */
     private void createLayout() {
+        this.createLevelList();
+
+        JPanel targetPanel = new JPanel();
+
         this.menuImage = new MenuImage();
     	this.actionPanel = new JPanel();
     	
@@ -52,9 +68,11 @@ public class FirstView extends JFrame {
         this.quit = this.createButton("quit", "Quit");
 
         this.add(this.menuImage, BorderLayout.CENTER);
-        this.add(this.actionPanel, BorderLayout.SOUTH);
-    }
+        this.add(targetPanel, BorderLayout.SOUTH);
 
+        targetPanel.add(this.menuLevelList, BorderLayout.NORTH);
+        targetPanel.add(this.actionPanel, BorderLayout.SOUTH);
+    }
 
     /**
      * Creates the given button
@@ -71,4 +89,31 @@ public class FirstView extends JFrame {
 
 		return button;
 	}
+
+    /**
+     * Class constructor
+     */
+    private void createLevelList() {
+        String[] availableLevels = this.listAvailableLevels();
+
+        // Proceed available levels listing
+        this.menuLevelList = new MenuLevelSelector(availableLevels);
+
+        if(availableLevels.length > 0) {
+            this.menuLevelList.setSelectedIndex(0);
+        }
+
+        this.menuLevelList.addActionListener(this.menuLevelList);
+    }
+
+    /**
+     * Lists available levels and store them in instance context
+     *
+     * @return  Available levels
+     */
+    private String[] listAvailableLevels() {
+        String[] arr = {"Hello", "World"};
+
+        return arr;
+    }
 }
