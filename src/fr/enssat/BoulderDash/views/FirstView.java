@@ -6,14 +6,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fr.enssat.BoulderDash.views.MenuImage;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
-public class FirstView extends JFrame{
-
+public class FirstView extends JFrame {
 	private JButton game;
 	private JButton editor;
 	private JButton quit;
 	private NavigationBetweenViewController navigationBetweenViewController;
+    private MenuImage menuImage;
 	private JPanel actionPanel;
 
 	public FirstView(NavigationBetweenViewController navigationBetweenViewController) {
@@ -42,14 +43,16 @@ public class FirstView extends JFrame{
      * Creates the view layout
      */
     private void createLayout() {
+        this.menuImage = new MenuImage();
     	this.actionPanel = new JPanel();
     	
         // Add some buttons on the actionPanel
         this.game = this.createButton("game", "Game");
         this.editor = this.createButton("editor", "Editor");
         this.quit = this.createButton("quit", "Quit");
-        
-        this.add(actionPanel,BorderLayout.NORTH);
+
+        this.add(this.menuImage, BorderLayout.CENTER);
+        this.add(this.actionPanel, BorderLayout.SOUTH);
     }
 
 
