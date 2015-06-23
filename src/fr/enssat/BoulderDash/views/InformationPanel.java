@@ -1,5 +1,6 @@
 package fr.enssat.BoulderDash.views;
 
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -29,7 +30,6 @@ public class InformationPanel extends JPanel implements Observer {
 		this.levelModel = levelModel;
 		this.text = new JTextArea();
 		this.text.setEditable(false);
-
 		this.levelModel.getGameInformationModel().addObserver(this);
 
 		this.text.setText(

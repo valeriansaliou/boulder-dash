@@ -105,6 +105,10 @@ public class FirstView extends JFrame {
         this.menuLevelList = new MenuLevelSelector(availableLevels);
 
         if(availableLevels.length > 0) {
+            this.menuLevelList.setChoiceValue(availableLevels[0]);
+        }
+
+        if(availableLevels.length > 0) {
             this.menuLevelList.setSelectedIndex(0);
         };
 
