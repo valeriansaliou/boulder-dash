@@ -56,6 +56,7 @@ public class GameController implements ActionListener {
             	} else if(!this.firstClickOnPause){
             		this.levelModel.setGamePaused(false);
             	}
+
             	this.firstClickOnPause = !this.firstClickOnPause;
                 break;
 
