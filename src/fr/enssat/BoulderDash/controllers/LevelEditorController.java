@@ -15,6 +15,7 @@ import fr.enssat.BoulderDash.views.LevelEditorView;
  */
 public class LevelEditorController {
     private LevelModel levelModel;
+	private LevelEditorView levelEditorView;
 
     /**
      * Class constructor
@@ -25,7 +26,7 @@ public class LevelEditorController {
         this.levelModel = levelModel;
         this.levelModel.setShowCursor(true);
 
-        new LevelEditorView(this, levelModel);
+        levelEditorView = new LevelEditorView(this, levelModel);
     }
 
     /**
@@ -35,9 +36,19 @@ public class LevelEditorController {
      */
     public void actionPerformed(ActionEvent event) {
         switch(event.getActionCommand()) {
-            case "quit":
+            case "menu":
                 System.exit(0);
                 break;
         }
     }
+
+	public LevelEditorView getLevelEditorView() {
+		return levelEditorView;
+	}
+
+	public void setLevelEditorView(LevelEditorView levelEditorView) {
+		this.levelEditorView = levelEditorView;
+	}
+    
+    
 }

@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.views;
 
 import fr.enssat.BoulderDash.views.GroundView;
+import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 
@@ -18,7 +19,8 @@ public class LevelEditorGroundView extends GroundView {
      *
      * @param  levelModel  Level model
      */
-    public LevelEditorGroundView(LevelModel levelModel) {
+    public LevelEditorGroundView(LevelModel levelModel, LevelEditorView levelEditorView) {
         super(levelModel);
+        this.addKeyListener(new LevelEditorKeyController(levelModel, levelEditorView));
     }
 }

@@ -40,8 +40,7 @@ public class LevelEditorView extends JFrame implements Observer {
 
         this.levelModel.addObserver(this);
 
-        this.addKeyListener(new LevelEditorKeyController(this.levelModel, this));
-
+        
 		this.initializeView();
         this.createLayout();
 	}
@@ -51,11 +50,11 @@ public class LevelEditorView extends JFrame implements Observer {
      */
 	private void initializeView() {
         this.setFocusable(true);
-        this.setVisible(true);
+        this.setVisible(false);
         this.setResizable(false);
 
         // UI parameters
-        this.setSize(825, 475);
+        this.setSize(1000, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -70,7 +69,7 @@ public class LevelEditorView extends JFrame implements Observer {
      * Creates the view layout
      */
 	private void createLayout() {
-		this.fieldPanel = new LevelEditorGroundView(this.levelModel);
+		this.fieldPanel = new LevelEditorGroundView(this.levelModel,this);
         this.selectPanel = new JPanel();
 
         this.assetsComponent = new AssetsLevelEditorComponent(this);
@@ -81,6 +80,7 @@ public class LevelEditorView extends JFrame implements Observer {
         this.actionsComponent.add(this.createButton("delete", "Delete"));
         this.actionsComponent.add(this.createButton("clear", "Clear"));
         this.actionsComponent.add(this.createButton("new", "New map..."));
+        this.actionsComponent.add(this.createButton("menu", "Menu"));
 
         // Add select panel subcomponents
         this.selectPanel.setLayout(new BoxLayout(this.selectPanel, BoxLayout.Y_AXIS));

@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.views;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.Observable;
@@ -9,6 +10,7 @@ import java.util.Observer;
 import com.apple.eawt.Application;
 
 import fr.enssat.BoulderDash.controllers.GameController;
+import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.GameGroundView;
 import fr.enssat.BoulderDash.views.InformationPanel;
@@ -26,20 +28,21 @@ public class GameView extends JFrame implements Observer {
 	private GameGroundView gameGroundView;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
-	private JButton newGame, pause, quit, editor;
+	private JButton newGame, pause, load;
 	private GameController gameController;
 	private LevelModel levelModel;
-
+	private JButton menu;
     /**
      * Class constructor
      *
      * @param  gameController  Game controller
      * @param  levelModel      Level model
+     * @param navigationBetweenViewController 
      */
 	public GameView(GameController gameController, LevelModel levelModel) {
 		this.gameController = gameController;
 		this.levelModel = levelModel;
-
+		
         this.initializeView();
         this.createLayout();
 
@@ -50,7 +53,7 @@ public class GameView extends JFrame implements Observer {
      * Initializes the view
      */
     private void initializeView() {
-        this.setVisible(true);
+        this.setVisible(false);
         this.setResizable(false);
 
         // UI parameters
@@ -75,9 +78,9 @@ public class GameView extends JFrame implements Observer {
 
         // Add some buttons on the informationPanel
         this.newGame = this.createButton("restart", "Restart");
-        this.editor = this.createButton("editor", "Editor");
         this.pause = this.createButton("pause", "Pause");
-        this.quit = this.createButton("quit", "Quit");
+        this.load = this.createButton("load", "Load");
+        this.menu = this.createButton("menu", "Menu");
 
         this.add(this.actionPanel, BorderLayout.SOUTH);
         this.add(this.informationPanel, BorderLayout.NORTH);
