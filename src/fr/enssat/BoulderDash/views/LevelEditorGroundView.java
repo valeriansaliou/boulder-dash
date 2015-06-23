@@ -22,6 +22,7 @@ public class LevelEditorGroundView extends GroundView {
      */
     public LevelEditorGroundView(LevelModel levelModel, LevelEditorView levelEditorView) {
         super(levelModel);
+
         this.addKeyListener(new LevelEditorKeyController(levelModel, levelEditorView));
     }
 }

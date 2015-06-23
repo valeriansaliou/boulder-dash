@@ -1,5 +1,6 @@
 package fr.enssat.BoulderDash.views;
 
+import fr.enssat.BoulderDash.exceptions.ModelNotReadyException;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 import javax.swing.*;
@@ -49,14 +50,18 @@ public abstract class GroundView extends JPanel implements Observer {
         }
 
         // Place cursor?
-        /*if (this.levelModel.getShowCursor()) {
-            g.drawImage(
-                    this.levelModel.getCursorImage(),
-                    (this.levelModel.getCursorXPosition() * 16),
-                    (this.levelModel.getCursorYPosition() * 16),
-                    this
-            );
-        }*/
+        if (this.levelModel.getShowCursor()) {
+            try {
+                g.drawImage(
+                        this.levelModel.getCursorImage(),
+                        (this.levelModel.getCursorXPosition() * 16),
+                        (this.levelModel.getCursorYPosition() * 16),
+                        this
+                );
+            } catch(ModelNotReadyException e) {
+                System.out.println("ModelNotReadyException > " + e.getMessage());
+            }
+        }
     }
 
     /**
