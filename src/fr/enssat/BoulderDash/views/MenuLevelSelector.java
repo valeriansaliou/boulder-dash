@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.views;
+package fr.enssat.BoulderDash.views;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +16,7 @@ public class MenuLevelSelector extends JComboBox {
     private String choiceValue;
 
     /**
-     * Class constructor
+     * Class constructor all
      */
     public MenuLevelSelector(String[] items) {
         super(items);
