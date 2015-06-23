@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.views;
 
-import fr.enssat.BoulderDash.views.FieldView;
+import fr.enssat.BoulderDash.views.GroundView;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 
@@ -12,13 +12,13 @@ import fr.enssat.BoulderDash.models.LevelModel;
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-21
  */
-public class LevelEditorFieldView extends FieldView {
+public class LevelEditorGroundView extends GroundView {
     /**
      * Class constructor
      *
      * @param  levelModel  Level model
      */
-    public LevelEditorFieldView(LevelModel levelModel) {
+    public LevelEditorGroundView(LevelModel levelModel) {
         super(levelModel);
     }
 }

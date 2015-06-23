@@ -10,7 +10,7 @@ import com.apple.eawt.Application;
 
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.views.GameFieldView;
+import fr.enssat.BoulderDash.views.GameGroundView;
 import fr.enssat.BoulderDash.views.InformationPanel;
 
 
@@ -23,10 +23,10 @@ import fr.enssat.BoulderDash.views.InformationPanel;
  * @since       2015-06-19
  */
 public class GameView extends JFrame implements Observer {
-	private GameFieldView gameFieldView;
+	private GameGroundView gameGroundView;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
-	private JButton newGame, pause, quit, editor, save;
+	private JButton newGame, pause, quit, editor;
 	private GameController gameController;
 	private LevelModel levelModel;
 
@@ -43,7 +43,7 @@ public class GameView extends JFrame implements Observer {
         this.initializeView();
         this.createLayout();
 
-        this.gameFieldView.grabFocus();
+        this.gameGroundView.grabFocus();
 	}
 
     /**
@@ -69,7 +69,7 @@ public class GameView extends JFrame implements Observer {
      * Creates the view layout
      */
     private void createLayout() {
-        this.gameFieldView = new GameFieldView(this.gameController, this.levelModel);
+        this.gameGroundView = new GameGroundView(this.gameController, this.levelModel);
         this.actionPanel = new JPanel();
         this.informationPanel = new InformationPanel(this.levelModel);
 
@@ -77,12 +77,11 @@ public class GameView extends JFrame implements Observer {
         this.newGame = this.createButton("restart", "Restart");
         this.editor = this.createButton("editor", "Editor");
         this.pause = this.createButton("pause", "Pause");
-        this.save = this.createButton("save", "Save");
         this.quit = this.createButton("quit", "Quit");
 
         this.add(this.actionPanel, BorderLayout.SOUTH);
         this.add(this.informationPanel, BorderLayout.NORTH);
-        this.add(this.gameFieldView, BorderLayout.CENTER);
+        this.add(this.gameGroundView, BorderLayout.CENTER);
     }
 
     /**
@@ -90,8 +89,8 @@ public class GameView extends JFrame implements Observer {
      *
      * @return  Game field view
      */
-	public GameFieldView getGameFieldView() {
-		return this.gameFieldView;
+	public GameGroundView getGameFieldView() {
+		return this.gameGroundView;
 	}
 
     /**
@@ -110,7 +109,7 @@ public class GameView extends JFrame implements Observer {
 		return button;
 	}
 
-    /**
+	/**
      * Updates the frame
      *
      * @param   obs  Observable item

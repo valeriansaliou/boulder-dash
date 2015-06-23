@@ -8,7 +8,7 @@ import java.util.Observer;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.views.LevelEditorFieldView;
+import fr.enssat.BoulderDash.views.LevelEditorGroundView;
 import fr.enssat.BoulderDash.views.AssetsLevelEditorComponent;
 
 
@@ -21,7 +21,7 @@ import fr.enssat.BoulderDash.views.AssetsLevelEditorComponent;
  * @since       2015-06-19
  */
 public class LevelEditorView extends JFrame implements Observer {
-    private LevelEditorFieldView fieldPanel;
+    private LevelEditorGroundView fieldPanel;
     private JPanel selectPanel;
     private AssetsLevelEditorComponent assetsComponent;
     private JPanel actionsComponent;
@@ -52,10 +52,10 @@ public class LevelEditorView extends JFrame implements Observer {
 	private void initializeView() {
         this.setFocusable(true);
         this.setVisible(true);
-        this.setResizable(true);
+        this.setResizable(false);
 
         // UI parameters
-        this.setSize(774, 422);
+        this.setSize(825, 475);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -70,7 +70,7 @@ public class LevelEditorView extends JFrame implements Observer {
      * Creates the view layout
      */
 	private void createLayout() {
-		this.fieldPanel = new LevelEditorFieldView(this.levelModel);
+		this.fieldPanel = new LevelEditorGroundView(this.levelModel);
         this.selectPanel = new JPanel();
 
         this.assetsComponent = new AssetsLevelEditorComponent(this);

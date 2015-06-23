@@ -1,7 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.exceptions.UnknownModelException;
-
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.helpers.ModelConvertHelper;
@@ -45,6 +44,7 @@ public class LevelModel extends Observable implements Runnable {
 	private GameInformationModel gameInformationModel;
 	private int rockfordPositionX, rockfordPositionY;
 	private boolean gameRunning;
+	private boolean gamePaused;
 
     /**
      * Sprite animation thread
@@ -65,6 +65,7 @@ public class LevelModel extends Observable implements Runnable {
     public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
         this.levelName = levelName;
         this.audioLoadHelper = audioLoadHelper;
+        this.gamePaused = false;
         this.gameRunning = true;
 
         this.levelLoadHelper = new LevelLoadHelper(this.levelName);
@@ -384,19 +385,20 @@ public class LevelModel extends Observable implements Runnable {
 	 */
 	public void run() {
 		while (gameRunning) {
-
-			for (int x = 0; x < this.getSizeWidth(); x++) {
-				for (int y = 0; y < this.getSizeHeight(); y++) {
-					this.updateSprites(x, y);
+			if(!gamePaused){
+				for (int x = 0; x < this.getSizeWidth(); x++) {
+					for (int y = 0; y < this.getSizeHeight(); y++) {
+						this.updateSprites(x, y);
+					}
+				}
+	
+				try {
+					Thread.sleep(DELAY);
+				} catch (InterruptedException e) {
+					System.out.println("Interrupted: " + e.getMessage());
 				}
 			}
-
-			try {
-				Thread.sleep(DELAY);
-			} catch (InterruptedException e) {
-				System.out.println("Interrupted: " + e.getMessage());
-			}
-
+			System.out.println("c");
 		}
 
 	}
@@ -521,13 +523,6 @@ public class LevelModel extends Observable implements Runnable {
     public void setShowCursor(boolean showCursor) {
         this.showCursor = showCursor;
     }
-
-	/**
-	 * Function that reset the game
-	 */
-	public void resetGame() {
-		System.out.println("reset");
-	}
 
 	/**
 	 * When a boulder is falling on Rockford there is an explosion around him
@@ -661,5 +656,21 @@ public class LevelModel extends Observable implements Runnable {
 	 */
 	public void expandThisWallToRight(int x, int y) {
 		this.groundGrid[x+1][y] = new ExpandingWallModel();
+	}
+
+	/**
+	 * Set the gamePaused variable
+	 * @param gamePaused
+	 */
+	public void setGamePaused(boolean gamePaused) {
+		this.gamePaused = gamePaused;
+	}
+	
+	/**
+	 * Get the gamePaused variable
+	 * @param gamePaused
+	 */
+	public boolean getGamePaused() {
+		return this.gamePaused;
 	}
 }

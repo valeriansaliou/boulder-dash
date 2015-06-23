@@ -25,17 +25,14 @@ public class Game {
      * @param  args  Command-line arguments
      */
     public static void main(String[] args) {
-        //setAppleUI();
+        //setAppleUI(); // Not working
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 AudioLoadHelper audioLoadHelper = new AudioLoadHelper();
 
-                //LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
-                //new GameController(levelModel, audioLoadHelper);
-
-                LevelModel levelModel = new LevelModel(audioLoadHelper);
-                new LevelEditorController(levelModel);
+                LevelModel levelModel = new LevelModel("level01", audioLoadHelper);
+                new GameController(levelModel, audioLoadHelper);
             }
         });
     }

@@ -20,7 +20,7 @@ import java.util.Observer;
  * This view is basically drawing into the Frame the levelModel. 
  *
  */
-public abstract class FieldView extends JPanel implements Observer {
+public abstract class GroundView extends JPanel implements Observer {
     protected LevelModel levelModel;
 
     /**
@@ -28,7 +28,7 @@ public abstract class FieldView extends JPanel implements Observer {
      *
      * @param  levelModel  Level model
      */
-    public FieldView(LevelModel levelModel) {
+    public GroundView(LevelModel levelModel) {
         this.levelModel = levelModel;
         this.levelModel.addObserver(this);
     }

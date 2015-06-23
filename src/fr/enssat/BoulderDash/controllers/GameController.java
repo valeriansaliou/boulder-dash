@@ -3,6 +3,7 @@ package fr.enssat.BoulderDash.controllers;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
+import fr.enssat.BoulderDash.views.GameGroundView;
 import fr.enssat.BoulderDash.views.GameView;
 
 import java.awt.event.ActionEvent;
@@ -21,6 +22,8 @@ import java.awt.event.ActionListener;
 public class GameController implements ActionListener {
 	private LevelModel levelModel;
     private AudioLoadHelper audioLoadHelper;
+    private GameView gameView;
+    private boolean firstClickOnPause;
 
     /**
      * Class constructor
@@ -30,8 +33,9 @@ public class GameController implements ActionListener {
 	public GameController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
-
-        new GameView(this, levelModel);
+        this.firstClickOnPause = true;
+        
+        gameView = new GameView(this, levelModel);
 
         this.getAudioLoadHelper().playSound("new");
 //        this.getAudioLoadHelper().startMusic("game");
@@ -53,20 +57,31 @@ public class GameController implements ActionListener {
                 break;
 
             case "pause":
-                // TODO
-                break;
-
-            case "save":
-                // TODO
+            	if(this.firstClickOnPause){
+            		this.levelModel.setGamePaused(true);
+            	} else if(!this.firstClickOnPause){
+            		this.levelModel.setGamePaused(false);
+            	}
+            	this.firstClickOnPause = !this.firstClickOnPause;
                 break;
 
             case "restart":
-                this.levelModel.resetGame();
+                this.resetGame();                
                 break;
         }
+        gameView.getGameFieldView().grabFocus();
 	}
 
-    /**
+	/**
+	 * Function to reset the game
+	 */
+    private void resetGame() {
+    	levelModel = new LevelModel("level01", audioLoadHelper);
+		this.gameView.removeAll();
+		this.gameView = new GameView(this, levelModel);
+	}
+
+	/**
      * Gets the audio load helper instance
      *
      * @return  Audio load helper instance
@@ -74,11 +89,4 @@ public class GameController implements ActionListener {
     public AudioLoadHelper getAudioLoadHelper() {
         return this.audioLoadHelper;
     }
-
-//	public void addNotify() { //TODO is this useful ?
-//		frameToDisplay.getGameFieldView().addNotify();
-//
-//		animator = new Thread(this);
-//		animator.start();
-//	}
 }

@@ -1,6 +1,6 @@
 package fr.enssat.BoulderDash.views;
 
-import fr.enssat.BoulderDash.views.FieldView;
+import fr.enssat.BoulderDash.views.GroundView;
 import fr.enssat.BoulderDash.controllers.GameController;
 import fr.enssat.BoulderDash.controllers.GameKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
@@ -17,7 +17,7 @@ import java.awt.*;
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-21
  */
-public class GameFieldView extends FieldView {
+public class GameGroundView extends GroundView {
     private GameController gameController;
 
     /**
@@ -26,7 +26,7 @@ public class GameFieldView extends FieldView {
      * @param  gameController  Game controller
      * @param  levelModel      Level model
      */
-    public GameFieldView(GameController gameController, LevelModel levelModel) {
+    public GameGroundView(GameController gameController, LevelModel levelModel) {
         super(levelModel);
 
         this.gameController = gameController;

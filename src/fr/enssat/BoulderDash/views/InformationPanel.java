@@ -5,6 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 
@@ -27,6 +28,7 @@ public class InformationPanel extends JPanel implements Observer {
 	public InformationPanel(LevelModel levelModel) {
 		this.levelModel = levelModel;
 		this.text = new JTextArea();
+		this.text.setEditable(false);
 
 		this.levelModel.getGameInformationModel().addObserver(this);
 
