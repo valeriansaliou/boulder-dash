@@ -11,11 +11,11 @@ package fr.enssat.BoulderDash.exceptions;
  * @since       2015-06-19
  */
 public class UnknownModelException extends Exception {
-    /**
-     * Class constructor
-     *
-     * @param  message  Exception backtrace message
-     */
+	/**
+	 * Class constructor
+	 *
+	 * @param  message  Exception backtrace message
+	 */
 	public UnknownModelException(String message) {
 		super(message);
 	}

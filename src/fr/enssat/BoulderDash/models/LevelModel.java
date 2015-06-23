@@ -1,5 +1,6 @@
 package fr.enssat.BoulderDash.models;
 
+import fr.enssat.BoulderDash.exceptions.ModelNotReadyException;
 import fr.enssat.BoulderDash.exceptions.UnknownModelException;
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
@@ -334,7 +335,11 @@ public class LevelModel extends Observable implements Runnable {
 	 *
 	 * @return Cursor image
 	 */
-	public BufferedImage getCursorImage() {
+	public BufferedImage getCursorImage() throws ModelNotReadyException {
+		if(this.cursorModel == null) {
+			throw new ModelNotReadyException("Cannot get cursor image, model is null");
+		}
+
 		return this.cursorModel.getSprite();
 	}
 

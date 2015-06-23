@@ -53,7 +53,7 @@ public class LevelEditorView extends JFrame implements Observer {
         this.setResizable(false);
 
         // UI parameters
-        this.setSize(1000, 600);
+        this.setSize(856, 422);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -68,7 +68,7 @@ public class LevelEditorView extends JFrame implements Observer {
      * Creates the view layout
      */
 	private void createLayout() {
-		this.fieldPanel = new LevelEditorGroundView(this.levelModel,this);
+		this.fieldPanel = new LevelEditorGroundView(this.levelModel, this);
         this.selectPanel = new JPanel();
 
         this.assetsComponent = new AssetsLevelEditorComponent(this);
