@@ -32,6 +32,7 @@ public class GameView extends JFrame implements Observer {
 	private GameController gameController;
 	private LevelModel levelModel;
 	private JButton menu;
+
     /**
      * Class constructor
      *
@@ -79,7 +80,6 @@ public class GameView extends JFrame implements Observer {
         // Add some buttons on the informationPanel
         this.newGame = this.createButton("restart", "Restart");
         this.pause = this.createButton("pause", "Pause");
-        this.load = this.createButton("load", "Load");
         this.menu = this.createButton("menu", "Menu");
 
         this.add(this.actionPanel, BorderLayout.SOUTH);
@@ -128,9 +128,9 @@ public class GameView extends JFrame implements Observer {
      *
      * @param   g  Graphics object
      */
-    @Override
+    /*@Override
     public void paint(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-    }
+    }*/
 }

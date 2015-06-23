@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.LevelEditorView;
+import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
 /**
  * LevelEditorController
@@ -29,6 +30,7 @@ public class LevelEditorController implements ActionListener {
         this.levelModel.setShowCursor(true);
 
         this.nav = nav;
+        this.nav.getAudioLoadHelper().stopMusic();
         
         this.levelEditorView = new LevelEditorView(this, levelModel);
     }
@@ -43,8 +45,8 @@ public class LevelEditorController implements ActionListener {
             case "menu":
             	this.levelEditorView.setVisible(false);
             	this.nav.getFirstView().setVisible(true);
+                this.nav.getAudioLoadHelper().startMusic("game");
                 break;
-            //TODO other cases
         }
     }
 

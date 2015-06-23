@@ -39,8 +39,9 @@ public class GameController implements ActionListener {
         this.audioLoadHelper = audioLoadHelper;
         this.gameView = new GameView(this, levelModel); 
         this.firstView = navigationBetweenViewController.getFirstView();
+
+        this.getAudioLoadHelper().stopMusic();
         this.getAudioLoadHelper().playSound("new");
-		this.getAudioLoadHelper().startMusic("game");
 	}
 
 	/**
@@ -61,16 +62,14 @@ public class GameController implements ActionListener {
                 break;
 
             case "restart":
-                this.resetGame("restart");                
+                this.resetGame("restart");
+                this.getAudioLoadHelper().playSound("new");
                 break;
             
             case "menu":
             	this.firstView.setVisible(true);
+                this.getAudioLoadHelper().startMusic("game");
             	this.resetGame("menu");
-                break;
-                
-            case "load":
-            	//TODO            
                 break;
         }
         this.gameView.getGameFieldView().grabFocus();
