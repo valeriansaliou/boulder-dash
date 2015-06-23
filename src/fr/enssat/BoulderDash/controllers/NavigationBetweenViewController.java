@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.FirstView;
-import fr.enssat.BoulderDash.views.GameView;
 
 /**
  * Controller to navigate between the different views
@@ -54,7 +53,7 @@ public class NavigationBetweenViewController implements ActionListener {
         	this.gameController.getGameView().setVisible(true);
             break;
 		}
-		
+		this.gameController.getGameView().getGameFieldView().grabFocus();
 	}
 
 	/**

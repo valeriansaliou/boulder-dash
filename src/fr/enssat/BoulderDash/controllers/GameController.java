@@ -2,12 +2,9 @@ package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
-import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.views.FirstView;
-import fr.enssat.BoulderDash.views.GameGroundView;
 import fr.enssat.BoulderDash.views.GameView;
 
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,7 +23,6 @@ public class GameController implements ActionListener {
     private AudioLoadHelper audioLoadHelper;
     private boolean firstClickOnPause;
 	private FirstView firstView;
-	private NavigationBetweenViewController navigationBetweenViewController;
 	private GameView gameView;
 	
     /**
@@ -36,14 +32,15 @@ public class GameController implements ActionListener {
      * @param navigationBetweenViewController 
      */
 	public GameController(LevelModel levelModel, AudioLoadHelper audioLoadHelper, NavigationBetweenViewController navigationBetweenViewController) {
+
+        this.firstClickOnPause = true;
+        
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
-        this.firstClickOnPause = true;
-        this.navigationBetweenViewController = navigationBetweenViewController;
         this.gameView = new GameView(this, levelModel); 
         this.firstView = navigationBetweenViewController.getFirstView();
         this.getAudioLoadHelper().playSound("new");
-//        this.getAudioLoadHelper().startMusic("game");
+//        this.getAudioLoadHelper().startMusic("game"); //TODO real game music I sent you Vale (also start the music where we enter on the game)
 	}
 
 	/**
@@ -68,8 +65,7 @@ public class GameController implements ActionListener {
             
             case "menu":
             	this.firstView.setVisible(true);
-            	this.gameView.dispose();
-            	this.resetGame("menu"); //TODO
+            	this.resetGame("menu");
                 break;
                 
             case "load":
@@ -101,10 +97,18 @@ public class GameController implements ActionListener {
         return this.audioLoadHelper;
     }
 
+    /**
+     * Return the game view
+     * @return gameView
+     */
 	public GameView getGameView() {
 		return gameView;
 	}
 
+	/**
+	 * Set the gameView
+	 * @param gameView
+	 */
 	public void setGameView(GameView gameView) {
 		this.gameView = gameView;
 	}

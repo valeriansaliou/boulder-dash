@@ -406,7 +406,6 @@ public class LevelModel extends Observable implements Runnable {
 					System.out.println("Interrupted: " + e.getMessage());
 				}
 			}
-			System.out.println("c");
 		}
 
 	}
