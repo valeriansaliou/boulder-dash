@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.controllers;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.LevelEditorView;
@@ -13,20 +14,24 @@ import fr.enssat.BoulderDash.views.LevelEditorView;
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-19
  */
-public class LevelEditorController {
+public class LevelEditorController implements ActionListener {
     private LevelModel levelModel;
 	private LevelEditorView levelEditorView;
+	private NavigationBetweenViewController nav;
 
     /**
      * Class constructor
      *
      * @param  levelModel  Level model
      */
-    public LevelEditorController(LevelModel levelModel) {
+    public LevelEditorController(LevelModel levelModel, NavigationBetweenViewController nav) {
         this.levelModel = levelModel;
         this.levelModel.setShowCursor(true);
 
-        levelEditorView = new LevelEditorView(this, levelModel);
+        this.nav = nav;
+
+        
+        this.levelEditorView = new LevelEditorView(this, levelModel);
     }
 
     /**
@@ -37,7 +42,8 @@ public class LevelEditorController {
     public void actionPerformed(ActionEvent event) {
         switch(event.getActionCommand()) {
             case "menu":
-                System.exit(0);
+            	this.levelEditorView.setVisible(false);
+            	this.nav.getFirstView().setVisible(true);
                 break;
         }
     }

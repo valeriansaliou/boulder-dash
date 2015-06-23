@@ -39,7 +39,6 @@ public class LevelEditorView extends JFrame implements Observer {
         this.levelModel = levelModel;
 
         this.levelModel.addObserver(this);
-
         
 		this.initializeView();
         this.createLayout();
@@ -101,7 +100,7 @@ public class LevelEditorView extends JFrame implements Observer {
      */
     public JButton createButton(String id, String name) {
         JButton button = new JButton(name);
-        //button.addActionListener(this.gameController);
+        button.addActionListener(this.levelEditorController);
         button.setActionCommand(id);
 
         return button;
