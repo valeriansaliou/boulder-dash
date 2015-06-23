@@ -335,10 +335,10 @@ public class LevelModel extends Observable implements Runnable {
 	 *
 	 * @return Cursor image
 	 */
-	public BufferedImage getCursorImage() throws ModelNotReadyException {
-		this.cursorModel = new CursorModel();
+	public BufferedImage getCursorImage() {
+		
 		if(this.cursorModel == null) {
-			throw new ModelNotReadyException("Cannot get cursor image, model is null");
+			this.cursorModel = new CursorModel();
 		}
 
 		return this.cursorModel.getSprite();

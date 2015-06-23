@@ -51,17 +51,17 @@ public abstract class GroundView extends JPanel implements Observer {
 
         // Place cursor? //HERE IS THE BUG
         if (this.levelModel.getShowCursor()) {
-            try {
+//            try {
                 g.drawImage(
                         this.levelModel.getCursorImage(),
                         (this.levelModel.getCursorXPosition() * 16),
                         (this.levelModel.getCursorYPosition() * 16),
                         this
                 );
-            } 
-            catch(ModelNotReadyException e) {
-                System.out.println("ModelNotReadyException > " + e.getMessage());
-            }
+//            } 
+//            catch(ModelNotReadyException e) {
+//                System.out.println("ModelNotReadyException > " + e.getMessage());
+//            }
         }
     }
 
