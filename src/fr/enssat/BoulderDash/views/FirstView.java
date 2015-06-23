@@ -1,6 +1,9 @@
 package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -18,6 +21,8 @@ import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
  * @since       2015-06-23
  */
 public class FirstView extends JFrame {
+    private static String levelStorage = "res/levels";
+
 	private JButton game;
 	private JButton editor;
 	private JButton quit;
@@ -112,8 +117,28 @@ public class FirstView extends JFrame {
      * @return  Available levels
      */
     private String[] listAvailableLevels() {
-        String[] arr = {"Hello", "World"};
+        List<String> stockList = new ArrayList<String>();
 
-        return arr;
+        File directory = new File(levelStorage);
+        File[] fileList = directory.listFiles();
+        String fileName;
+        int fileNameExtIndex;
+
+        for (File file : fileList){
+            fileName = file.getName();
+            fileNameExtIndex = fileName.lastIndexOf('.');
+
+            if (fileNameExtIndex > 0) {
+                fileName = fileName.substring(0, fileNameExtIndex);
+            }
+
+            stockList.add(fileName);
+        }
+
+        // Convert to String[] (required)
+        String[] itemsArr = new String[stockList.size()];
+        itemsArr = stockList.toArray(itemsArr);
+
+        return itemsArr;
     }
 }

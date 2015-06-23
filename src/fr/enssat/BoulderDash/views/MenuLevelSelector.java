@@ -16,7 +16,7 @@ public class MenuLevelSelector extends JComboBox {
     private String choiceValue;
 
     /**
-     * Class constructor all
+     * Class constructor
      */
     public MenuLevelSelector(String[] items) {
         super(items);
