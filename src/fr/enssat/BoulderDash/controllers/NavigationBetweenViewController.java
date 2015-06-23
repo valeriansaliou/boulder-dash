@@ -40,18 +40,18 @@ public class NavigationBetweenViewController implements ActionListener {
             break;
 
         case "editor":
-        	this.levelEditor.getLevelEditorView().setVisible(true);
         	this.firstView.setVisible(false);
+        	
+        	this.levelEditor.getLevelEditorView().setVisible(true);
         	this.gameController.getGameView().setVisible(false);
-//        	gameController.resetAll();  //TODO
             break;
             
 
         case "game":
-        	levelEditor.getLevelEditorView().setVisible(false);
         	this.firstView.setVisible(false);
-        	gameController.getGameView().setVisible(true); 
-//        	levelEditor.resetAll(); //TODO
+        	
+        	this.levelEditor.getLevelEditorView().setVisible(false);
+        	this.gameController.getGameView().setVisible(true);
             break;
 		}
 		

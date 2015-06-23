@@ -63,33 +63,33 @@ public class GameController implements ActionListener {
                 break;
 
             case "restart":
-                this.resetGame();                
+                this.resetGame("restart");                
                 break;
             
             case "menu":
             	this.firstView.setVisible(true);
-            	this.gameView.setVisible(false);
-            	//this.levelModel.resetGame(); //TODO
+            	this.gameView.dispose();
+            	this.resetGame("menu"); //TODO
                 break;
                 
             case "load":
             	//TODO            
                 break;
         }
-        gameView.getGameFieldView().grabFocus();
+        this.gameView.getGameFieldView().grabFocus();
 	}
 
 	/**
 	 * Function to reset the game
 	 */
-    private void resetGame() {
-    	levelModel = new LevelModel("level01", audioLoadHelper);
-		this.resetGameView(); 
-	}
-    
-	public void resetGameView() {
-		this.gameView.removeAll();
-		gameView = new GameView(this, levelModel);
+    private void resetGame(String source) {
+    	this.levelModel = new LevelModel("level01", audioLoadHelper);
+		this.gameView.dispose();
+		this.gameView = new GameView(this, levelModel);
+		
+		if(source.equals("restart")){
+			this.gameView.setVisible(true);
+		}
 	}
 
 	/**

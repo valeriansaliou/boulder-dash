@@ -140,6 +140,14 @@ public class LevelModel extends Observable implements Runnable {
 			this.groundGrid[maxWidth][y] = new SteelWallModel();
 		}
 	}
+	
+	public void resetLevelModel(){
+		this.gamePaused = true;
+		this.groundGrid = this.levelLoadHelper.getGroundGrid();
+		this.gamePaused = false;
+        this.gameRunning = true;
+        this.gameInformationModel.resetInformations();
+	}
 
 	/**
 	 * Updates the horizontal & vertical positions of Rockford in the model
