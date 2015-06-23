@@ -28,10 +28,8 @@ public class GameView extends JFrame implements Observer {
 	private GameGroundView gameGroundView;
 	private JPanel actionPanel;
 	private JPanel informationPanel;
-	private JButton newGame, pause, load;
 	private GameController gameController;
 	private LevelModel levelModel;
-	private JButton menu;
 
     /**
      * Class constructor
@@ -77,9 +75,9 @@ public class GameView extends JFrame implements Observer {
         this.informationPanel = new InformationPanel(this.levelModel);
 
         // Add some buttons on the informationPanel
-        this.newGame = this.createButton("restart", "Restart");
-        this.pause = this.createButton("pause", "Pause");
-        this.menu = this.createButton("menu", "Menu");
+        this.createButton("restart", "Restart");
+        this.createButton("pause", "Pause");
+        this.createButton("menu", "Menu");
 
         this.add(this.actionPanel, BorderLayout.SOUTH);
         this.add(this.informationPanel, BorderLayout.NORTH);
