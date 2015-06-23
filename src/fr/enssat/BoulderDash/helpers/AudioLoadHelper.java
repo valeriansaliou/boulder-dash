@@ -34,17 +34,7 @@ public class AudioLoadHelper {
      * @return  Music path, with file extension
      */
     private String getMusicPathInAudioStore(String musicId) {
-        return this.pathToAudioStore + "/music/" + musicId + ".mp3";
-    }
-
-    /**
-     * Gets sound storage path
-     *
-     * @param   soundId  Sound identifier
-     * @return  Sound path, with file extension
-     */
-    private String getSoundPathInAudioStore(String soundId) {
-        return this.pathToAudioStore + "/sounds/" + soundId + ".mp3";
+        return AudioLoadHelper.pathToAudioStore + "/music/" + musicId + ".mp3";
     }
 
     /**
@@ -79,7 +69,7 @@ public class AudioLoadHelper {
         this.preloadedSounds = new HashMap<String, SoundJLayerBridge>();
 
         // List sound files
-        File soundsDir = new File(this.pathToAudioStore + "/sounds/");
+        File soundsDir = new File(AudioLoadHelper.pathToAudioStore + "/sounds/");
         File [] soundFiles = soundsDir.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {

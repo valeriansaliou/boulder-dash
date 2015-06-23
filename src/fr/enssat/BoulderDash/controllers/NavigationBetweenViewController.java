@@ -9,55 +9,62 @@ import fr.enssat.BoulderDash.views.FirstView;
 
 /**
  * Controller to navigate between the different views
- * @author colinleverger
+ * 
+ * @author Colin Leverger <me@colinleverger.fr>
  *
  */
 public class NavigationBetweenViewController implements ActionListener {
 
-	private LevelEditorController levelEditor;
+	private LevelEditorController levelEditorController;
 	private FirstView firstView;
-    private AudioLoadHelper audioLoadHelper;
-	private LevelModel levelModel;
+	private AudioLoadHelper audioLoadHelper;
+	private LevelModel levelModelForGame, levelModelForEditor;
 	private GameController gameController;
-    
-    public NavigationBetweenViewController(){
-    	this.audioLoadHelper = new AudioLoadHelper();
-    	this.levelModel = new LevelModel("level01", audioLoadHelper);
-    	
-    	// Creation of the first view
-    	this.firstView = new FirstView(this);
-    	// Creation of the controllers which will control the others views
-    	this.levelEditor = new LevelEditorController(this.levelModel,this);
-    	this.gameController = new GameController(levelModel, audioLoadHelper,this);        
-    }
+
+	public NavigationBetweenViewController() {
+		this.audioLoadHelper = new AudioLoadHelper();
+
+		// Creation of the first view
+		this.firstView = new FirstView(this);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		switch(event.getActionCommand()) {
-        case "quit":
-            System.exit(0);
-            break;
+		switch (event.getActionCommand()) {
+		case "quit":
+			System.exit(0);
+			break;
 
-        case "editor":
-        	this.firstView.setVisible(false);
-        	
-        	this.levelEditor.getLevelEditorView().setVisible(true);
-        	this.gameController.getGameView().setVisible(false);
-            break;
-            
+		case "editor":
+			// New blank model for editor
+			this.levelModelForEditor = new LevelModel(audioLoadHelper);
+			this.levelEditorController = new LevelEditorController(this.levelModelForEditor, this);
 
-        case "game":
-        	this.firstView.setVisible(false);
-        	
-        	this.levelEditor.getLevelEditorView().setVisible(false);
-        	this.gameController.getGameView().setVisible(true);
-            break;
+			this.levelEditorController.getLevelEditorView().setVisible(true);
+			if (gameController != null)
+				this.gameController.getGameView().setVisible(false);
+			break;
+
+		case "game":
+			// Reinit the levelModelForGame...
+			/**
+			 * TODO: ADD DYNAMIC ARG LEVELNAME FOR LOAD THE LEVEL VALERIAN
+			 */
+			this.levelModelForGame = new LevelModel("level01", audioLoadHelper);
+			this.gameController = new GameController(levelModelForGame, audioLoadHelper, this);
+
+			if (levelEditorController != null)
+				this.levelEditorController.getLevelEditorView().setVisible(false);
+			this.gameController.getGameView().setVisible(true);
+			this.gameController.getGameView().getGameFieldView().grabFocus();
+			break;
 		}
-		this.gameController.getGameView().getGameFieldView().grabFocus();
+		this.firstView.setVisible(false);
 	}
 
 	/**
 	 * Get the first view
+	 * 
 	 * @return firstView
 	 */
 	public FirstView getFirstView() {
@@ -66,11 +73,10 @@ public class NavigationBetweenViewController implements ActionListener {
 
 	/**
 	 * Set the first view
+	 * 
 	 * @param firstView
 	 */
 	public void setFirstView(FirstView firstView) {
 		this.firstView = firstView;
-	}    
-	
-	
+	}
 }

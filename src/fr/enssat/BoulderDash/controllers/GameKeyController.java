@@ -21,9 +21,6 @@ import java.awt.event.KeyListener;
 public class GameKeyController implements KeyListener {
 	private LevelModel levelModel;
 	private RockfordUpdateController updatePosRockford;
-	private BoulderAndDiamondController updateFallingElements;
-    private AudioLoadHelper audioLoadHelper;
-
     /**
      * Class constructor
      *
@@ -31,8 +28,7 @@ public class GameKeyController implements KeyListener {
      */
 	public GameKeyController(LevelModel levelModel, AudioLoadHelper audioLoadHelper) {
 		this.levelModel = levelModel;
-        this.audioLoadHelper = audioLoadHelper;
-		this.updateFallingElements = new BoulderAndDiamondController(levelModel, audioLoadHelper);
+		new BoulderAndDiamondController(levelModel, audioLoadHelper);
 		this.updatePosRockford = new RockfordUpdateController(levelModel);
 	}
 

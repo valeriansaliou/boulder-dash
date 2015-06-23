@@ -29,7 +29,6 @@ public class LevelEditorController implements ActionListener {
         this.levelModel.setShowCursor(true);
 
         this.nav = nav;
-
         
         this.levelEditorView = new LevelEditorView(this, levelModel);
     }
@@ -45,6 +44,7 @@ public class LevelEditorController implements ActionListener {
             	this.levelEditorView.setVisible(false);
             	this.nav.getFirstView().setVisible(true);
                 break;
+            //TODO other cases
         }
     }
 

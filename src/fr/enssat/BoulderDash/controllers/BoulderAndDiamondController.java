@@ -58,16 +58,14 @@ public class BoulderAndDiamondController implements Runnable {
 	private void manageFallingObject() {
 		for (int x = this.levelModel.getSizeWidth() - 1; x >= 0; x--) {
 			for (int y = this.levelModel.getSizeHeight() - 1; y >= 0; y--) {
-				// Gets the spriteName of actual DisplayableElementModel object
-				// scanned
+				// Gets the spriteName of actual DisplayableElementModel object scanned
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 				
 				// If it is a boulder or a diamond...
 				if (spriteName == "boulder" || spriteName == "diamond") {
 					this.manageFall(x, y);
 				} else if(spriteName == "expandingwall"){
-					String way = this.expandWall(x,y);
-					if(way.equals("left")){
+					if(this.expandWall(x,y).equals("left")){
 						x -= 1;
 					}
 				}
@@ -106,12 +104,10 @@ public class BoulderAndDiamondController implements Runnable {
 	 */
 	private void manageFall(int x, int y) {
 		// Get informed about Rockford surroundings
-        DisplayableElementModel elementAbove = this.levelModel.getGroundLevelModel()[x][y - 1];
         DisplayableElementModel elementBelow = this.levelModel.getGroundLevelModel()[x][y + 1];
         DisplayableElementModel elementLeft  = this.levelModel.getGroundLevelModel()[x - 1][y];
         DisplayableElementModel elementRight = this.levelModel.getGroundLevelModel()[x + 1][y];
 
-        String spriteNameAbove = elementAbove.getSpriteName();
         String spriteNameBelow = elementBelow.getSpriteName();
 		String spriteNameLeft  = elementLeft.getSpriteName();
 		String spriteNameRight = elementRight.getSpriteName();
