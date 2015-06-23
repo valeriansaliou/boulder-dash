@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.FirstView;
+import fr.enssat.BoulderDash.controllers.LevelEditorController;
+import fr.enssat.BoulderDash.controllers.GameController;
 
 /**
  * Controller to navigate between the different views
@@ -14,7 +16,6 @@ import fr.enssat.BoulderDash.views.FirstView;
  *
  */
 public class NavigationBetweenViewController implements ActionListener {
-
 	private LevelEditorController levelEditorController;
 	private FirstView firstView;
 	private AudioLoadHelper audioLoadHelper;
@@ -47,10 +48,9 @@ public class NavigationBetweenViewController implements ActionListener {
 
 		case "game":
 			// Reinit the levelModelForGame...
-			/**
-			 * TODO: ADD DYNAMIC ARG LEVELNAME FOR LOAD THE LEVEL VALERIAN
-			 */
-			this.levelModelForGame = new LevelModel("level01", audioLoadHelper);
+            String pickedLevelIdentifier = this.firstView.getLevelIdentifier();
+
+			this.levelModelForGame = new LevelModel(pickedLevelIdentifier, audioLoadHelper);
 			this.gameController = new GameController(levelModelForGame, audioLoadHelper, this);
 
 			if (levelEditorController != null)

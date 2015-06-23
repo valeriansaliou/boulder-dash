@@ -28,7 +28,7 @@ public class FirstView extends JFrame {
 	private JButton quit;
 	private NavigationBetweenViewController navigationBetweenViewController;
     private MenuImage menuImage;
-    private JComboBox menuLevelList;
+    private MenuLevelSelector menuLevelList;
 	private JPanel actionPanel;
 
     /**
@@ -106,7 +106,7 @@ public class FirstView extends JFrame {
 
         if(availableLevels.length > 0) {
             this.menuLevelList.setSelectedIndex(0);
-        }
+        };
 
         this.menuLevelList.addActionListener(this.menuLevelList);
     }
@@ -121,7 +121,7 @@ public class FirstView extends JFrame {
 
         File directory = new File(levelStorage);
         File[] fileList = directory.listFiles();
-        String fileName;
+        String fileName, fileNameExtValue;
         int fileNameExtIndex;
 
         for (File file : fileList){
@@ -129,10 +129,13 @@ public class FirstView extends JFrame {
             fileNameExtIndex = fileName.lastIndexOf('.');
 
             if (fileNameExtIndex > 0) {
-                fileName = fileName.substring(0, fileNameExtIndex);
-            }
+                fileNameExtValue = fileName.substring(fileNameExtIndex, fileName.length());
 
-            stockList.add(fileName);
+                if(fileNameExtValue.equals(".xml")) {
+                    fileName = fileName.substring(0, fileNameExtIndex);
+                    stockList.add(fileName);
+                }
+            }
         }
 
         // Convert to String[] (required)
@@ -140,5 +143,14 @@ public class FirstView extends JFrame {
         itemsArr = stockList.toArray(itemsArr);
 
         return itemsArr;
+    }
+
+    /**
+     * Gets the selected level identifier
+     *
+     * @return  Level identifier
+     */
+    public String getLevelIdentifier() {
+        return this.menuLevelList.getChoiceValue();
     }
 }
