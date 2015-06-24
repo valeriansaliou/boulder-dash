@@ -18,6 +18,7 @@ import java.awt.event.KeyListener;
 public class LevelEditorKeyController implements KeyListener {
     private LevelModel levelModel;
     private LevelEditorView levelEditorView;
+	private boolean capLocks;
 
     /**
      * Class constructor
@@ -26,6 +27,7 @@ public class LevelEditorKeyController implements KeyListener {
      */
     public LevelEditorKeyController(LevelModel levelModel, LevelEditorView levelEditorView) {
         this.levelModel = levelModel;
+        this.capLocks = false;
         this.levelEditorView = levelEditorView;
     }
 
@@ -62,6 +64,14 @@ public class LevelEditorKeyController implements KeyListener {
             case KeyEvent.VK_SPACE:
                 this.levelModel.triggerBlockChange(this.levelEditorView.getPickedBlockValue());
                 break;
+            
+            case 16:
+                this.capLocks = !capLocks;
+                System.out.println(capLocks);
+                break;
+        }
+        if(capLocks){
+        	this.levelModel.triggerBlockChange(this.levelEditorView.getPickedBlockValue());
         }
     }
 
