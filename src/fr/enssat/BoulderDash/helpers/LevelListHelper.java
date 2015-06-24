@@ -8,9 +8,9 @@ import java.util.List;
 
 
 /**
- * MenuView
+ * LevelListHelper
  *
- * Menu view
+ * Level list helper
  *
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-23
@@ -22,7 +22,7 @@ public class LevelListHelper {
      * Class constructor
      */
     public LevelListHelper() {
-        // Nothing done.
+        // TODO
     }
 
     /**
@@ -30,7 +30,7 @@ public class LevelListHelper {
      *
      * @return  Level list selector
      */
-    private MenuLevelSelector createLevelList() {
+    public MenuLevelSelector createLevelList() {
         String[] availableLevels = this.listAvailableLevels();
 
         // Proceed available levels listing

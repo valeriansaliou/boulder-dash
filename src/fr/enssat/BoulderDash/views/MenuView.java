@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
+import fr.enssat.BoulderDash.helpers.LevelListHelper;
 import fr.enssat.BoulderDash.views.MenuImage;
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
-import fr.enssat.BoulderDash.helpers.LevelListHelper;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
 
@@ -55,7 +55,7 @@ public class MenuView extends JFrame {
      */
     private void createLayout() {
         LevelListHelper levelListHelper = new LevelListHelper();
-        this.menuLevelSelector = levelListHelper.createLevelList();
+        this.menuLevelSelector = levelListHelper.LevelListHelper();
 
         JPanel targetPanel = new JPanel();
 
@@ -96,6 +96,6 @@ public class MenuView extends JFrame {
      * @return  Level identifier
      */
     public String getLevelIdentifier() {
-        return this.menuLevelList.getChoiceValue();
+        return this.menuLevelSelector.getChoiceValue();
     }
 }
