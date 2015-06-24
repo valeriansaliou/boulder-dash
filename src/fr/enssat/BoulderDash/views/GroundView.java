@@ -88,24 +88,14 @@ public abstract class GroundView extends JPanel implements Observer {
 	private void displayWin() {
         JFrame frameDialog = new JFrame("Information");
         JOptionPane.showMessageDialog(frameDialog, "Vous avez gagné !");
-=======
-		JOptionPane.showMessageDialog(this, "A basic JOptionPane message dialog");
-		System.out.println("displayWin");
->>>>>>> 4a8cb61152f9a0cac86032b3b1c56fbd209b95ca
 	}
 
 	/**
 	 * Set the view to inform the user that he is not good at this game
 	 */
-<<<<<<< HEAD
 	private void displayLose() {
         JFrame frameDialog = new JFrame("Information");
         JOptionPane.showMessageDialog(frameDialog, "Vous avez perdu !");
-=======
-	private void displayLoose() {
-		JOptionPane.showMessageDialog(this, "A basic JOptionPane message dialog");
-		System.out.println("displayLoose");
->>>>>>> 4a8cb61152f9a0cac86032b3b1c56fbd209b95ca
 	}
 
 	/**
