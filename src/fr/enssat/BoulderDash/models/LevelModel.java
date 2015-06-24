@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.models;
 
 import fr.enssat.BoulderDash.exceptions.ModelNotReadyException;
+import fr.enssat.BoulderDash.exceptions.LevelConstraintNotRespectedException;
 import fr.enssat.BoulderDash.exceptions.UnknownModelException;
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
@@ -345,16 +346,16 @@ public class LevelModel extends Observable implements Runnable {
 		return this.cursorModel.getSprite();
 	}
 
-	/**
-	 * Return whether rockford is in model or not
-	 * Notice: not optimized, be careful
-	 *
-	 * @return  Whether rockford is in model or not
-	 */
-	public boolean isRockfordInModel() {
-		boolean isInModel = false;
+    /**
+     * Return whether rockford is in model or not
+     * Notice: not optimized, be careful
+     *
+     * @return  Whether rockford is in model or not
+     */
+    public boolean isRockfordInModel() {
+        boolean isInModel = false;
 
-		// Iterate and catch it!
+        // Iterate and catch it!
         for (int x = 0; x < this.getSizeWidth() && !isInModel; x++) {
             for (int y = 0; y < this.getSizeHeight() && !isInModel; y++) {
                 if(this.groundGrid[x][y].getSpriteName() == "rockford") {
@@ -363,8 +364,43 @@ public class LevelModel extends Observable implements Runnable {
             }
         }
 
-		return isInModel;
-	}
+        return isInModel;
+    }
+
+    /**
+     * Returns number of diamonds
+     *
+     * @return  Number of diamonds
+     */
+    public int countDiamonds() {
+        int numberOfDiamonds = 0;
+
+        // Iterate and catch it!
+        for (int x = 0; x < this.getSizeWidth(); x++) {
+            for (int y = 0; y < this.getSizeHeight(); y++) {
+                if(this.groundGrid[x][y].getSpriteName() == "diamond") {
+                    numberOfDiamonds += 1;
+                }
+            }
+        }
+
+        return numberOfDiamonds;
+    }
+
+    /**
+     * Returns whether constraints on model are respected or not
+     */
+    public void checkConstraints() throws LevelConstraintNotRespectedException {
+        // Diamonds number?
+        if(this.countDiamonds() < 3) {
+            throw new LevelConstraintNotRespectedException("Veuillez ajouter au moins 3 diamands !");
+        }
+
+        // Rockford in model?
+        if(!this.isRockfordInModel()) {
+            throw new LevelConstraintNotRespectedException("Rockford doit être présent sur la map !");
+        }
+    }
 
 	/**
 	 * Gets the level horizontal size

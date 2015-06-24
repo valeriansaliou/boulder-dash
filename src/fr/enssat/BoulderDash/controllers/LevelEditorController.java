@@ -1,11 +1,15 @@
 package fr.enssat.BoulderDash.controllers;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import fr.enssat.BoulderDash.exceptions.LevelConstraintNotRespectedException;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.LevelEditorView;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
+
+import javax.swing.*;
 
 /**
  * LevelEditorController
@@ -49,8 +53,37 @@ public class LevelEditorController implements ActionListener {
             	this.levelEditorView.setVisible(false);
             	this.nav.getFirstView().setVisible(true);
                 this.nav.getAudioLoadHelper().startMusic("game");
+
+                break;
+
+            case "save":
+                // Check constraints
+                try {
+                    this.levelModel.checkConstraints();
+
+                    // Save action
+                    // TODO
+
+                    JFrame frameDialog = new JFrame("Information");
+                    JOptionPane.showMessageDialog(frameDialog, "Niveau sauvegardé");
+                } catch(LevelConstraintNotRespectedException e) {
+                    JFrame frameDialog = new JFrame("Erreur");
+                    JOptionPane.showMessageDialog(frameDialog, e.getMessage());
+                }
+
+                break;
+
+            case "delete":
+                break;
+
+            case "clear":
+                break;
+
+            case "new":
                 break;
         }
+
+        this.getLevelEditorView().getLevelEditorGroundView().grabFocus();
     }
 
     /**
