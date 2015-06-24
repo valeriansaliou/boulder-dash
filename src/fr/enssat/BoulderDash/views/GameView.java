@@ -73,6 +73,8 @@ public class GameView extends JFrame implements Observer {
         this.gameGroundView = new GameGroundView(this.gameController, this.levelModel);
         this.actionPanel = new JPanel();
         this.informationPanel = new InformationPanel(this.levelModel);
+        this.informationPanel.setBackground(Color.white);
+
 
         // Add some buttons on the informationPanel
         this.createButton("restart", "Restart");

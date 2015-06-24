@@ -50,7 +50,7 @@ public class AudioLoadHelper {
         this.musicToPlay = new SoundJLayerBridge(
                 this.getMusicPathInAudioStore(musicId)
         );
-        this.musicToPlay.play();
+       // this.musicToPlay.play(); //TODO replay music
     }
 
     /**
