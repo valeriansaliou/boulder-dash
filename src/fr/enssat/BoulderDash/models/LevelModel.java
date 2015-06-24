@@ -59,10 +59,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Class constructor
 	 *
-	 * @param levelName
-	 *            Level name
-	 * @param audioLoadHelper
-	 *            Audio load helper
+	 * @param  levelName  Level name
+	 * @param  audioLoadHelper  Audio load helper
 	 */
 	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
 		this.levelName = levelName;
@@ -87,8 +85,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Class constructor
 	 *
-	 * @param audioLoadHelper
-	 *            Audio load helper
+	 * @param  audioLoadHelper  Audio load helper
 	 */
 	public LevelModel(AudioLoadHelper audioLoadHelper) {
 		this.audioLoadHelper = audioLoadHelper;
@@ -152,10 +149,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Updates the horizontal & vertical positions of Rockford in the model
 	 * 
-	 * @param posX
-	 *            Horizontal position of Rockford
-	 * @param posY
-	 *            Vertical position of Rockford
+	 * @param  posX  Horizontal position of Rockford
+	 * @param  posY  Vertical position of Rockford
 	 */
 	public void updateRockfordPosition(int posX, int posY) {
 		this.rockfordPositionY = posY;
@@ -165,10 +160,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Checks whether position is out-of-bounds or not
 	 *
-	 * @param posX
-	 *            Horizontal position
-	 * @param posY
-	 *            Vertical position
+	 * @param  posX  Horizontal position
+	 * @param  posY  Vertical position
 	 */
 	private boolean isOutOfBounds(int posX, int posY) {
 		if (posX > 0 && posY > 0 && posX < this.getLevelLoadHelper().getHeightSizeValue() && posY < this.getLevelLoadHelper().getWidthSizeValue()) {
@@ -204,7 +197,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the horizontal position of Rockford from the model
 	 *
-	 * @return Horizontal position of Rockford
+	 * @return  Horizontal position of Rockford
 	 */
 	public int getRockfordPositionX() {
 		return this.rockfordPositionX;
@@ -213,10 +206,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Sets the new Rockford position
 	 * 
-	 * @param posX
-	 *            Next horizontal position on the grid
-	 * @param posY
-	 *            Next vertical position on the grid
+	 * @param  posX  Next horizontal position on the grid
+	 * @param  posY  Next vertical position on the grid
 	 */
 	public void setPositionOfRockford(int posX, int posY) {
 		int oldX = this.getRockfordPositionX();
@@ -261,12 +252,11 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Trigger block change with provided value
 	 *
-	 * @param blockValue
-	 *            New value
+	 * @param  blockValue  New value
 	 */
 	public void triggerBlockChange(String blockValue) {
         // No block value?
-        if(blockValue == null || !blockValue.isEmpty()) {
+        if(blockValue == null || blockValue.isEmpty()) {
             return;
         }
 
@@ -287,7 +277,7 @@ public class LevelModel extends Observable implements Runnable {
 			targetModel = modelConverter.toModel(blockValue, false);
 
             // Apply new model in place of cursor
-            this.groundGrid[xPos][yPos] = targetModel;
+            this.groundGrid[xPos + 1][yPos + 1] = targetModel;
 
             // Disable cursor (important)
             //this.setShowCursor(false);
@@ -299,7 +289,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the vertical position of Rockford from the model
 	 *
-	 * @return Vertical position of Rockford
+	 * @return  Vertical position of Rockford
 	 */
 	public int getRockfordPositionY() {
 		return this.rockfordPositionY;
@@ -308,7 +298,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the Rockford object instance
 	 *
-	 * @return Rockford object
+	 * @return  Rockford object
 	 */
 	public RockfordModel getRockford() {
 		return this.rockford;
@@ -317,10 +307,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the displayable element at given positions
 	 *
-	 * @param x
-	 *            Block horizontal position
-	 * @param y
-	 *            Block vertical position
+	 * @param  x  Block horizontal position
+	 * @param  y  Block vertical position
 	 * @return Displayable element at given positions
 	 */
 	public DisplayableElementModel getDisplayableElement(int x, int y) {
@@ -330,10 +318,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the image at given positions
 	 *
-	 * @param x
-	 *            Block horizontal position
-	 * @param y
-	 *            Block vertical position
+	 * @param  x  Block horizontal position
+	 * @param  y  Block vertical position
 	 * @return Image at given positions
 	 */
 	public BufferedImage getImage(int x, int y) {
@@ -343,7 +329,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the cursor image image
 	 *
-	 * @return Cursor image
+	 * @return  Cursor image
 	 */
 	public BufferedImage getCursorImage() {
 		
@@ -378,7 +364,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the level horizontal size
 	 *
-	 * @return Horizontal size
+	 * @return   Horizontal size
 	 */
 	public int getSizeWidth() {
 		return this.sizeWidth;
@@ -387,8 +373,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Sets the level horizontal size
 	 *
-	 * @param sizeWidth
-	 *            Horizontal size
+	 * @param   sizeWidth  Horizontal size
 	 */
 	public void setSizeWidth(int sizeWidth) {
 		this.sizeWidth = sizeWidth;
@@ -397,7 +382,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the level vertical size
 	 *
-	 * @return Vertical size
+	 * @return  Vertical size
 	 */
 	public int getSizeHeight() {
 		return this.sizeHeight;
@@ -406,7 +391,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Sets the level vertical size
 	 *
-	 * @return sizeHeight Vertical size
+	 * @return  sizeHeight  Vertical size
 	 */
 	public void setSizeHeight(int sizeHeight) {
 		this.sizeHeight = sizeHeight;
@@ -432,10 +417,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Update the current sprite Notifies the observers
 	 * 
-	 * @param x
-	 *            Sprite block horizontal position
-	 * @param y
-	 *            Sprite block vertical position
+	 * @param  x  Sprite block horizontal position
+	 * @param  y  Sprite block vertical position
 	 */
 	public void updateSprites(int x, int y) {
 		groundGrid[x][y].update(System.currentTimeMillis());
@@ -474,7 +457,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the associated level load helper
 	 *
-	 * @return Level load helper
+	 * @return  Level load helper
 	 */
 	public LevelLoadHelper getLevelLoadHelper() {
 		return this.levelLoadHelper;
@@ -483,7 +466,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the cursor position X value
 	 *
-	 * @return Cursor position X value
+	 * @return  Cursor position X value
 	 */
 	public int getCursorXPosition() {
 		return this.cursorXPosition;
@@ -492,7 +475,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets the cursor position Y value
 	 *
-	 * @return Cursor position Y value
+	 * @return  Cursor position Y value
 	 */
 	public int getCursorYPosition() {
 		return this.cursorYPosition;
@@ -501,7 +484,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Increaments the cursor position X value
 	 *
-	 * @return Cursor position new X value
+	 * @return  Cursor position new X value
 	 */
 	public int incrementCursorXPosition() {
 		if (this.cursorXPosition < (this.getSizeWidth() - 1 - 2)) {
@@ -515,7 +498,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Decrements the cursor position X value
 	 *
-	 * @return Cursor position new X value
+	 * @return  Cursor position new X value
 	 */
 	public int decrementCursorXPosition() {
 		if (this.cursorXPosition > 0) {
@@ -529,7 +512,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Increaments the cursor position Y value
 	 *
-	 * @return Cursor position new Y value
+	 * @return  Cursor position new Y value
 	 */
 	public int incrementCursorYPosition() {
 		if (this.cursorYPosition < (this.getSizeHeight() - 1 - 2)) {
@@ -543,7 +526,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Decrements the cursor position Y value
 	 *
-	 * @return Cursor position new Y value
+	 * @return  Cursor position new Y value
 	 */
 	public int decrementCursorYPosition() {
 		if (this.cursorYPosition > 0) {
@@ -557,8 +540,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * sets the game to a defined state
 	 *
-	 * @param gameRunning
-	 *            Whether game is running or not
+	 * @param  gameRunning  Whether game is running or not
 	 */
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
@@ -567,7 +549,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * tells if the game is running
 	 *
-	 * @return whether the game is running or not
+	 * @return  whether the game is running or not
 	 */
 	public boolean isGameRunning() {
 		return gameRunning;
@@ -576,7 +558,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Gets whether cursor is to be shown or not
 	 *
-	 * @return whether cursor needs to be shown or not
+	 * @return  whether cursor needs to be shown or not
 	 */
 	public boolean getShowCursor() {
 		return this.showCursor;
@@ -585,8 +567,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Sets whether cursor is to be shown or not
 	 *
-	 * @param showCursor
-	 *            whether cursor needs to be shown or not
+	 * @param   showCursor  whether cursor needs to be shown or not
 	 */
 	public void setShowCursor(boolean showCursor) {
 		this.showCursor = showCursor;
@@ -595,10 +576,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * When a boulder is falling on Rockford there is an explosion around him
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void exploseGround(int x, int y) {
 		this.groundGrid[x][y] = new EmptyModel();
@@ -615,10 +594,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Makes the DisplayableElement[x][y] fall one box down
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void makeThisDisplayableElementFall(int x, int y) {
 		this.groundGrid[x][y].setFalling(true);
@@ -629,10 +606,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Makes the BoulderModel[x][y] slide left
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void makeThisBoulderSlideLeft(int x, int y) {
 		this.groundGrid[x][y].setFalling(true);
@@ -643,10 +618,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Makes the BoulderModel[x][y] slide right
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void makeThisBoulderSlideRight(int x, int y) {
 		this.groundGrid[x][y].setFalling(true);
@@ -657,10 +630,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Makes the BoulderModel[x][y] transform into a diamond
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void transformThisBoulderIntoADiamond(int x, int y) {
 		this.groundGrid[x][y + 2] = new DiamondModel();
@@ -670,10 +641,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Makes the BoulderModel[x][y] moving to right
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void moveThisBoulderToRight(int x, int y) {
 		this.groundGrid[x + 1][y] = this.groundGrid[x][y];
@@ -683,10 +652,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Makes the BoulderModel[x][y] moving to left
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x  Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void moveThisBoulderToLeft(int x, int y) {
 		this.groundGrid[x - 1][y] = this.groundGrid[x][y];
@@ -696,10 +663,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Deletes the BoulderModel[x][y]
 	 *
-	 * @param x
-	 *            Object horizontal position
-	 * @param y
-	 *            Object vertical position
+	 * @param  x   Object horizontal position
+	 * @param  y  Object vertical position
 	 */
 	public void deleteThisBoulder(int x, int y) {
 		this.groundGrid[x][y] = new EmptyModel();
@@ -717,8 +682,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Explose the brick wall
 	 * 
-	 * @param x
-	 * @param y
+	 * @param  x
+	 * @param  y
 	 */
 	public void exploseThisBrickWall(int x, int y) {
 		this.groundGrid[x][y] = new EmptyModel();
@@ -727,9 +692,9 @@ public class LevelModel extends Observable implements Runnable {
 
 	/**
 	 * Expand the ExpandingWallModel to left
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param  x
+	 * @param  y
 	 */
 	public void expandThisWallToLeft(int x, int y) {
 		this.groundGrid[x - 1][y] = new ExpandingWallModel();
@@ -738,8 +703,8 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Expand the ExpandingWallModel to right
 	 * 
-	 * @param x
-	 * @param y
+	 * @param  x
+	 * @param  y
 	 */
 	public void expandThisWallToRight(int x, int y) {
 		this.groundGrid[x + 1][y] = new ExpandingWallModel();
@@ -748,7 +713,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Set the gamePaused variable
 	 * 
-	 * @param gamePaused
+	 * @param  gamePaused
 	 */
 	public void setGamePaused(boolean gamePaused) {
 		this.gamePaused = gamePaused;
@@ -757,7 +722,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Get the gamePaused variable
 	 * 
-	 * @param gamePaused
+	 * @return  gamePaused
 	 */
 	public boolean getGamePaused() {
 		return this.gamePaused;
