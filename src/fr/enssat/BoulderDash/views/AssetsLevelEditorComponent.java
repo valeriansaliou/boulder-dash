@@ -35,7 +35,7 @@ public class AssetsLevelEditorComponent extends JPanel implements ActionListener
     public AssetsLevelEditorComponent(LevelEditorView levelEditorView) {
         super(new BorderLayout());
 
-    	this.levelEditorView = levelEditorView; // HERE WAS THE PROBLEM
+    	this.levelEditorView = levelEditorView;
         ButtonGroup buttonGroup = new ButtonGroup();
         JPanel radioPanel = new JPanel(new GridLayout(0, 1));
 
