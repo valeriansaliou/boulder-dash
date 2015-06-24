@@ -2,12 +2,7 @@ package fr.enssat.BoulderDash;
 
 import com.apple.eawt.Application;
 
-import fr.enssat.BoulderDash.controllers.GameController;
-import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
-import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
-
 import javax.swing.*;
 
 import java.awt.*;
@@ -32,7 +27,7 @@ public class Game {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                NavigationBetweenViewController navigation = new NavigationBetweenViewController();
+                new NavigationBetweenViewController();
             }
         });
     }

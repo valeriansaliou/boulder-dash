@@ -25,6 +25,7 @@ public class GameController implements ActionListener {
     private boolean firstClickOnPause;
 	private FirstView firstView;
 	private GameView gameView;
+	private NavigationBetweenViewController navigationBetweenViewController;
 	
     /**
      * Class constructor
@@ -34,6 +35,8 @@ public class GameController implements ActionListener {
      */
 	public GameController(LevelModel levelModel, AudioLoadHelper audioLoadHelper, NavigationBetweenViewController navigationBetweenViewController) {
         this.firstClickOnPause = true;
+        
+        this.navigationBetweenViewController = navigationBetweenViewController;
         
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
@@ -59,11 +62,13 @@ public class GameController implements ActionListener {
             	}
 
             	this.firstClickOnPause = !this.firstClickOnPause;
+            	this.gameView.getGameFieldView().grabFocus();
                 break;
 
             case "restart":
                 this.resetGame("restart");
                 this.getAudioLoadHelper().playSound("new");
+                this.gameView.getGameFieldView().grabFocus();
                 break;
             
             case "menu":
@@ -72,18 +77,17 @@ public class GameController implements ActionListener {
             	this.resetGame("menu");
                 break;
         }
-        this.gameView.getGameFieldView().grabFocus();
 	}
 
 	/**
 	 * Function to reset the game
 	 */
     private void resetGame(String source) {
-    	this.levelModel = new LevelModel("level01", audioLoadHelper);
 		this.gameView.dispose();
-		this.gameView = new GameView(this, levelModel);
 		
 		if(source.equals("restart")){
+	    	this.levelModel = new LevelModel(this.navigationBetweenViewController.getPickedLevelIdentifier(), audioLoadHelper);
+			this.gameView = new GameView(this, levelModel);
 			this.gameView.setVisible(true);
 		}
 	}

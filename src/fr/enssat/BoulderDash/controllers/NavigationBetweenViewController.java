@@ -21,6 +21,7 @@ public class NavigationBetweenViewController implements ActionListener {
 	private AudioLoadHelper audioLoadHelper;
 	private LevelModel levelModelForGame, levelModelForEditor;
 	private GameController gameController;
+	private String pickedLevelIdentifier;
 
     /**
      * Class constructor
@@ -62,7 +63,7 @@ public class NavigationBetweenViewController implements ActionListener {
 
             case "game":
                 // Reinit the levelModelForGame...
-                String pickedLevelIdentifier = this.firstView.getLevelIdentifier();
+                pickedLevelIdentifier = this.firstView.getLevelIdentifier();
 
                 this.levelModelForGame = new LevelModel(pickedLevelIdentifier, audioLoadHelper);
                 this.gameController = new GameController(levelModelForGame, audioLoadHelper, this);
@@ -106,4 +107,22 @@ public class NavigationBetweenViewController implements ActionListener {
 	public void setFirstView(FirstView firstView) {
 		this.firstView = firstView;
 	}
+
+	/**
+	 * Get the pickedLevel
+	 * @return pickedLevelIdentifier
+	 */
+	public String getPickedLevelIdentifier() {
+		return pickedLevelIdentifier;
+	}
+
+	/**
+	 * Set the pickedLevelIdentifier
+	 * @param pickedLevelIdentifier
+	 */
+	public void setPickedLevelIdentifier(String pickedLevelIdentifier) {
+		this.pickedLevelIdentifier = pickedLevelIdentifier;
+	}
+	
+	
 }
