@@ -1,6 +1,7 @@
 package fr.enssat.boulderdash.helpers;
 
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
+import fr.enssat.BoulderDash.views.LevelEditorView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,21 +9,29 @@ import java.util.List;
 
 
 /**
- * LevelListHelper
+ * LevelSelectorHelper
  *
- * Level list helper
+ * Level selector helper
  *
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-23
  */
-public class LevelListHelper {
+public class LevelSelectorHelper {
     private static String levelStorage = "res/levels";
+    private boolean hasEmptyElement = false;
+    private LevelEditorView levelEditorView = null;
 
     /**
      * Class constructor
      */
-    public LevelListHelper() {
-        // TODO
+    public LevelSelectorHelper(boolean hasEmptyElement) {
+        this.hasEmptyElement = hasEmptyElement;
+    }
+
+    public LevelSelectorHelper(boolean hasEmptyElement, LevelEditorView levelEditorView) {
+        this(hasEmptyElement);
+
+        this.levelEditorView = levelEditorView;
     }
 
     /**
@@ -34,7 +43,7 @@ public class LevelListHelper {
         String[] availableLevels = this.listAvailableLevels();
 
         // Proceed available levels listing
-        MenuLevelSelector menuLevelList = new MenuLevelSelector(availableLevels);
+        MenuLevelSelector menuLevelList = new MenuLevelSelector(availableLevels, this.levelEditorView);
 
         if(availableLevels.length > 0) {
             menuLevelList.setChoiceValue(availableLevels[0]);
@@ -61,6 +70,11 @@ public class LevelListHelper {
         File[] fileList = directory.listFiles();
         String fileName, fileNameExtValue;
         int fileNameExtIndex;
+
+        // Add empty element?
+        if(this.hasEmptyElement) {
+            stockList.add("");
+        }
 
         for (File file : fileList){
             fileName = file.getName();

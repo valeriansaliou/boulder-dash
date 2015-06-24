@@ -3,6 +3,8 @@ package fr.enssat.BoulderDash.views;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+import fr.enssat.BoulderDash.views.LevelEditorView;
+
 
 /**
  * MenuLevelSelector
@@ -14,12 +16,18 @@ import java.awt.event.ActionEvent;
  */
 public class MenuLevelSelector extends JComboBox {
     private String choiceValue;
+    private LevelEditorView levelEditorView = null;
 
     /**
      * Class constructor
      */
     public MenuLevelSelector(String[] items) {
         super(items);
+    }
+
+    public MenuLevelSelector(String[] items, LevelEditorView levelEditorView) {
+        this(items);
+        this.levelEditorView = levelEditorView;
     }
 
     /**
@@ -30,6 +38,10 @@ public class MenuLevelSelector extends JComboBox {
     public void actionPerformed(ActionEvent e) {
         JComboBox comboBoxSource = (JComboBox) e.getSource();
         this.choiceValue = (String) comboBoxSource.getSelectedItem();
+
+        if(this.levelEditorView != null) {
+            this.levelEditorView.menuLevelSelectorChanged(this);
+        }
     }
 
     /**

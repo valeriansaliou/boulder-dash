@@ -36,7 +36,7 @@ public class LevelEditorController implements ActionListener {
         this.nav = nav;
         this.nav.getAudioLoadHelper().stopMusic();
         
-        this.levelEditorView = new LevelEditorView(this, levelModel);
+        this.levelEditorView = new LevelEditorView(this, levelModel, nav);
 
         // Pre-bind event watcher (hack to fix a Java issue)
         this.levelModel.decrementCursorXPosition();

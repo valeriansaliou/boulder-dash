@@ -1,11 +1,14 @@
 package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.*;
 
-import fr.enssat.BoulderDash.helpers.LevelListHelper;
+import fr.enssat.boulderdash.helpers.LevelSelectorHelper;
 import fr.enssat.BoulderDash.views.MenuImage;
+import fr.enssat.BoulderDash.views.MenuLevelSelector;
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
@@ -54,8 +57,8 @@ public class MenuView extends JFrame {
      * Creates the view layout
      */
     private void createLayout() {
-        LevelListHelper levelListHelper = new LevelListHelper();
-        this.menuLevelSelector = levelListHelper.LevelListHelper();
+        LevelSelectorHelper levelSelectorHelper = new LevelSelectorHelper(false);
+        this.menuLevelSelector = levelSelectorHelper.createLevelList();
 
         JPanel targetPanel = new JPanel();
 
