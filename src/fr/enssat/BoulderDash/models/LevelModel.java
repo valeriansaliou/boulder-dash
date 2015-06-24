@@ -94,8 +94,8 @@ public class LevelModel extends Observable implements Runnable {
 		this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = false;
 
-		this.sizeWidth = 25;
-		this.sizeHeight = 25;
+		this.sizeWidth = 25 + 2;
+		this.sizeHeight = 25 + 2;
 
 		// Generate dirt
 		this.groundGrid = new DisplayableElementModel[this.sizeWidth][this.sizeHeight];
@@ -473,7 +473,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @return Cursor position new X value
 	 */
 	public int incrementCursorXPosition() {
-		if (this.cursorXPosition < (this.getSizeWidth() - 1)) {
+		if (this.cursorXPosition < (this.getSizeWidth() - 1 - 2)) {
 			this.cursorXPosition = this.cursorXPosition + 1;
 		}
 
@@ -501,7 +501,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @return Cursor position new Y value
 	 */
 	public int incrementCursorYPosition() {
-		if (this.cursorYPosition < (this.getSizeHeight() - 1)) {
+		if (this.cursorYPosition < (this.getSizeHeight() - 1 - 2)) {
 			this.cursorYPosition = this.cursorYPosition + 1;
 		}
 

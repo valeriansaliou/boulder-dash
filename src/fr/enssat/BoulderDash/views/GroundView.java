@@ -53,8 +53,8 @@ public abstract class GroundView extends JPanel implements Observer {
         if (this.levelModel.getShowCursor()) {
             g.drawImage(
                     this.levelModel.getCursorImage(),
-                    (this.levelModel.getCursorXPosition() * 16),
-                    (this.levelModel.getCursorYPosition() * 16),
+                    ((this.levelModel.getCursorXPosition() + 1) * 16),
+                    ((this.levelModel.getCursorYPosition() + 1) * 16),
                     this
             );
         }
