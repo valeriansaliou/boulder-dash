@@ -55,6 +55,7 @@ public class RockfordModel extends DisplayableElementModel {
 
 	private long previousTime;
 	private int currentFrame;
+	private boolean hasExploded;
 
     /**
      * Static dataset
@@ -80,6 +81,7 @@ public class RockfordModel extends DisplayableElementModel {
 		this.setSpeed(100);
 		// Init the sprites in arrays
 		this.initSprites();
+		this.hasExploded = false;
 	}
 
 	public void setSpeed(int speed) {
@@ -276,5 +278,21 @@ public class RockfordModel extends DisplayableElementModel {
 		framesRunningUpOrDown.add(
 				this.grabSprite(this.loadSprite(spriteName), 7, 7, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
 		);
+	}
+
+	/**
+	 * Return true if rockford has explosed ( you = loose)
+	 * @return
+	 */
+	public boolean getHasExplosed() {
+		return hasExploded;
+	}
+	
+	/**
+	 * Set rockford explosed 
+	 * @param hasExploded
+	 */
+	public void setHasExplosed(boolean hasExploded){
+		this.hasExploded = hasExploded;
 	}
 }

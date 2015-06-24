@@ -45,6 +45,8 @@ public class LevelModel extends Observable implements Runnable {
 	private int rockfordPositionX, rockfordPositionY;
 	private boolean gameRunning;
 	private boolean gamePaused;
+	// Are we in editor or game mode ?
+	private String mode;
 
 	/**
 	 * Sprite animation thread
@@ -67,6 +69,7 @@ public class LevelModel extends Observable implements Runnable {
 		this.audioLoadHelper = audioLoadHelper;
 		this.gamePaused = false;
 		this.gameRunning = true;
+		this.mode = "game";
 
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
 
@@ -85,11 +88,14 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Class constructor
 	 *
-	 * @param  audioLoadHelper  Audio load helper
+	 * @param audioLoadHelper
+	 *            Audio load helper
+	 * @param mode
 	 */
 	public LevelModel(AudioLoadHelper audioLoadHelper) {
 		this.audioLoadHelper = audioLoadHelper;
 		this.gameRunning = false;
+		this.mode = "editor";
 
 		this.sizeWidth = 25 + 2;
 		this.sizeHeight = 25 + 2;
@@ -221,7 +227,6 @@ public class LevelModel extends Observable implements Runnable {
 			}
 		}
 		if (this.groundGrid[posX][posY].getSpriteName() == "door") {
-			System.out.println("WIN");
 			this.gameRunning = false;
 		}
 
@@ -332,8 +337,8 @@ public class LevelModel extends Observable implements Runnable {
 	 * @return  Cursor image
 	 */
 	public BufferedImage getCursorImage() {
-		
-		if(this.cursorModel == null) {
+
+		if (this.cursorModel == null) {
 			this.cursorModel = new CursorModel();
 		}
 
@@ -491,7 +496,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorXPosition = this.cursorXPosition + 1;
 		}
 
-        this.localNotifyObservers();
+		this.localNotifyObservers();
 		return this.getCursorXPosition();
 	}
 
@@ -505,7 +510,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorXPosition = this.cursorXPosition - 1;
 		}
 
-        this.localNotifyObservers();
+		this.localNotifyObservers();
 		return this.getCursorXPosition();
 	}
 
@@ -519,7 +524,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorYPosition = this.cursorYPosition + 1;
 		}
 
-        this.localNotifyObservers();
+		this.localNotifyObservers();
 		return this.getCursorYPosition();
 	}
 
@@ -533,7 +538,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorYPosition = this.cursorYPosition - 1;
 		}
 
-        this.localNotifyObservers();
+		this.localNotifyObservers();
 		return this.getCursorYPosition();
 	}
 
@@ -544,6 +549,14 @@ public class LevelModel extends Observable implements Runnable {
 	 */
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
+		// Timer to refresh the view properly...
+		try {
+			Thread.sleep(25);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.localNotifyObservers();
 	}
 
 	/**
@@ -589,6 +602,15 @@ public class LevelModel extends Observable implements Runnable {
 		this.groundGrid[x][y - 1] = new EmptyModel();
 		this.groundGrid[x + 1][y - 1] = new EmptyModel();
 		this.groundGrid[x - 1][y - 1] = new EmptyModel();
+		this.rockford.setHasExplosed(true);
+		// Again a sleep to notify the observers properly
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.localNotifyObservers();
 	}
 
 	/**
@@ -727,4 +749,23 @@ public class LevelModel extends Observable implements Runnable {
 	public boolean getGamePaused() {
 		return this.gamePaused;
 	}
+
+	/**
+	 * Get the mode where this levelModel is used
+	 * 
+	 * @return mode
+	 */
+	public String getMode() {
+		return mode;
+	}
+
+	/**
+	 * Set the mode where this levelModel is used
+	 * 
+	 * @param mode
+	 */
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
 }
