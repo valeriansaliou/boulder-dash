@@ -265,6 +265,16 @@ public class LevelModel extends Observable implements Runnable {
 	 *            New value
 	 */
 	public void triggerBlockChange(String blockValue) {
+        // No block value?
+        if(blockValue == null || !blockValue.isEmpty()) {
+            return;
+        }
+
+        // Cancel if Rockford is already in model
+        if((blockValue.equals("Rockford") || blockValue.equals("rockford")) && this.isRockfordInModel()) {
+            return;
+        }
+
 		// Grab model value
 		ModelConvertHelper modelConverter = new ModelConvertHelper();
 		DisplayableElementModel targetModel;
@@ -276,11 +286,11 @@ public class LevelModel extends Observable implements Runnable {
 		try {
 			targetModel = modelConverter.toModel(blockValue, false);
 
-			// Apply new model in place of cursor
-			this.groundGrid[xPos][yPos] = targetModel;
+            // Apply new model in place of cursor
+            this.groundGrid[xPos][yPos] = targetModel;
 
-			// Disable cursor (important)
-			//this.setShowCursor(false);
+            // Disable cursor (important)
+            //this.setShowCursor(false);
 		} catch (UnknownModelException e) {
 			e.printStackTrace();
 		}
@@ -342,6 +352,27 @@ public class LevelModel extends Observable implements Runnable {
 		}
 
 		return this.cursorModel.getSprite();
+	}
+
+	/**
+	 * Return whether rockford is in model or not
+	 * Notice: not optimized, be careful
+	 *
+	 * @return  Whether rockford is in model or not
+	 */
+	public boolean isRockfordInModel() {
+		boolean isInModel = false;
+
+		// Iterate and catch it!
+        for (int x = 0; x < this.getSizeWidth() && !isInModel; x++) {
+            for (int y = 0; y < this.getSizeHeight() && !isInModel; y++) {
+                if(this.groundGrid[x][y].getSpriteName() == "rockford") {
+                    isInModel = true;
+                }
+            }
+        }
+
+		return isInModel;
 	}
 
 	/**
