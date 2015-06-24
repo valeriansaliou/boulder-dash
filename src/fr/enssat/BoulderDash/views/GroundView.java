@@ -51,9 +51,6 @@ public abstract class GroundView extends JPanel implements Observer {
 
         // Place cursor?
         if (this.levelModel.getShowCursor()) {
-            System.out.println("getCursorXPosition > " + new Integer(this.levelModel.getCursorXPosition()).toString());
-            System.out.println("getCursorYPosition > " + new Integer(this.levelModel.getCursorYPosition()).toString());
-
             g.drawImage(
                     this.levelModel.getCursorImage(),
                     (this.levelModel.getCursorXPosition() * 16),

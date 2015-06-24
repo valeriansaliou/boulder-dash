@@ -72,6 +72,7 @@ public class GameController implements ActionListener {
             	this.resetGame("menu");
                 break;
         }
+
         this.gameView.getGameFieldView().grabFocus();
 	}
 

@@ -42,6 +42,8 @@ public class LevelEditorView extends JFrame implements Observer {
 
 		this.initializeView();
         this.createLayout();
+
+        this.fieldPanel.grabFocus();
 	}
 
     /**
