@@ -277,10 +277,10 @@ public class LevelModel extends Observable implements Runnable {
 			targetModel = modelConverter.toModel(blockValue, false);
 
 			// Apply new model in place of cursor
-			this.groundGrid[yPos][xPos] = targetModel;
+			this.groundGrid[xPos][yPos] = targetModel;
 
 			// Disable cursor (important)
-			this.setShowCursor(false);
+			//this.setShowCursor(false);
 		} catch (UnknownModelException e) {
 			e.printStackTrace();
 		}
