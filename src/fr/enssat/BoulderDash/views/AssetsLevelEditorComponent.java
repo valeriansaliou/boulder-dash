@@ -73,5 +73,6 @@ public class AssetsLevelEditorComponent extends JPanel implements ActionListener
         String sourceText = sourceButton.getText();
 
         this.levelEditorView.setPickedBlockValue(sourceText);
+        this.levelEditorView.getLevelEditorGroundView().grabFocus();
     }
 }

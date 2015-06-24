@@ -54,6 +54,7 @@ public class NavigationBetweenViewController implements ActionListener {
                 this.levelEditorController = new LevelEditorController(this.levelModelForEditor, this);
 
                 this.levelEditorController.getLevelEditorView().setVisible(true);
+                this.levelEditorController.getLevelEditorView().getLevelEditorGroundView().grabFocus();
 
                 if (gameController != null) {
                     this.gameController.getGameView().setVisible(false);

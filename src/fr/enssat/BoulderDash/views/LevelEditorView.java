@@ -39,9 +39,11 @@ public class LevelEditorView extends JFrame implements Observer {
         this.levelModel = levelModel;
 
         this.levelModel.addObserver(this);
-        
+
 		this.initializeView();
         this.createLayout();
+
+        this.fieldPanel.grabFocus();
 	}
 
     /**
@@ -104,6 +106,15 @@ public class LevelEditorView extends JFrame implements Observer {
         button.setActionCommand(id);
 
         return button;
+    }
+
+    /**
+     * Gets the level editor field view
+     *
+     * @return  Level editor field view
+     */
+    public LevelEditorGroundView getLevelEditorGroundView() {
+        return this.fieldPanel;
     }
 
     /**

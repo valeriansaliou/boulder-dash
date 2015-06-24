@@ -50,10 +50,20 @@ public class LevelEditorController implements ActionListener {
         }
     }
 
+    /**
+     * Gets the level editor view
+     *
+     * @return  Level editor view
+     */
 	public LevelEditorView getLevelEditorView() {
 		return levelEditorView;
 	}
 
+    /**
+     * Sets the level editor view
+     *
+     * @param  levelEditorView  Level editor view
+     */
 	public void setLevelEditorView(LevelEditorView levelEditorView) {
 		this.levelEditorView = levelEditorView;
 	}
