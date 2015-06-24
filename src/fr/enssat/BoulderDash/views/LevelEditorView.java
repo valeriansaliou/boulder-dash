@@ -28,6 +28,7 @@ public class LevelEditorView extends JFrame implements Observer {
     private JPanel selectPanel;
     private AssetsLevelEditorComponent assetsComponent;
     private JPanel actionsComponent;
+    private String selectedLevel;
     private MenuLevelSelector menuLevelSelector;
     private NavigationBetweenViewController nav;
 
@@ -164,19 +165,32 @@ public class LevelEditorView extends JFrame implements Observer {
      */
     public void menuLevelSelectorChanged(MenuLevelSelector changedSelector) {
         LevelModel pickedLevelModel;
-        String selectedLevel = changedSelector.getChoiceValue();
+        this.selectedLevel = changedSelector.getChoiceValue().toString();
 
-        if(selectedLevel != null && !selectedLevel.isEmpty()) {
+        if(this.selectedLevel != null && !this.selectedLevel.isEmpty()) {
             // Load existing model
-            pickedLevelModel = new LevelModel(selectedLevel, this.nav.getAudioLoadHelper());
+            pickedLevelModel = new LevelModel(this.selectedLevel, this.nav.getAudioLoadHelper());
         } else {
             // New blank model for editor
             pickedLevelModel = new LevelModel(this.nav.getAudioLoadHelper());
         }
 
-        this.levelEditorController = new LevelEditorController(pickedLevelModel, this.nav);
+        this.levelModel = pickedLevelModel;
+        this.levelModel.setShowCursor(true);
+
+        this.levelEditorController = new LevelEditorController(this.levelModel, this.nav);
 
         this.levelEditorController.getLevelEditorView().setVisible(true);
         this.levelEditorController.getLevelEditorView().getLevelEditorGroundView().grabFocus();
+        this.levelEditorController.getLevelEditorView().menuLevelSelector.setChoiceValue(this.selectedLevel);
+    }
+
+    /**
+     * Get selected level
+     *
+     * @return  Selected level
+     */
+    public String getSelectedLevel() {
+        return this.selectedLevel;
     }
 }

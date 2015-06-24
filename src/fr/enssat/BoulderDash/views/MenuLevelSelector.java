@@ -54,6 +54,20 @@ public class MenuLevelSelector extends JComboBox {
     }
 
     /**
+     * Selects a given value
+     *
+     * @param  value  Value to be selected
+     */
+    public void setSelectedValue(int value) {
+        for (int i = 0; i < this.getItemCount(); i++) {
+            if (this.getItemAt(i).toString().equals(value)) {
+                this.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+
+    /**
      * Sets the choice value
      *
      * @param  choiceValue  Choice value

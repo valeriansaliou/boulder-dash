@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import fr.enssat.BoulderDash.exceptions.LevelConstraintNotRespectedException;
+import fr.enssat.BoulderDash.helpers.LevelSaveHelper;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.views.LevelEditorView;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
@@ -61,8 +63,9 @@ public class LevelEditorController implements ActionListener {
                 try {
                     this.levelModel.checkConstraints();
 
-                    // Save action
-                    // TODO
+                    // Save action (direct save)
+                    String levelId = this.levelEditorView.getSelectedLevel();
+                    new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
 
                     JFrame frameDialog = new JFrame("Information");
                     JOptionPane.showMessageDialog(frameDialog, "Niveau sauvegardé");
@@ -74,9 +77,11 @@ public class LevelEditorController implements ActionListener {
                 break;
 
             case "delete":
+                // TODO
                 break;
 
             case "new":
+                // TODO
                 break;
         }
 
