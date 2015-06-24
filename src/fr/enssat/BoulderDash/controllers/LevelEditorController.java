@@ -48,6 +48,7 @@ public class LevelEditorController implements ActionListener {
                 this.nav.getAudioLoadHelper().startMusic("game");
                 break;
         }
+        this.levelEditorView.getLevelEditorGroundView().grabFocus();
     }
 
 	public LevelEditorView getLevelEditorView() {

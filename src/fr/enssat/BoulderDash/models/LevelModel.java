@@ -391,6 +391,14 @@ public class LevelModel extends Observable implements Runnable {
 	}
 
 	/**
+	 * Notify observers about a model change
+	 */
+	private void localNotifyObservers() {
+		this.notifyObservers();
+		this.setChanged();
+	}
+
+	/**
 	 * Update the current sprite Notifies the observers
 	 * 
 	 * @param x
@@ -402,7 +410,6 @@ public class LevelModel extends Observable implements Runnable {
 		groundGrid[x][y].update(System.currentTimeMillis());
 
 		this.notifyObservers();
-		this.setChanged();
 	}
 
 	/**
@@ -470,6 +477,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorXPosition = this.cursorXPosition + 1;
 		}
 
+        this.localNotifyObservers();
 		return this.getCursorXPosition();
 	}
 
@@ -483,6 +491,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorXPosition = this.cursorXPosition - 1;
 		}
 
+        this.localNotifyObservers();
 		return this.getCursorXPosition();
 	}
 
@@ -496,6 +505,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorYPosition = this.cursorYPosition + 1;
 		}
 
+        this.localNotifyObservers();
 		return this.getCursorYPosition();
 	}
 
@@ -509,6 +519,7 @@ public class LevelModel extends Observable implements Runnable {
 			this.cursorYPosition = this.cursorYPosition - 1;
 		}
 
+        this.localNotifyObservers();
 		return this.getCursorYPosition();
 	}
 
