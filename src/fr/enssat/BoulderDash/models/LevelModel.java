@@ -409,7 +409,7 @@ public class LevelModel extends Observable implements Runnable {
 	public void updateSprites(int x, int y) {
 		groundGrid[x][y].update(System.currentTimeMillis());
 
-		this.notifyObservers();
+		this.localNotifyObservers();
 	}
 
 	/**
