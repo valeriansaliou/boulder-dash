@@ -91,7 +91,7 @@ public class MenuView extends JFrame {
 	}
 
     /**
-     * Gets the selected level identifier
+     * Gets the selected level identifier!
      *
      * @return  Level identifier
      */
