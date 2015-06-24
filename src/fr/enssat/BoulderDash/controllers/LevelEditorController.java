@@ -51,7 +51,7 @@ public class LevelEditorController implements ActionListener {
         switch(event.getActionCommand()) {
             case "menu":
             	this.levelEditorView.setVisible(false);
-            	this.nav.getFirstView().setVisible(true);
+            	this.nav.getMenuView().setVisible(true);
                 this.nav.getAudioLoadHelper().startMusic("game");
 
                 break;
@@ -74,9 +74,6 @@ public class LevelEditorController implements ActionListener {
                 break;
 
             case "delete":
-                break;
-
-            case "clear":
                 break;
 
             case "new":

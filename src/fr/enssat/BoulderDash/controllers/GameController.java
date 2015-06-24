@@ -3,7 +3,7 @@ package fr.enssat.BoulderDash.controllers;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
-import fr.enssat.BoulderDash.views.FirstView;
+import fr.enssat.BoulderDash.views.MenuView;
 import fr.enssat.BoulderDash.views.GameView;
 
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ public class GameController implements ActionListener {
 	private LevelModel levelModel;
     private AudioLoadHelper audioLoadHelper;
     private boolean firstClickOnPause;
-	private FirstView firstView;
+	private MenuView menuView;
 	private GameView gameView;
 	private NavigationBetweenViewController navigationBetweenViewController;
 	
@@ -41,7 +41,7 @@ public class GameController implements ActionListener {
 		this.levelModel = levelModel;
         this.audioLoadHelper = audioLoadHelper;
         this.gameView = new GameView(this, levelModel); 
-        this.firstView = navigationBetweenViewController.getFirstView();
+        this.menuView = navigationBetweenViewController.getMenuView();
 
         this.getAudioLoadHelper().stopMusic();
         this.getAudioLoadHelper().playSound("new");
@@ -72,7 +72,7 @@ public class GameController implements ActionListener {
                 break;
             
             case "menu":
-            	this.firstView.setVisible(true);
+            	this.menuView.setVisible(true);
                 this.getAudioLoadHelper().startMusic("game");
             	this.resetGame("menu");
                 break;

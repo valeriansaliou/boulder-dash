@@ -70,7 +70,9 @@ public class LevelEditorKeyController implements KeyListener {
                 System.out.println(capLocks);
                 break;
         }
-        if(capLocks){
+
+        // Hold block change (quick edit)
+        if(capLocks) {
         	this.levelModel.triggerBlockChange(this.levelEditorView.getPickedBlockValue());
         }
     }

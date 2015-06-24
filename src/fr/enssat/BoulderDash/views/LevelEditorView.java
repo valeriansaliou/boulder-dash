@@ -8,6 +8,7 @@ import java.util.Observer;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.helpers.LevelListHelper;
 import fr.enssat.BoulderDash.views.LevelEditorGroundView;
 import fr.enssat.BoulderDash.views.AssetsLevelEditorComponent;
 
@@ -25,6 +26,7 @@ public class LevelEditorView extends JFrame implements Observer {
     private JPanel selectPanel;
     private AssetsLevelEditorComponent assetsComponent;
     private JPanel actionsComponent;
+    private MenuLevelSelector menuLevelSelector;
 
     private LevelEditorController levelEditorController;
     private LevelModel levelModel;
@@ -70,6 +72,11 @@ public class LevelEditorView extends JFrame implements Observer {
      * Creates the view layout
      */
 	private void createLayout() {
+        // List of levels
+        LevelListHelper levelListHelper = new LevelListHelper();
+        this.menuLevelSelector = levelListHelper.createLevelList();
+
+        // Field + select panels
 		this.fieldPanel = new LevelEditorGroundView(this.levelModel, this);
         this.selectPanel = new JPanel();
 
@@ -77,10 +84,10 @@ public class LevelEditorView extends JFrame implements Observer {
         this.actionsComponent = new JPanel();
 
         // Add actions
+        this.actionsComponent.add(this.menuLevelSelector);
         this.actionsComponent.add(this.createButton("save", "Save"));
         this.actionsComponent.add(this.createButton("delete", "Delete"));
-        this.actionsComponent.add(this.createButton("clear", "Clear"));
-        this.actionsComponent.add(this.createButton("new", "New map..."));
+        this.actionsComponent.add(this.createButton("new", "New level"));
         this.actionsComponent.add(this.createButton("menu", "Menu"));
 
         // Add select panel subcomponents

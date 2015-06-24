@@ -1,40 +1,34 @@
 package fr.enssat.BoulderDash.views;
 
 import java.awt.BorderLayout;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.*;
 
 import fr.enssat.BoulderDash.views.MenuImage;
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
+import fr.enssat.BoulderDash.helpers.LevelListHelper;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
 
 /**
- * FirstView
+ * MenuView
  *
  * Menu view
  *
  * @author      Valerian Saliou <valerian@valeriansaliou.name>
  * @since       2015-06-23
  */
-public class FirstView extends JFrame {
-    private static String levelStorage = "res/levels";
-
-	private JButton game;
-	private JButton editor;
-	private JButton quit;
+public class MenuView extends JFrame {
 	private NavigationBetweenViewController navigationBetweenViewController;
     private MenuImage menuImage;
-    private MenuLevelSelector menuLevelList;
+    private MenuLevelSelector menuLevelSelector;
 	private JPanel actionPanel;
+    private JButton game, editor, quit;
 
     /**
      * Class constructor
      */
-	public FirstView(NavigationBetweenViewController navigationBetweenViewController) {
+	public MenuView(NavigationBetweenViewController navigationBetweenViewController) {
 		this.navigationBetweenViewController = navigationBetweenViewController;
 		this.initializeView();
 		this.createLayout();
@@ -60,7 +54,8 @@ public class FirstView extends JFrame {
      * Creates the view layout
      */
     private void createLayout() {
-        this.createLevelList();
+        LevelListHelper levelListHelper = new LevelListHelper();
+        this.menuLevelSelector = levelListHelper.createLevelList();
 
         JPanel targetPanel = new JPanel();
 
@@ -75,7 +70,7 @@ public class FirstView extends JFrame {
         this.add(this.menuImage, BorderLayout.CENTER);
         this.add(targetPanel, BorderLayout.SOUTH);
 
-        targetPanel.add(this.menuLevelList, BorderLayout.NORTH);
+        targetPanel.add(this.menuLevelSelector, BorderLayout.NORTH);
         targetPanel.add(this.actionPanel, BorderLayout.SOUTH);
     }
 
@@ -94,60 +89,6 @@ public class FirstView extends JFrame {
 
 		return button;
 	}
-
-    /**
-     * Class constructor
-     */
-    private void createLevelList() {
-        String[] availableLevels = this.listAvailableLevels();
-
-        // Proceed available levels listing
-        this.menuLevelList = new MenuLevelSelector(availableLevels);
-
-        if(availableLevels.length > 0) {
-            this.menuLevelList.setChoiceValue(availableLevels[0]);
-        }
-
-        if(availableLevels.length > 0) {
-            this.menuLevelList.setSelectedIndex(0);
-        };
-
-        this.menuLevelList.addActionListener(this.menuLevelList);
-    }
-
-    /**
-     * Lists available levels and store them in instance context
-     *
-     * @return  Available levels
-     */
-    private String[] listAvailableLevels() {
-        List<String> stockList = new ArrayList<String>();
-
-        File directory = new File(levelStorage);
-        File[] fileList = directory.listFiles();
-        String fileName, fileNameExtValue;
-        int fileNameExtIndex;
-
-        for (File file : fileList){
-            fileName = file.getName();
-            fileNameExtIndex = fileName.lastIndexOf('.');
-
-            if (fileNameExtIndex > 0) {
-                fileNameExtValue = fileName.substring(fileNameExtIndex, fileName.length());
-
-                if(fileNameExtValue.equals(".xml")) {
-                    fileName = fileName.substring(0, fileNameExtIndex);
-                    stockList.add(fileName);
-                }
-            }
-        }
-
-        // Convert to String[] (required)
-        String[] itemsArr = new String[stockList.size()];
-        itemsArr = stockList.toArray(itemsArr);
-
-        return itemsArr;
-    }
 
     /**
      * Gets the selected level identifier

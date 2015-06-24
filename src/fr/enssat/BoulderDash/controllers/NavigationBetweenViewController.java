@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 import fr.enssat.BoulderDash.models.LevelModel;
-import fr.enssat.BoulderDash.views.FirstView;
+import fr.enssat.BoulderDash.views.MenuView;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.GameController;
 
@@ -17,7 +17,7 @@ import fr.enssat.BoulderDash.controllers.GameController;
  */
 public class NavigationBetweenViewController implements ActionListener {
 	private LevelEditorController levelEditorController;
-	private FirstView firstView;
+	private MenuView menuView;
 	private AudioLoadHelper audioLoadHelper;
 	private LevelModel levelModelForGame, levelModelForEditor;
 	private GameController gameController;
@@ -33,7 +33,7 @@ public class NavigationBetweenViewController implements ActionListener {
         this.getAudioLoadHelper().startMusic("game");
 
 		// Creation of the first view
-		this.firstView = new FirstView(this);
+		this.menuView = new MenuView(this);
 	}
 
     /**
@@ -64,7 +64,7 @@ public class NavigationBetweenViewController implements ActionListener {
 
             case "game":
                 // Reinit the levelModelForGame...
-                pickedLevelIdentifier = this.firstView.getLevelIdentifier();
+                pickedLevelIdentifier = this.menuView.getLevelIdentifier();
 
                 this.levelModelForGame = new LevelModel(pickedLevelIdentifier, audioLoadHelper);
                 this.gameController = new GameController(levelModelForGame, audioLoadHelper, this);
@@ -79,7 +79,7 @@ public class NavigationBetweenViewController implements ActionListener {
 			    break;
 		}
 
-		this.firstView.setVisible(false);
+		this.menuView.setVisible(false);
 	}
 
     /**
@@ -96,17 +96,17 @@ public class NavigationBetweenViewController implements ActionListener {
      *
      * @return  First view
      */
-    public FirstView getFirstView() {
-        return this.firstView;
+    public MenuView getMenuView() {
+        return this.menuView;
     }
 
 	/**
 	 * Set the first view
 	 * 
-	 * @param  firstView
+	 * @param  menuView
 	 */
-	public void setFirstView(FirstView firstView) {
-		this.firstView = firstView;
+	public void setMenuView(MenuView menuView) {
+		this.menuView = menuView;
 	}
 
 	/**

@@ -59,7 +59,7 @@ public abstract class GroundView extends JPanel implements Observer {
 				}
 			} else {
 				if(this.levelModel.getRockford().getHasExplosed()){
-					this.displayLoose();
+					this.displayLose();
 				} else {
 					this.displayWin();
 				}
@@ -86,14 +86,16 @@ public abstract class GroundView extends JPanel implements Observer {
 	 * Set the view to inform the user that he won
 	 */
 	private void displayWin() {
-		System.out.println("displayLoose");
+        JFrame frameDialog = new JFrame("Information");
+        JOptionPane.showMessageDialog(frameDialog, "Vous avez gagné !");
 	}
 
 	/**
 	 * Set the view to inform the user that he is not good at this game
 	 */
-	private void displayLoose() {
-		System.out.println("displayLoose");
+	private void displayLose() {
+        JFrame frameDialog = new JFrame("Information");
+        JOptionPane.showMessageDialog(frameDialog, "Vous avez perdu !");
 	}
 
 	/**
