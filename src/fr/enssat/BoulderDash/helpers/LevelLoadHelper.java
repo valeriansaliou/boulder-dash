@@ -224,6 +224,11 @@ public class LevelLoadHelper {
                                 String currentSpriteConvertibleValue = currentSpriteElement.getAttribute("convertible");
                                 boolean currentSpriteConvertible = false;
 
+                                // No name? Continue.
+                                if(currentSpriteName == null || currentSpriteName.isEmpty()) {
+                                    continue;
+                                }
+
                                 if(currentSpriteConvertibleValue.equals("1")) {
 									currentSpriteConvertible = true;
                                 }

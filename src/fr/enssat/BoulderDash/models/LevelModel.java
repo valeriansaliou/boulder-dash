@@ -341,7 +341,13 @@ public class LevelModel extends Observable implements Runnable {
 	 * @return Image at given positions
 	 */
 	public BufferedImage getImage(int x, int y) {
-		return this.getDisplayableElement(x, y).getSprite();
+        DisplayableElementModel elementModel = this.getDisplayableElement(x, y);
+
+        if(elementModel == null) {
+            return new DirtModel().getSprite();
+        }
+
+		return elementModel.getSprite();
 	}
 
 	/**
@@ -370,7 +376,7 @@ public class LevelModel extends Observable implements Runnable {
         // Iterate and catch it!
         for (int x = 0; x < this.getSizeWidth() && !isInModel; x++) {
             for (int y = 0; y < this.getSizeHeight() && !isInModel; y++) {
-                if(this.groundGrid[x][y].getSpriteName() == "rockford") {
+                if(this.groundGrid[x][y] != null && this.groundGrid[x][y].getSpriteName() == "rockford") {
                     isInModel = true;
                 }
             }
@@ -390,7 +396,7 @@ public class LevelModel extends Observable implements Runnable {
         // Iterate and catch it!
         for (int x = 0; x < this.getSizeWidth(); x++) {
             for (int y = 0; y < this.getSizeHeight(); y++) {
-                if(this.groundGrid[x][y].getSpriteName() == "diamond") {
+                if(this.groundGrid[x][y] != null && this.groundGrid[x][y].getSpriteName() == "diamond") {
                     numberOfDiamonds += 1;
                 }
             }

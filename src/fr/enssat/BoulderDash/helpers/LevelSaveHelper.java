@@ -13,6 +13,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
+import fr.enssat.BoulderDash.models.DirtModel;
 
 
 /**
@@ -248,6 +249,11 @@ public class LevelSaveHelper {
         String groupValue, nameValue, stateValue, convertibleValue;
 
         DisplayableElementModel curGridElement = this.getGroundGrid()[curItemIndex][curLineIndex];
+
+        // Null?
+        if(curGridElement == null) {
+            curGridElement = new DirtModel();
+        }
 
         // Retrieve current values
         groupValue       = curGridElement.getGroupName();
