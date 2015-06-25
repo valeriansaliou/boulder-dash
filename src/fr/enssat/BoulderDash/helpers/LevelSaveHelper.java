@@ -67,7 +67,8 @@ public class LevelSaveHelper {
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
             Document document = documentBuilder.newDocument();
 
-            Element bdLevel = document.createElementNS("fr.enssat.boulderdash", "bd-level");
+            Element bdLevel = document.createElement("bd-level");
+            bdLevel.setAttribute("xmlns", "fr.enssat.boulderdash");
             document.appendChild(bdLevel);
 
             // append child elements to root element
@@ -155,10 +156,15 @@ public class LevelSaveHelper {
         // Get values
         Integer widthValue = 0, heightValue = 0;
 
-        widthValue = this.getGroundGrid().length;
+        widthValue = this.getGroundGrid().length - 2;
 
         if(widthValue > 0) {
-            heightValue = this.getGroundGrid()[0].length;
+            heightValue = this.getGroundGrid()[0].length - 2;
+        }
+
+        if(heightValue < 0 || widthValue < 0) {
+            heightValue = 0;
+            widthValue = 0;
         }
 
         // Create element
@@ -181,9 +187,9 @@ public class LevelSaveHelper {
         gridElement.setAttribute("state", "initial");
 
         // Iterate in MATRIX:{x}
-        if(this.getGroundGrid().length > 0) {
+        if(this.getGroundGrid().length > 2) {
             // XML structure matrix is the inverse of the internal representation (hence the weird loop)
-            for (Integer curLineIndex = 0; curLineIndex < this.getGroundGrid()[0].length; curLineIndex++) {
+            for (Integer curLineIndex = 1; curLineIndex < (this.getGroundGrid()[0].length - 1); curLineIndex++) {
                 gridElement.appendChild(this.gridLineNode(document, curLineIndex));
             }
         }
@@ -200,12 +206,12 @@ public class LevelSaveHelper {
      */
     private Node gridLineNode(Document document, Integer curLineIndex) {
         Element gridLineElement = document.createElement("line");
-        gridLineElement.setAttribute("index", curLineIndex.toString());
+        gridLineElement.setAttribute("index", Integer.toString(curLineIndex - 1));
 
         // Iterate in MATRIX:X:{y}
-        if(this.getGroundGrid().length > 0) {
+        if(this.getGroundGrid().length > 2) {
             // XML structure matrix is the inverse of the internal representation (hence the weird loop)
-            for (Integer curItemIndex = 0; curItemIndex < this.getGroundGrid().length; curItemIndex++) {
+            for (Integer curItemIndex = 1; curItemIndex < (this.getGroundGrid().length - 1); curItemIndex++) {
                 gridLineElement.appendChild(this.gridLineItemNode(document, curLineIndex, curItemIndex));
             }
         }
@@ -223,7 +229,7 @@ public class LevelSaveHelper {
      */
     private Node gridLineItemNode(Document document, Integer curLineIndex, Integer curItemIndex) {
         Element gridLineItemElement = document.createElement("item");
-        gridLineItemElement.setAttribute("index", curItemIndex.toString());
+        gridLineItemElement.setAttribute("index", Integer.toString(curItemIndex - 1));
 
         gridLineItemElement.appendChild(this.gridLineItemSpriteNode(document, curLineIndex, curItemIndex));
 

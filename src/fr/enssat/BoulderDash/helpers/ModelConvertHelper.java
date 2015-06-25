@@ -87,7 +87,7 @@ public class ModelConvertHelper {
                 break;
 
             default:
-                throw new UnknownModelException("Unknown model element");
+                throw new UnknownModelException("Unknown model element > " + spriteName);
         }
 
         return element;
