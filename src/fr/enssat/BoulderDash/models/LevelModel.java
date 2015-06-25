@@ -64,13 +64,14 @@ public class LevelModel extends Observable implements Runnable {
 	 *
 	 * @param  levelName  Level name
 	 * @param  audioLoadHelper  Audio load helper
+     * @param  mode             Instance mode
 	 */
-	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
+	public LevelModel(String levelName, AudioLoadHelper audioLoadHelper, String mode) {
 		this.levelName = levelName;
 		this.audioLoadHelper = audioLoadHelper;
 		this.gamePaused = false;
 		this.gameRunning = true;
-		this.mode = "game";
+		this.mode = mode;
 
 		this.levelLoadHelper = new LevelLoadHelper(this.levelName);
 
@@ -82,16 +83,27 @@ public class LevelModel extends Observable implements Runnable {
 		this.gameInformationModel = new GameInformationModel(this.levelLoadHelper.getDiamondsToCatch());
 
 		this.createLimits();
-		this.initRockford();
-		this.initThreadAnimator();
+
+        if(this.mode.equals("game")) {
+            this.initRockford();
+            this.initThreadAnimator();
+        }
 	}
 
+    /**
+     * Class constructor
+     *
+     * @param  levelName        Level name
+     * @param  audioLoadHelper  Audio load helper
+     */
+    public LevelModel(String levelName, AudioLoadHelper audioLoadHelper) {
+        this(levelName, audioLoadHelper, "game");
+    }
+
 	/**
-	 * Class constructor
+	 * Class constructor (editor mode)
 	 *
-	 * @param audioLoadHelper
-	 *            Audio load helper
-	 * @param mode
+	 * @param audioLoadHelper  Audio load helper
 	 */
 	public LevelModel(AudioLoadHelper audioLoadHelper) {
 		this.audioLoadHelper = audioLoadHelper;
@@ -639,6 +651,7 @@ public class LevelModel extends Observable implements Runnable {
 		this.groundGrid[x + 1][y - 1] = new EmptyModel();
 		this.groundGrid[x - 1][y - 1] = new EmptyModel();
 		this.rockford.setHasExplosed(true);
+
 		// Again a sleep to notify the observers properly
 		try {
 			Thread.sleep(50);

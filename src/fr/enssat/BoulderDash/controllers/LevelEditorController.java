@@ -77,7 +77,12 @@ public class LevelEditorController implements ActionListener {
                 break;
 
             case "delete":
-                // TODO
+                String levelId = this.levelEditorView.getSelectedLevel();
+
+                if(levelId == null || levelId.isEmpty()) {
+                    JFrame frameDialog = new JFrame("Information");
+                    JOptionPane.showMessageDialog(frameDialog, "Niveau non sauvegardé, inutile de le supprimer !");
+                }
                 break;
 
             case "new":
@@ -96,6 +101,15 @@ public class LevelEditorController implements ActionListener {
 	public LevelEditorView getLevelEditorView() {
 		return levelEditorView;
 	}
+
+    /**
+     * Gets level model
+     *
+     * @return  Level model
+     */
+    public LevelModel getLevelModel() {
+        return this.levelModel;
+    }
 
     /**
      * Sets the level editor view

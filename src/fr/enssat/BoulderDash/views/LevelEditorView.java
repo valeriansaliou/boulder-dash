@@ -92,6 +92,7 @@ public class LevelEditorView extends JFrame implements Observer {
         this.actionsComponent.add(this.menuLevelSelector);
         this.actionsComponent.add(this.createButton("save", "Save"));
         this.actionsComponent.add(this.createButton("delete", "Delete"));
+
         this.actionsComponent.add(this.createButton("new", "New level"));
         this.actionsComponent.add(this.createButton("menu", "Menu"));
 
@@ -165,32 +166,50 @@ public class LevelEditorView extends JFrame implements Observer {
      */
     public void menuLevelSelectorChanged(MenuLevelSelector changedSelector) {
         LevelModel pickedLevelModel;
-        this.selectedLevel = changedSelector.getChoiceValue().toString();
+        String selectedLevelValue = changedSelector.getChoiceValue().toString();
 
-        if(this.selectedLevel != null && !this.selectedLevel.isEmpty()) {
+        // Value didn't change?
+        if(selectedLevelValue.equals(this.getSelectedLevel())) {
+            return;
+        }
+
+        if(selectedLevelValue != null && !selectedLevelValue.isEmpty()) {
             // Load existing model
-            pickedLevelModel = new LevelModel(this.selectedLevel, this.nav.getAudioLoadHelper());
+            pickedLevelModel = new LevelModel(selectedLevelValue, this.nav.getAudioLoadHelper(), "editor");
         } else {
             // New blank model for editor
             pickedLevelModel = new LevelModel(this.nav.getAudioLoadHelper());
         }
 
+        pickedLevelModel.setShowCursor(true);
+        pickedLevelModel.setMode("editor");
         this.levelModel = pickedLevelModel;
-        this.levelModel.setShowCursor(true);
+
+        // Hide old view
+        this.levelEditorController.getLevelEditorView().dispose();
 
         this.levelEditorController = new LevelEditorController(this.levelModel, this.nav);
 
+        this.levelEditorController.getLevelEditorView().setSelectedLevel(selectedLevelValue);
         this.levelEditorController.getLevelEditorView().setVisible(true);
         this.levelEditorController.getLevelEditorView().getLevelEditorGroundView().grabFocus();
-        this.levelEditorController.getLevelEditorView().menuLevelSelector.setChoiceValue(this.selectedLevel);
+        this.levelEditorController.getLevelEditorView().menuLevelSelector.setChoiceValue(selectedLevelValue);
     }
 
     /**
-     * Get selected level
+     * Gets selected level
      *
      * @return  Selected level
      */
     public String getSelectedLevel() {
         return this.selectedLevel;
+    }
+
+    /**
+     * Sets selected level
+     *
+     * @param  level  Selected level
+     */
+    public void setSelectedLevel(String level) { this.selectedLevel = level;
     }
 }

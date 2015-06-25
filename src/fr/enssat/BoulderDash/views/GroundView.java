@@ -50,8 +50,6 @@ public abstract class GroundView extends JPanel implements Observer {
 		// Draw items
 		if (this.levelModel.getMode() == "game") {
 			if (this.levelModel.isGameRunning()) {
-				//DEBUG
-				System.out.println(this.levelModel.getMode());
 				for (int x = 0; x < width; x++) {
 					for (int y = 0; y < height; y++) {
 						g.drawImage(this.levelModel.getImage(x, y), (x * 16), (y * 16), this);
@@ -65,7 +63,6 @@ public abstract class GroundView extends JPanel implements Observer {
 				}
 			}
 		} else {
-			System.out.println(this.levelModel.getMode());
 			for (int x = 0; x < width; x++) {
 				for (int y = 0; y < height; y++) {
 					g.drawImage(this.levelModel.getImage(x, y), (x * 16), (y * 16), this);
