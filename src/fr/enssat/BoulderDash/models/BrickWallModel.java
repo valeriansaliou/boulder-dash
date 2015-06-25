@@ -12,7 +12,6 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
  * @since       2015-06-19
  */
 public class BrickWallModel extends DisplayableElementModel {
-	private static String pathToSprite;
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;
@@ -41,8 +40,7 @@ public class BrickWallModel extends DisplayableElementModel {
      * Class constructor
      */
 	public BrickWallModel() {
-		super(isDestructible, canMove, pathToSprite, priority, impactExplosive, animate, falling, collideSound);
-
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
         this.loadSprite(spriteName);
 	}
 }
