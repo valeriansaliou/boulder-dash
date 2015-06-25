@@ -23,7 +23,8 @@ public class LevelEditorKeyController implements KeyListener {
     /**
      * Class constructor
      *
-     * @param  levelModel  Level model
+     * @param  levelModel       Level model
+     * @param  levelEditorView  Level editor view
      */
     public LevelEditorKeyController(LevelModel levelModel, LevelEditorView levelEditorView) {
         this.levelModel = levelModel;

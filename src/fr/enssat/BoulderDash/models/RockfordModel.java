@@ -94,7 +94,7 @@ public class RockfordModel extends DisplayableElementModel {
 	 */
 	public void update(long time) {
 		if (time - this.previousTime >= this.speed) {
-			// update the animation
+			// Update the animation
 			this.previousTime = time;
 			try {
 				currentFrame += 1;
@@ -257,9 +257,9 @@ public class RockfordModel extends DisplayableElementModel {
      * Takes the sub images and append them into storage arrays
 	 */
 	private void initSprites() {
-		framesBlinking = new ArrayList<BufferedImage>();
-		framesRunningLeft = new ArrayList<BufferedImage>();
-		framesRunningRight = new ArrayList<BufferedImage>();
+		framesBlinking        = new ArrayList<BufferedImage>();
+		framesRunningLeft     = new ArrayList<BufferedImage>();
+		framesRunningRight    = new ArrayList<BufferedImage>();
 		framesRunningUpOrDown = new ArrayList<BufferedImage>();
 
 		/* INIT SPRITE ARRAYS FOR ROCKFORD */
@@ -267,9 +267,11 @@ public class RockfordModel extends DisplayableElementModel {
 			framesBlinking.add(
 					this.grabSprite(this.loadSprite(spriteName), 7 + (24 * i), 79, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
 			);
+
 			framesRunningLeft.add(
 					this.grabSprite(this.loadSprite(spriteName), 7 + (24 * i), 103, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
 			);
+
 			framesRunningRight.add(
 					this.grabSprite(this.loadSprite(spriteName), 7 + (24 * i), 127, SIZ_X_OF_SPRITE, SIZ_Y_OF_SPRITE)
 			);
@@ -281,16 +283,18 @@ public class RockfordModel extends DisplayableElementModel {
 	}
 
 	/**
-	 * Return true if rockford has explosed ( you = loose)
-	 * @return
+	 * Return true if rockford has exploded (you = lose)
+     *
+	 * @return  Whether Rockford has exploded or not
 	 */
 	public boolean getHasExplosed() {
 		return hasExploded;
 	}
 	
 	/**
-	 * Set rockford explosed 
-	 * @param hasExploded
+	 * Set rockford exploded state
+     *
+	 * @param  hasExploded  Whether Rockford has exploded or not
 	 */
 	public void setHasExplosed(boolean hasExploded){
 		this.hasExploded = hasExploded;

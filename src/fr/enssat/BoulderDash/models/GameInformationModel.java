@@ -2,6 +2,7 @@ package fr.enssat.BoulderDash.models;
 
 import java.util.Observable;
 
+
 /**
  * GameInformationModel will contain all the data which will
  * go to the InformationPanel.
@@ -23,7 +24,8 @@ public class GameInformationModel extends Observable  {
 
 	/**
 	 * Returns the actual score
-	 * @return score
+     *
+	 * @return  score
 	 */
 	public int getScore() {
 		return score;
@@ -31,7 +33,8 @@ public class GameInformationModel extends Observable  {
 
 	/**
 	 * Sets the score
-	 * @param score
+     *
+	 * @param  score  Score
 	 */
 	public void setScore(int score) {
 		this.score = score;
@@ -39,7 +42,8 @@ public class GameInformationModel extends Observable  {
 
 	/**
 	 * Returns the actual number of remaining diamonds
-	 * @return remainingDiamonds
+     *
+	 * @return  Remaining diamonds
 	 */
 	public int getRemainingsDiamonds() {
 		return remainingsDiamonds;
@@ -47,22 +51,33 @@ public class GameInformationModel extends Observable  {
 
 	/**
 	 * Sets the number of remainingDiamonds
-	 * @param remainingDiamonds
+     *
+	 * @param  remainingDiamonds  Remaining diamonds
 	 */
 	public void setRemainingsDiamonds(int remainingDiamonds) {
 		this.remainingsDiamonds = remainingDiamonds;
 	}
 
+    /**
+     * Gets the timer
+     *
+     * @return  Timer
+     */
 	public int getTimer() {
 		return timer;
 	}
 
+    /**
+     * Sets the timer
+     *
+     * @param  timer  Timer
+     */
 	public void setTimer(int timer) {
 		this.timer = timer;
 	}
 
 	/**
-	 * Increment the score & notify observers
+	 * Increments the score & notify observers
 	 */
 	public void incrementScore() {
 		this.score += 1;	
@@ -72,13 +87,13 @@ public class GameInformationModel extends Observable  {
 	/**
 	 * Generic function which will notify the observers.
 	 */
-	private void myNotify(){
+	private void myNotify() {
 		this.notifyObservers();
 		this.setChanged();
 	}
 
 	/**
-	 * Decrement of one the number total of remainings diamonds.
+	 * Decrement of one the number total of remaining diamonds.
 	 */
 	public void decrementRemainingsDiamonds() {
 		if(remainingsDiamonds > 0){
@@ -87,6 +102,9 @@ public class GameInformationModel extends Observable  {
 		}
 	}
 
+    /**
+     * Reset details about object
+     */
 	public void resetInformations() {
 		this.score = 0;
 		this.remainingsDiamonds = remainingsDiamonds;

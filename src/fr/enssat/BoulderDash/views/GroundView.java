@@ -1,6 +1,5 @@
 package fr.enssat.BoulderDash.views;
 
-import fr.enssat.BoulderDash.exceptions.ModelNotReadyException;
 import fr.enssat.BoulderDash.models.LevelModel;
 
 import javax.swing.*;
@@ -28,8 +27,7 @@ public abstract class GroundView extends JPanel implements Observer {
 	/**
 	 * Class constructor
 	 *
-	 * @param levelModel
-	 *            Level model
+	 * @param  levelModel  Level model
 	 */
 	public GroundView(LevelModel levelModel) {
 		this.levelModel = levelModel;
@@ -39,12 +37,9 @@ public abstract class GroundView extends JPanel implements Observer {
 	/**
 	 * Draws the map
 	 *
-	 * @param width
-	 *            Map width
-	 * @param height
-	 *            Map height
-	 * @param g
-	 *            Map graphical object
+	 * @param  width   Map width
+	 * @param  height  Map height
+	 * @param  g       Map graphical object
 	 */
 	public void drawTerrain(int width, int height, Graphics g) {
 		// Draw items
@@ -98,8 +93,7 @@ public abstract class GroundView extends JPanel implements Observer {
 	/**
 	 * Paints the map
 	 *
-	 * @param g
-	 *            Map graphical object
+	 * @param  g  Map graphical object
 	 */
 	public void paint(Graphics g) {
 		this.drawTerrain(this.levelModel.getSizeWidth(), this.levelModel.getSizeHeight(), g);
@@ -108,10 +102,8 @@ public abstract class GroundView extends JPanel implements Observer {
 	/**
 	 * Updates the view
 	 *
-	 * @param obs
-	 *            Observable item
-	 * @param obj
-	 *            Object item
+	 * @param  obs  Observable item
+	 * @param  obj  Object item
 	 */
 	@Override
 	public void update(Observable obs, Object obj) {

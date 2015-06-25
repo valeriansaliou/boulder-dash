@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash;
 
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
+
 import javax.swing.*;
 
 

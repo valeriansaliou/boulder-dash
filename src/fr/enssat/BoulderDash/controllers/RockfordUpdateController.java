@@ -54,8 +54,8 @@ public class RockfordUpdateController implements Runnable {
 	/**
 	 * Moves Rockford
 	 *
-	 * @param rockfordXPosition  Next horizontal position on the grid
-	 * @param rockfordYPosition  Next vertical position on the grid
+	 * @param  rockfordPositionX  Next horizontal position on the grid
+	 * @param  rockfordPositionY  Next vertical position on the grid
 	 */
 	public void moveRockford(int rockfordPositionX, int rockfordPositionY) {
 		this.rockfordPositionX = rockfordPositionX;

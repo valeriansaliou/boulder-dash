@@ -111,7 +111,8 @@ public class NavigationBetweenViewController implements ActionListener {
 
 	/**
 	 * Get the pickedLevel
-	 * @return pickedLevelIdentifier
+     *
+	 * @return  pickedLevelIdentifier  Picked level identifier
 	 */
 	public String getPickedLevelIdentifier() {
 		return pickedLevelIdentifier;
@@ -119,7 +120,8 @@ public class NavigationBetweenViewController implements ActionListener {
 
 	/**
 	 * Set the pickedLevelIdentifier
-	 * @param pickedLevelIdentifier
+     *
+	 * @param  pickedLevelIdentifier  Picked level identifier
 	 */
 	public void setPickedLevelIdentifier(String pickedLevelIdentifier) {
 		this.pickedLevelIdentifier = pickedLevelIdentifier;

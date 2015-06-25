@@ -1,6 +1,5 @@
 package fr.enssat.BoulderDash.models;
 
-import fr.enssat.BoulderDash.exceptions.ModelNotReadyException;
 import fr.enssat.BoulderDash.exceptions.LevelConstraintNotRespectedException;
 import fr.enssat.BoulderDash.exceptions.UnknownModelException;
 import fr.enssat.BoulderDash.helpers.LevelLoadHelper;
@@ -19,6 +18,7 @@ import fr.enssat.BoulderDash.models.CursorModel;
 
 import java.awt.image.BufferedImage;
 import java.util.Observable;
+
 
 /**
  * LevelModel
@@ -62,7 +62,7 @@ public class LevelModel extends Observable implements Runnable {
 	/**
 	 * Class constructor
 	 *
-	 * @param  levelName  Level name
+	 * @param  levelName        Level name
 	 * @param  audioLoadHelper  Audio load helper
      * @param  mode             Instance mode
 	 */

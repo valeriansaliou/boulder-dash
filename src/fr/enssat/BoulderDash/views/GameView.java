@@ -3,14 +3,10 @@ package fr.enssat.BoulderDash.views;
 import javax.swing.*;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import com.apple.eawt.Application;
-
 import fr.enssat.BoulderDash.controllers.GameController;
-import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.GameGroundView;
 import fr.enssat.BoulderDash.views.InformationPanel;
@@ -119,17 +115,6 @@ public class GameView extends JFrame implements Observer {
      */
 	@Override
 	public void update(Observable obs, Object obj) {
-		// TODO
+		// Nothing done.
 	}
-
-    /**
-     * Paints the frame
-     *
-     * @param   g  Graphics object
-     */
-    /*@Override
-    public void paint(Graphics g) {
-        g.setColor(Color.white);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
-    }*/
 }

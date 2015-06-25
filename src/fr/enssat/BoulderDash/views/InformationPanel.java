@@ -1,12 +1,10 @@
 package fr.enssat.BoulderDash.views;
 
-import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import fr.enssat.BoulderDash.models.LevelModel;
 
@@ -43,8 +41,8 @@ public class InformationPanel extends JPanel implements Observer {
     /**
      * Updates the panel
      *
-     * @param   o    Observable item
-     * @param   arg  Object item
+     * @param  o    Observable item
+     * @param  arg  Object item
      */
 	@Override
 	public void update(Observable o, Object arg) {

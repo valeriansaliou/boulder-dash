@@ -42,12 +42,12 @@ public abstract class DisplayableElementModel {
 	/**
      * Class constructor
      *
-	 * @param destructible
-	 * @param moving
-	 * @param spriteName
-	 * @param priority
-	 * @param impactExplosive
-	 * @param animate
+	 * @param  destructible     Object destructible?
+	 * @param  moving           Object is moving?
+	 * @param  spriteName       Object sprite name?
+	 * @param  priority         Object priority?
+	 * @param  impactExplosive  Object explodes on impact?
+	 * @param  animate          Object can be animated?
 	 */
 	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound, boolean convertible) {
 		this.moving = moving;
@@ -296,7 +296,7 @@ public abstract class DisplayableElementModel {
 	
 	/**
 	 * Function to update the sprites
-	 * @param currentTimeMillis
+	 * @param  currentTimeMillis  Current time in milliseconds
 	 */
 	public void update(long currentTimeMillis) {}
 }

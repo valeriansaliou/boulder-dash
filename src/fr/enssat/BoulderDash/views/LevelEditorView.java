@@ -7,7 +7,6 @@ import java.util.Observer;
 
 import fr.enssat.BoulderDash.helpers.LevelSelectorHelper;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
-import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.views.LevelEditorGroundView;
@@ -110,6 +109,7 @@ public class LevelEditorView extends JFrame implements Observer {
     /**
      * Creates the given button
      *
+     * @param   id    Button identifier
      * @param   name  Button name
      * @return  Created button
      */
@@ -151,8 +151,8 @@ public class LevelEditorView extends JFrame implements Observer {
     /**
      * Updates the view
      *
-     * @param   obs  Observable item
-     * @param   obj  Object item
+     * @param  obs  Observable item
+     * @param  obj  Object item
      */
     @Override
     public void update(Observable obs, Object obj) {

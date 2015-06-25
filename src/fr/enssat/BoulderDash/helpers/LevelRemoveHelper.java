@@ -19,7 +19,7 @@ public class LevelRemoveHelper {
     /**
      * Class constructor
      *
-     * @param  levelId     Level identifier
+     * @param  levelId  Level identifier
      */
     public LevelRemoveHelper(String levelId) {
         this.levelId = levelId;

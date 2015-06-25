@@ -31,7 +31,7 @@ public class GameGroundView extends GroundView {
 
         this.gameController = gameController;
 
-        this.addKeyListener(new GameKeyController(this.levelModel, this.gameController.getAudioLoadHelper())); //TODO SALE
+        this.addKeyListener(new GameKeyController(this.levelModel, this.gameController.getAudioLoadHelper()));
 
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setFocusable(true);

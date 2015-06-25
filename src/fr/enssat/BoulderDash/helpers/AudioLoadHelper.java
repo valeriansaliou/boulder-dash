@@ -91,7 +91,7 @@ public class AudioLoadHelper {
     /**
      * Gets a preloaded sound
      *
-     * @param  soundId  Sound identifier
+     * @param   soundId  Sound identifier
      * @return  Preloaded sound instance
      */
     private SoundJLayerBridge getPreloadedSound(String soundId) {

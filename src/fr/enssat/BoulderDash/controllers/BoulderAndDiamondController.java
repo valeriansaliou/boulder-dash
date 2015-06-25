@@ -82,8 +82,9 @@ public class BoulderAndDiamondController implements Runnable {
 
 	/**
 	 * Expand the wall at left & right
-	 * @param x
-	 * @param y
+     *
+	 * @param  x  Horizontal position
+	 * @param  y  Vertical position
 	 */
 	private String expandWall(int x, int y) {
 		DisplayableElementModel elementLeft  = this.levelModel.getGroundLevelModel()[x - 1][y];
