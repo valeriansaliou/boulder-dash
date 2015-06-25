@@ -50,7 +50,7 @@ public class MenuView extends JFrame {
         this.setSize(432, 536);
 
         // App parameters
-        this.setTitle("Boulder Dash menu");
+        this.setTitle("Boulder Dash | Menu");
     }
 
     /**

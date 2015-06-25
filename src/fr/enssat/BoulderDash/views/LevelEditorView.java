@@ -67,7 +67,7 @@ public class LevelEditorView extends JFrame implements Observer {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // App parameters
-        this.setTitle("Level Editor | Boulder Dash");
+        this.setTitle("Boulder Dash | Level Editor");
 
         Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
         this.setIconImage(appIcon);
@@ -160,18 +160,12 @@ public class LevelEditorView extends JFrame implements Observer {
     }
 
     /**
-     * Menu level selector change handler
+     * Change opened level
      *
-     * @param  changedSelector  Changed selector
+     * @param  selectedLevelValue  Selected level value
      */
-    public void menuLevelSelectorChanged(MenuLevelSelector changedSelector) {
+    public void openedLevelChange(String selectedLevelValue) {
         LevelModel pickedLevelModel;
-        String selectedLevelValue = changedSelector.getChoiceValue().toString();
-
-        // Value didn't change?
-        if(selectedLevelValue.equals(this.getSelectedLevel())) {
-            return;
-        }
 
         if(selectedLevelValue != null && !selectedLevelValue.isEmpty()) {
             // Load existing model
@@ -194,6 +188,22 @@ public class LevelEditorView extends JFrame implements Observer {
         this.levelEditorController.getLevelEditorView().setVisible(true);
         this.levelEditorController.getLevelEditorView().getLevelEditorGroundView().grabFocus();
         this.levelEditorController.getLevelEditorView().menuLevelSelector.setChoiceValue(selectedLevelValue);
+    }
+
+    /**
+     * Menu level selector change handler
+     *
+     * @param  changedSelector  Changed selector
+     */
+    public void menuLevelSelectorChanged(MenuLevelSelector changedSelector) {
+        String selectedLevelValue = changedSelector.getChoiceValue().toString();
+
+        // Value didn't change?
+        if(selectedLevelValue.equals(this.getSelectedLevel())) {
+            return;
+        }
+
+        this.openedLevelChange(selectedLevelValue);
     }
 
     /**

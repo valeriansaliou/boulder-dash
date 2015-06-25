@@ -411,12 +411,12 @@ public class LevelModel extends Observable implements Runnable {
     public void checkConstraints() throws LevelConstraintNotRespectedException {
         // Diamonds number?
         if(this.countDiamonds() < 3) {
-            throw new LevelConstraintNotRespectedException("Veuillez ajouter au moins 3 diamands !");
+            throw new LevelConstraintNotRespectedException("Add at least 3 diamonds!");
         }
 
         // Rockford in model?
         if(!this.isRockfordInModel()) {
-            throw new LevelConstraintNotRespectedException("Rockford doit être présent sur la map !");
+            throw new LevelConstraintNotRespectedException("Add Rockford on the map!");
         }
     }
 

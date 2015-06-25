@@ -66,19 +66,22 @@ public class LevelEditorController implements ActionListener {
 
                     // Save action (direct save)
                     String levelId = this.levelEditorView.getSelectedLevel();
+                    LevelSaveHelper levelSave;
 
                     if(levelId == null || levelId.isEmpty()) {
                         // Create a new level
-                        new LevelSaveHelper(levelModel.getGroundLevelModel());
+                        levelSave = new LevelSaveHelper(levelModel.getGroundLevelModel());
                     } else {
                         // Overwrite existing level
-                        new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
+                        levelSave = new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
                     }
 
-                    JFrame frameDialog = new JFrame("Information");
-                    JOptionPane.showMessageDialog(frameDialog, "Niveau sauvegardé");
+                    JFrame frameDialog = new JFrame("Info");
+                    JOptionPane.showMessageDialog(frameDialog, "Level saved");
+
+                    this.levelEditorView.openedLevelChange(levelSave.getLevelId());
                 } catch(LevelConstraintNotRespectedException e) {
-                    JFrame frameDialog = new JFrame("Erreur");
+                    JFrame frameDialog = new JFrame("Error");
                     JOptionPane.showMessageDialog(frameDialog, e.getMessage());
                 }
 
@@ -86,18 +89,20 @@ public class LevelEditorController implements ActionListener {
 
             case "delete":
                 String levelId = this.levelEditorView.getSelectedLevel();
-                JFrame frameDialog = new JFrame("Information");
+                JFrame frameDialog = new JFrame("Info");
 
                 if(levelId == null || levelId.isEmpty()) {
-                    JOptionPane.showMessageDialog(frameDialog, "Niveau non sauvegardé, inutile de le supprimer !");
+                    JOptionPane.showMessageDialog(frameDialog, "Level not yet saved, no need to delete it!");
                 } else {
                     new LevelRemoveHelper(levelId);
-                    JOptionPane.showMessageDialog(frameDialog, "Niveau supprimé !");
+                    JOptionPane.showMessageDialog(frameDialog, "Level deleted!");
+
+                    this.levelEditorView.openedLevelChange(null);
                 }
                 break;
 
             case "new":
-                // TODO
+                this.levelEditorView.openedLevelChange(null);
                 break;
         }
 

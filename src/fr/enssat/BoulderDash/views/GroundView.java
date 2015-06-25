@@ -84,7 +84,7 @@ public abstract class GroundView extends JPanel implements Observer {
 	 */
 	private void displayWin() {
         JFrame frameDialog = new JFrame("Information");
-        JOptionPane.showMessageDialog(frameDialog, "Vous avez gagné !");
+        JOptionPane.showMessageDialog(frameDialog, "You won!");
 	}
 
 	/**
@@ -92,7 +92,7 @@ public abstract class GroundView extends JPanel implements Observer {
 	 */
 	private void displayLose() {
         JFrame frameDialog = new JFrame("Information");
-        JOptionPane.showMessageDialog(frameDialog, "Vous avez perdu !");
+        JOptionPane.showMessageDialog(frameDialog, "You just lost!");
 	}
 
 	/**
