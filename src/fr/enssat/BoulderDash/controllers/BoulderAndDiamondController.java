@@ -66,7 +66,7 @@ public class BoulderAndDiamondController implements Runnable {
 					elementModel = new DirtModel();
 				}
 
-				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
+				String spriteName = elementModel.getSpriteName();
 				
 				// If it is a boulder or a diamond...
 				if (spriteName == "boulder" || spriteName == "diamond") {
