@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
-import fr.enssat.boulderdash.helpers.LevelSelectorHelper;
+import fr.enssat.BoulderDash.helpers.LevelSelectorHelper;
 import fr.enssat.BoulderDash.controllers.LevelEditorController;
 import fr.enssat.BoulderDash.controllers.LevelEditorKeyController;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;

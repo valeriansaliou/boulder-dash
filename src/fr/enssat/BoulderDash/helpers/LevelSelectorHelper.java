@@ -1,4 +1,4 @@
-package fr.enssat.boulderdash.helpers;
+package fr.enssat.BoulderDash.helpers;
 
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
 import fr.enssat.BoulderDash.views.LevelEditorView;

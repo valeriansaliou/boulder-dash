@@ -6,7 +6,7 @@ import java.util.Observer;
 
 import javax.swing.*;
 
-import fr.enssat.boulderdash.helpers.LevelSelectorHelper;
+import fr.enssat.BoulderDash.helpers.LevelSelectorHelper;
 import fr.enssat.BoulderDash.views.MenuImage;
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
 import fr.enssat.BoulderDash.views.MenuLevelSelector;
