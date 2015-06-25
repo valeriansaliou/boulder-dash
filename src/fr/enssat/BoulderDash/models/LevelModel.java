@@ -262,9 +262,9 @@ public class LevelModel extends Observable implements Runnable {
 	 * the game
 	 */
 	private void spawnExit() {
-		int x = (int) (Math.random() * (this.getSizeHeight()));
-		int y = (int) (Math.random() * (this.getSizeWidth()));
-		this.groundGrid[x][y] = new DoorModel();
+		int x = (int) (Math.random() * (this.getSizeHeight() - 2));
+		int y = (int) (Math.random() * (this.getSizeWidth() - 2));
+		this.groundGrid[x + 1][y + 1] = new DoorModel();
 	}
 
 	/**
