@@ -65,7 +65,14 @@ public class LevelEditorController implements ActionListener {
 
                     // Save action (direct save)
                     String levelId = this.levelEditorView.getSelectedLevel();
-                    new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
+
+                    if(levelId == null || levelId.isEmpty()) {
+                        // Create a new level
+                        new LevelSaveHelper(levelModel.getGroundLevelModel());
+                    } else {
+                        // Overwrite existing level
+                        new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
+                    }
 
                     JFrame frameDialog = new JFrame("Information");
                     JOptionPane.showMessageDialog(frameDialog, "Niveau sauvegardé");

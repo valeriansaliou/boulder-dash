@@ -1,8 +1,13 @@
 package fr.enssat.BoulderDash.helpers;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,7 +39,8 @@ public class LevelSaveHelper {
     /**
      * Class constructor
      *
-     * @param  levelId  Level identifier
+     * @param  levelId     Level identifier
+     * @param  groundGrid  Ground grid
      */
     public LevelSaveHelper(String levelId, DisplayableElementModel[][] groundGrid) {
         this.setLevelId(levelId);
@@ -50,12 +56,76 @@ public class LevelSaveHelper {
     }
 
     /**
+     * Class constructor
+     *
+     * @param  groundGrid  Ground grid
+     */
+    public LevelSaveHelper(DisplayableElementModel[][] groundGrid) {
+        this(generateNewLevelId(), groundGrid);
+    }
+
+    /**
      * Gets level storage path
      *
      * @return  Level path, with file extension
      */
     private String getLevelPathInDataStore() {
         return this.pathToDataStore + "/" + this.getLevelId() + ".xml";
+    }
+
+    /**
+     * Generates a new level identifier
+     *
+     * @return  Level identifier
+     */
+    private static String generateNewLevelId() {
+        File directory = new File(pathToDataStore);
+        Integer electedLastLevelId, tempLevelId;
+        String matchedId, finalLevelId;
+
+        // Default level identifier
+        electedLastLevelId = 0;
+
+        // File list
+        File[] fileList = directory.listFiles();
+
+        // Regex matcher
+        Pattern pattern = Pattern.compile("^level([0-9]+)\\.xml");
+        Matcher matcher;
+
+        for (File file : fileList){
+            matcher = pattern.matcher(file.getName());
+
+            if (matcher.matches()) {
+                matchedId = matcher.group(1);
+
+                if(!matchedId.isEmpty()) {
+                    tempLevelId = new Integer(matchedId);
+
+                    if (tempLevelId > electedLastLevelId) {
+                        electedLastLevelId = tempLevelId;
+                    }
+                } else {
+                    System.out.println("Match found but result empty for > " + file.getName());
+                }
+            } else {
+                System.out.println("No match found for > " + file.getName());
+            }
+        }
+
+        // Increment
+        electedLastLevelId += 1;
+
+        // Stringify
+        if(electedLastLevelId < 10) {
+            finalLevelId = "0" + electedLastLevelId.toString();
+        } else {
+            finalLevelId = electedLastLevelId.toString();
+        }
+
+        System.out.println("finalLevelId > " + finalLevelId);
+
+        return "level" + finalLevelId;
     }
 
     /**
