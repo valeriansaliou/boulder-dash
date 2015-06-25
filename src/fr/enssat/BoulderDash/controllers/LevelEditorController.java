@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import fr.enssat.BoulderDash.exceptions.LevelConstraintNotRespectedException;
+import fr.enssat.BoulderDash.helpers.LevelRemoveHelper;
 import fr.enssat.BoulderDash.helpers.LevelSaveHelper;
 import fr.enssat.BoulderDash.models.LevelModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
@@ -85,10 +86,13 @@ public class LevelEditorController implements ActionListener {
 
             case "delete":
                 String levelId = this.levelEditorView.getSelectedLevel();
+                JFrame frameDialog = new JFrame("Information");
 
                 if(levelId == null || levelId.isEmpty()) {
-                    JFrame frameDialog = new JFrame("Information");
                     JOptionPane.showMessageDialog(frameDialog, "Niveau non sauvegardé, inutile de le supprimer !");
+                } else {
+                    new LevelRemoveHelper(levelId);
+                    JOptionPane.showMessageDialog(frameDialog, "Niveau supprimé !");
                 }
                 break;
 
