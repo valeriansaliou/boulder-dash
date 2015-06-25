@@ -187,7 +187,9 @@ public class LevelEditorView extends JFrame implements Observer {
         this.levelEditorController.getLevelEditorView().setSelectedLevel(selectedLevelValue);
         this.levelEditorController.getLevelEditorView().setVisible(true);
         this.levelEditorController.getLevelEditorView().getLevelEditorGroundView().grabFocus();
+
         this.levelEditorController.getLevelEditorView().menuLevelSelector.setChoiceValue(selectedLevelValue);
+        this.levelEditorController.getLevelEditorView().menuLevelSelector.setSelectedValue(selectedLevelValue);
     }
 
     /**

@@ -26,6 +26,7 @@ public class MenuView extends JFrame {
     private MenuImage menuImage;
     private MenuLevelSelector menuLevelSelector;
 	private JPanel actionPanel;
+    private JPanel targetPanel;
     private JButton game, editor, quit;
 
     /**
@@ -60,7 +61,7 @@ public class MenuView extends JFrame {
         LevelSelectorHelper levelSelectorHelper = new LevelSelectorHelper(false);
         this.menuLevelSelector = levelSelectorHelper.createLevelList();
 
-        JPanel targetPanel = new JPanel();
+        this.targetPanel = new JPanel();
 
         this.menuImage = new MenuImage();
     	this.actionPanel = new JPanel();
@@ -73,8 +74,8 @@ public class MenuView extends JFrame {
         this.add(this.menuImage, BorderLayout.CENTER);
         this.add(targetPanel, BorderLayout.SOUTH);
 
-        targetPanel.add(this.menuLevelSelector, BorderLayout.NORTH);
-        targetPanel.add(this.actionPanel, BorderLayout.SOUTH);
+        this.targetPanel.add(this.menuLevelSelector, BorderLayout.NORTH);
+        this.targetPanel.add(this.actionPanel, BorderLayout.SOUTH);
     }
 
     /**
@@ -86,12 +87,22 @@ public class MenuView extends JFrame {
 	public JButton createButton(String id, String name) {
 		JButton button = new JButton(name);
 		button.addActionListener(this.navigationBetweenViewController);
-		button.setActionCommand(id);
+        button.setActionCommand(id);
 
 		this.actionPanel.add(button);
 
 		return button;
 	}
+
+    /**
+     * Reloads the level selector
+     */
+    public void reloadLevelSelector() {
+        this.dispose();
+
+        this.initializeView();
+        this.createLayout();
+    }
 
     /**
      * Gets the selected level identifier!

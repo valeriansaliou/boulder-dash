@@ -123,8 +123,6 @@ public class LevelSaveHelper {
             finalLevelId = electedLastLevelId.toString();
         }
 
-        System.out.println("finalLevelId > " + finalLevelId);
-
         return "level" + finalLevelId;
     }
 

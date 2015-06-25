@@ -67,7 +67,6 @@ public class LevelEditorKeyController implements KeyListener {
             
             case 16:
                 this.capLocks = !capLocks;
-                System.out.println(capLocks);
                 break;
         }
 

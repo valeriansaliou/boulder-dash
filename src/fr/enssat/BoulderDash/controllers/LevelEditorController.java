@@ -55,6 +55,7 @@ public class LevelEditorController implements ActionListener {
             case "menu":
             	this.levelEditorView.setVisible(false);
             	this.nav.getMenuView().setVisible(true);
+                this.nav.getMenuView().reloadLevelSelector();
                 this.nav.getAudioLoadHelper().startMusic("game");
 
                 break;
