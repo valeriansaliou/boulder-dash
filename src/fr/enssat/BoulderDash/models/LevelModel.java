@@ -480,11 +480,12 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  y  Sprite block vertical position
 	 */
 	public void updateSprites(int x, int y) {
-        if(groundGrid[x][y] != null) {
-            groundGrid[x][y].update(System.currentTimeMillis());
-
-            this.localNotifyObservers();
+        if(groundGrid[x][y] == null) {
+            groundGrid[x][y] = new DirtModel();
         }
+
+        groundGrid[x][y].update(System.currentTimeMillis());
+        this.localNotifyObservers();
 	}
 
 	/**

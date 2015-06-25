@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.models.DirtModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
 
@@ -59,6 +60,12 @@ public class BoulderAndDiamondController implements Runnable {
 		for (int x = this.levelModel.getSizeWidth() - 1; x >= 0; x--) {
 			for (int y = this.levelModel.getSizeHeight() - 1; y >= 0; y--) {
 				// Gets the spriteName of actual DisplayableElementModel object scanned
+				DisplayableElementModel elementModel = this.levelModel.getGroundLevelModel()[x][y];
+
+				if(elementModel == null) {
+					elementModel = new DirtModel();
+				}
+
 				String spriteName = this.levelModel.getGroundLevelModel()[x][y].getSpriteName();
 				
 				// If it is a boulder or a diamond...
