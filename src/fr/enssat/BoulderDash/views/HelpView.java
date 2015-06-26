@@ -41,7 +41,7 @@ public class HelpView extends JFrame{
     			+ "- Move the RED cursur with the arrows\n"
     			+ "- To place the selected item on the field, use SPACEBAR.\n"
     			+ "If you want to lock the placement of the things, hit shift once (to unlock, rehit shift)\n"
-    			+ "Then, you can save & load your creation on game."
+    			+ "Then, you can save & load your creation on game.\n"
     			+ "You have to place at least 3 diamonds and 1 rockford!\n"
     			+ "Have fun ;-)");
     	
