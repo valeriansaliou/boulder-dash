@@ -13,7 +13,7 @@ import java.io.File;
  * @since       2015-06-21
  */
 public class LevelRemoveHelper {
-    private static String pathToDataStore = "res/levels";
+    private static String pathToDataStore = "./res/levels";
     private String levelId = null;
 
     /**

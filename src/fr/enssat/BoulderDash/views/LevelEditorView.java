@@ -61,14 +61,14 @@ public class LevelEditorView extends JFrame implements Observer {
         this.setResizable(false);
 
         // UI parameters
-        this.setSize(903, 454);
+        this.setSize(984, 454);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // App parameters
         this.setTitle("Boulder Dash | Level Editor");
 
-        Image appIcon = Toolkit.getDefaultToolkit().getImage("res/app/app_icon.png");
+        Image appIcon = Toolkit.getDefaultToolkit().getImage("./res/app/app_icon.png");
         this.setIconImage(appIcon);
 	}
 
@@ -91,9 +91,9 @@ public class LevelEditorView extends JFrame implements Observer {
         this.actionsComponent.add(this.menuLevelSelector);
         this.actionsComponent.add(this.createButton("save", "Save"));
         this.actionsComponent.add(this.createButton("delete", "Delete"));
-
         this.actionsComponent.add(this.createButton("new", "New level"));
         this.actionsComponent.add(this.createButton("menu", "Menu"));
+        this.actionsComponent.add(this.createButton("help", "Help"));
 
         // Add select panel subcomponents
         this.selectPanel.setLayout(new BoxLayout(this.selectPanel, BoxLayout.Y_AXIS));
@@ -222,6 +222,7 @@ public class LevelEditorView extends JFrame implements Observer {
      *
      * @param  level  Selected level
      */
-    public void setSelectedLevel(String level) { this.selectedLevel = level;
+    public void setSelectedLevel(String level) { 
+    	this.selectedLevel = level;
     }
 }

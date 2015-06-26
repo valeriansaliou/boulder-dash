@@ -7,6 +7,7 @@ import fr.enssat.BoulderDash.exceptions.LevelConstraintNotRespectedException;
 import fr.enssat.BoulderDash.helpers.LevelRemoveHelper;
 import fr.enssat.BoulderDash.helpers.LevelSaveHelper;
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.views.HelpView;
 import fr.enssat.BoulderDash.views.LevelEditorView;
 import fr.enssat.BoulderDash.controllers.NavigationBetweenViewController;
 
@@ -52,8 +53,7 @@ public class LevelEditorController implements ActionListener {
         switch(event.getActionCommand()) {
             case "menu":
             	this.levelEditorView.setVisible(false);
-            	this.nav.getMenuView().setVisible(true);
-                this.nav.getMenuView().reloadLevelSelector();
+            	this.nav.setMenuView();           	
                 this.nav.getAudioLoadHelper().startMusic("game");
 
                 break;
@@ -98,6 +98,10 @@ public class LevelEditorController implements ActionListener {
 
                     this.levelEditorView.openedLevelChange(null);
                 }
+                break;
+                
+            case "help":
+            	new HelpView();
                 break;
 
             case "new":

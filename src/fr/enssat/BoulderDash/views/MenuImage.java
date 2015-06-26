@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  */
 public class MenuImage extends JPanel {
     private BufferedImage imageFile;
-    private String imagePath = "res/drawable/app/menu_actual.jpg";
+    private String imagePath = "./res/drawable/app/menu_actual.jpg";
 
     /**
      * Class constructor

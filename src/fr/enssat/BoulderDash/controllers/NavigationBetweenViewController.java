@@ -105,8 +105,9 @@ public class NavigationBetweenViewController implements ActionListener {
 	 * 
 	 * @param  menuView
 	 */
-	public void setMenuView(MenuView menuView) {
-		this.menuView = menuView;
+	public MenuView setMenuView() {
+		this.menuView = new MenuView(this);
+		return menuView;
 	}
 
 	/**

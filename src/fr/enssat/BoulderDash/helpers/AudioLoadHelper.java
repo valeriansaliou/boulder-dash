@@ -15,7 +15,7 @@ import java.util.HashMap;
  * @since       2015-06-19
  */
 public class AudioLoadHelper {
-    private static String pathToAudioStore = "res/audio";
+    private static String pathToAudioStore = "./res/audio";
 
     private SoundJLayerBridge musicToPlay;
     private HashMap<String, SoundJLayerBridge> preloadedSounds;

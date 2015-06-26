@@ -46,7 +46,7 @@ import java.util.Locale;
  * @since       2015-06-19
  */
 public class LevelLoadHelper {
-	private static String pathToDataStore = "res/levels";
+	private static String pathToDataStore = "./res/levels";
 	private String levelId = null;
 	private Document levelDOM;
 	private XPath xpathBuilder;

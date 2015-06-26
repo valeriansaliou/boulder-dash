@@ -17,7 +17,7 @@ import java.util.List;
  * @since       2015-06-23
  */
 public class LevelSelectorHelper {
-    private static String levelStorage = "res/levels";
+    private static String levelStorage = "./res/levels";
     private boolean hasEmptyElement = false;
     private LevelEditorView levelEditorView = null;
 

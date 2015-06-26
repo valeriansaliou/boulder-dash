@@ -31,7 +31,7 @@ import fr.enssat.BoulderDash.models.DirtModel;
  * @since       2015-06-21
  */
 public class LevelSaveHelper {
-    private static String pathToDataStore = "res/levels";
+    private static String pathToDataStore = "./res/levels";
     private String levelId = null;
     private DisplayableElementModel[][] groundGrid;
     private SimpleDateFormat dateFormatter;
