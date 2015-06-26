@@ -52,11 +52,10 @@ public class GameView extends JFrame implements Observer {
 
         // UI parameters
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-        this.setBounds(100, 100, 200, 100);
-        this.setSize(432, 536);
+        this.setBounds(100, 100, 432, 536);
 
         // App parameters
-        this.setTitle("Boulder Dash");
+        this.setTitle("Boulder Dash | Game");
 
         Image appIcon = Toolkit.getDefaultToolkit().getImage("./res/app/app_icon.png");
         this.setIconImage(appIcon);
