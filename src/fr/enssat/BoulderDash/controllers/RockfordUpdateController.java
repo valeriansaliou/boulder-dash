@@ -41,12 +41,11 @@ public class RockfordUpdateController implements Runnable {
 					this.levelModel.setPositionOfRockford(rockfordPositionX, rockfordPositionY);
 					this.rockfordHasMoved = false;
 				}
-				
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			}
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}

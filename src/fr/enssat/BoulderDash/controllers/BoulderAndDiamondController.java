@@ -41,12 +41,11 @@ public class BoulderAndDiamondController implements Runnable {
 		while (this.levelModel.isGameRunning()) {
 			if(!this.levelModel.getGamePaused()){
 				this.manageFallingObject();
-	
-				try {
-					Thread.sleep(250);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			}
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}
